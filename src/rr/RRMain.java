@@ -117,6 +117,9 @@ public class RRMain {
     public static final CommandLineOption<Integer> benchmarkOption = CommandLine
             .makeInteger("benchmark", 0, CommandLineOption.Kind.EXPERIMENTAL, "Benchmark...");
 
+    public static final CommandLineOption<String> transactionFileOption = CommandLine.makeString("transactionfile",
+			 "pair.csv", CommandLineOption.Kind.STABLE, "Transaction pair input file");
+
     public static final CommandLineOption<Integer> warmUpOption = CommandLine.makeInteger("warmup",
             3, CommandLineOption.Kind.EXPERIMENTAL, "Warm Up...");
 
@@ -221,6 +224,7 @@ public class RRMain {
 
         // CS636: New options group
         cl.addGroup("CS636");
+        cl.add(transactionFileOption);
 
         cl.addGroup("Instrumentor");
         cl.add(noInstrumentOption);
