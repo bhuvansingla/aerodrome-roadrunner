@@ -1,6 +1,6 @@
 auto
 build
-classes
+/classes
 docs
 
 test/*.class
