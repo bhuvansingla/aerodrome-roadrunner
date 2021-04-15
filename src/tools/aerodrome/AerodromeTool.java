@@ -107,10 +107,10 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     private final VectorClock maxEpochPerTid = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
 
-    public HashMap <ShadowLock, ShadowThread> lastThreadToRelease;
-    public Hashmap <ShadowVar, ShadowThread> lastThreadToWrite;
-    public HashMap <ShadowThread, Integer> threadToNestingDepth;
-    
+    public ConcurrentHashMap <ShadowLock, ShadowThread> lastThreadToRelease;
+    public ConcurrentHashMap <ShadowVar, ShadowThread> lastThreadToWrite;
+    public ConcurrentHashMap <ShadowThread, Integer> threadToNestingDepth;
+
     public static class TransactionHandling {
         private static String filename;
         // This map contains the race pairs provided in the input file.
@@ -162,7 +162,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         }
     }
     TransactionHandling th;
-    public FastTrackTool(final String name, final Tool next, CommandLine commandLine) {
+    public AerodromeTool(final String name, final Tool next, CommandLine commandLine) {
         super(name, next, commandLine);
         th = new TransactionHandling();
         th.ReadFile();
