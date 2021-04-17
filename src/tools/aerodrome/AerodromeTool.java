@@ -44,6 +44,8 @@ import acme.util.decorations.NullDefault;
 import acme.util.io.XMLWriter;
 import acme.util.option.CommandLine;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import rr.RRMain;
 import rr.annotations.Abbrev;
@@ -60,6 +62,7 @@ import rr.event.ClassAccessedEvent;
 import rr.event.ClassInitializedEvent;
 import rr.event.FieldAccessEvent;
 import rr.event.JoinEvent;
+import rr.event.MethodEvent;
 import rr.event.NewThreadEvent;
 import rr.event.ReleaseEvent;
 import rr.event.StartEvent;
@@ -115,6 +118,10 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         private static String filename;
         // This map contains the race pairs provided in the input file.
         private static ConcurrentHashMap<String, String> transactionLocations = new ConcurrentHashMap<String, String>();
+
+        // This list contains the method names to exclude.
+        private static List<String> methodNamesToExclude = new ArrayList<String>();
+
         public TransactionHandling() {
             filename = rr.RRMain.transactionFileOption.get();
         }
@@ -124,6 +131,21 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         public void transactionEnd(){
 
         }
+
+        public void checkMethod(MethodEvent me) {
+            if(!methodNamesToExclude.contains(me.getInfo().toString())){
+                if(me.isEnter()) {
+                    transactionBegin();
+                }
+                else {
+                    transactionEnd();
+                }
+            }
+            else {
+                System.out.println("Excluding: " + me.getInfo().toString());
+            }
+        }
+
         public void CheckLocation(String sloc) {
             if(transactionLocations.containsKey(sloc)) {
                 transactionBegin();
@@ -326,6 +348,20 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         } else {
             return original;
         }
+    }
+
+    @Override
+    public void enter(MethodEvent me) {
+        // System.out.println("Entering: " + me.toString());
+        th.checkMethod(me);
+        super.enter(me);
+    }
+    
+    @Override
+    public void exit(MethodEvent me) {
+        // System.out.println("Exiting: " + me.toString());
+        th.checkMethod(me);
+        super.exit(me);
     }
 
     @Override
