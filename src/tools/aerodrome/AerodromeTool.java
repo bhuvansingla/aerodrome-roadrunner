@@ -108,10 +108,10 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     private final VectorClock maxEpochPerTid = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
 
-    public HashMap <ShadowLock, ShadowThread> lastThreadToRelease;
-    public HashMap <ShadowVar, ShadowThread> lastThreadToWrite;
-    public HashMap <ShadowThread, Integer> threadToNestingDepth;
-    
+    public ConcurrentHashMap <ShadowLock, ShadowThread> lastThreadToRelease;
+    public ConcurrentHashMap <ShadowVar, ShadowThread> lastThreadToWrite;
+    public ConcurrentHashMap <ShadowThread, Integer> threadToNestingDepth;
+
     public static class TransactionHandling {
         private static String filename;
         // This map contains the race pairs provided in the input file.
