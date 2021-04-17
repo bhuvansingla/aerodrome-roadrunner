@@ -45,6 +45,7 @@ import acme.util.io.XMLWriter;
 import acme.util.option.CommandLine;
 import java.io.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 import rr.RRMain;
 import rr.annotations.Abbrev;
 import rr.barrier.BarrierEvent;
@@ -108,7 +109,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     private final VectorClock maxEpochPerTid = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
 
     public HashMap <ShadowLock, ShadowThread> lastThreadToRelease;
-    public Hashmap <ShadowVar, ShadowThread> lastThreadToWrite;
+    public HashMap <ShadowVar, ShadowThread> lastThreadToWrite;
     public HashMap <ShadowThread, Integer> threadToNestingDepth;
     
     public static class TransactionHandling {
@@ -130,6 +131,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
             } else if (transactionLocations.containsValue(sloc)) {
                 transactionEnd();
             }
+            // Case 2 : Take the method as input, if the method exists in the vector, dont call transaction begin. Otherwise do.
         }
         public void ReadFile() {
             try{
@@ -140,6 +142,8 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
                 while((pairline = br.readLine()) != null) {
                     String[] pair = pairline.split(",");
                     transactionLocations.put(pair[0],pair[1]);
+                    // Case 2 : Method exclusion based input
+                    // Have a transaction locations vector transactionLocation.pushback(pairline);
                 }
             } catch(IOException e) { e.printStackTrace(); }
         }
@@ -162,7 +166,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         }
     }
     TransactionHandling th;
-    public FastTrackTool(final String name, final Tool next, CommandLine commandLine) {
+    public AerodromeTool(final String name, final Tool next, CommandLine commandLine) {
         super(name, next, commandLine);
         th = new TransactionHandling();
         th.ReadFile();
@@ -285,14 +289,25 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     @Override
     public void acquire(final AcquireEvent event) {
+        boolean violation = false;
         final ShadowThread st = event.getThread();
         final FTLockState lockV = getV(event.getLock());
 
-        maxEpochAndCV(st, lockV, event.getInfo());
+        ShadowLock lock = event.getLock();
+        // check and add to hash map. not reqd? FTLockState
+        // VectorClock vc = get_lock_vectorclock();
+        if(lastThreadToRelease.containsKey(lock)) {
+            if(lastThreadToRelease.get(lock).equals(st)) {
+                violation = false;// checkandgetclock
+                // vc functions reqd - updatewithmax, <or=
+            }
+        }
 
-        super.acquire(event);
-        if (COUNT_OPERATIONS)
-            acquire.inc(st.getTid());
+        // maxEpochAndCV(st, lockV, event.getInfo());
+
+        // super.acquire(event);
+        // if (COUNT_OPERATIONS)
+            // acquire.inc(st.getTid());
     }
 
     @Override
@@ -300,7 +315,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         final ShadowThread st = event.getThread();
         final VectorClock tV = ts_get_V(st);
         final VectorClock lockV = getV(event.getLock());
-
+        // add to hashmap
         lockV.max(tV);
         incEpochAndCV(st, event.getInfo());
 
