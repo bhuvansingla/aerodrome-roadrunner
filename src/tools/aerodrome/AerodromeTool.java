@@ -123,15 +123,17 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     public ConcurrentHashMap <ShadowThread, Integer> threadToNestingDepth;
 
     public static class TransactionHandling {
-        private static String filename;
+        private static String locationPairFilename;
+        private static String methodExcludeFilename;
         // This map contains the race pairs provided in the input file.
         private static ConcurrentHashMap<String, String> transactionLocations = new ConcurrentHashMap<String, String>();
 
         // This list contains the method names to exclude.
-        private static List<String> methodNamesToExclude = new ArrayList<String>();
+        private static List<String> methodsToExclude = new ArrayList<String>();
 
         public TransactionHandling() {
-            filename = rr.RRMain.transactionFileOption.get();
+            locationPairFilename = rr.RRMain.locationPairFileOption.get();
+            methodExcludeFilename = rr.RRMain.methodExcludeFileOption.get();
         }
         public void transactionBegin(){
 
@@ -141,11 +143,13 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         }
 
         public void checkMethod(MethodEvent me) {
-            if(!methodNamesToExclude.contains(me.getInfo().toString())){
+            if(!methodsToExclude.contains(me.getInfo().toString())){
                 if(me.isEnter()) {
+                    System.out.println("Entering: " + me.getInfo().toString());
                     transactionBegin();
                 }
                 else {
+                    System.out.println("Exiting: " + me.getInfo().toString());
                     transactionEnd();
                 }
             }
@@ -160,19 +164,28 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
             } else if (transactionLocations.containsValue(sloc)) {
                 transactionEnd();
             }
-            // Case 2 : Take the method as input, if the method exists in the vector, dont call transaction begin. Otherwise do.
         }
-        public void ReadFile() {
+        public void ReadLocationPairFile() {
             try{
-                File file = new File(filename);
+                File file = new File(locationPairFilename);
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
                 String pairline;
                 while((pairline = br.readLine()) != null) {
                     String[] pair = pairline.split(",");
                     transactionLocations.put(pair[0],pair[1]);
-                    // Case 2 : Method exclusion based input
-                    // Have a transaction locations vector transactionLocation.pushback(pairline);
+                }
+            } catch(IOException e) { e.printStackTrace(); }
+        }
+
+        public void ReadMethodExcludeFile() {
+            try{
+                File file = new File(methodExcludeFilename);
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+                while((line = br.readLine()) != null) {
+                    methodsToExclude.add(line);
                 }
             } catch(IOException e) { e.printStackTrace(); }
         }
@@ -209,6 +222,8 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         lastThreadToWrite = new ConcurrentHashMap<ShadowVar, ShadowThread>();
         threadToNestingDepth = new ConcurrentHashMap<ShadowThread, Integer>();
 
+        th.ReadLocationPairFile();
+        th.ReadMethodExcludeFile();
         new BarrierMonitor<FTBarrierState>(this, new DefaultValue<Object, FTBarrierState>() {
             public FTBarrierState get(Object k) {
                 return new FTBarrierState(k, INIT_VECTOR_CLOCK_SIZE);
