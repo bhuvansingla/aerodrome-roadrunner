@@ -111,6 +111,13 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     private final VectorClock maxEpochPerTid = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
 
+    public ConcurrentHashMap <ShadowThread, Integer> threadToIndex;
+    public ConcurrentHashMap <ShadowLock, Integer> lockToIndex;
+    public ConcurrentHashMap <ShadowVar, Integer> variableToIndex;
+    private int numThreads;
+    private int numLocks;
+    private int numVariables;
+
     public ConcurrentHashMap <ShadowLock, ShadowThread> lastThreadToRelease;
     public ConcurrentHashMap <ShadowVar, ShadowThread> lastThreadToWrite;
     public ConcurrentHashMap <ShadowThread, Integer> threadToNestingDepth;
@@ -192,6 +199,16 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         super(name, next, commandLine);
         th = new TransactionHandling();
         th.ReadFile();
+        numThreads = 0;
+        threadToIndex = new ConcurrentHashMap<ShadowThread, Integer>();
+        numLocks = 0;
+        lockToIndex = new ConcurrentHashMap<ShadowLock, Integer>();
+        numVariables = 0;
+        variableToIndex = new ConcurrentHashMap<ShadowVar, Integer>();
+        lastThreadToRelease = new ConcurrentHashMap<ShadowLock, ShadowThread>();
+        lastThreadToWrite = new ConcurrentHashMap<ShadowVar, ShadowThread>();
+        threadToNestingDepth = new ConcurrentHashMap<ShadowThread, Integer>();
+
         new BarrierMonitor<FTBarrierState>(this, new DefaultValue<Object, FTBarrierState>() {
             public FTBarrierState get(Object k) {
                 return new FTBarrierState(k, INIT_VECTOR_CLOCK_SIZE);
@@ -292,6 +309,8 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     @Override
     public void create(NewThreadEvent event) {
         final ShadowThread st = event.getThread();
+        threadToIndex.put(st, (Integer)numThreads);
+        numThreads++;
 
         if (ts_get_V(st) == null) {
             final int tid = st.getTid();
