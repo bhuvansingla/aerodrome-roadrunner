@@ -138,9 +138,11 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         public void checkMethod(MethodEvent me) {
             if(!methodsToExclude.contains(me.getInfo().toString())){
                 if(me.isEnter()) {
+                    System.out.println("Entering: " + me.getInfo().toString());
                     transactionBegin();
                 }
                 else {
+                    System.out.println("Exiting: " + me.getInfo().toString());
                     transactionEnd();
                 }
             }
