@@ -37,29 +37,29 @@
   import tools.aerodrome.AEVectorClock;
 
   public class AEVarClocks implements ShadowVar {
-      public final AEVectorClock rd;
-      public final AEVectorClock wr;
-      public final AEVectorClock rdchk;
+      public final AEVectorClock read;
+      public final AEVectorClock write;
+      public final AEVectorClock readcheck;
 
 
       private static Counter AEVarClocks = new Counter("AEVarClocks", "triplet Objects");
 
-      public AEVarClocks(AEVectorClock vc) {
-          rd = new AEVectorClock(vc);
-          wr = new AEVectorClock(vc);
-          rdchk = new AEVectorClock(vc);
-          AEVarClocks.inc();
-      }
+    //   public AEVarClocks(AEVectorClock vc) {
+    //     read = new AEVectorClock(vc);
+    //     wr = new AEVectorClock(vc);
+    //     rdchk = new AEVectorClock(vc);
+    //     AEVarClocks.inc();
+    //   }
 
       public AEVarClocks(int dim) {
-          rd = new AEVectorClock(dim);
-          wr = new AEVectorClock(dim);
-          rdchk = new AEVectorClock(dim);
+          read = new AEVectorClock(dim);
+          write = new AEVectorClock(dim);
+          readcheck = new AEVectorClock(dim);
           AEVarClocks.inc();
       }
 
       @Override
       public String toString() {
-          return "R" + rd + " - " + "W" + wr + "RCHK"+rdchk;
+          return "R" + read + " - " + "W" + write + "RCHK"+readcheck;
       }
   }
