@@ -85,7 +85,8 @@ import rr.state.ShadowVolatile;
 import rr.tool.RR;
 import rr.tool.Tool;
 import tools.util.Epoch;
-import tools.util.VectorClock;
+// import tools.util.VectorClock;
+import tools.aerodrome.AEVectorClock;
 
 /*
  * A revised FastTrack Tool. This makes several improvements over the original: - Simpler
@@ -109,7 +110,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     public final ErrorMessage<ArrayAccessInfo> arrayErrors = ErrorMessages
             .makeArrayErrorMessage("FastTrack");
 
-    private final VectorClock maxEpochPerTid = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
+    private final AEVectorClock maxEpochPerTid = new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
 
     public ConcurrentHashMap <ShadowThread, Integer> threadToIndex;
     public ConcurrentHashMap <ShadowLock, Integer> lockToIndex;
@@ -194,15 +195,15 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     // CS636: Every class object would have a vector clock. classInitTime is the Decoration which
     // stores ClassInfo (as a key) and corresponding vector clock for that class (as a value).
     // guarded by classInitTime
-    public static final Decoration<ClassInfo, VectorClock> classInitTime = MetaDataInfoMaps
+    public static final Decoration<ClassInfo, AEVectorClock> classInitTime = MetaDataInfoMaps
             .getClasses().makeDecoration("FastTrack:ClassInitTime", Type.MULTIPLE,
-                    new DefaultValue<ClassInfo, VectorClock>() {
-                        public VectorClock get(ClassInfo st) {
-                            return new VectorClock(INIT_VECTOR_CLOCK_SIZE);
+                    new DefaultValue<ClassInfo, AEVectorClock>() {
+                        public AEVectorClock get(ClassInfo st) {
+                            return new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
                         }
                     });
 
-    public static VectorClock getClassInitTime(ClassInfo ci) {
+    public static AEVectorClock getClassInitTime(ClassInfo ci) {
         synchronized (classInitTime) {
             return classInitTime.get(ci);
         }
@@ -311,29 +312,29 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     
     //CS636
-    protected static VectorClock ts_get_clockThread(ShadowThread st) {
+    protected static AEVectorClock ts_get_clockThread(ShadowThread st) {
         Assert.panic("Bad");
         return null;
     }
 
-    protected static void ts_set_clockThread(ShadowThread st, VectorClock V) {
+    protected static void ts_set_clockThread(ShadowThread st, AEVectorClock V) {
         Assert.panic("Bad");
     }
 
-    protected static VectorClock ts_get_clockThreadBegin(ShadowThread st) {
+    protected static AEVectorClock ts_get_clockThreadBegin(ShadowThread st) {
         Assert.panic("Bad");
         return null;
     }
 
-    protected static void ts_set_clockThreadBegin(ShadowThread st, VectorClock V) {
+    protected static void ts_set_clockThreadBegin(ShadowThread st, AEVectorClock V) {
         Assert.panic("Bad");
     }
 
-    //Attach a VectorClock to each object used as a lock.
-    public static final Decoration<ShadowLock, VectorClock> clockLock = ShadowLock.makeDecoration("AE:clockLock",
-    DecorationFactory.Type.MULTIPLE, new DefaultValue<ShadowLock, VectorClock>() {
-        public VectorClock get(ShadowLock ld) {
-            return new VectorClock(INIT_VECTOR_CLOCK_SIZE);
+    //Attach a AEVectorClock to each object used as a lock.
+    public static final Decoration<ShadowLock, AEVectorClock> clockLock = ShadowLock.makeDecoration("AE:clockLock",
+    DecorationFactory.Type.MULTIPLE, new DefaultValue<ShadowLock, AEVectorClock>() {
+        public AEVectorClock get(ShadowLock ld) {
+            return new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
         }
     });
 
@@ -372,14 +373,14 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         threadToNestingDepth.put(st, 0);
 
         if (ts_get_clockThread(st) == null) {
-            final VectorClock tV = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
+            final AEVectorClock tV = new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
             ts_set_clockThread(st, tV);
         }
 
-        ts_get_clockThread(st).set(st.getTid(), 1);
+        ts_get_clockThread(st).setClockIndex(st.getTid(), 1);
 
         if (ts_get_clockThreadBegin(st) == null) {
-            final VectorClock tV = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
+            final AEVectorClock tV = new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
             ts_set_clockThreadBegin(st, tV);
         }
 
@@ -401,26 +402,62 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     @Override
     public void acquire(final AcquireEvent event) {
-        boolean violation = false;
+        boolean violationDetected = false;
         final ShadowThread st = event.getThread();
         // final FTLockState lockV = getV(event.getLock());
 
-        ShadowLock lock = event.getLock();
-        // check and add to hash map. not reqd? FTLockState
-        // VectorClock vc = get_lock_vectorclock();
-        if(lastThreadToRelease.containsKey(lock)) {
-            if(lastThreadToRelease.get(lock).equals(st)) {
-                violation = false;// checkandgetclock
-                // vc functions reqd - updatewithmax, <or=
-            }
-        }
+        ShadowLock sl = event.getLock();
+
+        checkAndAddShadowLock(sl);
+		AEVectorClock L_l = clockLock.get(sl);
+
+		if(lastThreadToRelease.containsKey(sl)) {
+			if(!lastThreadToRelease.get(sl).equals(st)) {
+				violationDetected = checkAndGetShadowClock(L_l, L_l, st);
+			}
+		}
+        super.acquire(event);
+		// return violationDetected; 
+        // ERROR DETECTED
+
+
+
+        // // check and add to hash map. not reqd? FTLockState
+        // // VectorClock vc = get_lock_vectorclock();
+        // if(lastThreadToRelease.containsKey(lock)) {
+        //     if(lastThreadToRelease.get(lock).equals(st)) {
+        //         violation = false;// checkandgetclock
+        //         // vc functions reqd - updatewithmax, <or=
+        //     }
+        // }
 
         // maxEpochAndCV(st, lockV, event.getInfo());
 
-        super.acquire(event);
+        
         // if (COUNT_OPERATIONS)
         //     acquire.inc(st.getTid());
     }
+
+    public int checkAndAddShadowLock(ShadowLock sl){
+		if(!lockToIndex.containsKey(sl)){
+			lockToIndex.put(sl, this.numLocks);
+			this.numLocks ++;
+			clockLock.set(sl, new AEVectorClock(INIT_VECTOR_CLOCK_SIZE));
+		}
+		return lockToIndex.get(sl);
+	}
+
+    public boolean checkAndGetShadowClock(AEVectorClock checkClock, AEVectorClock fromClock, ShadowThread target) {
+		int tIndex = threadToIndex.get(target);
+		boolean violationDetected = false;
+		AEVectorClock C_target_begin = ts_get_clockThreadBegin(target);
+		if(C_target_begin.isLessThanOrEqual(checkClock, tIndex) && threadToNestingDepth.get(target) > 0) {
+			violationDetected = true;
+		}
+		AEVectorClock C_target = ts_get_clockThread(target);
+		C_target.updateWithMax(C_target, fromClock);
+		return violationDetected;
+	}
 
     @Override
     public void release(final ReleaseEvent event) {
@@ -878,9 +915,9 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         //         Epoch.toString(ts_get_E(td)));
     }
 
-    private final Decoration<ShadowThread, VectorClock> vectorClockForBarrierEntry = ShadowThread
+    private final Decoration<ShadowThread, AEVectorClock> vectorClockForBarrierEntry = ShadowThread
             .makeDecoration("FT:barrier", DecorationFactory.Type.MULTIPLE,
-                    new NullDefault<ShadowThread, VectorClock>());
+                    new NullDefault<ShadowThread, AEVectorClock>());
 
     public void preDoBarrier(BarrierEvent<FTBarrierState> event) {
         // final ShadowThread st = event.getThread();

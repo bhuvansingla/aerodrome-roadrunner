@@ -34,27 +34,27 @@
 
   import acme.util.count.Counter;
   import rr.state.ShadowVar;
-  import tools.util.VectorClock;
+  import tools.aerodrome.AEVectorClock;
 
   public class AEVarClocks implements ShadowVar {
-      public final VectorClock rd;
-      public final VectorClock wr;
-      public final VectorClock rdchk;
+      public final AEVectorClock rd;
+      public final AEVectorClock wr;
+      public final AEVectorClock rdchk;
 
 
       private static Counter AEVarClocks = new Counter("AEVarClocks", "triplet Objects");
 
-      public AEVarClocks(VectorClock vc) {
-          rd = new VectorClock(vc);
-          wr = new VectorClock(vc);
-          rdchk = new VectorClock(vc);
+      public AEVarClocks(AEVectorClock vc) {
+          rd = new AEVectorClock(vc);
+          wr = new AEVectorClock(vc);
+          rdchk = new AEVectorClock(vc);
           AEVarClocks.inc();
       }
 
       public AEVarClocks(int dim) {
-          rd = new VectorClock(dim);
-          wr = new VectorClock(dim);
-          rdchk = new VectorClock(dim);
+          rd = new AEVectorClock(dim);
+          wr = new AEVectorClock(dim);
+          rdchk = new AEVectorClock(dim);
           AEVarClocks.inc();
       }
 
