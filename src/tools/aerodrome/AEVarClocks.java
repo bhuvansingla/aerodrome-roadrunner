@@ -51,10 +51,10 @@
           AEVarClocks.inc();
       }
 
-      public AEVarClocks() {
-          rd = new VectorClock(1);
-          wr = new VectorClock(1);
-          rdchk = new VectorClock(1);
+      public AEVarClocks(int dim) {
+          rd = new VectorClock(dim);
+          wr = new VectorClock(dim);
+          rdchk = new VectorClock(dim);
           AEVarClocks.inc();
       }
 

@@ -217,6 +217,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         lockToIndex = new ConcurrentHashMap<ShadowLock, Integer>();
         numVariables = 0;
         variableToIndex = new ConcurrentHashMap<ShadowVar, Integer>();
+
         lastThreadToRelease = new ConcurrentHashMap<ShadowLock, ShadowThread>();
         lastThreadToWrite = new ConcurrentHashMap<ShadowVar, ShadowThread>();
         threadToNestingDepth = new ConcurrentHashMap<ShadowThread, Integer>();
@@ -329,10 +330,10 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     }
 
     //Attach a VectorClock to each object used as a lock.
-    public static final Decoration<ShadowLock, VectorClock> shadowLock = ShadowLock.makeDecoration("AE:clockLock",
+    public static final Decoration<ShadowLock, VectorClock> clockLock = ShadowLock.makeDecoration("AE:clockLock",
     DecorationFactory.Type.MULTIPLE, new DefaultValue<ShadowLock, VectorClock>() {
         public VectorClock get(ShadowLock ld) {
-            return new VectorClock(1);
+            return new VectorClock(INIT_VECTOR_CLOCK_SIZE);
         }
     });
 
@@ -357,7 +358,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
             volV.max(ts_get_V(st));*/
             return super.makeShadowVar(event);
         } else {
-            return new AEVarClocks();
+            return new AEVarClocks(INIT_VECTOR_CLOCK_SIZE);
         }
     }
 
@@ -367,6 +368,20 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         final ShadowThread st = event.getThread();
         threadToIndex.put(st, (Integer)numThreads);
         numThreads++;
+
+        threadToNestingDepth.put(st, 0);
+
+        if (ts_get_clockThread(st) == null) {
+            final VectorClock tV = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
+            ts_set_clockThread(st, tV);
+        }
+
+        ts_get_clockThread(st).set(st.getTid(), 1);
+
+        if (ts_get_clockThreadBegin(st) == null) {
+            final VectorClock tV = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
+            ts_set_clockThreadBegin(st, tV);
+        }
 
         // if (ts_get_V(st) == null) {
         //     final int tid = st.getTid();
