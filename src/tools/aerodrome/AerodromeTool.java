@@ -123,74 +123,144 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     public ConcurrentHashMap <ShadowVar, ShadowThread> lastThreadToWrite;
     public ConcurrentHashMap <ShadowThread, Integer> threadToNestingDepth;
 
-    public static class TransactionHandling {
-        private static String locationPairFilename;
-        private static String methodExcludeFilename;
-        // This map contains the race pairs provided in the input file.
-        private static ConcurrentHashMap<String, String> transactionLocations = new ConcurrentHashMap<String, String>();
+    // public static class TransactionHandling {
+    private static String locationPairFilename;
+    private static String methodExcludeFilename;
+    // This map contains the race pairs provided in the input file.
+    private static ConcurrentHashMap<String, String> transactionLocations;
 
-        // This list contains the method names to exclude.
-        private static List<String> methodsToExclude = new ArrayList<String>();
+    // This list contains the method names to exclude.
+    private static List<String> methodsToExclude;
 
-        public TransactionHandling() {
-            locationPairFilename = rr.RRMain.locationPairFileOption.get();
-            methodExcludeFilename = rr.RRMain.methodExcludeFileOption.get();
-        }
-        public void transactionBegin(){
+    // public TransactionHandling() {
+        
+    // }
 
-        }
-        public void transactionEnd(){
 
-        }
-
-        public void checkMethod(MethodEvent me) {
-            if(!methodsToExclude.contains(me.getInfo().toString())){
-                if(me.isEnter()) {
-                    System.out.println("Entering: " + me.getInfo().toString());
-                    transactionBegin();
-                }
-                else {
-                    System.out.println("Exiting: " + me.getInfo().toString());
-                    transactionEnd();
-                }
+    public void checkMethod(MethodEvent me) {
+        if(!methodsToExclude.contains(me.getInfo().toString())){
+            if(me.isEnter()) {
+                System.out.println("Entering: " + me.getInfo().toString());
+                transactionBegin(me);
             }
             else {
-                System.out.println("Excluding: " + me.getInfo().toString());
+                System.out.println("Exiting: " + me.getInfo().toString());
+                transactionEnd(me);
             }
         }
-
-        public void CheckLocation(String sloc) {
-            if(transactionLocations.containsKey(sloc)) {
-                transactionBegin();
-            } else if (transactionLocations.containsValue(sloc)) {
-                transactionEnd();
-            }
-        }
-        public void ReadLocationPairFile() {
-            try{
-                File file = new File(locationPairFilename);
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                String pairline;
-                while((pairline = br.readLine()) != null) {
-                    String[] pair = pairline.split(",");
-                    transactionLocations.put(pair[0],pair[1]);
-                }
-            } catch(IOException e) { e.printStackTrace(); }
-        }
-
-        public void ReadMethodExcludeFile() {
-            try{
-                File file = new File(methodExcludeFilename);
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                String line;
-                while((line = br.readLine()) != null) {
-                    methodsToExclude.add(line);
-                }
-            } catch(IOException e) { e.printStackTrace(); }
+        else {
+            System.out.println("Excluding: " + me.getInfo().toString());
         }
     }
+
+    // public void CheckLocation(String sloc) {
+    //     if(transactionLocations.containsKey(sloc)) {
+    //         transactionBegin();
+    //     } else if (transactionLocations.containsValue(sloc)) {
+    //         transactionEnd();
+    //     }
+    // }
+    public void readLocationPairFile() {
+        try{
+            File file = new File(locationPairFilename);
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String pairline;
+            while((pairline = br.readLine()) != null) {
+                String[] pair = pairline.split(",");
+                transactionLocations.put(pair[0],pair[1]);
+            }
+        } catch(IOException e) { e.printStackTrace(); }
+    }
+
+    public void readMethodExcludeFile() {
+        try{
+            File file = new File(methodExcludeFilename);
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while((line = br.readLine()) != null) {
+                methodsToExclude.add(line);
+            }
+        } catch(IOException e) { e.printStackTrace(); }
+    }
+    // }
+
+    public void transactionBegin(MethodEvent me){
+        ShadowThread st = me.getThread();
+		int cur_depth = threadToNestingDepth.get(st);
+		threadToNestingDepth.put(st,  cur_depth + 1);
+		boolean violationDetected = false;
+
+		if(cur_depth == 0){
+			AEVectorClock C_t = ts_get_clockThread(st);				
+			AEVectorClock C_t_begin =ts_get_clockThreadBegin(st);
+//			state.incClockThread(t);
+			C_t_begin.copyFrom(C_t);
+		}
+		// else Treat this as a no-op
+		
+		// return violationDetected; 
+    }
+
+    public void transactionEnd(MethodEvent me){
+
+        ShadowThread st = me.getThread();
+		int cur_depth = threadToNestingDepth.get(st);
+		threadToNestingDepth.put(st,  cur_depth - 1);
+		boolean violationDetected = false;
+
+		if(cur_depth == 1) {
+			violationDetected = handshakeAtEndEvent(st);
+			incClockThread(st);
+		}
+		// else Treat this as no-op
+		
+		// return violationDetected; // TODO: ERROR
+    }
+
+    public boolean handshakeAtEndEvent(ShadowThread st) {
+		boolean violationDetected = false;
+		int tIndex = threadToIndex.get(st);
+		AEVectorClock C_t_begin = ts_get_clockThreadBegin(st);;
+		AEVectorClock C_t = ts_get_clockThread(st);
+
+		for(ShadowThread u: threadToIndex.keySet()) {
+			if(!u.equals(st)) {
+				AEVectorClock C_u = ts_get_clockThread(u);
+				if(C_t_begin.isLessThanOrEqual(C_u, tIndex)) {
+					violationDetected |= checkAndGetClock(C_t, C_t, u);
+					if(violationDetected) break;
+				}
+			}
+		}
+
+		if(violationDetected) return violationDetected;
+
+		for(ShadowLock l: lockToIndex.keySet()) {
+			AEVectorClock L_l = clockLock.get(l);
+			if(C_t_begin.isLessThanOrEqual(L_l, tIndex)) {
+				L_l.updateWithMax(L_l, C_t);
+			}
+		}
+
+		for(AEVarClocks v: variableToIndex.keySet()) {
+			AEVectorClock W_v = v.write;
+			if(C_t_begin.isLessThanOrEqual(W_v, tIndex)) {
+				W_v.updateWithMax(W_v, C_t);
+			}
+			AEVectorClock R_v = v.read;
+			AEVectorClock chR_v = v.readcheck;
+			if(C_t_begin.isLessThanOrEqual(R_v, tIndex)) {
+				R_v.updateWithMax(R_v, C_t);
+
+                chR_v.updateMax2WithoutLocal(C_t, tIndex);
+				// updateCheckClock(chR_v, C_t, t);
+			}
+		}
+
+		return violationDetected;
+	}
 
     // CS636: Every class object would have a vector clock. classInitTime is the Decoration which
     // stores ClassInfo (as a key) and corresponding vector clock for that class (as a value).
@@ -208,10 +278,10 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
             return classInitTime.get(ci);
         }
     }
-    TransactionHandling th;
+    // TransactionHandling th;`
     public AerodromeTool(final String name, final Tool next, CommandLine commandLine) {
         super(name, next, commandLine);
-        th = new TransactionHandling();
+        // th = new TransactionHandling();
         numThreads = 0;
         threadToIndex = new ConcurrentHashMap<ShadowThread, Integer>();
         numLocks = 0;
@@ -223,8 +293,17 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         lastThreadToWrite = new ConcurrentHashMap<ShadowVar, ShadowThread>();
         threadToNestingDepth = new ConcurrentHashMap<ShadowThread, Integer>();
 
-        th.ReadLocationPairFile();
-        th.ReadMethodExcludeFile();
+
+        locationPairFilename = rr.RRMain.locationPairFileOption.get();
+        methodExcludeFilename = rr.RRMain.methodExcludeFileOption.get();
+
+        transactionLocations = new ConcurrentHashMap<String, String>();
+        methodsToExclude = new ArrayList<String>();
+
+
+        readLocationPairFile();
+        readMethodExcludeFile();
+
         new BarrierMonitor<FTBarrierState>(this, new DefaultValue<Object, FTBarrierState>() {
             public FTBarrierState get(Object k) {
                 return new FTBarrierState(k, INIT_VECTOR_CLOCK_SIZE);
@@ -475,14 +554,14 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		ts_get_clockThread(st).setClockIndex(tIndex, (Integer)(origVal + 1));
 	}
 
-    static FTVarState ts_get_badVarState(ShadowThread st) {
-        Assert.panic("Bad");
-        return null;
-    }
+    // static FTVarState ts_get_badVarState(ShadowThread st) {
+    //     Assert.panic("Bad");
+    //     return null;
+    // }
 
-    static void ts_set_badVarState(ShadowThread st, FTVarState v) {
-        Assert.panic("Bad");
-    }
+    // static void ts_set_badVarState(ShadowThread st, FTVarState v) {
+    //     Assert.panic("Bad");
+    // }
 
     // protected static ShadowVar getOriginalOrBad(ShadowVar original, ShadowThread st) {
     //     // final FTVarState savedState = ts_get_badVarState(st);
@@ -498,21 +577,21 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     @Override
     public void enter(MethodEvent me) {
         // System.out.println("Entering: " + me.toString());
-        th.checkMethod(me);
+        checkMethod(me);
         super.enter(me);
     }
     
     @Override
     public void exit(MethodEvent me) {
         // System.out.println("Exiting: " + me.toString());
-        th.checkMethod(me);
+        checkMethod(me);
         super.exit(me);
     }
 
     @Override
     public void access(final AccessEvent event) {
         SourceLocation sl = event.getAccessInfo().getLoc();
-		
+		ShadowThread st = event.getThread();
         ShadowVar sv = event.getOriginalShadow();
         if (sv instanceof AEVarClocks) {
             AEVarClocks sx = (AEVarClocks) sv;
@@ -586,7 +665,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     protected void read(final AccessEvent event, final ShadowThread st, final AEVarClocks vcs) {
 
         boolean violationDetected = false;	
-		ShadowThread st = event.getThread();
+		// ShadowThread st = event.getThread();
 		// ShadowVar sv = event.getOriginalShadow();
         // checkAndAddShadowVariable(sv);
 		AEVectorClock C_t = ts_get_clockThread(st);
@@ -602,83 +681,36 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		AEVectorClock chR_v = vcs.readcheck;
         chR_v.updateMax2WithoutLocal(C_t, threadToIndex.get(st));
 		if(threadToNestingDepth.get(st) == 0) {
-			incClockThread(t);
+			incClockThread(st);
 		}
 		// return violationDetected; // TODO : Handle Error
     }
 
-    // public int checkAndAddShadowVariable(AEVarClocks vcs){
-	// 	if(!variableToIndex.containsKey(vcs)){
-	// 		variableToIndex.put(vcs, this.numVariables);
-	// 		this.numVariables ++;
-    //         // vc.rd.put(new VectorClockOpt(INIT_VECTOR_CLOCK_SIZE));
-    //         // this.clockReadVariableCheck.put(v, new VectorClockOpt(INIT_VECTOR_CLOCK_SIZE));
-    //         // this.clockWriteVariable.put(v, new VectorClockOpt(INIT_VECTOR_CLOCK_SIZE));
-	// 	}
-	// 	return variableToIndex.get(v);
-	// }
 
-    // CS636: Commented the method to prevent inlining of the read barrier
-    // public static boolean readFastPath(final ShadowVar shadow, final ShadowThread st) {
-    // if (shadow instanceof FTVarState) {
-    // final FTVarState sx = ((FTVarState) shadow);
+    protected void write(final AccessEvent event, final ShadowThread st, final AEVarClocks vcs) {
+        
+        boolean violationDetected = false;
+		// ShadowThread st = event.getThread();
+		// Variable v = this.getVariable();
+		// state.checkAndAddVariable(v);
+		AEVectorClock W_v = vcs.write;
+		AEVectorClock R_v = vcs.read;
+		AEVectorClock chR_v = vcs.readcheck;
+		AEVectorClock C_t = ts_get_clockThread(st);
 
-    // final int/* epoch */ e = ts_get_E(st);
+		if(lastThreadToWrite.containsKey(vcs)) {
+			if(!lastThreadToWrite.get(vcs).equals(st)) {
+				violationDetected |= checkAndGetClock(W_v, W_v, st);
+			}
+		}
+		violationDetected |= checkAndGetClock(chR_v, R_v, st);
+		W_v.copyFrom(C_t);
+		lastThreadToWrite.put(vcs, st);
+		if(threadToNestingDepth.get(st) == 0) {
+			incClockThread(st);
+		}
+		// return violationDetected; // TODO: Record Violation
 
-    // /* optional */ {
-    // final int/* epoch */ r = sx.R;
-    // if (r == e) {
-    // if (COUNT_OPERATIONS)
-    // readSameEpoch.inc(st.getTid());
-    // return true;
-    // } else if (r == Epoch.READ_SHARED && sx.get(st.getTid()) == e) {
-    // if (COUNT_OPERATIONS)
-    // readSharedSameEpoch.inc(st.getTid());
-    // return true;
-    // }
-    // }
-
-    // synchronized (sx) {
-    // final int tid = st.getTid();
-    // final VectorClock tV = ts_get_V(st);
-    // final int/* epoch */ r = sx.R;
-    // final int/* epoch */ w = sx.W;
-    // final int wTid = Epoch.tid(w);
-    // if (wTid != tid && !Epoch.leq(w, tV.get(wTid))) {
-    // ts_set_badVarState(st, sx);
-    // return false;
-    // }
-
-    // if (r != Epoch.READ_SHARED) {
-    // final int rTid = Epoch.tid(r);
-    // if (rTid == tid || Epoch.leq(r, tV.get(rTid))) {
-    // if (COUNT_OPERATIONS)
-    // readExclusive.inc(tid);
-    // sx.R = e;
-    // } else {
-    // if (COUNT_OPERATIONS)
-    // readShare.inc(tid);
-    // int initSize = Math.max(Math.max(rTid, tid), INIT_VECTOR_CLOCK_SIZE);
-    // sx.makeCV(initSize);
-    // sx.set(rTid, r);
-    // sx.set(tid, e);
-    // sx.R = Epoch.READ_SHARED;
-    // }
-    // } else {
-    // if (COUNT_OPERATIONS)
-    // readShared.inc(tid);
-    // sx.set(tid, e);
-    // }
-    // return true;
-    // }
-    // } else {
-    // return false;
-    // }
-    // }
-
-    /***/
-
-    protected void write(final AccessEvent event, final ShadowThread st, final AEVarClocks vc) {
         // final int/* epoch */ e = ts_get_E(st);
 
         // /* optional */ {
