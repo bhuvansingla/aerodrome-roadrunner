@@ -217,6 +217,9 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		// else Treat this as no-op
 		
 		// return violationDetected; // TODO: ERROR
+        System.out.println("===================================================");
+        System.out.println("AERODROME -- transactionEnd -- " + violationDetected);
+        System.out.println("===================================================");
     }
 
     public boolean handshakeAtEndEvent(ShadowThread st) {
@@ -502,6 +505,9 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 			}
 		}
         super.acquire(event);
+        System.out.println("===================================================");
+        System.out.println("AERODROME -- acquire -- " + violationDetected);
+        System.out.println("===================================================");
 		// return violationDetected; 
         // TODO : ERROR DETECTED 
         // if (COUNT_OPERATIONS)
@@ -683,6 +689,9 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		if(threadToNestingDepth.get(st) == 0) {
 			incClockThread(st);
 		}
+        System.out.println("===================================================");
+        System.out.println("AERODROME -- read -- " + violationDetected);
+        System.out.println("===================================================");
 		// return violationDetected; // TODO : Handle Error
     }
 
@@ -709,6 +718,9 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		if(threadToNestingDepth.get(st) == 0) {
 			incClockThread(st);
 		}
+        System.out.println("===================================================");
+        System.out.println("AERODROME -- write -- " + violationDetected);
+        System.out.println("===================================================");
 		// return violationDetected; // TODO: Record Violation
 
         // final int/* epoch */ e = ts_get_E(st);
