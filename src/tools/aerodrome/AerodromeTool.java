@@ -103,7 +103,7 @@ import tools.aerodrome.AEVectorClock;
 public class AerodromeTool extends Tool implements BarrierListener<FTBarrierState> {
 
     private static final boolean COUNT_OPERATIONS = RRMain.slowMode();
-    private static final int INIT_VECTOR_CLOCK_SIZE = 4;
+    private static final int INIT_VECTOR_CLOCK_SIZE = 16;
 
     public final ErrorMessage<FieldInfo> fieldErrors = ErrorMessages
             .makeFieldErrorMessage("FastTrack");
@@ -140,16 +140,16 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     public void checkMethod(MethodEvent me) {
         if(!methodsToExclude.contains(me.getInfo().toString())){
             if(me.isEnter()) {
-                System.out.println("Entering: " + me.getInfo().toString());
+                // System.out.println("Entering: " + me.getInfo().toString());
                 transactionBegin(me);
             }
             else {
-                System.out.println("Exiting: " + me.getInfo().toString());
+                // System.out.println("Exiting: " + me.getInfo().toString());
                 transactionEnd(me);
             }
         }
         else {
-            System.out.println("Excluding: " + me.getInfo().toString());
+            // System.out.println("Excluding: " + me.getInfo().toString());
         }
     }
 
@@ -217,9 +217,11 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		// else Treat this as no-op
 		
 		// return violationDetected; // TODO: ERROR
-        System.out.println("===================================================");
-        System.out.println("AERODROME -- transactionEnd -- " + violationDetected);
-        System.out.println("===================================================");
+        if(violationDetected){
+            
+            System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
+            
+        }
     }
 
     public boolean handshakeAtEndEvent(ShadowThread st) {
@@ -505,9 +507,11 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 			}
 		}
         super.acquire(event);
-        System.out.println("===================================================");
-        System.out.println("AERODROME -- acquire -- " + violationDetected);
-        System.out.println("===================================================");
+        if (violationDetected) {
+            
+            System.out.println("AERODROME -- acquire -- " + event.toString());
+            
+        }
 		// return violationDetected; 
         // TODO : ERROR DETECTED 
         // if (COUNT_OPERATIONS)
@@ -689,9 +693,11 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		if(threadToNestingDepth.get(st) == 0) {
 			incClockThread(st);
 		}
-        System.out.println("===================================================");
-        System.out.println("AERODROME -- read -- " + violationDetected);
-        System.out.println("===================================================");
+        if(violationDetected) {
+            
+            System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
+            
+        }
 		// return violationDetected; // TODO : Handle Error
     }
 
@@ -718,9 +724,11 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		if(threadToNestingDepth.get(st) == 0) {
 			incClockThread(st);
 		}
-        System.out.println("===================================================");
-        System.out.println("AERODROME -- write -- " + violationDetected);
-        System.out.println("===================================================");
+        if(violationDetected) {
+            
+            System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
+            
+        }
 		// return violationDetected; // TODO: Record Violation
 
         // final int/* epoch */ e = ts_get_E(st);
