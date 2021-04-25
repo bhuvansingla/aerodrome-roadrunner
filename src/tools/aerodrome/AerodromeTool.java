@@ -1,35 +1,3 @@
-/******************************************************************************
- *
- * Copyright (c) 2016, Cormac Flanagan (University of California, Santa Cruz) and Stephen Freund
- * (Williams College)
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without modification, are permitted
- * provided that the following conditions are met:
- *
- * Redistributions of source code must retain the above copyright notice, this list of conditions
- * and the following disclaimer.
- *
- * Redistributions in binary form must reproduce the above copyright notice, this list of conditions
- * and the following disclaimer in the documentation and/or other materials provided with the
- * distribution.
- *
- * Neither the names of the University of California, Santa Cruz and Williams College nor the names
- * of its contributors may be used to endorse or promote products derived from this software without
- * specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
- * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- ******************************************************************************/
-
 package tools.aerodrome;
 
 import acme.util.Assert;
@@ -88,17 +56,6 @@ import tools.util.Epoch;
 // import tools.util.VectorClock;
 import tools.aerodrome.AEVectorClock;
 
-/*
- * A revised FastTrack Tool. This makes several improvements over the original: - Simpler
- * synchronization scheme for VarStates. (The old optimistic scheme no longer has a performance
- * benefit and was hard to get right.) - Rephrased rules to: - include a Read-Shared-Same-Epoch
- * test. - eliminate an unnecessary update on joins (this was just for the proof). - remove the
- * Read-Shared to Exclusive transition. The last change makes the correctness argument easier and
- * that transition had little to no performance impact in practice. - Properly replays events when
- * the fast paths detect an error in all cases. - Supports long epochs for larger clock values. -
- * Handles tid reuse more precisely. The performance over the JavaGrande and DaCapo benchmarks is
- * more or less identical to the old implementation (within ~1% overall in our tests).
- */
 @Abbrev("AD")
 public class AerodromeTool extends Tool implements BarrierListener<FTBarrierState> {
 
@@ -112,16 +69,16 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     private final AEVectorClock maxEpochPerTid = new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
 
-    public ConcurrentHashMap <ShadowThread, Integer> threadToIndex;
-    public ConcurrentHashMap <ShadowLock, Integer> lockToIndex;
-    public ConcurrentHashMap <AEVarClocks, Integer> variableToIndex;
-    private int numThreads;
-    private int numLocks;
-    private int numVariables;
+    // public ConcurrentHashMap <ShadowThread, Integer> threadToIndex;
+    // public ConcurrentHashMap <ShadowLock, Integer> lockToIndex;
+    public ConcurrentHashMap <AEVarClocks, Integer> varsTrack;
+    // private int nTh;
+    // private int nLock;
+    private int nVars;
 
-    public ConcurrentHashMap <ShadowLock, ShadowThread> lastThreadToRelease;
-    public ConcurrentHashMap <ShadowVar, ShadowThread> lastThreadToWrite;
-    public ConcurrentHashMap <ShadowThread, Integer> threadToNestingDepth;
+    public ConcurrentHashMap <ShadowLock, ShadowThread> lockToTh;
+    public ConcurrentHashMap <ShadowVar, ShadowThread> varToTh;
+    public ConcurrentHashMap <ShadowThread, Integer> nestingofThreads;
 
     // public static class TransactionHandling {
     private static String locationPairFilename;
@@ -188,83 +145,61 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     public void transactionBegin(MethodEvent me){
         ShadowThread st = me.getThread();
-		int cur_depth = threadToNestingDepth.get(st);
-		threadToNestingDepth.put(st,  cur_depth + 1);
+		int cur_depth = nestingofThreads.get(st);
+		nestingofThreads.put(st,  cur_depth + 1);
 		boolean violationDetected = false;
 
 		if(cur_depth == 0){
 			AEVectorClock C_t = ts_get_clockThread(st);				
 			AEVectorClock C_t_begin =ts_get_clockThreadBegin(st);
-//			state.incClockThread(t);
 			C_t_begin.copyFrom(C_t);
 		}
-		// else Treat this as a no-op
-		
-		// return violationDetected; 
     }
 
     public void transactionEnd(MethodEvent me){
-
         ShadowThread st = me.getThread();
-		int cur_depth = threadToNestingDepth.get(st);
-		threadToNestingDepth.put(st,  cur_depth - 1);
-		boolean violationDetected = false;
-
-		if(cur_depth == 1) {
-			violationDetected = handshakeAtEndEvent(st);
-			incClockThread(st);
+		nestingofThreads.put(st, nestingofThreads.get(st)-1);
+		if(nestingofThreads.get(st) == 0) {
+		    if(handshakeAtEndEvent(st)) {
+                System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
+            }
+            ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));	
 		}
-		// else Treat this as no-op
-		
-		// return violationDetected; // TODO: ERROR
-        if(violationDetected){
-            
-            System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
-            
-        }
     }
 
     public boolean handshakeAtEndEvent(ShadowThread st) {
 		boolean violationDetected = false;
-		int tIndex = threadToIndex.get(st);
-		AEVectorClock C_t_begin = ts_get_clockThreadBegin(st);;
+		int tid = st.getTid();
+        AEVectorClock C_t_begin = ts_get_clockThreadBegin(st);;
 		AEVectorClock C_t = ts_get_clockThread(st);
-
-		for(ShadowThread u: threadToIndex.keySet()) {
+		for(ShadowThread u: st.getThreads()) {
 			if(!u.equals(st)) {
 				AEVectorClock C_u = ts_get_clockThread(u);
-				if(C_t_begin.isLessThanOrEqual(C_u, tIndex)) {
-					violationDetected |= checkAndGetClock(C_t, C_t, u);
-					if(violationDetected) break;
-				}
+				if(C_t_begin.isLessThanOrEqual(C_u, tid) && vcHandling(C_t, C_t, u)) {
+                    return true;
+                }
 			}
 		}
-
-		if(violationDetected) return violationDetected;
-
-		for(ShadowLock l: lockToIndex.keySet()) {
+		for(ShadowLock l: st.getLocksHeld()) {
 			AEVectorClock L_l = clockLock.get(l);
-			if(C_t_begin.isLessThanOrEqual(L_l, tIndex)) {
+			if(C_t_begin.isLessThanOrEqual(L_l, tid)) {
 				L_l.updateWithMax(L_l, C_t);
 			}
 		}
-
-		for(AEVarClocks v: variableToIndex.keySet()) {
+		for(AEVarClocks v: varsTrack.keySet()) {
 			AEVectorClock W_v = v.write;
-			if(C_t_begin.isLessThanOrEqual(W_v, tIndex)) {
+			if(C_t_begin.isLessThanOrEqual(W_v, tid)) {
 				W_v.updateWithMax(W_v, C_t);
 			}
 			AEVectorClock R_v = v.read;
 			AEVectorClock chR_v = v.readcheck;
-			if(C_t_begin.isLessThanOrEqual(R_v, tIndex)) {
+			if(C_t_begin.isLessThanOrEqual(R_v, tid)) {
 				R_v.updateWithMax(R_v, C_t);
 
-                chR_v.updateMax2WithoutLocal(C_t, tIndex);
-				// updateCheckClock(chR_v, C_t, t);
+                chR_v.updateMax2WithoutLocal(C_t, tid);
 			}
 		}
-
-		return violationDetected;
+		return false;
 	}
 
     // CS636: Every class object would have a vector clock. classInitTime is the Decoration which
@@ -287,16 +222,16 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     public AerodromeTool(final String name, final Tool next, CommandLine commandLine) {
         super(name, next, commandLine);
         // th = new TransactionHandling();
-        numThreads = 0;
-        threadToIndex = new ConcurrentHashMap<ShadowThread, Integer>();
-        numLocks = 0;
-        lockToIndex = new ConcurrentHashMap<ShadowLock, Integer>();
-        numVariables = 0;
-        variableToIndex = new ConcurrentHashMap<AEVarClocks, Integer>();
+        // nTh = 0;
+        // threadToIndex = new ConcurrentHashMap<ShadowThread, Integer>();
+        // nLock = 0;
+        // lockToIndex = new ConcurrentHashMap<ShadowLock, Integer>();
+        nVars = 0;
+        varsTrack = new ConcurrentHashMap<AEVarClocks, Integer>();
 
-        lastThreadToRelease = new ConcurrentHashMap<ShadowLock, ShadowThread>();
-        lastThreadToWrite = new ConcurrentHashMap<ShadowVar, ShadowThread>();
-        threadToNestingDepth = new ConcurrentHashMap<ShadowThread, Integer>();
+        lockToTh = new ConcurrentHashMap<ShadowLock, ShadowThread>();
+        varToTh = new ConcurrentHashMap<ShadowVar, ShadowThread>();
+        nestingofThreads = new ConcurrentHashMap<ShadowThread, Integer>();
 
 
         locationPairFilename = rr.RRMain.locationPairFileOption.get();
@@ -446,9 +381,9 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
             AEVarClocks vcs = new AEVarClocks(INIT_VECTOR_CLOCK_SIZE);
 
-            if(!variableToIndex.containsKey(vcs)){
-                variableToIndex.put(vcs, numVariables);
-                numVariables ++;
+            if(!varsTrack.containsKey(vcs)){
+                varsTrack.put(vcs, nVars);
+                nVars ++;
             }
 
             return vcs;
@@ -459,10 +394,10 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     public void create(NewThreadEvent event) {
         
         final ShadowThread st = event.getThread();
-        threadToIndex.put(st, (Integer)numThreads);
-        numThreads++;
+        // threadToIndex.put(st, (Integer)nTh);
+        // nTh++;
 
-        threadToNestingDepth.put(st, 0);
+        nestingofThreads.put(st, 0);
 
         if (ts_get_clockThread(st) == null) {
             final AEVectorClock tV = new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
@@ -497,41 +432,34 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         boolean violationDetected = false;
         final ShadowThread st = event.getThread();
         ShadowLock sl = event.getLock();
-
-        checkAndAddShadowLock(sl);
+        if(!st.getLocksHeld().contains(sl)) {
+			clockLock.set(sl, new AEVectorClock(INIT_VECTOR_CLOCK_SIZE));
+        }
 		AEVectorClock L_l = clockLock.get(sl);
 
-		if(lastThreadToRelease.containsKey(sl)) {
-			if(!lastThreadToRelease.get(sl).equals(st)) {
-				violationDetected = checkAndGetClock(L_l, L_l, st);
-			}
-		}
-        super.acquire(event);
-        if (violationDetected) {
-            
+		if(lockToTh.containsKey(sl) && !lockToTh.get(sl).equals(st) && vcHandling(L_l, L_l, st)) {
             System.out.println("AERODROME -- acquire -- " + event.toString());
-            
         }
+        // if(lockToTh.containsKey(sl)) {
+		// 	if(!lockToTh.get(sl).equals(st)) {
+		// 		if(vcHandling(L_l, L_l, st)) {
+        //             System.out.println("AERODROME -- acquire -- " + event.toString());
+        //         }
+		// 	}
+		// }
+        super.acquire(event);
 		// return violationDetected; 
         // TODO : ERROR DETECTED 
         // if (COUNT_OPERATIONS)
         //     acquire.inc(st.getTid());
     }
 
-    public int checkAndAddShadowLock(ShadowLock sl){
-		if(!lockToIndex.containsKey(sl)){
-			lockToIndex.put(sl, this.numLocks);
-			this.numLocks ++;
-			clockLock.set(sl, new AEVectorClock(INIT_VECTOR_CLOCK_SIZE));
-		}
-		return lockToIndex.get(sl);
-	}
-
-    public boolean checkAndGetClock(AEVectorClock checkClock, AEVectorClock fromClock, ShadowThread target) {
-		int tIndex = threadToIndex.get(target);
-		boolean violationDetected = false;
+    public boolean vcHandling(AEVectorClock checkClock, AEVectorClock fromClock, ShadowThread target) {
+		// int tIndex = threadToIndex.get(target);
+		// int tid = target.getTid();
+        boolean violationDetected = false;
 		AEVectorClock C_target_begin = ts_get_clockThreadBegin(target);
-		if(C_target_begin.isLessThanOrEqual(checkClock, tIndex) && threadToNestingDepth.get(target) > 0) {
+		if(C_target_begin.isLessThanOrEqual(checkClock, target.getTid()) && nestingofThreads.get(target) > 0) {
 			violationDetected = true;
 		}
 		AEVectorClock C_target = ts_get_clockThread(target);
@@ -541,59 +469,33 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     @Override
     public void release(final ReleaseEvent event) {
-
         final ShadowThread st = event.getThread();
         ShadowLock sl = event.getLock();
-		checkAndAddShadowLock(sl);
+		if(!st.getLocksHeld().contains(sl)) {
+			clockLock.set(sl, new AEVectorClock(INIT_VECTOR_CLOCK_SIZE));
+        }
 		AEVectorClock C_t = ts_get_clockThread(st);
 		AEVectorClock L_l = clockLock.get(sl);
 
 		L_l.copyFrom(C_t);
-		lastThreadToRelease.put(sl, st);
-		if(threadToNestingDepth.get(st) == 0) {
-			incClockThread(st);
+		lockToTh.put(sl, st);
+		if(nestingofThreads.get(st) == 0) {
+		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
+			// incClockThread(st);
 		}
         super.release(event);
         // if (COUNT_OPERATIONS)
         //     release.inc(st.getTid());
     }
 
-    public void incClockThread(ShadowThread st) {
-		int tIndex = threadToIndex.get(st);
-		int origVal =  ts_get_clockThread(st).getClockIndex(tIndex);
-		ts_get_clockThread(st).setClockIndex(tIndex, (Integer)(origVal + 1));
-	}
-
-    // static FTVarState ts_get_badVarState(ShadowThread st) {
-    //     Assert.panic("Bad");
-    //     return null;
-    // }
-
-    // static void ts_set_badVarState(ShadowThread st, FTVarState v) {
-    //     Assert.panic("Bad");
-    // }
-
-    // protected static ShadowVar getOriginalOrBad(ShadowVar original, ShadowThread st) {
-    //     // final FTVarState savedState = ts_get_badVarState(st);
-    //     // if (savedState != null) {
-    //     //     ts_set_badVarState(st, null);
-    //     //     return savedState;
-    //     // } else {
-    //     //     return original;
-    //     // }
-    //     return original;
-    // }
-
     @Override
     public void enter(MethodEvent me) {
-        // System.out.println("Entering: " + me.toString());
         checkMethod(me);
         super.enter(me);
     }
     
     @Override
     public void exit(MethodEvent me) {
-        // System.out.println("Exiting: " + me.toString());
         checkMethod(me);
         super.exit(me);
     }
@@ -619,224 +521,56 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         }
     }
 
-    // // Counters for relative frequencies of each rule
-    // private static final ThreadLocalCounter readSameEpoch = new ThreadLocalCounter("FT",
-    //         "Read Same Epoch", RR.maxTidOption.get());
-    // private static final ThreadLocalCounter readSharedSameEpoch = new ThreadLocalCounter("FT",
-    //         "ReadShared Same Epoch", RR.maxTidOption.get());
-    // private static final ThreadLocalCounter readExclusive = new ThreadLocalCounter("FT",
-    //         "Read Exclusive", RR.maxTidOption.get());
-    // private static final ThreadLocalCounter readShare = new ThreadLocalCounter("FT", "Read Share",
-    //         RR.maxTidOption.get());
-    // private static final ThreadLocalCounter readShared = new ThreadLocalCounter("FT", "Read Shared",
-    //         RR.maxTidOption.get());
-    // private static final ThreadLocalCounter writeReadError = new ThreadLocalCounter("FT",
-    //         "Write-Read Error", RR.maxTidOption.get());
-    // private static final ThreadLocalCounter writeSameEpoch = new ThreadLocalCounter("FT",
-    //         "Write Same Epoch", RR.maxTidOption.get());
-    // private static final ThreadLocalCounter writeExclusive = new ThreadLocalCounter("FT",
-    //         "Write Exclusive", RR.maxTidOption.get());
-    // private static final ThreadLocalCounter writeShared = new ThreadLocalCounter("FT",
-    //         "Write Shared", RR.maxTidOption.get());
-    // private static final ThreadLocalCounter writeWriteError = new ThreadLocalCounter("FT",
-    //         "Write-Write Error", RR.maxTidOption.get());
-    // private static final ThreadLocalCounter readWriteError = new ThreadLocalCounter("FT",
-    //         "Read-Write Error", RR.maxTidOption.get());
-    // private static final ThreadLocalCounter sharedWriteError = new ThreadLocalCounter("FT",
-    //         "Shared-Write Error", RR.maxTidOption.get());
-    // private static final ThreadLocalCounter acquire = new ThreadLocalCounter("FT", "Acquire",
-    //         RR.maxTidOption.get());
-    // private static final ThreadLocalCounter release = new ThreadLocalCounter("FT", "Release",
-    //         RR.maxTidOption.get());
-    // private static final ThreadLocalCounter fork = new ThreadLocalCounter("FT", "Fork",
-    //         RR.maxTidOption.get());
-    // private static final ThreadLocalCounter join = new ThreadLocalCounter("FT", "Join",
-    //         RR.maxTidOption.get());
-    // private static final ThreadLocalCounter barrier = new ThreadLocalCounter("FT", "Barrier",
-    //         RR.maxTidOption.get());
-    // private static final ThreadLocalCounter wait = new ThreadLocalCounter("FT", "Wait",
-    //         RR.maxTidOption.get());
-    // private static final ThreadLocalCounter vol = new ThreadLocalCounter("FT", "Volatile",
-    //         RR.maxTidOption.get());
-
-    // private static final ThreadLocalCounter other = new ThreadLocalCounter("FT", "Other",
-    //         RR.maxTidOption.get());
-
-    // static {
-    //     AggregateCounter reads = new AggregateCounter("FT", "Total Reads", readSameEpoch,
-    //             readSharedSameEpoch, readExclusive, readShare, readShared, writeReadError);
-    //     AggregateCounter writes = new AggregateCounter("FT", "Total Writes", writeSameEpoch,
-    //             writeExclusive, writeShared, writeWriteError, readWriteError, sharedWriteError);
-    //     AggregateCounter accesses = new AggregateCounter("FT", "Total Access Ops", reads, writes);
-    //     new AggregateCounter("FT", "Total Ops", accesses, acquire, release, fork, join, barrier,
-    //             wait, vol, other);
-    // }
-
     protected void read(final AccessEvent event, final ShadowThread st, final AEVarClocks vcs) {
 
-        boolean violationDetected = false;	
-		// ShadowThread st = event.getThread();
-		// ShadowVar sv = event.getOriginalShadow();
-        // checkAndAddShadowVariable(sv);
 		AEVectorClock C_t = ts_get_clockThread(st);
 		AEVectorClock W_v = vcs.write;
 
-		if(lastThreadToWrite.containsKey(vcs)) {
-			if(!lastThreadToWrite.get(vcs).equals(st)) {
-				violationDetected |= checkAndGetClock(W_v, W_v, st);
-			}
-		}
+        if(varToTh.containsKey(vcs) && !varToTh.get(vcs).equals(st) && vcHandling(W_v, W_v, st)) {
+            System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
+        }
+		// if(varToTh.containsKey(vcs)) {
+		// 	if(!varToTh.get(vcs).equals(st)) {
+        //         if(vcHandling(W_v, W_v, st)) {
+        //             System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
+        //         }
+		// 	}
+		// }
 		AEVectorClock R_v = vcs.read;
 		R_v.updateWithMax(R_v, C_t);
 		AEVectorClock chR_v = vcs.readcheck;
-        chR_v.updateMax2WithoutLocal(C_t, threadToIndex.get(st));
-		if(threadToNestingDepth.get(st) == 0) {
-			incClockThread(st);
+        // chR_v.updateMax2WithoutLocal(C_t, st.getTid()threadToIndex.get(st));
+        chR_v.updateMax2WithoutLocal(C_t, st.getTid());
+		if(nestingofThreads.get(st) == 0) {
+		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
 		}
-        if(violationDetected) {
-            
-            System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
-            
-        }
 		// return violationDetected; // TODO : Handle Error
     }
 
 
     protected void write(final AccessEvent event, final ShadowThread st, final AEVarClocks vcs) {
-        
         boolean violationDetected = false;
-		// ShadowThread st = event.getThread();
-		// Variable v = this.getVariable();
-		// state.checkAndAddVariable(v);
 		AEVectorClock W_v = vcs.write;
 		AEVectorClock R_v = vcs.read;
 		AEVectorClock chR_v = vcs.readcheck;
 		AEVectorClock C_t = ts_get_clockThread(st);
 
-		if(lastThreadToWrite.containsKey(vcs)) {
-			if(!lastThreadToWrite.get(vcs).equals(st)) {
-				violationDetected |= checkAndGetClock(W_v, W_v, st);
+		if(varToTh.containsKey(vcs)) {
+			if(!varToTh.get(vcs).equals(st)) {
+				violationDetected |= vcHandling(W_v, W_v, st);
 			}
 		}
-		violationDetected |= checkAndGetClock(chR_v, R_v, st);
+		violationDetected |= vcHandling(chR_v, R_v, st);
 		W_v.copyFrom(C_t);
-		lastThreadToWrite.put(vcs, st);
-		if(threadToNestingDepth.get(st) == 0) {
-			incClockThread(st);
+		varToTh.put(vcs, st);
+		if(nestingofThreads.get(st) == 0) {
+		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
+            // incClockThread(st);
 		}
-        if(violationDetected) {
-            
+        if(violationDetected) {  
             System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
-            
         }
-		// return violationDetected; // TODO: Record Violation
-
-        // final int/* epoch */ e = ts_get_E(st);
-
-        // /* optional */ {
-        //     final int/* epoch */ w = sx.W;
-        //     if (w == e) {
-        //         if (COUNT_OPERATIONS)
-        //             writeSameEpoch.inc(st.getTid());
-        //         return;
-        //     }
-        // }
-
-        // synchronized (sx) {
-        //     final int/* epoch */ w = sx.W;
-        //     final int wTid = Epoch.tid(w);
-        //     final int tid = st.getTid();
-        //     final VectorClock tV = ts_get_V(st);
-
-        //     if (wTid != tid /* optimization */ && !Epoch.leq(w, tV.get(wTid))) {
-        //         if (COUNT_OPERATIONS)
-        //             writeWriteError.inc(tid);
-        //         error(event, sx, "Write-Write Race", "Write by ", wTid, "Write by ", tid);
-        //     }
-
-        //     final int/* epoch */ r = sx.R;
-        //     if (r != Epoch.READ_SHARED) {
-        //         final int rTid = Epoch.tid(r);
-        //         if (rTid != tid /* optimization */ && !Epoch.leq(r, tV.get(rTid))) {
-        //             if (COUNT_OPERATIONS)
-        //                 readWriteError.inc(tid);
-        //             error(event, sx, "Read-Write Race", "Read by ", rTid, "Write by ", tid);
-        //         } else {
-        //             if (COUNT_OPERATIONS)
-        //                 writeExclusive.inc(tid);
-        //         }
-        //     } else {
-        //         if (sx.anyGt(tV)) {
-        //             for (int prevReader = sx.nextGt(tV, 0); prevReader > -1; prevReader = sx
-        //                     .nextGt(tV, prevReader + 1)) {
-        //                 error(event, sx, "Read(Shared)-Write Race", "Read by ", prevReader,
-        //                         "Write by ", tid);
-        //             }
-        //             if (COUNT_OPERATIONS)
-        //                 sharedWriteError.inc(tid);
-        //         } else {
-        //             if (COUNT_OPERATIONS)
-        //                 writeShared.inc(tid);
-        //         }
-        //     }
-        //     sx.W = e;
-        // }
     }
-
-    // CS636: Commented the method to prevent inlining of the read barrier
-    // only count events when returning true;
-    // public static boolean writeFastPath(final ShadowVar shadow, final ShadowThread st) {
-    // if (shadow instanceof FTVarState) {
-    // final FTVarState sx = ((FTVarState) shadow);
-
-    // final int/* epoch */ E = ts_get_E(st);
-
-    // /* optional */ {
-    // final int/* epoch */ w = sx.W;
-    // if (w == E) {
-    // if (COUNT_OPERATIONS)
-    // writeSameEpoch.inc(st.getTid());
-    // return true;
-    // }
-    // }
-
-    // synchronized (sx) {
-    // final int tid = st.getTid();
-    // final int/* epoch */ w = sx.W;
-    // final int wTid = Epoch.tid(w);
-    // final VectorClock tV = ts_get_V(st);
-
-    // if (wTid != tid && !Epoch.leq(w, tV.get(wTid))) {
-    // ts_set_badVarState(st, sx);
-    // return false;
-    // }
-
-    // final int/* epoch */ r = sx.R;
-    // if (r != Epoch.READ_SHARED) {
-    // final int rTid = Epoch.tid(r);
-    // if (rTid != tid && !Epoch.leq(r, tV.get(rTid))) {
-    // ts_set_badVarState(st, sx);
-    // return false;
-    // }
-    // if (COUNT_OPERATIONS)
-    // writeExclusive.inc(tid);
-    // } else {
-    // if (sx.anyGt(tV)) {
-    // ts_set_badVarState(st, sx);
-    // return false;
-    // }
-    // if (COUNT_OPERATIONS)
-    // writeShared.inc(tid);
-    // }
-    // sx.W = E;
-    // return true;
-    // }
-    // } else {
-    // return false;
-    // }
-    // }
-
-    /*****/
 
     @Override
     public void volatileAccess(final VolatileAccessEvent event) {
@@ -978,15 +712,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     }
 
     @Override
-    public void classAccessed(ClassAccessedEvent event) {
-        // final ShadowThread st = event.getThread();
-        // synchronized (classInitTime) {
-        //     final VectorClock initTime = classInitTime.get(event.getRRClass());
-        //     maxEpochAndCV(st, initTime, null);
-        // }
-        // if (COUNT_OPERATIONS)
-        //     other.inc(st.getTid());
-    }
+    public void classAccessed(ClassAccessedEvent event) {}
 
     @Override
     public void printXML(XMLWriter xml) {
@@ -995,59 +721,4 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         }
     }
 
-    // protected void error(final AccessEvent ae, final FTVarState x, final String description,
-    //         final String prevOp, final int prevTid, final String curOp, final int curTid) {
-
-    //     if (ae instanceof FieldAccessEvent) {
-    //         fieldError((FieldAccessEvent) ae, x, description, prevOp, prevTid, curOp, curTid);
-    //     } else {
-    //         arrayError((ArrayAccessEvent) ae, x, description, prevOp, prevTid, curOp, curTid);
-    //     }
-    // }
-
-    // protected void arrayError(final ArrayAccessEvent aae, final FTVarState sx,
-    //         final String description, final String prevOp, final int prevTid, final String curOp,
-    //         final int curTid) {
-    //     final ShadowThread st = aae.getThread();
-    //     final Object target = aae.getTarget();
-
-    //     if (arrayErrors.stillLooking(aae.getInfo())) {
-    //         arrayErrors.error(st, aae.getInfo(), "Alloc Site", ArrayAllocSiteTracker.get(target),
-    //                 "Shadow State", sx, "Current Thread", toString(st), "Array",
-    //                 Util.objectToIdentityString(target) + "[" + aae.getIndex() + "]", "Message",
-    //                 description, "Previous Op", prevOp + " " + ShadowThread.get(prevTid),
-    //                 "Currrent Op", curOp + " " + ShadowThread.get(curTid), "Stack",
-    //                 ShadowThread.stackDumpForErrorMessage(st));
-    //     }
-    //     Assert.assertTrue(prevTid != curTid);
-
-    //     aae.getArrayState().specialize();
-
-    //     if (!arrayErrors.stillLooking(aae.getInfo())) {
-    //         advance(aae);
-    //     }
-    // }
-
-    // protected void fieldError(final FieldAccessEvent fae, final FTVarState sx,
-    //         final String description, final String prevOp, final int prevTid, final String curOp,
-    //         final int curTid) {
-    //     final FieldInfo fd = fae.getInfo().getField();
-    //     final ShadowThread st = fae.getThread();
-    //     final Object target = fae.getTarget();
-
-    //     if (fieldErrors.stillLooking(fd)) {
-    //         fieldErrors.error(st, fd, "Shadow State", sx, "Current Thread", toString(st), "Class",
-    //                 (target == null ? fd.getOwner() : target.getClass()), "Field",
-    //                 Util.objectToIdentityString(target) + "." + fd, "Message", description,
-    //                 "Previous Op", prevOp + " " + ShadowThread.get(prevTid), "Currrent Op",
-    //                 curOp + " " + ShadowThread.get(curTid), "Stack",
-    //                 ShadowThread.stackDumpForErrorMessage(st));
-    //     }
-
-    //     Assert.assertTrue(prevTid != curTid);
-
-    //     if (!fieldErrors.stillLooking(fd)) {
-    //         advance(fae);
-    //     }
-    // }
 }

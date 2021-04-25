@@ -35,7 +35,7 @@
 # CS636: Changed a few exports to work on GNU/Linux systems
 # Must be a 1.7 or later VM
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 
 # These two lines are for OS X, to set the max memory to just under
 # the total machine memory
