@@ -51,6 +51,10 @@ final public class ThreadLocalCounter extends AbstractCounter {
 	public void inc(int tid) {
 		counts[tid << 3]++;
 	}
+
+	public void dec(int tid) {
+		counts[tid << 3]--;
+	}
 	
 	public void add(int tid, long n) {
 		counts[tid << 3] += n;
