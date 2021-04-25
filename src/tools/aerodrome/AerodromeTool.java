@@ -138,14 +138,27 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
 
     public void checkMethod(MethodEvent me) {
+        int tid = me.getThread().getTid();
         if(!methodsToExclude.contains(me.getInfo().toString())){
             if(me.isEnter()) {
-                // System.out.println("Entering: " + me.getInfo().toString());
-                transactionBegin(me);
+                if (methodCallStackHeight.getLocal(tid) == 0){
+                    // System.out.println(tid + " Transaction Begin: " + me.getInfo().toString());
+                    transactionBegin(me);
+                }
+                else {
+                    // System.out.println(tid + " (Redundant) Transaction Begin: " + me.getInfo().toString());
+                }
+                methodCallStackHeight.inc(tid);
             }
             else {
-                // System.out.println("Exiting: " + me.getInfo().toString());
-                transactionEnd(me);
+                methodCallStackHeight.dec(tid);
+                if(methodCallStackHeight.getLocal(tid) == 0) {
+                    // System.out.println(tid + " Transaction End: " + me.getInfo().toString());
+                    transactionEnd(me);
+                }
+                else{
+                    // System.out.println(tid + " (Redundant) Transaction End: " + me.getInfo().toString());
+                }
             }
         }
         else {
@@ -219,7 +232,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		// return violationDetected; // TODO: ERROR
         if(violationDetected){
             
-            System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
+            System.out.println("AERODROME -- transactionEnd -- TID: " + st.getTid() + " "  + me.getInfo().toString());
             
         }
     }
@@ -509,7 +522,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         super.acquire(event);
         if (violationDetected) {
             
-            System.out.println("AERODROME -- acquire -- " + event.toString());
+            System.out.println("AERODROME -- acquire -- TID: " + st.getTid() + " "   + event.toString());
             
         }
 		// return violationDetected; 
@@ -662,6 +675,8 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     // private static final ThreadLocalCounter other = new ThreadLocalCounter("FT", "Other",
     //         RR.maxTidOption.get());
 
+    private static final ThreadLocalCounter methodCallStackHeight = new ThreadLocalCounter("AD", "MethodCallStackHeight", RR.maxTidOption.get());
+
     // static {
     //     AggregateCounter reads = new AggregateCounter("FT", "Total Reads", readSameEpoch,
     //             readSharedSameEpoch, readExclusive, readShare, readShared, writeReadError);
@@ -695,7 +710,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		}
         if(violationDetected) {
             
-            System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
+            System.out.println("AERODROME -- read -- TID: " + st.getTid() + " " + event.getAccessInfo().getLoc());
             
         }
 		// return violationDetected; // TODO : Handle Error
@@ -726,7 +741,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		}
         if(violationDetected) {
             
-            System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
+            System.out.println("AERODROME -- write -- TID: " + st.getTid() + " "   + event.getAccessInfo().getLoc());
             
         }
 		// return violationDetected; // TODO: Record Violation
