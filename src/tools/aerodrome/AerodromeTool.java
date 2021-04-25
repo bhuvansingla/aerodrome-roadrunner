@@ -95,14 +95,27 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
 
     public void checkMethod(MethodEvent me) {
+        int tid = me.getThread().getTid();
         if(!methodsToExclude.contains(me.getInfo().toString())){
             if(me.isEnter()) {
-                // System.out.println("Entering: " + me.getInfo().toString());
-                transactionBegin(me);
+                if (methodCallStackHeight.getLocal(tid) == 0){
+                    // System.out.println(tid + " Transaction Begin: " + me.getInfo().toString());
+                    transactionBegin(me);
+                }
+                else {
+                    // System.out.println(tid + " (Redundant) Transaction Begin: " + me.getInfo().toString());
+                }
+                methodCallStackHeight.inc(tid);
             }
             else {
-                // System.out.println("Exiting: " + me.getInfo().toString());
-                transactionEnd(me);
+                methodCallStackHeight.dec(tid);
+                if(methodCallStackHeight.getLocal(tid) == 0) {
+                    // System.out.println(tid + " Transaction End: " + me.getInfo().toString());
+                    transactionEnd(me);
+                }
+                else{
+                    // System.out.println(tid + " (Redundant) Transaction End: " + me.getInfo().toString());
+                }
             }
         }
         else {
@@ -520,6 +533,8 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
             super.access(event);
         }
     }
+
+    private static final ThreadLocalCounter methodCallStackHeight = new ThreadLocalCounter("AD", "MethodCallStackHeight", RR.maxTidOption.get());
 
     protected void read(final AccessEvent event, final ShadowThread st, final AEVarClocks vcs) {
 
