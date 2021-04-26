@@ -1,98 +1,54 @@
 package tools.aerodrome;
 
-import acme.util.Assert;
-import acme.util.Util;
-import acme.util.count.AggregateCounter;
-import acme.util.count.ThreadLocalCounter;
-import acme.util.decorations.Decoration;
-import acme.util.decorations.DecorationFactory;
-import acme.util.decorations.DecorationFactory.Type;
-import acme.util.decorations.DefaultValue;
-import acme.util.decorations.NullDefault;
-import acme.util.io.XMLWriter;
-import acme.util.option.CommandLine;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.HashMap;
+
+import acme.util.Assert;
+import acme.util.count.ThreadLocalCounter;
+import acme.util.decorations.Decoration;
+import acme.util.decorations.DecorationFactory;
+import acme.util.decorations.DefaultValue;
+import acme.util.option.CommandLine;
 import rr.RRMain;
 import rr.annotations.Abbrev;
-import rr.barrier.BarrierEvent;
-import rr.barrier.BarrierListener;
-import rr.barrier.BarrierMonitor;
-import rr.error.ErrorMessage;
-import rr.error.ErrorMessages;
 import rr.event.AccessEvent;
 import rr.event.AccessEvent.Kind;
 import rr.event.AcquireEvent;
-import rr.event.ArrayAccessEvent;
-import rr.event.ClassAccessedEvent;
-import rr.event.ClassInitializedEvent;
-import rr.event.FieldAccessEvent;
-import rr.event.JoinEvent;
 import rr.event.MethodEvent;
 import rr.event.NewThreadEvent;
 import rr.event.ReleaseEvent;
-import rr.event.StartEvent;
-import rr.event.VolatileAccessEvent;
-import rr.event.WaitEvent;
-import rr.instrument.classes.ArrayAllocSiteTracker;
-import rr.meta.AccessInfo;
-import rr.meta.ArrayAccessInfo;
-import rr.meta.ClassInfo;
-import rr.meta.FieldInfo;
-import rr.meta.MetaDataInfoMaps;
-import rr.meta.MethodInfo;
-import rr.meta.OperationInfo;
-import rr.meta.SourceLocation;
 import rr.state.ShadowLock;
 import rr.state.ShadowThread;
 import rr.state.ShadowVar;
-import rr.state.ShadowVolatile;
 import rr.tool.RR;
 import rr.tool.Tool;
-import tools.util.Epoch;
-// import tools.util.VectorClock;
-import tools.aerodrome.ADVectorClock;
 
 @Abbrev("AD")
-public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierState> {
+public class AeroDromeTool extends Tool {
 
     private static final boolean COUNT_OPERATIONS = RRMain.slowMode();
     private static final int INIT_VECTOR_CLOCK_SIZE = 16;
 
-    public final ErrorMessage<FieldInfo> fieldErrors = ErrorMessages
-            .makeFieldErrorMessage("FastTrack");
-    public final ErrorMessage<ArrayAccessInfo> arrayErrors = ErrorMessages
-            .makeArrayErrorMessage("FastTrack");
-
-    private final ADVectorClock maxEpochPerTid = new ADVectorClock(INIT_VECTOR_CLOCK_SIZE);
-
-    // public ConcurrentHashMap <ShadowThread, Integer> threadToIndex;
-    // public ConcurrentHashMap <ShadowLock, Integer> lockToIndex;
     public ConcurrentHashMap <ADVarClocks, Integer> varsTrack;
-    // private int nTh;
-    // private int nLock;
     private int nVars;
 
     public ConcurrentHashMap <ShadowLock, ShadowThread> lockToTh;
     public ConcurrentHashMap <ShadowVar, ShadowThread> varToTh;
     public ConcurrentHashMap <ShadowThread, Integer> nestingofThreads;
 
-    // public static class TransactionHandling {
     private static String locationPairFilename;
     private static String methodExcludeFilename;
+
     // This map contains the race pairs provided in the input file.
     private static ConcurrentHashMap<String, String> transactionLocations;
 
     // This list contains the method names to exclude.
     private static List<String> methodsToExclude;
-
-    // public TransactionHandling() {
-        
-    // }
-
 
     public void checkMethod(MethodEvent me) {
         int tid = me.getThread().getTid();
@@ -130,6 +86,8 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
     //         transactionEnd();
     //     }
     // }
+
+    
     public void readLocationPairFile() {
         try{
             File file = new File(locationPairFilename);
@@ -154,13 +112,11 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
             }
         } catch(IOException e) { e.printStackTrace(); }
     }
-    // }
 
     public void transactionBegin(MethodEvent me){
         ShadowThread st = me.getThread();
 		int cur_depth = nestingofThreads.get(st);
 		nestingofThreads.put(st,  cur_depth + 1);
-		boolean violationDetected = false;
 
 		if(cur_depth == 0){
 			ADVectorClock C_t = ts_get_clockThread(st);				
@@ -181,11 +137,10 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
     }
 
     public boolean handshakeAtEndEvent(ShadowThread st) {
-		boolean violationDetected = false;
 		int tid = st.getTid();
         ADVectorClock C_t_begin = ts_get_clockThreadBegin(st);;
 		ADVectorClock C_t = ts_get_clockThread(st);
-		for(ShadowThread u: st.getThreads()) {
+		for(ShadowThread u: ShadowThread.getThreads()) {
 			if(!u.equals(st)) {
 				ADVectorClock C_u = ts_get_clockThread(u);
 				if(C_t_begin.isLessThanOrEqual(C_u, tid) && vcHandling(C_t, C_t, u)) {
@@ -215,30 +170,9 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
 		return false;
 	}
 
-    // CS636: Every class object would have a vector clock. classInitTime is the Decoration which
-    // stores ClassInfo (as a key) and corresponding vector clock for that class (as a value).
-    // guarded by classInitTime
-    public static final Decoration<ClassInfo, ADVectorClock> classInitTime = MetaDataInfoMaps
-            .getClasses().makeDecoration("FastTrack:ClassInitTime", Type.MULTIPLE,
-                    new DefaultValue<ClassInfo, ADVectorClock>() {
-                        public ADVectorClock get(ClassInfo st) {
-                            return new ADVectorClock(INIT_VECTOR_CLOCK_SIZE);
-                        }
-                    });
 
-    public static ADVectorClock getClassInitTime(ClassInfo ci) {
-        synchronized (classInitTime) {
-            return classInitTime.get(ci);
-        }
-    }
-    // TransactionHandling th;`
     public AeroDromeTool(final String name, final Tool next, CommandLine commandLine) {
         super(name, next, commandLine);
-        // th = new TransactionHandling();
-        // nTh = 0;
-        // threadToIndex = new ConcurrentHashMap<ShadowThread, Integer>();
-        // nLock = 0;
-        // lockToIndex = new ConcurrentHashMap<ShadowLock, Integer>();
         nVars = 0;
         varsTrack = new ConcurrentHashMap<ADVarClocks, Integer>();
 
@@ -256,94 +190,8 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
 
         readLocationPairFile();
         readMethodExcludeFile();
-
-        new BarrierMonitor<FTBarrierState>(this, new DefaultValue<Object, FTBarrierState>() {
-            public FTBarrierState get(Object k) {
-                return new FTBarrierState(k, INIT_VECTOR_CLOCK_SIZE);
-            }
-        });
     }
 
-    // /*
-    //  * Shadow State: St.E -- epoch decoration on ShadowThread - Thread-local. Never access from a
-    //  * different thread St.V -- VectorClock decoration on ShadowThread - Thread-local while thread
-    //  * is running. - The thread starting t may access st.V before the start. - Any thread joining on
-    //  * t may read st.V after the join. Sm.V -- FTLockState decoration on ShadowLock - See
-    //  * FTLockState for synchronization rules. Sx.R,Sx.W,Sx.V -- FTVarState objects - See FTVarState
-    //  * for synchronization rules. Svx.V -- FTVolatileState decoration on ShadowVolatile (serves same
-    //  * purpose as L for volatiles) - See FTVolatileState for synchronization rules. Sb.V --
-    //  * FTBarrierState decoration on Barriers - See FTBarrierState for synchronization rules.
-    //  */
-
-    // // invariant: st.E == st.V(st.tid)
-    // protected static int/* epoch */ ts_get_E(ShadowThread st) {
-    //     Assert.panic("Bad");
-    //     return -1;
-    // }
-
-    // protected static void ts_set_E(ShadowThread st, int/* epoch */ e) {
-    //     Assert.panic("Bad");
-    // }
-
-    // protected static VectorClock ts_get_V(ShadowThread st) {
-    //     Assert.panic("Bad");
-    //     return null;
-    // }
-
-    // protected static void ts_set_V(ShadowThread st, VectorClock V) {
-    //     Assert.panic("Bad");
-    // }
-
-    // protected void maxAndIncEpochAndCV(ShadowThread st, VectorClock other, OperationInfo info) {
-    //     final int tid = st.getTid();
-    //     final VectorClock tV = ts_get_V(st);
-    //     tV.max(other);
-    //     tV.tick(tid);
-    //     ts_set_E(st, tV.get(tid));
-    // }
-
-    // protected void maxEpochAndCV(ShadowThread st, VectorClock other, OperationInfo info) {
-    //     final int tid = st.getTid();
-    //     final VectorClock tV = ts_get_V(st);
-    //     tV.max(other);
-    //     ts_set_E(st, tV.get(tid));
-    // }
-
-    // protected void incEpochAndCV(ShadowThread st, OperationInfo info) {
-    //     final int tid = st.getTid();
-    //     final VectorClock tV = ts_get_V(st);
-    //     tV.tick(tid);
-    //     ts_set_E(st, tV.get(tid));
-    // }
-
-    // static final Decoration<ShadowLock, FTLockState> lockVs = ShadowLock.makeDecoration(
-    //         "FastTrack:ShadowLock", DecorationFactory.Type.MULTIPLE,
-    //         new DefaultValue<ShadowLock, FTLockState>() {
-    //             public FTLockState get(final ShadowLock lock) {
-    //                 return new FTLockState(lock, INIT_VECTOR_CLOCK_SIZE);
-    //             }
-    //         });
-
-    // // only call when ld.peer() is held
-    // static final FTLockState getV(final ShadowLock ld) {
-    //     return lockVs.get(ld);
-    // }
-
-    // static final Decoration<ShadowVolatile, FTVolatileState> volatileVs = ShadowVolatile
-    //         .makeDecoration("FastTrack:shadowVolatile", DecorationFactory.Type.MULTIPLE,
-    //                 new DefaultValue<ShadowVolatile, FTVolatileState>() {
-    //                     public FTVolatileState get(final ShadowVolatile vol) {
-    //                         return new FTVolatileState(vol, INIT_VECTOR_CLOCK_SIZE);
-    //                     }
-    //                 });
-
-    // // only call when we are in an event handler for the volatile field.
-    // protected static final FTVolatileState getV(final ShadowVolatile ld) {
-    //     return volatileVs.get(ld);
-    // }
-
-    
-    //CS636
     protected static ADVectorClock ts_get_clockThread(ShadowThread st) {
         Assert.panic("Bad");
         return null;
@@ -362,7 +210,6 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
         Assert.panic("Bad");
     }
 
-    //Attach a ADVectorClock to each object used as a lock.
     public static final Decoration<ShadowLock, ADVectorClock> clockLock = ShadowLock.makeDecoration("AE:clockLock",
     DecorationFactory.Type.MULTIPLE, new DefaultValue<ShadowLock, ADVectorClock>() {
         public ADVectorClock get(ShadowLock ld) {
@@ -370,25 +217,9 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
         }
     });
 
-    // @Override
-    // public ShadowVar makeShadowVar(final AccessEvent event) {
-    //     if (event.getKind() == Kind.VOLATILE) {
-    //         final ShadowThread st = event.getThread();
-    //         final VectorClock volV = getV(((VolatileAccessEvent) event).getShadowVolatile());
-    //         volV.max(ts_get_V(st));
-    //         return super.makeShadowVar(event);
-    //     } else {
-    //         return new FTVarState(event.isWrite(), ts_get_E(event.getThread()));
-    //     }
-    // }
-
     @Override
     public ShadowVar makeShadowVar(final AccessEvent event) {
         if (event.getKind() == Kind.VOLATILE) {
-            //TODO: how to handle volatile events?
-            /*final ShadowThread st = event.getThread();
-            final VectorClock volV = getV(((VolatileAccessEvent) event).getShadowVolatile());
-            volV.max(ts_get_V(st));*/
             return super.makeShadowVar(event);
         } else {
 
@@ -407,8 +238,6 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
     public void create(NewThreadEvent event) {
         
         final ShadowThread st = event.getThread();
-        // threadToIndex.put(st, (Integer)nTh);
-        // nTh++;
 
         nestingofThreads.put(st, 0);
 
@@ -424,25 +253,11 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
             ts_set_clockThreadBegin(st, tV);
         }
 
-        // if (ts_get_V(st) == null) {
-        //     final int tid = st.getTid();
-        //     final VectorClock tV = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
-        //     ts_set_V(st, tV);
-        //     synchronized (maxEpochPerTid) {
-        //         final int/* epoch */ epoch = maxEpochPerTid.get(tid) + 1;
-        //         tV.set(tid, epoch);
-        //         ts_set_E(st, epoch);
-        //     }
-        //     incEpochAndCV(st, null);
-        //     Util.log("Initial E for " + tid + ": " + Epoch.toString(ts_get_E(st)));
-        // }
-
         super.create(event);
     }
 
     @Override
     public void acquire(final AcquireEvent event) {
-        boolean violationDetected = false;
         final ShadowThread st = event.getThread();
         ShadowLock sl = event.getLock();
         if(!st.getLocksHeld().contains(sl)) {
@@ -453,23 +268,12 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
 		if(lockToTh.containsKey(sl) && !lockToTh.get(sl).equals(st) && vcHandling(L_l, L_l, st)) {
             System.out.println("AERODROME -- acquire -- " + event.toString());
         }
-        // if(lockToTh.containsKey(sl)) {
-		// 	if(!lockToTh.get(sl).equals(st)) {
-		// 		if(vcHandling(L_l, L_l, st)) {
-        //             System.out.println("AERODROME -- acquire -- " + event.toString());
-        //         }
-		// 	}
-		// }
         super.acquire(event);
-		// return violationDetected; 
-        // TODO : ERROR DETECTED 
         // if (COUNT_OPERATIONS)
         //     acquire.inc(st.getTid());
     }
 
     public boolean vcHandling(ADVectorClock checkClock, ADVectorClock fromClock, ShadowThread target) {
-		// int tIndex = threadToIndex.get(target);
-		// int tid = target.getTid();
         boolean violationDetected = false;
 		ADVectorClock C_target_begin = ts_get_clockThreadBegin(target);
 		if(C_target_begin.isLessThanOrEqual(checkClock, target.getTid()) && nestingofThreads.get(target) > 0) {
@@ -494,7 +298,6 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
 		lockToTh.put(sl, st);
 		if(nestingofThreads.get(st) == 0) {
 		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
-			// incClockThread(st);
 		}
         super.release(event);
         // if (COUNT_OPERATIONS)
@@ -515,15 +318,10 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     @Override
     public void access(final AccessEvent event) {
-        SourceLocation sl = event.getAccessInfo().getLoc();
 		ShadowThread st = event.getThread();
         ShadowVar sv = event.getOriginalShadow();
         if (sv instanceof ADVarClocks) {
             ADVarClocks sx = (ADVarClocks) sv;
-
-            // If source location pair is given, then this call is needed
-            // for starting and ending transaction
-            // th.CheckLocation(sl.toString());
             if (event.isWrite()) {
                 write(event, st, sx);
             } else {
@@ -544,22 +342,13 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
         if(varToTh.containsKey(vcs) && !varToTh.get(vcs).equals(st) && vcHandling(W_v, W_v, st)) {
             System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
         }
-		// if(varToTh.containsKey(vcs)) {
-		// 	if(!varToTh.get(vcs).equals(st)) {
-        //         if(vcHandling(W_v, W_v, st)) {
-        //             System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
-        //         }
-		// 	}
-		// }
 		ADVectorClock R_v = vcs.read;
 		R_v.updateWithMax(R_v, C_t);
 		ADVectorClock chR_v = vcs.readcheck;
-        // chR_v.updateMax2WithoutLocal(C_t, st.getTid()threadToIndex.get(st));
         chR_v.updateMax2WithoutLocal(C_t, st.getTid());
 		if(nestingofThreads.get(st) == 0) {
 		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
 		}
-		// return violationDetected; // TODO : Handle Error
     }
 
 
@@ -580,160 +369,9 @@ public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierStat
 		varToTh.put(vcs, st);
 		if(nestingofThreads.get(st) == 0) {
 		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
-            // incClockThread(st);
 		}
         if(violationDetected) {  
             System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
         }
     }
-
-    @Override
-    public void volatileAccess(final VolatileAccessEvent event) {
-        // final ShadowThread st = event.getThread();
-        // final VectorClock volV = getV((event).getShadowVolatile());
-
-        // if (event.isWrite()) {
-        //     final VectorClock tV = ts_get_V(st);
-        //     volV.max(tV);
-        //     incEpochAndCV(st, event.getAccessInfo());
-        // } else {
-        //     maxEpochAndCV(st, volV, event.getAccessInfo());
-        // }
-
-        super.volatileAccess(event);
-        // if (COUNT_OPERATIONS)
-        //     vol.inc(st.getTid());
-    }
-
-    // st forked su
-    @Override
-    public void preStart(final StartEvent event) {
-        // final ShadowThread st = event.getThread();
-        // final ShadowThread su = event.getNewThread();
-        // final VectorClock tV = ts_get_V(st);
-
-        // /*
-        //  * Safe to access su.V, because u has not started yet. This will give us exclusive access to
-        //  * it. There may be a race if two or more threads race are starting u, but of course, a
-        //  * second attempt to start u will crash... RR guarantees that the forked thread will
-        //  * synchronize with thread t before it does anything else.
-        //  */
-        // maxAndIncEpochAndCV(su, tV, event.getInfo());
-        // incEpochAndCV(st, event.getInfo());
-
-        super.preStart(event);
-        // if (COUNT_OPERATIONS)
-        //     fork.inc(st.getTid());
-    }
-
-    @Override
-    public void stop(ShadowThread st) {
-        // synchronized (maxEpochPerTid) {
-        //     maxEpochPerTid.set(st.getTid(), ts_get_E(st));
-        // }
-        super.stop(st);
-        // if (COUNT_OPERATIONS)
-        //     other.inc(st.getTid());
-    }
-
-    // t joined on u
-    @Override
-    public void postJoin(final JoinEvent event) {
-        // final ShadowThread st = event.getThread();
-        // final ShadowThread su = event.getJoiningThread();
-
-        // // move our clock ahead. Safe to access su.V, as above, when
-        // // lock is held and u is not running. Also, RR guarantees
-        // // this thread has sync'd with u.
-
-        // maxEpochAndCV(st, ts_get_V(su), event.getInfo());
-        // no need to inc su's clock here -- that was just for
-        // the proof in the original FastTrack rules.
-
-        super.postJoin(event);
-        // if (COUNT_OPERATIONS)
-        //     join.inc(st.getTid());
-    }
-
-    @Override
-    public void preWait(WaitEvent event) {
-        // final ShadowThread st = event.getThread();
-        // final VectorClock lockV = getV(event.getLock());
-        // lockV.max(ts_get_V(st)); // we hold lock, so no need to sync here...
-        // incEpochAndCV(st, event.getInfo());
-        super.preWait(event);
-        // if (COUNT_OPERATIONS)
-        //     wait.inc(st.getTid());
-    }
-
-    @Override
-    public void postWait(WaitEvent event) {
-        // final ShadowThread st = event.getThread();
-        // final VectorClock lockV = getV(event.getLock());
-        // maxEpochAndCV(st, lockV, event.getInfo()); // we hold lock here
-        super.postWait(event);
-        // if (COUNT_OPERATIONS)
-        //     wait.inc(st.getTid());
-    }
-
-    public static String toString(final ShadowThread td) {
-        return "You left this empty";
-        // return String.format("[tid=%-2d   C=%s   E=%s]", td.getTid(), ts_get_V(td),
-        //         Epoch.toString(ts_get_E(td)));
-    }
-
-    private final Decoration<ShadowThread, ADVectorClock> vectorClockForBarrierEntry = ShadowThread
-            .makeDecoration("FT:barrier", DecorationFactory.Type.MULTIPLE,
-                    new NullDefault<ShadowThread, ADVectorClock>());
-
-    public void preDoBarrier(BarrierEvent<FTBarrierState> event) {
-        // final ShadowThread st = event.getThread();
-        // final FTBarrierState barrierObj = event.getBarrier();
-        // synchronized (barrierObj) {
-        //     final VectorClock barrierV = barrierObj.enterBarrier();
-        //     barrierV.max(ts_get_V(st));
-        //     vectorClockForBarrierEntry.set(st, barrierV);
-        // }
-        // if (COUNT_OPERATIONS)
-        //     barrier.inc(st.getTid());
-    }
-
-    public void postDoBarrier(BarrierEvent<FTBarrierState> event) {
-        // final ShadowThread st = event.getThread();
-        // final FTBarrierState barrierObj = event.getBarrier();
-        // synchronized (barrierObj) {
-        //     final VectorClock barrierV = vectorClockForBarrierEntry.get(st);
-        //     barrierObj.stopUsingOldVectorClock(barrierV);
-        //     maxAndIncEpochAndCV(st, barrierV, null);
-        // }
-        // if (COUNT_OPERATIONS)
-        //     barrier.inc(st.getTid());
-    }
-
-    ///
-
-    @Override
-    public void classInitialized(ClassInitializedEvent event) {
-        // final ShadowThread st = event.getThread();
-        // final VectorClock tV = ts_get_V(st);
-        // synchronized (classInitTime) {
-        //     VectorClock initTime = classInitTime.get(event.getRRClass());
-        //     initTime.copy(tV);
-        // }
-        // incEpochAndCV(st, null);
-        super.classInitialized(event);
-        // if (COUNT_OPERATIONS)
-            // other.inc(st.getTid());
-    }
-
-    @Override
-    public void classAccessed(ClassAccessedEvent event) {}
-
-    @Override
-    public void printXML(XMLWriter xml) {
-        for (ShadowThread td : ShadowThread.getThreads()) {
-            xml.print("thread", toString(td));
-        }
-    }
-
 }
