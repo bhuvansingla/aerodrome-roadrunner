@@ -2,12 +2,12 @@ package tools.aerodrome;
 
 import java.util.Vector;
 
-public class AEVectorClock {
+public class ADVectorClock {
 
 	private int dim;
 	private Vector<Integer> clock;
 
-	public AEVectorClock(int d) {
+	public ADVectorClock(int d) {
 		this.dim = d;
 		this.clock = new Vector<Integer>(dim);
 		for (int ind = 0; ind < this.dim; ind++) {
@@ -15,7 +15,7 @@ public class AEVectorClock {
 		}
 	}
 
-	public AEVectorClock(AEVectorClock fromVectorClock) {
+	public ADVectorClock(ADVectorClock fromVectorClock) {
 		this.dim = fromVectorClock.getDim();
 		this.clock = new Vector<Integer>(dim);
 		Vector<Integer> fromClock = fromVectorClock.getClock();
@@ -48,7 +48,7 @@ public class AEVectorClock {
 		return itIsZero;
 	}
 
-	public boolean isEqual(AEVectorClock vc) {
+	public boolean isEqual(ADVectorClock vc) {
 		boolean itIsEqual = true;
 		Vector<Integer> vcClock = vc.getClock();
 		for (int ind = 0; ind < this.dim; ind++) {
@@ -63,7 +63,7 @@ public class AEVectorClock {
 		return itIsEqual;
 	}
 
-	public boolean isLessThan(AEVectorClock vc) {
+	public boolean isLessThan(ADVectorClock vc) {
 		boolean OneComponentIsLess = false;
 		boolean isLessThanOrEqual = true;
 		Vector<Integer> vcClock = vc.getClock();
@@ -81,7 +81,7 @@ public class AEVectorClock {
 		return OneComponentIsLess && isLessThanOrEqual;
 	}
 	
-	public boolean isLessThanOrEqual(AEVectorClock vc) {
+	public boolean isLessThanOrEqual(ADVectorClock vc) {
 		boolean itIsLessThanOrEqual = true;
 		Vector<Integer> vcClock = vc.getClock();
 		for (int ind = 0; ind < this.dim; ind++) {
@@ -95,7 +95,7 @@ public class AEVectorClock {
 		return itIsLessThanOrEqual;
 	}
 	
-	public boolean isLessThanOrEqual(AEVectorClock vc, int ind) {
+	public boolean isLessThanOrEqual(ADVectorClock vc, int ind) {
 		return this.clock.get(ind).intValue() <= vc.getClock().get(ind).intValue();
 	}
 
@@ -105,13 +105,13 @@ public class AEVectorClock {
 		}
 	}
 	
-	public void copyFrom(AEVectorClock vc) {
+	public void copyFrom(ADVectorClock vc) {
 		for (int ind = 0; ind < this.dim; ind++) {
 			this.clock.set(ind, (Integer) vc.clock.get(ind));
 		}
 	}	
 	
-	private void updateMax2(AEVectorClock vc) {
+	private void updateMax2(ADVectorClock vc) {
 		for (int ind = 0; ind < this.dim; ind++) {
 			int this_c = this.clock.get(ind);
 			int vc_c = vc.clock.get(ind);
@@ -121,7 +121,7 @@ public class AEVectorClock {
 	}
 	
 	//The following function update this as : this := \lambda t . if t == tIndex then this[tIndex] else max(this[t], vc[t])
-	public void updateMax2WithoutLocal(AEVectorClock vc, int tIndex) {
+	public void updateMax2WithoutLocal(ADVectorClock vc, int tIndex) {
 		for (int ind = 0; ind < this.dim; ind++) {
 			if(ind != tIndex){
 				int this_c = this.clock.get(ind);
@@ -132,15 +132,15 @@ public class AEVectorClock {
 		}
 	}
 	
-	public void updateWithMax(AEVectorClock... vcList) {
+	public void updateWithMax(ADVectorClock... vcList) {
 		this.copyFrom(vcList[0]);
 		for (int i = 1; i < vcList.length; i++) {
-			AEVectorClock vc = vcList[i];
+			ADVectorClock vc = vcList[i];
 			this.updateMax2(vc);
 		}
 	}
 	
-	private void updateMin2(AEVectorClock vc) {
+	private void updateMin2(ADVectorClock vc) {
 		for (int ind = 0; ind < this.dim; ind++) {
 			int this_c = this.clock.get(ind);
 			int vc_c = vc.clock.get(ind);
@@ -149,10 +149,10 @@ public class AEVectorClock {
 		}
 	}
 	
-	public void updateWithMin(AEVectorClock... vcList) {
+	public void updateWithMin(ADVectorClock... vcList) {
 		this.copyFrom(vcList[0]);
 		for (int i = 1; i < vcList.length; i++) {
-			AEVectorClock vc = vcList[i];
+			ADVectorClock vc = vcList[i];
 			this.updateMin2(vc);
 		}
 	}

@@ -54,10 +54,10 @@ import rr.tool.RR;
 import rr.tool.Tool;
 import tools.util.Epoch;
 // import tools.util.VectorClock;
-import tools.aerodrome.AEVectorClock;
+import tools.aerodrome.ADVectorClock;
 
 @Abbrev("AD")
-public class AerodromeTool extends Tool implements BarrierListener<FTBarrierState> {
+public class AeroDromeTool extends Tool implements BarrierListener<FTBarrierState> {
 
     private static final boolean COUNT_OPERATIONS = RRMain.slowMode();
     private static final int INIT_VECTOR_CLOCK_SIZE = 16;
@@ -67,11 +67,11 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     public final ErrorMessage<ArrayAccessInfo> arrayErrors = ErrorMessages
             .makeArrayErrorMessage("FastTrack");
 
-    private final AEVectorClock maxEpochPerTid = new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
+    private final ADVectorClock maxEpochPerTid = new ADVectorClock(INIT_VECTOR_CLOCK_SIZE);
 
     // public ConcurrentHashMap <ShadowThread, Integer> threadToIndex;
     // public ConcurrentHashMap <ShadowLock, Integer> lockToIndex;
-    public ConcurrentHashMap <AEVarClocks, Integer> varsTrack;
+    public ConcurrentHashMap <ADVarClocks, Integer> varsTrack;
     // private int nTh;
     // private int nLock;
     private int nVars;
@@ -163,8 +163,8 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 		boolean violationDetected = false;
 
 		if(cur_depth == 0){
-			AEVectorClock C_t = ts_get_clockThread(st);				
-			AEVectorClock C_t_begin =ts_get_clockThreadBegin(st);
+			ADVectorClock C_t = ts_get_clockThread(st);				
+			ADVectorClock C_t_begin =ts_get_clockThreadBegin(st);
 			C_t_begin.copyFrom(C_t);
 		}
     }
@@ -183,29 +183,29 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     public boolean handshakeAtEndEvent(ShadowThread st) {
 		boolean violationDetected = false;
 		int tid = st.getTid();
-        AEVectorClock C_t_begin = ts_get_clockThreadBegin(st);;
-		AEVectorClock C_t = ts_get_clockThread(st);
+        ADVectorClock C_t_begin = ts_get_clockThreadBegin(st);;
+		ADVectorClock C_t = ts_get_clockThread(st);
 		for(ShadowThread u: st.getThreads()) {
 			if(!u.equals(st)) {
-				AEVectorClock C_u = ts_get_clockThread(u);
+				ADVectorClock C_u = ts_get_clockThread(u);
 				if(C_t_begin.isLessThanOrEqual(C_u, tid) && vcHandling(C_t, C_t, u)) {
                     return true;
                 }
 			}
 		}
 		for(ShadowLock l: st.getLocksHeld()) {
-			AEVectorClock L_l = clockLock.get(l);
+			ADVectorClock L_l = clockLock.get(l);
 			if(C_t_begin.isLessThanOrEqual(L_l, tid)) {
 				L_l.updateWithMax(L_l, C_t);
 			}
 		}
-		for(AEVarClocks v: varsTrack.keySet()) {
-			AEVectorClock W_v = v.write;
+		for(ADVarClocks v: varsTrack.keySet()) {
+			ADVectorClock W_v = v.write;
 			if(C_t_begin.isLessThanOrEqual(W_v, tid)) {
 				W_v.updateWithMax(W_v, C_t);
 			}
-			AEVectorClock R_v = v.read;
-			AEVectorClock chR_v = v.readcheck;
+			ADVectorClock R_v = v.read;
+			ADVectorClock chR_v = v.readcheck;
 			if(C_t_begin.isLessThanOrEqual(R_v, tid)) {
 				R_v.updateWithMax(R_v, C_t);
 
@@ -218,21 +218,21 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     // CS636: Every class object would have a vector clock. classInitTime is the Decoration which
     // stores ClassInfo (as a key) and corresponding vector clock for that class (as a value).
     // guarded by classInitTime
-    public static final Decoration<ClassInfo, AEVectorClock> classInitTime = MetaDataInfoMaps
+    public static final Decoration<ClassInfo, ADVectorClock> classInitTime = MetaDataInfoMaps
             .getClasses().makeDecoration("FastTrack:ClassInitTime", Type.MULTIPLE,
-                    new DefaultValue<ClassInfo, AEVectorClock>() {
-                        public AEVectorClock get(ClassInfo st) {
-                            return new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
+                    new DefaultValue<ClassInfo, ADVectorClock>() {
+                        public ADVectorClock get(ClassInfo st) {
+                            return new ADVectorClock(INIT_VECTOR_CLOCK_SIZE);
                         }
                     });
 
-    public static AEVectorClock getClassInitTime(ClassInfo ci) {
+    public static ADVectorClock getClassInitTime(ClassInfo ci) {
         synchronized (classInitTime) {
             return classInitTime.get(ci);
         }
     }
     // TransactionHandling th;`
-    public AerodromeTool(final String name, final Tool next, CommandLine commandLine) {
+    public AeroDromeTool(final String name, final Tool next, CommandLine commandLine) {
         super(name, next, commandLine);
         // th = new TransactionHandling();
         // nTh = 0;
@@ -240,7 +240,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         // nLock = 0;
         // lockToIndex = new ConcurrentHashMap<ShadowLock, Integer>();
         nVars = 0;
-        varsTrack = new ConcurrentHashMap<AEVarClocks, Integer>();
+        varsTrack = new ConcurrentHashMap<ADVarClocks, Integer>();
 
         lockToTh = new ConcurrentHashMap<ShadowLock, ShadowThread>();
         varToTh = new ConcurrentHashMap<ShadowVar, ShadowThread>();
@@ -344,29 +344,29 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     
     //CS636
-    protected static AEVectorClock ts_get_clockThread(ShadowThread st) {
+    protected static ADVectorClock ts_get_clockThread(ShadowThread st) {
         Assert.panic("Bad");
         return null;
     }
 
-    protected static void ts_set_clockThread(ShadowThread st, AEVectorClock V) {
+    protected static void ts_set_clockThread(ShadowThread st, ADVectorClock V) {
         Assert.panic("Bad");
     }
 
-    protected static AEVectorClock ts_get_clockThreadBegin(ShadowThread st) {
+    protected static ADVectorClock ts_get_clockThreadBegin(ShadowThread st) {
         Assert.panic("Bad");
         return null;
     }
 
-    protected static void ts_set_clockThreadBegin(ShadowThread st, AEVectorClock V) {
+    protected static void ts_set_clockThreadBegin(ShadowThread st, ADVectorClock V) {
         Assert.panic("Bad");
     }
 
-    //Attach a AEVectorClock to each object used as a lock.
-    public static final Decoration<ShadowLock, AEVectorClock> clockLock = ShadowLock.makeDecoration("AE:clockLock",
-    DecorationFactory.Type.MULTIPLE, new DefaultValue<ShadowLock, AEVectorClock>() {
-        public AEVectorClock get(ShadowLock ld) {
-            return new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
+    //Attach a ADVectorClock to each object used as a lock.
+    public static final Decoration<ShadowLock, ADVectorClock> clockLock = ShadowLock.makeDecoration("AE:clockLock",
+    DecorationFactory.Type.MULTIPLE, new DefaultValue<ShadowLock, ADVectorClock>() {
+        public ADVectorClock get(ShadowLock ld) {
+            return new ADVectorClock(INIT_VECTOR_CLOCK_SIZE);
         }
     });
 
@@ -392,7 +392,7 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
             return super.makeShadowVar(event);
         } else {
 
-            AEVarClocks vcs = new AEVarClocks(INIT_VECTOR_CLOCK_SIZE);
+            ADVarClocks vcs = new ADVarClocks(INIT_VECTOR_CLOCK_SIZE);
 
             if(!varsTrack.containsKey(vcs)){
                 varsTrack.put(vcs, nVars);
@@ -413,14 +413,14 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         nestingofThreads.put(st, 0);
 
         if (ts_get_clockThread(st) == null) {
-            final AEVectorClock tV = new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
+            final ADVectorClock tV = new ADVectorClock(INIT_VECTOR_CLOCK_SIZE);
             ts_set_clockThread(st, tV);
         }
 
         ts_get_clockThread(st).setClockIndex(st.getTid(), 1);
 
         if (ts_get_clockThreadBegin(st) == null) {
-            final AEVectorClock tV = new AEVectorClock(INIT_VECTOR_CLOCK_SIZE);
+            final ADVectorClock tV = new ADVectorClock(INIT_VECTOR_CLOCK_SIZE);
             ts_set_clockThreadBegin(st, tV);
         }
 
@@ -446,9 +446,9 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         final ShadowThread st = event.getThread();
         ShadowLock sl = event.getLock();
         if(!st.getLocksHeld().contains(sl)) {
-			clockLock.set(sl, new AEVectorClock(INIT_VECTOR_CLOCK_SIZE));
+			clockLock.set(sl, new ADVectorClock(INIT_VECTOR_CLOCK_SIZE));
         }
-		AEVectorClock L_l = clockLock.get(sl);
+		ADVectorClock L_l = clockLock.get(sl);
 
 		if(lockToTh.containsKey(sl) && !lockToTh.get(sl).equals(st) && vcHandling(L_l, L_l, st)) {
             System.out.println("AERODROME -- acquire -- " + event.toString());
@@ -467,15 +467,15 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         //     acquire.inc(st.getTid());
     }
 
-    public boolean vcHandling(AEVectorClock checkClock, AEVectorClock fromClock, ShadowThread target) {
+    public boolean vcHandling(ADVectorClock checkClock, ADVectorClock fromClock, ShadowThread target) {
 		// int tIndex = threadToIndex.get(target);
 		// int tid = target.getTid();
         boolean violationDetected = false;
-		AEVectorClock C_target_begin = ts_get_clockThreadBegin(target);
+		ADVectorClock C_target_begin = ts_get_clockThreadBegin(target);
 		if(C_target_begin.isLessThanOrEqual(checkClock, target.getTid()) && nestingofThreads.get(target) > 0) {
 			violationDetected = true;
 		}
-		AEVectorClock C_target = ts_get_clockThread(target);
+		ADVectorClock C_target = ts_get_clockThread(target);
 		C_target.updateWithMax(C_target, fromClock);
 		return violationDetected;
 	}
@@ -485,10 +485,10 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         final ShadowThread st = event.getThread();
         ShadowLock sl = event.getLock();
 		if(!st.getLocksHeld().contains(sl)) {
-			clockLock.set(sl, new AEVectorClock(INIT_VECTOR_CLOCK_SIZE));
+			clockLock.set(sl, new ADVectorClock(INIT_VECTOR_CLOCK_SIZE));
         }
-		AEVectorClock C_t = ts_get_clockThread(st);
-		AEVectorClock L_l = clockLock.get(sl);
+		ADVectorClock C_t = ts_get_clockThread(st);
+		ADVectorClock L_l = clockLock.get(sl);
 
 		L_l.copyFrom(C_t);
 		lockToTh.put(sl, st);
@@ -518,8 +518,8 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         SourceLocation sl = event.getAccessInfo().getLoc();
 		ShadowThread st = event.getThread();
         ShadowVar sv = event.getOriginalShadow();
-        if (sv instanceof AEVarClocks) {
-            AEVarClocks sx = (AEVarClocks) sv;
+        if (sv instanceof ADVarClocks) {
+            ADVarClocks sx = (ADVarClocks) sv;
 
             // If source location pair is given, then this call is needed
             // for starting and ending transaction
@@ -536,10 +536,10 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
 
     private static final ThreadLocalCounter methodCallStackHeight = new ThreadLocalCounter("AD", "MethodCallStackHeight", RR.maxTidOption.get());
 
-    protected void read(final AccessEvent event, final ShadowThread st, final AEVarClocks vcs) {
+    protected void read(final AccessEvent event, final ShadowThread st, final ADVarClocks vcs) {
 
-		AEVectorClock C_t = ts_get_clockThread(st);
-		AEVectorClock W_v = vcs.write;
+		ADVectorClock C_t = ts_get_clockThread(st);
+		ADVectorClock W_v = vcs.write;
 
         if(varToTh.containsKey(vcs) && !varToTh.get(vcs).equals(st) && vcHandling(W_v, W_v, st)) {
             System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
@@ -551,9 +551,9 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         //         }
 		// 	}
 		// }
-		AEVectorClock R_v = vcs.read;
+		ADVectorClock R_v = vcs.read;
 		R_v.updateWithMax(R_v, C_t);
-		AEVectorClock chR_v = vcs.readcheck;
+		ADVectorClock chR_v = vcs.readcheck;
         // chR_v.updateMax2WithoutLocal(C_t, st.getTid()threadToIndex.get(st));
         chR_v.updateMax2WithoutLocal(C_t, st.getTid());
 		if(nestingofThreads.get(st) == 0) {
@@ -563,12 +563,12 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
     }
 
 
-    protected void write(final AccessEvent event, final ShadowThread st, final AEVarClocks vcs) {
+    protected void write(final AccessEvent event, final ShadowThread st, final ADVarClocks vcs) {
         boolean violationDetected = false;
-		AEVectorClock W_v = vcs.write;
-		AEVectorClock R_v = vcs.read;
-		AEVectorClock chR_v = vcs.readcheck;
-		AEVectorClock C_t = ts_get_clockThread(st);
+		ADVectorClock W_v = vcs.write;
+		ADVectorClock R_v = vcs.read;
+		ADVectorClock chR_v = vcs.readcheck;
+		ADVectorClock C_t = ts_get_clockThread(st);
 
 		if(varToTh.containsKey(vcs)) {
 			if(!varToTh.get(vcs).equals(st)) {
@@ -682,9 +682,9 @@ public class AerodromeTool extends Tool implements BarrierListener<FTBarrierStat
         //         Epoch.toString(ts_get_E(td)));
     }
 
-    private final Decoration<ShadowThread, AEVectorClock> vectorClockForBarrierEntry = ShadowThread
+    private final Decoration<ShadowThread, ADVectorClock> vectorClockForBarrierEntry = ShadowThread
             .makeDecoration("FT:barrier", DecorationFactory.Type.MULTIPLE,
-                    new NullDefault<ShadowThread, AEVectorClock>());
+                    new NullDefault<ShadowThread, ADVectorClock>());
 
     public void preDoBarrier(BarrierEvent<FTBarrierState> event) {
         // final ShadowThread st = event.getThread();
