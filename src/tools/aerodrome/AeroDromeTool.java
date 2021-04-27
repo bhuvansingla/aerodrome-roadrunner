@@ -20,6 +20,8 @@ import rr.event.AccessEvent;
 import rr.event.AccessEvent.Kind;
 import rr.event.AcquireEvent;
 import rr.event.MethodEvent;
+import rr.event.StartEvent;
+import rr.event.JoinEvent;
 import rr.event.NewThreadEvent;
 import rr.event.ReleaseEvent;
 import rr.state.ShadowLock;
@@ -373,5 +375,59 @@ public class AeroDromeTool extends Tool {
         if(violationDetected) {  
             System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
         }
+    }
+
+    @Override
+    public void preStart(final StartEvent event) {
+        final ShadowThread st = event.getThread();
+        final ShadowThread su = event.getNewThread();
+
+        if(ShadowThread.getThreads().contains(su)) {
+            ADVectorClock C_u = ts_get_clockThread(su);
+            ADVectorClock C_t = ts_get_clockThread(st);
+            C_u.updateWithMax(C_u, C_t);
+            if(nestingofThreads.get(st) == 0) {
+                ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid())+1));
+            }
+        }
+        /*
+         * Safe to access su.V, because u has not started yet. This will give us exclusive access to
+         * it. There may be a race if two or more threads race are starting u, but of course, a
+         * second attempt to start u will crash... RR guarantees that the forked thread will
+         * synchronize with thread t before it does anything else.
+         */
+        // maxAndIncEpochAndCV(su, tV, event.getInfo());
+        // incEpochAndCV(st, event.getInfo());
+
+        super.preStart(event);
+        // if (COUNT_OPERATIONS)
+        //     fork.inc(st.getTid());
+    }
+
+@Override
+    public void postJoin(final JoinEvent event) {
+        final ShadowThread st = event.getThread();
+        final ShadowThread su = event.getJoiningThread();
+
+        if(ShadowThread.getThreads().contains(su)) {
+            ADVectorClock C_u = ts_get_clockThread(su);
+            if(vcHandling(C_u, C_u, st)) {
+                // Return true - a problem here?
+            }
+        }
+        super.postJoin(event);
+        // if (COUNT_OPERATIONS)
+        //     join.inc(st.getTid());
+    }
+
+
+    @Override
+    public void stop(ShadowThread st) {
+        // synchronized (maxEpochPerTid) {
+        //     maxEpochPerTid.set(st.getTid(), ts_get_E(st));
+        // }
+        super.stop(st);
+        // if (COUNT_OPERATIONS)
+        //     other.inc(st.getTid());
     }
 }
