@@ -75,6 +75,7 @@ public class YTest4 extends Thread {
       int temp;
       public void run() {
         for (int i = 0; i < ITERS; i++) {
+          try{Thread.sleep(50);}catch(InterruptedException e){System.out.println(e);}
           y=2;
           System.out.println(i + ". "+Thread.currentThread().getName() + " W(Y)");
           temp = x;

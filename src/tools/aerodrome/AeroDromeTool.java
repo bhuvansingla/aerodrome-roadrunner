@@ -29,6 +29,7 @@ import rr.state.ShadowThread;
 import rr.state.ShadowVar;
 import rr.tool.RR;
 import rr.tool.Tool;
+import tools.util.VectorClock;
 
 @Abbrev("AD")
 public class AeroDromeTool extends Tool {
@@ -89,7 +90,7 @@ public class AeroDromeTool extends Tool {
     //     }
     // }
 
-    
+
     public void readLocationPairFile() {
         try{
             File file = new File(locationPairFilename);
@@ -121,9 +122,9 @@ public class AeroDromeTool extends Tool {
 		nestingofThreads.put(st,  cur_depth + 1);
 
 		if(cur_depth == 0){
-			ADVectorClock C_t = ts_get_clockThread(st);				
-			ADVectorClock C_t_begin =ts_get_clockThreadBegin(st);
-			C_t_begin.copyFrom(C_t);
+			VectorClock C_t = ts_get_clockThread(st);
+			VectorClock C_t_begin =ts_get_clockThreadBegin(st);
+			C_t_begin.copy(C_t);
 		}
     }
 
@@ -134,39 +135,38 @@ public class AeroDromeTool extends Tool {
 		    if(handshakeAtEndEvent(st)) {
                 System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
             }
-            ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));	
+            ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid()) + 1));
 		}
     }
 
     public boolean handshakeAtEndEvent(ShadowThread st) {
 		int tid = st.getTid();
-        ADVectorClock C_t_begin = ts_get_clockThreadBegin(st);;
-		ADVectorClock C_t = ts_get_clockThread(st);
+        VectorClock C_t_begin = ts_get_clockThreadBegin(st);;
+		VectorClock C_t = ts_get_clockThread(st);
 		for(ShadowThread u: ShadowThread.getThreads()) {
 			if(!u.equals(st)) {
-				ADVectorClock C_u = ts_get_clockThread(u);
+				VectorClock C_u = ts_get_clockThread(u);
 				if(C_t_begin.isLessThanOrEqual(C_u, tid) && vcHandling(C_t, C_t, u)) {
                     return true;
                 }
 			}
 		}
 		for(ShadowLock l: st.getLocksHeld()) {
-			ADVectorClock L_l = clockLock.get(l);
+			VectorClock L_l = clockLock.get(l);
 			if(C_t_begin.isLessThanOrEqual(L_l, tid)) {
 				L_l.updateWithMax(L_l, C_t);
 			}
 		}
 		for(ADVarClocks v: varsTrack.keySet()) {
-			ADVectorClock W_v = v.write;
+			VectorClock W_v = v.write;
 			if(C_t_begin.isLessThanOrEqual(W_v, tid)) {
 				W_v.updateWithMax(W_v, C_t);
 			}
-			ADVectorClock R_v = v.read;
-			ADVectorClock chR_v = v.readcheck;
+			VectorClock R_v = v.read;
+			VectorClock chR_v = v.readcheck;
 			if(C_t_begin.isLessThanOrEqual(R_v, tid)) {
 				R_v.updateWithMax(R_v, C_t);
-
-                chR_v.updateMax2WithoutLocal(C_t, tid);
+                chR_v.max2(C_t, tid);
 			}
 		}
 		return false;
@@ -194,28 +194,28 @@ public class AeroDromeTool extends Tool {
         readMethodExcludeFile();
     }
 
-    protected static ADVectorClock ts_get_clockThread(ShadowThread st) {
+    protected static VectorClock ts_get_clockThread(ShadowThread st) {
         Assert.panic("Bad");
         return null;
     }
 
-    protected static void ts_set_clockThread(ShadowThread st, ADVectorClock V) {
+    protected static void ts_set_clockThread(ShadowThread st, VectorClock V) {
         Assert.panic("Bad");
     }
 
-    protected static ADVectorClock ts_get_clockThreadBegin(ShadowThread st) {
+    protected static VectorClock ts_get_clockThreadBegin(ShadowThread st) {
         Assert.panic("Bad");
         return null;
     }
 
-    protected static void ts_set_clockThreadBegin(ShadowThread st, ADVectorClock V) {
+    protected static void ts_set_clockThreadBegin(ShadowThread st, VectorClock V) {
         Assert.panic("Bad");
     }
 
-    public static final Decoration<ShadowLock, ADVectorClock> clockLock = ShadowLock.makeDecoration("AE:clockLock",
-    DecorationFactory.Type.MULTIPLE, new DefaultValue<ShadowLock, ADVectorClock>() {
-        public ADVectorClock get(ShadowLock ld) {
-            return new ADVectorClock(INIT_VECTOR_CLOCK_SIZE);
+    public static final Decoration<ShadowLock, VectorClock> clockLock = ShadowLock.makeDecoration("AE:clockLock",
+    DecorationFactory.Type.MULTIPLE, new DefaultValue<ShadowLock, VectorClock>() {
+        public VectorClock get(ShadowLock ld) {
+            return new VectorClock(INIT_VECTOR_CLOCK_SIZE);
         }
     });
 
@@ -238,20 +238,20 @@ public class AeroDromeTool extends Tool {
 
     @Override
     public void create(NewThreadEvent event) {
-        
+
         final ShadowThread st = event.getThread();
 
         nestingofThreads.put(st, 0);
 
         if (ts_get_clockThread(st) == null) {
-            final ADVectorClock tV = new ADVectorClock(INIT_VECTOR_CLOCK_SIZE);
+            final VectorClock tV = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
             ts_set_clockThread(st, tV);
         }
 
-        ts_get_clockThread(st).setClockIndex(st.getTid(), 1);
+        ts_get_clockThread(st).set(st.getTid(), 1);
 
         if (ts_get_clockThreadBegin(st) == null) {
-            final ADVectorClock tV = new ADVectorClock(INIT_VECTOR_CLOCK_SIZE);
+            final VectorClock tV = new VectorClock(INIT_VECTOR_CLOCK_SIZE);
             ts_set_clockThreadBegin(st, tV);
         }
 
@@ -263,9 +263,9 @@ public class AeroDromeTool extends Tool {
         final ShadowThread st = event.getThread();
         ShadowLock sl = event.getLock();
         if(!st.getLocksHeld().contains(sl)) {
-			clockLock.set(sl, new ADVectorClock(INIT_VECTOR_CLOCK_SIZE));
+			clockLock.set(sl, new VectorClock(INIT_VECTOR_CLOCK_SIZE));
         }
-		ADVectorClock L_l = clockLock.get(sl);
+		VectorClock L_l = clockLock.get(sl);
 
 		if(lockToTh.containsKey(sl) && !lockToTh.get(sl).equals(st) && vcHandling(L_l, L_l, st)) {
             System.out.println("AERODROME -- acquire -- " + event.toString());
@@ -275,13 +275,13 @@ public class AeroDromeTool extends Tool {
         //     acquire.inc(st.getTid());
     }
 
-    public boolean vcHandling(ADVectorClock checkClock, ADVectorClock fromClock, ShadowThread target) {
+    public boolean vcHandling(VectorClock checkClock, VectorClock fromClock, ShadowThread target) {
         boolean violationDetected = false;
-		ADVectorClock C_target_begin = ts_get_clockThreadBegin(target);
+		VectorClock C_target_begin = ts_get_clockThreadBegin(target);
 		if(C_target_begin.isLessThanOrEqual(checkClock, target.getTid()) && nestingofThreads.get(target) > 0) {
 			violationDetected = true;
 		}
-		ADVectorClock C_target = ts_get_clockThread(target);
+		VectorClock C_target = ts_get_clockThread(target);
 		C_target.updateWithMax(C_target, fromClock);
 		return violationDetected;
 	}
@@ -291,15 +291,15 @@ public class AeroDromeTool extends Tool {
         final ShadowThread st = event.getThread();
         ShadowLock sl = event.getLock();
 		if(!st.getLocksHeld().contains(sl)) {
-			clockLock.set(sl, new ADVectorClock(INIT_VECTOR_CLOCK_SIZE));
+			clockLock.set(sl, new VectorClock(INIT_VECTOR_CLOCK_SIZE));
         }
-		ADVectorClock C_t = ts_get_clockThread(st);
-		ADVectorClock L_l = clockLock.get(sl);
+		VectorClock C_t = ts_get_clockThread(st);
+		VectorClock L_l = clockLock.get(sl);
 
-		L_l.copyFrom(C_t);
+		L_l.copy(C_t);
 		lockToTh.put(sl, st);
 		if(nestingofThreads.get(st) == 0) {
-		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
+		    ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid()) + 1));
 		}
         super.release(event);
         // if (COUNT_OPERATIONS)
@@ -311,7 +311,7 @@ public class AeroDromeTool extends Tool {
         checkMethod(me);
         super.enter(me);
     }
-    
+
     @Override
     public void exit(MethodEvent me) {
         checkMethod(me);
@@ -338,28 +338,28 @@ public class AeroDromeTool extends Tool {
 
     protected void read(final AccessEvent event, final ShadowThread st, final ADVarClocks vcs) {
 
-		ADVectorClock C_t = ts_get_clockThread(st);
-		ADVectorClock W_v = vcs.write;
+		VectorClock C_t = ts_get_clockThread(st);
+		VectorClock W_v = vcs.write;
 
         if(varToTh.containsKey(vcs) && !varToTh.get(vcs).equals(st) && vcHandling(W_v, W_v, st)) {
             System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
         }
-		ADVectorClock R_v = vcs.read;
+		VectorClock R_v = vcs.read;
 		R_v.updateWithMax(R_v, C_t);
-		ADVectorClock chR_v = vcs.readcheck;
-        chR_v.updateMax2WithoutLocal(C_t, st.getTid());
+		VectorClock chR_v = vcs.readcheck;
+        chR_v.max2(C_t, st.getTid());
 		if(nestingofThreads.get(st) == 0) {
-		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
+		    ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid()) + 1));
 		}
     }
 
 
     protected void write(final AccessEvent event, final ShadowThread st, final ADVarClocks vcs) {
         boolean violationDetected = false;
-		ADVectorClock W_v = vcs.write;
-		ADVectorClock R_v = vcs.read;
-		ADVectorClock chR_v = vcs.readcheck;
-		ADVectorClock C_t = ts_get_clockThread(st);
+		VectorClock W_v = vcs.write;
+		VectorClock R_v = vcs.read;
+		VectorClock chR_v = vcs.readcheck;
+		VectorClock C_t = ts_get_clockThread(st);
 
 		if(varToTh.containsKey(vcs)) {
 			if(!varToTh.get(vcs).equals(st)) {
@@ -367,12 +367,12 @@ public class AeroDromeTool extends Tool {
 			}
 		}
 		violationDetected |= vcHandling(chR_v, R_v, st);
-		W_v.copyFrom(C_t);
+		W_v.copy(C_t);
 		varToTh.put(vcs, st);
 		if(nestingofThreads.get(st) == 0) {
-		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
+		    ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid()) + 1));
 		}
-        if(violationDetected) {  
+        if(violationDetected) {
             System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
         }
     }
@@ -383,11 +383,11 @@ public class AeroDromeTool extends Tool {
         final ShadowThread su = event.getNewThread();
 
         if(ShadowThread.getThreads().contains(su)) {
-            ADVectorClock C_u = ts_get_clockThread(su);
-            ADVectorClock C_t = ts_get_clockThread(st);
+            VectorClock C_u = ts_get_clockThread(su);
+            VectorClock C_t = ts_get_clockThread(st);
             C_u.updateWithMax(C_u, C_t);
             if(nestingofThreads.get(st) == 0) {
-                ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid())+1));
+                ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid())+1));
             }
         }
         /*
@@ -410,7 +410,7 @@ public class AeroDromeTool extends Tool {
         final ShadowThread su = event.getJoiningThread();
 
         if(ShadowThread.getThreads().contains(su)) {
-            ADVectorClock C_u = ts_get_clockThread(su);
+            VectorClock C_u = ts_get_clockThread(su);
             if(vcHandling(C_u, C_u, st)) {
                 // Return true - a problem here?
             }
