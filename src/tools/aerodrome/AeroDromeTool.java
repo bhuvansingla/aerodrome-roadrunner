@@ -21,6 +21,8 @@ import rr.RRMain;
 import rr.annotations.Abbrev;
 import rr.event.AccessEvent;
 import rr.event.AccessEvent.Kind;
+import rr.meta.SourceLocation;
+import rr.meta.MethodInfo;
 import rr.event.AcquireEvent;
 import rr.event.MethodEvent;
 import rr.event.StartEvent;
@@ -56,11 +58,11 @@ public class AeroDromeTool extends Tool {
     // This list contains the method names to exclude.
     private static List<String> methodsToExclude;
 
-    Set<String> transactionEndViolations = ConcurrentHashMap.newKeySet();
-    Set<String> readViolations = ConcurrentHashMap.newKeySet();
-    Set<String> writeViolations = ConcurrentHashMap.newKeySet();
-    Set<String> joinViolations = ConcurrentHashMap.newKeySet();
-    Set<String> acquireViolations = ConcurrentHashMap.newKeySet();
+    Set<MethodInfo> transactionEndViolations = ConcurrentHashMap.newKeySet();
+    Set<SourceLocation> readViolations = ConcurrentHashMap.newKeySet();
+    Set<SourceLocation> writeViolations = ConcurrentHashMap.newKeySet();
+    Set<SourceLocation> joinViolations = ConcurrentHashMap.newKeySet();
+    Set<SourceLocation> acquireViolations = ConcurrentHashMap.newKeySet();
 
 
     private static final ThreadLocalCounter readCounter = new ThreadLocalCounter("AD", "Read", RR.maxTidOption.get());
@@ -160,7 +162,7 @@ public class AeroDromeTool extends Tool {
 		nestingofThreads.put(st, nestingofThreads.get(st)-1);
 		if(nestingofThreads.get(st) == 0) {
 		    if(handshakeAtEndEvent(st)) {
-                transactionEndViolations.add(me.getInfo().toString());
+                transactionEndViolations.add(me.getInfo());
                 // System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
             }
             ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));	
@@ -312,7 +314,7 @@ public class AeroDromeTool extends Tool {
 		ADVectorClock L_l = clockLock.get(sl);
 
 		if(lockToTh.containsKey(sl) && !lockToTh.get(sl).equals(st) && vcHandling(L_l, L_l, st)) {
-            acquireViolations.add(event.getInfo().getLoc().toString());
+            acquireViolations.add(event.getInfo().getLoc());
             // System.out.println("AERODROME -- acquire -- " + event.toString());
         }
         super.acquire(event);
@@ -402,7 +404,7 @@ public class AeroDromeTool extends Tool {
 		ADVectorClock W_v = vcs.write;
 
         if(varToTh.containsKey(vcs) && !varToTh.get(vcs).equals(st) && vcHandling(W_v, W_v, st)) {
-            readViolations.add(event.getAccessInfo().getLoc().toString());
+            readViolations.add(event.getAccessInfo().getLoc());
             // System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
         }
 		ADVectorClock R_v = vcs.read;
@@ -438,7 +440,7 @@ public class AeroDromeTool extends Tool {
 		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
 		}
         if(violationDetected) {  
-            writeViolations.add(event.getAccessInfo().getLoc().toString());
+            writeViolations.add(event.getAccessInfo().getLoc());
             // System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
         }
 
@@ -476,7 +478,7 @@ public class AeroDromeTool extends Tool {
         if(ShadowThread.getThreads().contains(su)) {
             ADVectorClock C_u = ts_get_clockThread(su);
             if(vcHandling(C_u, C_u, st)) {
-                joinViolations.add(event.getInfo().getLoc().toString());
+                joinViolations.add(event.getInfo().getLoc());
             }
         }
         super.postJoin(event);
@@ -495,20 +497,20 @@ public class AeroDromeTool extends Tool {
     @Override
     public void printXML(XMLWriter xml) {
 
-        for (String s : transactionEndViolations) {
-            xml.print("violation", "transactionEnd: " + s);
+        for (MethodInfo s : transactionEndViolations) {
+            xml.print("violation", "transactionEnd: " + s.toString());
         }
-        for (String s : readViolations) {
-            xml.print("violation", "read: " + s);
+        for (SourceLocation s : readViolations) {
+            xml.print("violation", "read: Location -> " + s + " Method -> " + s.getMethod().toString());
         }
-        for (String s : writeViolations) {
-            xml.print("violation", "write: " + s);
+        for (SourceLocation s : writeViolations) {
+            xml.print("violation", "write:Location ->  " + s + " Method -> " + s.getMethod().toString());
         }
-        for (String s : acquireViolations) {
-            xml.print("violation", "acquire: " + s);
+        for (SourceLocation s : acquireViolations) {
+            xml.print("violation", "acquire: Location -> " + s + " Method -> " + s.getMethod().toString());
         }
-        for (String s : joinViolations) {
-            xml.print("violation", "join: " + s);
+        for (SourceLocation s : joinViolations) {
+            xml.print("violation", "join: Location -> " + s + " Method -> " + s.getMethod().toString());
         }
     }
 }
