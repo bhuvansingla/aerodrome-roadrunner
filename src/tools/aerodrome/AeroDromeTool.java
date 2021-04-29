@@ -61,6 +61,18 @@ public class AeroDromeTool extends Tool {
     Set<String> joinViolations = ConcurrentHashMap.newKeySet();
     Set<String> acquireViolations = ConcurrentHashMap.newKeySet();
 
+
+    private static final ThreadLocalCounter readCounter = new ThreadLocalCounter("AD", "Read", RR.maxTidOption.get());
+    private static final ThreadLocalCounter writeCounter = new ThreadLocalCounter("AD", "Write", RR.maxTidOption.get());
+    private static final ThreadLocalCounter methodBeginCounter = new ThreadLocalCounter("AD", "Method Begin", RR.maxTidOption.get());
+    private static final ThreadLocalCounter methodEndCounter = new ThreadLocalCounter("AD", "Method End", RR.maxTidOption.get());
+    private static final ThreadLocalCounter transactionBeginCounter = new ThreadLocalCounter("AD", "Transaction Begin", RR.maxTidOption.get());
+    private static final ThreadLocalCounter transactionEndCounter = new ThreadLocalCounter("AD", "Transaction End", RR.maxTidOption.get());
+    private static final ThreadLocalCounter acquireCounter = new ThreadLocalCounter("AD", "Acquire", RR.maxTidOption.get());
+    private static final ThreadLocalCounter releaseCounter = new ThreadLocalCounter("AD", "Release", RR.maxTidOption.get());
+    private static final ThreadLocalCounter forkCounter = new ThreadLocalCounter("AD", "Fork", RR.maxTidOption.get());
+    private static final ThreadLocalCounter joinCounter = new ThreadLocalCounter("AD", "Join", RR.maxTidOption.get());
+
     public void checkMethod(MethodEvent me) {
         int tid = me.getThread().getTid();
         if(!methodsToExclude.contains(me.getInfo().toString())){
@@ -134,6 +146,10 @@ public class AeroDromeTool extends Tool {
 			ADVectorClock C_t_begin =ts_get_clockThreadBegin(st);
 			C_t_begin.copyFrom(C_t);
 		}
+
+        if(COUNT_OPERATIONS) {
+            transactionBeginCounter.inc(st.getTid());
+        }
     }
 
     public void transactionEnd(MethodEvent me){
@@ -146,6 +162,10 @@ public class AeroDromeTool extends Tool {
             }
             ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));	
 		}
+
+        if(COUNT_OPERATIONS) {
+            transactionEndCounter.inc(st.getTid());
+        }
     }
 
     public boolean handshakeAtEndEvent(ShadowThread st) {
@@ -282,8 +302,10 @@ public class AeroDromeTool extends Tool {
             // System.out.println("AERODROME -- acquire -- " + event.toString());
         }
         super.acquire(event);
-        // if (COUNT_OPERATIONS)
-        //     acquire.inc(st.getTid());
+
+        if (COUNT_OPERATIONS) {
+            acquireCounter.inc(st.getTid());
+        }
     }
 
     public boolean vcHandling(ADVectorClock checkClock, ADVectorClock fromClock, ShadowThread target) {
@@ -313,20 +335,30 @@ public class AeroDromeTool extends Tool {
 		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
 		}
         super.release(event);
-        // if (COUNT_OPERATIONS)
-        //     release.inc(st.getTid());
+
+        if (COUNT_OPERATIONS) {
+            releaseCounter.inc(st.getTid());
+        }
     }
 
     @Override
     public void enter(MethodEvent me) {
         checkMethod(me);
         super.enter(me);
+
+        if(COUNT_OPERATIONS) {
+            methodBeginCounter.inc(me.getThread().getTid());
+        }
     }
     
     @Override
     public void exit(MethodEvent me) {
         checkMethod(me);
         super.exit(me);
+
+        if(COUNT_OPERATIONS) {
+            methodEndCounter.inc(me.getThread().getTid());
+        }
     }
 
     @Override
@@ -345,7 +377,7 @@ public class AeroDromeTool extends Tool {
         }
     }
 
-    private static final ThreadLocalCounter methodCallStackHeight = new ThreadLocalCounter("AD", "MethodCallStackHeight", RR.maxTidOption.get());
+    private static final ThreadLocalCounter methodCallStackHeight = new ThreadLocalCounter("AD", "Other (Ignore)", RR.maxTidOption.get());
 
     protected void read(final AccessEvent event, final ShadowThread st, final ADVarClocks vcs) {
 
@@ -363,6 +395,10 @@ public class AeroDromeTool extends Tool {
 		if(nestingofThreads.get(st) == 0) {
 		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
 		}
+
+        if(COUNT_OPERATIONS) {
+            readCounter.inc(st.getTid());
+        }
     }
 
 
@@ -386,7 +422,11 @@ public class AeroDromeTool extends Tool {
 		}
         if(violationDetected) {  
             writeViolations.add(event.getAccessInfo().getLoc().toString());
-            System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
+            // System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
+        }
+
+        if(COUNT_OPERATIONS) {
+            writeCounter.inc(st.getTid());
         }
     }
 
@@ -405,8 +445,10 @@ public class AeroDromeTool extends Tool {
         }
 
         super.preStart(event);
-        // if (COUNT_OPERATIONS)
-        //     fork.inc(st.getTid());
+
+        if (COUNT_OPERATIONS) {
+            forkCounter.inc(st.getTid());
+        }
     }
 
 @Override
@@ -421,17 +463,16 @@ public class AeroDromeTool extends Tool {
             }
         }
         super.postJoin(event);
-        // if (COUNT_OPERATIONS)
-        //     join.inc(st.getTid());
+
+        if (COUNT_OPERATIONS) {
+            joinCounter.inc(st.getTid());
+        }
     }
 
 
     @Override
     public void stop(ShadowThread st) {
-  
         super.stop(st);
-        // if (COUNT_OPERATIONS)
-        //     other.inc(st.getTid());
     }
 
     @Override

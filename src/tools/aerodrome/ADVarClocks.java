@@ -2,14 +2,13 @@
 
   import acme.util.count.Counter;
   import rr.state.ShadowVar;
-  import tools.aerodrome.ADVectorClock;
 
   public class ADVarClocks implements ShadowVar {
       public final ADVectorClock read;
       public final ADVectorClock write;
       public final ADVectorClock readcheck;
 
-      private static Counter ADVarClocks = new Counter("ADVarClocks", "triplet Objects");
+      private static Counter ADVarClocks = new Counter("AD", "Other (Ignore)");
 
       public ADVarClocks(int dim) {
           read = new ADVectorClock(dim);
