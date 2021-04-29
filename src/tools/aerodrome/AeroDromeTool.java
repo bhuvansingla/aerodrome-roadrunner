@@ -166,7 +166,7 @@ public class AeroDromeTool extends Tool {
                 transactionEndViolations.add(me.getInfo());
                 // System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
             }
-            ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
+            ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid()) + 1));
 		}
 
         if(COUNT_OPERATIONS) {
