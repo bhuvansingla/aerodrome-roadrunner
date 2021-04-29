@@ -43,8 +43,9 @@ public class AeroDromeTool extends Tool {
     public ConcurrentHashMap <ShadowVar, ShadowThread> varToTh;
     public ConcurrentHashMap <ShadowThread, Integer> nestingofThreads;
 
-    private static String locationPairFilename;
-    private static String methodExcludeFilename;
+    // private static String locationPairFilename;
+    private static boolean fileType;
+    private static String transactionFilename;
 
     // This map contains the race pairs provided in the input file.
     private static ConcurrentHashMap<String, String> transactionLocations;
@@ -58,7 +59,7 @@ public class AeroDromeTool extends Tool {
             if(me.isEnter()) {
                 if (methodCallStackHeight.getLocal(tid) == 0){
                     // System.out.println(tid + " Transaction Begin: " + me.getInfo().toString());
-                    transactionBegin(me);
+                    transactionBegin(me.getThread());
                 }
                 else {
                     // System.out.println(tid + " (Redundant) Transaction Begin: " + me.getInfo().toString());
@@ -81,18 +82,19 @@ public class AeroDromeTool extends Tool {
         }
     }
 
-    // public void CheckLocation(String sloc) {
-    //     if(transactionLocations.containsKey(sloc)) {
-    //         transactionBegin();
-    //     } else if (transactionLocations.containsValue(sloc)) {
-    //         transactionEnd();
-    //     }
-    // }
-
+    public void checkLocation(AccessEvent me) {
+        String sloc = me.getAccessInfo().getLoc().toString();
+        if(transactionLocations.containsKey(sloc)) {
+            transactionBegin(me.getThread());
+        } 
+        else if (transactionLocations.containsValue(sloc)) {
+            transactionEnd2(me.getThread());
+        }
+    }
     
     public void readLocationPairFile() {
         try{
-            File file = new File(locationPairFilename);
+            File file = new File(transactionFilename);
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String pairline;
@@ -105,7 +107,7 @@ public class AeroDromeTool extends Tool {
 
     public void readMethodExcludeFile() {
         try{
-            File file = new File(methodExcludeFilename);
+            File file = new File(transactionFilename);
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line;
@@ -115,8 +117,9 @@ public class AeroDromeTool extends Tool {
         } catch(IOException e) { e.printStackTrace(); }
     }
 
-    public void transactionBegin(MethodEvent me){
-        ShadowThread st = me.getThread();
+    // public void transactionBegin(MethodEvent me){
+    public void transactionBegin(ShadowThread st){
+        // ShadowThread st = me.getThread();
 		int cur_depth = nestingofThreads.get(st);
 		nestingofThreads.put(st,  cur_depth + 1);
 
@@ -133,6 +136,16 @@ public class AeroDromeTool extends Tool {
 		if(nestingofThreads.get(st) == 0) {
 		    if(handshakeAtEndEvent(st)) {
                 System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
+            }
+            ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));	
+		}
+    }
+    public void transactionEnd2(ShadowThread st){
+        // ShadowThread st = me.getThread();
+		nestingofThreads.put(st, nestingofThreads.get(st)-1);
+		if(nestingofThreads.get(st) == 0) {
+		    if(handshakeAtEndEvent(st)) {
+                // System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
             }
             ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));	
 		}
@@ -172,7 +185,6 @@ public class AeroDromeTool extends Tool {
 		return false;
 	}
 
-
     public AeroDromeTool(final String name, final Tool next, CommandLine commandLine) {
         super(name, next, commandLine);
         nVars = 0;
@@ -183,15 +195,17 @@ public class AeroDromeTool extends Tool {
         nestingofThreads = new ConcurrentHashMap<ShadowThread, Integer>();
 
 
-        locationPairFilename = rr.RRMain.locationPairFileOption.get();
-        methodExcludeFilename = rr.RRMain.methodExcludeFileOption.get();
+        // locationPairFilename = rr.RRMain.locationPairFileOption.get();
+        fileType = rr.RRMain.fileTypeOption.get();
+        transactionFilename = rr.RRMain.transactionFileOption.get();
 
         transactionLocations = new ConcurrentHashMap<String, String>();
         methodsToExclude = new ArrayList<String>();
 
-
-        readLocationPairFile();
-        readMethodExcludeFile();
+        if(fileType)
+            readMethodExcludeFile();
+        else
+            readLocationPairFile();
     }
 
     protected static ADVectorClock ts_get_clockThread(ShadowThread st) {
@@ -308,13 +322,15 @@ public class AeroDromeTool extends Tool {
 
     @Override
     public void enter(MethodEvent me) {
-        checkMethod(me);
+        if(fileType)
+            checkMethod(me);
         super.enter(me);
     }
     
     @Override
     public void exit(MethodEvent me) {
-        checkMethod(me);
+        if(fileType)
+            checkMethod(me);
         super.exit(me);
     }
 
@@ -324,6 +340,7 @@ public class AeroDromeTool extends Tool {
         ShadowVar sv = event.getOriginalShadow();
         if (sv instanceof ADVarClocks) {
             ADVarClocks sx = (ADVarClocks) sv;
+            if(!fileType) checkLocation(event);
             if (event.isWrite()) {
                 write(event, st, sx);
             } else {
