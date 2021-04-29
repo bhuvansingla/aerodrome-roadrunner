@@ -512,5 +512,9 @@ public class AeroDromeTool extends Tool {
         for (SourceLocation s : joinViolations) {
             xml.print("violation", "join: Location -> " + s + " Method -> " + s.getMethod().toString());
         }
+        for (String s : methodsToExclude) {
+            xml.print("excluded method", s);
+
+        }
     }
 }
