@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
 import acme.util.Assert;
 import acme.util.count.ThreadLocalCounter;
@@ -14,6 +15,8 @@ import acme.util.decorations.Decoration;
 import acme.util.decorations.DecorationFactory;
 import acme.util.decorations.DefaultValue;
 import acme.util.option.CommandLine;
+import acme.util.io.XMLWriter;
+
 import rr.RRMain;
 import rr.annotations.Abbrev;
 import rr.event.AccessEvent;
@@ -51,6 +54,12 @@ public class AeroDromeTool extends Tool {
 
     // This list contains the method names to exclude.
     private static List<String> methodsToExclude;
+
+    Set<String> transactionEndViolations = ConcurrentHashMap.newKeySet();
+    Set<String> readViolations = ConcurrentHashMap.newKeySet();
+    Set<String> writeViolations = ConcurrentHashMap.newKeySet();
+    Set<String> joinViolations = ConcurrentHashMap.newKeySet();
+    Set<String> acquireViolations = ConcurrentHashMap.newKeySet();
 
     public void checkMethod(MethodEvent me) {
         int tid = me.getThread().getTid();
@@ -132,7 +141,8 @@ public class AeroDromeTool extends Tool {
 		nestingofThreads.put(st, nestingofThreads.get(st)-1);
 		if(nestingofThreads.get(st) == 0) {
 		    if(handshakeAtEndEvent(st)) {
-                System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
+                transactionEndViolations.add(me.getInfo().toString());
+                // System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
             }
             ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));	
 		}
@@ -268,7 +278,8 @@ public class AeroDromeTool extends Tool {
 		ADVectorClock L_l = clockLock.get(sl);
 
 		if(lockToTh.containsKey(sl) && !lockToTh.get(sl).equals(st) && vcHandling(L_l, L_l, st)) {
-            System.out.println("AERODROME -- acquire -- " + event.toString());
+            acquireViolations.add(event.getInfo().getLoc().toString());
+            // System.out.println("AERODROME -- acquire -- " + event.toString());
         }
         super.acquire(event);
         // if (COUNT_OPERATIONS)
@@ -342,7 +353,8 @@ public class AeroDromeTool extends Tool {
 		ADVectorClock W_v = vcs.write;
 
         if(varToTh.containsKey(vcs) && !varToTh.get(vcs).equals(st) && vcHandling(W_v, W_v, st)) {
-            System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
+            readViolations.add(event.getAccessInfo().getLoc().toString());
+            // System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
         }
 		ADVectorClock R_v = vcs.read;
 		R_v.updateWithMax(R_v, C_t);
@@ -373,6 +385,7 @@ public class AeroDromeTool extends Tool {
 		    ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
 		}
         if(violationDetected) {  
+            writeViolations.add(event.getAccessInfo().getLoc().toString());
             System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
         }
     }
@@ -390,14 +403,6 @@ public class AeroDromeTool extends Tool {
                 ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid())+1));
             }
         }
-        /*
-         * Safe to access su.V, because u has not started yet. This will give us exclusive access to
-         * it. There may be a race if two or more threads race are starting u, but of course, a
-         * second attempt to start u will crash... RR guarantees that the forked thread will
-         * synchronize with thread t before it does anything else.
-         */
-        // maxAndIncEpochAndCV(su, tV, event.getInfo());
-        // incEpochAndCV(st, event.getInfo());
 
         super.preStart(event);
         // if (COUNT_OPERATIONS)
@@ -412,7 +417,7 @@ public class AeroDromeTool extends Tool {
         if(ShadowThread.getThreads().contains(su)) {
             ADVectorClock C_u = ts_get_clockThread(su);
             if(vcHandling(C_u, C_u, st)) {
-                // Return true - a problem here?
+                joinViolations.add(event.getInfo().getLoc().toString());
             }
         }
         super.postJoin(event);
@@ -423,11 +428,29 @@ public class AeroDromeTool extends Tool {
 
     @Override
     public void stop(ShadowThread st) {
-        // synchronized (maxEpochPerTid) {
-        //     maxEpochPerTid.set(st.getTid(), ts_get_E(st));
-        // }
+  
         super.stop(st);
         // if (COUNT_OPERATIONS)
         //     other.inc(st.getTid());
+    }
+
+    @Override
+    public void printXML(XMLWriter xml) {
+
+        for (String s : transactionEndViolations) {
+            xml.print("violation", "transactionEnd: " + s);
+        }
+        for (String s : readViolations) {
+            xml.print("violation", "read: " + s);
+        }
+        for (String s : writeViolations) {
+            xml.print("violation", "write: " + s);
+        }
+        for (String s : acquireViolations) {
+            xml.print("violation", "acquire: " + s);
+        }
+        for (String s : joinViolations) {
+            xml.print("violation", "join: " + s);
+        }
     }
 }
