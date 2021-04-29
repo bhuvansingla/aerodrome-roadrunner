@@ -9,7 +9,7 @@
       public final VectorClock write;
       public final VectorClock readcheck;
 
-      private static Counter ADVarClocks = new Counter("ADVarClocks", "triplet Objects");
+      private static Counter ADVarClocks = new Counter("AD", "Other (Ignore)");
 
       public ADVarClocks(int dim) {
           read = new VectorClock(dim);

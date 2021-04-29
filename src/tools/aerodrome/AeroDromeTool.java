@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
 import acme.util.Assert;
 import acme.util.count.ThreadLocalCounter;
@@ -14,10 +15,14 @@ import acme.util.decorations.Decoration;
 import acme.util.decorations.DecorationFactory;
 import acme.util.decorations.DefaultValue;
 import acme.util.option.CommandLine;
+import acme.util.io.XMLWriter;
+
 import rr.RRMain;
 import rr.annotations.Abbrev;
 import rr.event.AccessEvent;
 import rr.event.AccessEvent.Kind;
+import rr.meta.SourceLocation;
+import rr.meta.MethodInfo;
 import rr.event.AcquireEvent;
 import rr.event.MethodEvent;
 import rr.event.StartEvent;
@@ -44,8 +49,9 @@ public class AeroDromeTool extends Tool {
     public ConcurrentHashMap <ShadowVar, ShadowThread> varToTh;
     public ConcurrentHashMap <ShadowThread, Integer> nestingofThreads;
 
-    private static String locationPairFilename;
-    private static String methodExcludeFilename;
+    // private static String locationPairFilename;
+    private static boolean fileType;
+    private static String transactionFilename;
 
     // This map contains the race pairs provided in the input file.
     private static ConcurrentHashMap<String, String> transactionLocations;
@@ -53,13 +59,31 @@ public class AeroDromeTool extends Tool {
     // This list contains the method names to exclude.
     private static List<String> methodsToExclude;
 
+    Set<MethodInfo> transactionEndViolations = ConcurrentHashMap.newKeySet();
+    Set<SourceLocation> readViolations = ConcurrentHashMap.newKeySet();
+    Set<SourceLocation> writeViolations = ConcurrentHashMap.newKeySet();
+    Set<SourceLocation> joinViolations = ConcurrentHashMap.newKeySet();
+    Set<SourceLocation> acquireViolations = ConcurrentHashMap.newKeySet();
+
+
+    private static final ThreadLocalCounter readCounter = new ThreadLocalCounter("AD", "Read", RR.maxTidOption.get());
+    private static final ThreadLocalCounter writeCounter = new ThreadLocalCounter("AD", "Write", RR.maxTidOption.get());
+    private static final ThreadLocalCounter methodBeginCounter = new ThreadLocalCounter("AD", "Method Begin", RR.maxTidOption.get());
+    private static final ThreadLocalCounter methodEndCounter = new ThreadLocalCounter("AD", "Method End", RR.maxTidOption.get());
+    private static final ThreadLocalCounter transactionBeginCounter = new ThreadLocalCounter("AD", "Transaction Begin", RR.maxTidOption.get());
+    private static final ThreadLocalCounter transactionEndCounter = new ThreadLocalCounter("AD", "Transaction End", RR.maxTidOption.get());
+    private static final ThreadLocalCounter acquireCounter = new ThreadLocalCounter("AD", "Acquire", RR.maxTidOption.get());
+    private static final ThreadLocalCounter releaseCounter = new ThreadLocalCounter("AD", "Release", RR.maxTidOption.get());
+    private static final ThreadLocalCounter forkCounter = new ThreadLocalCounter("AD", "Fork", RR.maxTidOption.get());
+    private static final ThreadLocalCounter joinCounter = new ThreadLocalCounter("AD", "Join", RR.maxTidOption.get());
+
     public void checkMethod(MethodEvent me) {
         int tid = me.getThread().getTid();
         if(!methodsToExclude.contains(me.getInfo().toString())){
             if(me.isEnter()) {
                 if (methodCallStackHeight.getLocal(tid) == 0){
                     // System.out.println(tid + " Transaction Begin: " + me.getInfo().toString());
-                    transactionBegin(me);
+                    transactionBegin(me.getThread());
                 }
                 else {
                     // System.out.println(tid + " (Redundant) Transaction Begin: " + me.getInfo().toString());
@@ -82,18 +106,19 @@ public class AeroDromeTool extends Tool {
         }
     }
 
-    // public void CheckLocation(String sloc) {
-    //     if(transactionLocations.containsKey(sloc)) {
-    //         transactionBegin();
-    //     } else if (transactionLocations.containsValue(sloc)) {
-    //         transactionEnd();
-    //     }
-    // }
-
+    public void checkLocation(AccessEvent me) {
+        String sloc = me.getAccessInfo().getLoc().toString();
+        if(transactionLocations.containsKey(sloc)) {
+            transactionBegin(me.getThread());
+        }
+        else if (transactionLocations.containsValue(sloc)) {
+            transactionEnd2(me.getThread());
+        }
+    }
 
     public void readLocationPairFile() {
         try{
-            File file = new File(locationPairFilename);
+            File file = new File(transactionFilename);
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String pairline;
@@ -106,7 +131,7 @@ public class AeroDromeTool extends Tool {
 
     public void readMethodExcludeFile() {
         try{
-            File file = new File(methodExcludeFilename);
+            File file = new File(transactionFilename);
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             String line;
@@ -116,8 +141,9 @@ public class AeroDromeTool extends Tool {
         } catch(IOException e) { e.printStackTrace(); }
     }
 
-    public void transactionBegin(MethodEvent me){
-        ShadowThread st = me.getThread();
+    // public void transactionBegin(MethodEvent me){
+    public void transactionBegin(ShadowThread st){
+        // ShadowThread st = me.getThread();
 		int cur_depth = nestingofThreads.get(st);
 		nestingofThreads.put(st,  cur_depth + 1);
 
@@ -126,6 +152,10 @@ public class AeroDromeTool extends Tool {
 			VectorClock C_t_begin =ts_get_clockThreadBegin(st);
 			C_t_begin.copy(C_t);
 		}
+
+        if(COUNT_OPERATIONS) {
+            transactionBeginCounter.inc(st.getTid());
+        }
     }
 
     public void transactionEnd(MethodEvent me){
@@ -133,7 +163,22 @@ public class AeroDromeTool extends Tool {
 		nestingofThreads.put(st, nestingofThreads.get(st)-1);
 		if(nestingofThreads.get(st) == 0) {
 		    if(handshakeAtEndEvent(st)) {
-                System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
+                transactionEndViolations.add(me.getInfo());
+                // System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
+            }
+            ts_get_clockThread(st).setClockIndex(st.getTid(), (Integer)(ts_get_clockThread(st).getClockIndex(st.getTid()) + 1));
+		}
+
+        if(COUNT_OPERATIONS) {
+            transactionEndCounter.inc(st.getTid());
+        }
+    }
+    public void transactionEnd2(ShadowThread st){
+        // ShadowThread st = me.getThread();
+		nestingofThreads.put(st, nestingofThreads.get(st)-1);
+		if(nestingofThreads.get(st) == 0) {
+		    if(handshakeAtEndEvent(st)) {
+                // System.out.println("AERODROME -- transactionEnd -- " + me.getInfo().toString());
             }
             ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid()) + 1));
 		}
@@ -172,7 +217,6 @@ public class AeroDromeTool extends Tool {
 		return false;
 	}
 
-
     public AeroDromeTool(final String name, final Tool next, CommandLine commandLine) {
         super(name, next, commandLine);
         nVars = 0;
@@ -183,15 +227,17 @@ public class AeroDromeTool extends Tool {
         nestingofThreads = new ConcurrentHashMap<ShadowThread, Integer>();
 
 
-        locationPairFilename = rr.RRMain.locationPairFileOption.get();
-        methodExcludeFilename = rr.RRMain.methodExcludeFileOption.get();
+        // locationPairFilename = rr.RRMain.locationPairFileOption.get();
+        fileType = rr.RRMain.fileTypeOption.get();
+        transactionFilename = rr.RRMain.transactionFileOption.get();
 
         transactionLocations = new ConcurrentHashMap<String, String>();
         methodsToExclude = new ArrayList<String>();
 
-
-        readLocationPairFile();
-        readMethodExcludeFile();
+        if(fileType)
+            readMethodExcludeFile();
+        else
+            readLocationPairFile();
     }
 
     protected static VectorClock ts_get_clockThread(ShadowThread st) {
@@ -268,11 +314,14 @@ public class AeroDromeTool extends Tool {
 		VectorClock L_l = clockLock.get(sl);
 
 		if(lockToTh.containsKey(sl) && !lockToTh.get(sl).equals(st) && vcHandling(L_l, L_l, st)) {
-            System.out.println("AERODROME -- acquire -- " + event.toString());
+            acquireViolations.add(event.getInfo().getLoc());
+            // System.out.println("AERODROME -- acquire -- " + event.toString());
         }
         super.acquire(event);
-        // if (COUNT_OPERATIONS)
-        //     acquire.inc(st.getTid());
+
+        if (COUNT_OPERATIONS) {
+            acquireCounter.inc(st.getTid());
+        }
     }
 
     public boolean vcHandling(VectorClock checkClock, VectorClock fromClock, ShadowThread target) {
@@ -302,20 +351,32 @@ public class AeroDromeTool extends Tool {
 		    ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid()) + 1));
 		}
         super.release(event);
-        // if (COUNT_OPERATIONS)
-        //     release.inc(st.getTid());
+
+        if (COUNT_OPERATIONS) {
+            releaseCounter.inc(st.getTid());
+        }
     }
 
     @Override
     public void enter(MethodEvent me) {
-        checkMethod(me);
+        if(fileType)
+            checkMethod(me);
         super.enter(me);
+
+        if(COUNT_OPERATIONS) {
+            methodBeginCounter.inc(me.getThread().getTid());
+        }
     }
 
     @Override
     public void exit(MethodEvent me) {
-        checkMethod(me);
+        if(fileType)
+            checkMethod(me);
         super.exit(me);
+
+        if(COUNT_OPERATIONS) {
+            methodEndCounter.inc(me.getThread().getTid());
+        }
     }
 
     @Override
@@ -324,6 +385,7 @@ public class AeroDromeTool extends Tool {
         ShadowVar sv = event.getOriginalShadow();
         if (sv instanceof ADVarClocks) {
             ADVarClocks sx = (ADVarClocks) sv;
+            if(!fileType) checkLocation(event);
             if (event.isWrite()) {
                 write(event, st, sx);
             } else {
@@ -334,7 +396,7 @@ public class AeroDromeTool extends Tool {
         }
     }
 
-    private static final ThreadLocalCounter methodCallStackHeight = new ThreadLocalCounter("AD", "MethodCallStackHeight", RR.maxTidOption.get());
+    private static final ThreadLocalCounter methodCallStackHeight = new ThreadLocalCounter("AD", "Other (Ignore)", RR.maxTidOption.get());
 
     protected void read(final AccessEvent event, final ShadowThread st, final ADVarClocks vcs) {
 
@@ -342,7 +404,8 @@ public class AeroDromeTool extends Tool {
 		VectorClock W_v = vcs.write;
 
         if(varToTh.containsKey(vcs) && !varToTh.get(vcs).equals(st) && vcHandling(W_v, W_v, st)) {
-            System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
+            readViolations.add(event.getAccessInfo().getLoc());
+            // System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
         }
 		VectorClock R_v = vcs.read;
 		R_v.updateWithMax(R_v, C_t);
@@ -351,6 +414,10 @@ public class AeroDromeTool extends Tool {
 		if(nestingofThreads.get(st) == 0) {
 		    ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid()) + 1));
 		}
+
+        if(COUNT_OPERATIONS) {
+            readCounter.inc(st.getTid());
+        }
     }
 
 
@@ -373,7 +440,12 @@ public class AeroDromeTool extends Tool {
 		    ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid()) + 1));
 		}
         if(violationDetected) {
-            System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
+            writeViolations.add(event.getAccessInfo().getLoc());
+            // System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
+        }
+
+        if(COUNT_OPERATIONS) {
+            writeCounter.inc(st.getTid());
         }
     }
 
@@ -390,18 +462,12 @@ public class AeroDromeTool extends Tool {
                 ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid())+1));
             }
         }
-        /*
-         * Safe to access su.V, because u has not started yet. This will give us exclusive access to
-         * it. There may be a race if two or more threads race are starting u, but of course, a
-         * second attempt to start u will crash... RR guarantees that the forked thread will
-         * synchronize with thread t before it does anything else.
-         */
-        // maxAndIncEpochAndCV(su, tV, event.getInfo());
-        // incEpochAndCV(st, event.getInfo());
 
         super.preStart(event);
-        // if (COUNT_OPERATIONS)
-        //     fork.inc(st.getTid());
+
+        if (COUNT_OPERATIONS) {
+            forkCounter.inc(st.getTid());
+        }
     }
 
 @Override
@@ -412,22 +478,39 @@ public class AeroDromeTool extends Tool {
         if(ShadowThread.getThreads().contains(su)) {
             VectorClock C_u = ts_get_clockThread(su);
             if(vcHandling(C_u, C_u, st)) {
-                // Return true - a problem here?
+                joinViolations.add(event.getInfo().getLoc());
             }
         }
         super.postJoin(event);
-        // if (COUNT_OPERATIONS)
-        //     join.inc(st.getTid());
+
+        if (COUNT_OPERATIONS) {
+            joinCounter.inc(st.getTid());
+        }
     }
 
 
     @Override
     public void stop(ShadowThread st) {
-        // synchronized (maxEpochPerTid) {
-        //     maxEpochPerTid.set(st.getTid(), ts_get_E(st));
-        // }
         super.stop(st);
-        // if (COUNT_OPERATIONS)
-        //     other.inc(st.getTid());
+    }
+
+    @Override
+    public void printXML(XMLWriter xml) {
+
+        for (MethodInfo s : transactionEndViolations) {
+            xml.print("violation", "transactionEnd: " + s.toString());
+        }
+        for (SourceLocation s : readViolations) {
+            xml.print("violation", "read: Location -> " + s + " Method -> " + s.getMethod().toString());
+        }
+        for (SourceLocation s : writeViolations) {
+            xml.print("violation", "write:Location ->  " + s + " Method -> " + s.getMethod().toString());
+        }
+        for (SourceLocation s : acquireViolations) {
+            xml.print("violation", "acquire: Location -> " + s + " Method -> " + s.getMethod().toString());
+        }
+        for (SourceLocation s : joinViolations) {
+            xml.print("violation", "join: Location -> " + s + " Method -> " + s.getMethod().toString());
+        }
     }
 }
