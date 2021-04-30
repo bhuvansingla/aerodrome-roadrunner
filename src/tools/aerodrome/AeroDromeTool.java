@@ -456,7 +456,7 @@ public class AeroDromeTool extends Tool {
     }
 
     @Override
-    public void preStart(final StartEvent event) {
+    public void postStart(final StartEvent event) {
         final ShadowThread st = event.getThread();
         final ShadowThread su = event.getNewThread();
 
@@ -469,15 +469,15 @@ public class AeroDromeTool extends Tool {
             }
         }
 
-        super.preStart(event);
+        super.postStart(event);
 
         if (COUNT_OPERATIONS) {
             forkCounter.inc(st.getTid());
         }
     }
 
-@Override
-    public void postJoin(final JoinEvent event) {
+    @Override
+    public void preJoin(final JoinEvent event) {
         final ShadowThread st = event.getThread();
         final ShadowThread su = event.getJoiningThread();
 
@@ -487,7 +487,7 @@ public class AeroDromeTool extends Tool {
                 joinViolations.put(event.getInfo().getLoc().toString(), ongoingTransaction[st.getTid()]);
             }
         }
-        super.postJoin(event);
+        super.preJoin(event);
 
         if (COUNT_OPERATIONS) {
             joinCounter.inc(st.getTid());
@@ -495,10 +495,10 @@ public class AeroDromeTool extends Tool {
     }
 
 
-    @Override
-    public void stop(ShadowThread st) {
-        super.stop(st);
-    }
+    // @Override
+    // public void stop(ShadowThread st) {
+    //     super.stop(st);
+    // }
 
     @Override
     public void printXML(XMLWriter xml) {
