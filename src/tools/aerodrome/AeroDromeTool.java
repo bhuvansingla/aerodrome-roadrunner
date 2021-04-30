@@ -59,11 +59,16 @@ public class AeroDromeTool extends Tool {
     // This list contains the method names to exclude.
     private static List<String> methodsToExclude;
 
+    // private static List<String> ongoingTransaction;
+
+    String[] ongoingTransaction;
+
+
     Set<MethodInfo> transactionEndViolations = ConcurrentHashMap.newKeySet();
-    Set<SourceLocation> readViolations = ConcurrentHashMap.newKeySet();
-    Set<SourceLocation> writeViolations = ConcurrentHashMap.newKeySet();
-    Set<SourceLocation> joinViolations = ConcurrentHashMap.newKeySet();
-    Set<SourceLocation> acquireViolations = ConcurrentHashMap.newKeySet();
+    private static ConcurrentHashMap<String, String> readViolations = new ConcurrentHashMap<String, String>();
+    private static ConcurrentHashMap<String, String> writeViolations = new ConcurrentHashMap<String, String>();
+    private static ConcurrentHashMap<String, String> joinViolations = new ConcurrentHashMap<String, String>();
+    private static ConcurrentHashMap<String, String> acquireViolations = new ConcurrentHashMap<String, String>();
 
 
     private static final ThreadLocalCounter readCounter = new ThreadLocalCounter("AD", "Read", RR.maxTidOption.get());
@@ -84,6 +89,7 @@ public class AeroDromeTool extends Tool {
                 if (methodCallStackHeight.getLocal(tid) == 0){
                     // System.out.println(tid + " Transaction Begin: " + me.getInfo().toString());
                     transactionBegin(me.getThread());
+                    ongoingTransaction[tid] = me.getInfo().toString();
                 }
                 else {
                     // System.out.println(tid + " (Redundant) Transaction Begin: " + me.getInfo().toString());
@@ -226,7 +232,7 @@ public class AeroDromeTool extends Tool {
         varToTh = new ConcurrentHashMap<ShadowVar, ShadowThread>();
         nestingofThreads = new ConcurrentHashMap<ShadowThread, Integer>();
 
-
+        ongoingTransaction = new String[INIT_VECTOR_CLOCK_SIZE];
         // locationPairFilename = rr.RRMain.locationPairFileOption.get();
         fileType = rr.RRMain.fileTypeOption.get();
         transactionFilename = rr.RRMain.transactionFileOption.get();
@@ -314,7 +320,7 @@ public class AeroDromeTool extends Tool {
 		VectorClock L_l = clockLock.get(sl);
 
 		if(lockToTh.containsKey(sl) && !lockToTh.get(sl).equals(st) && vcHandling(L_l, L_l, st)) {
-            acquireViolations.add(event.getInfo().getLoc());
+            acquireViolations.put(event.getInfo().getLoc().toString(), ongoingTransaction[st.getTid()]);
             // System.out.println("AERODROME -- acquire -- " + event.toString());
         }
         super.acquire(event);
@@ -404,7 +410,7 @@ public class AeroDromeTool extends Tool {
 		VectorClock W_v = vcs.write;
 
         if(varToTh.containsKey(vcs) && !varToTh.get(vcs).equals(st) && vcHandling(W_v, W_v, st)) {
-            readViolations.add(event.getAccessInfo().getLoc());
+            readViolations.put(event.getAccessInfo().getLoc().toString(), ongoingTransaction[st.getTid()]);
             // System.out.println("AERODROME -- read -- " + event.getAccessInfo().getLoc());
         }
 		VectorClock R_v = vcs.read;
@@ -439,8 +445,8 @@ public class AeroDromeTool extends Tool {
 		if(nestingofThreads.get(st) == 0) {
 		    ts_get_clockThread(st).set(st.getTid(), (Integer)(ts_get_clockThread(st).get(st.getTid()) + 1));
 		}
-        if(violationDetected) {
-            writeViolations.add(event.getAccessInfo().getLoc());
+        if(violationDetected) {  
+            writeViolations.put(event.getAccessInfo().getLoc().toString(), ongoingTransaction[st.getTid()]);
             // System.out.println("AERODROME -- write -- " + event.getAccessInfo().getLoc());
         }
 
@@ -478,7 +484,7 @@ public class AeroDromeTool extends Tool {
         if(ShadowThread.getThreads().contains(su)) {
             VectorClock C_u = ts_get_clockThread(su);
             if(vcHandling(C_u, C_u, st)) {
-                joinViolations.add(event.getInfo().getLoc());
+                joinViolations.put(event.getInfo().getLoc().toString(), ongoingTransaction[st.getTid()]);
             }
         }
         super.postJoin(event);
@@ -498,19 +504,23 @@ public class AeroDromeTool extends Tool {
     public void printXML(XMLWriter xml) {
 
         for (MethodInfo s : transactionEndViolations) {
-            xml.print("violation", "transactionEnd: " + s.toString());
+            xml.print("violation", "\n        Type -> transactionEnd \n        Transaction Method -> " + s.toString()+ "\n   ");
         }
-        for (SourceLocation s : readViolations) {
-            xml.print("violation", "read: Location -> " + s + " Method -> " + s.getMethod().toString());
+        for (String s : readViolations.keySet()) {
+            xml.print("violation", "\n        Type -> read \n        Location -> " + s + "\n        Transaction Method -> " + readViolations.get(s) + "\n   ");
         }
-        for (SourceLocation s : writeViolations) {
-            xml.print("violation", "write:Location ->  " + s + " Method -> " + s.getMethod().toString());
+        for (String s : writeViolations.keySet()) {
+            xml.print("violation", "\n        Type -> write \n        Location ->  " + s + "\n        Transaction Method -> " + writeViolations.get(s) + "\n   ");
         }
-        for (SourceLocation s : acquireViolations) {
-            xml.print("violation", "acquire: Location -> " + s + " Method -> " + s.getMethod().toString());
+        for (String s : acquireViolations.keySet()) {
+            xml.print("violation", "\n        Type -> acquire \n        Location -> " + s + "\n        Transaction Method -> " + acquireViolations.get(s) + "\n   ");
         }
-        for (SourceLocation s : joinViolations) {
-            xml.print("violation", "join: Location -> " + s + " Method -> " + s.getMethod().toString());
+        for (String s : joinViolations.keySet()) {
+            xml.print("violation", "\n        Type -> join \n        Location -> " + s + "\n        Transaction Method -> " + joinViolations.get(s) + "\n   ");
+        }
+        for (String s : methodsToExclude) {
+            xml.print("excluded method", s);
+
         }
         for (String s : methodsToExclude) {
             xml.print("excluded method", s);
