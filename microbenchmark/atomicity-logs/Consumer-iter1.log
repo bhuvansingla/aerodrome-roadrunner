@@ -1,0 +1,830 @@
+OpenJDK 64-Bit Server VM (25.282-b08) for linux-amd64 JRE (1.8.0_282-8u282-b08-0ubuntu1~20.04-b08), built on Jan 20 2021 03:59:41 by "buildd" with gcc 9.3.0
+Memory: 4k page, physical 12989804k(12022556k free), swap 4194304k(4194304k free)
+CommandLine flags: -XX:InitialHeapSize=1073741824 -XX:MaxHeapSize=3221225472 -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+ T, FPTest, S, SFPTool, TL, P, N, LOG]]
+  [RR: 0.00300 sec]
+  [RR: file:/home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/classes/tools/rrtools.properties]
+    [RR: [BE, HB, A, FT2L, AD, FT2, PL, RS, LS]]
+  [RR: 0.00100 sec]
+  [RR: Extending States for tools/aerodrome/AeroDromeTool]
+  [RR: 0.00200 sec]
+  [RR: Transforming rr/state/ShadowThread]
+  [RR: Adding field clockThread to rr/state/ShadowThread (tools/aerodrome/AeroDromeTool)]
+  [RR: Adding field clockThreadBegin to rr/state/ShadowThread (tools/aerodrome/AeroDromeTool)]
+  [RR: done]
+  [RR: Transforming tools/aerodrome/AeroDromeTool]
+  [RR: done]
+  [RR:     complete chain: tools.aerodrome.AeroDromeTool -> Last]
+  [RR:        enter chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:         exit chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:      acquire chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:      release chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:       access chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR: User has disabled fastpath instrumentation.]
+[RR: 0.0780 sec]
+[RR: OPTIONS:]
+  [RR: (rr.state.agent.ThreadStateExtensionAgent) javaArgs             = atomicity.Consumer  ]
+  [RR: (rr.state.agent.ThreadStateExtensionAgent) noDecInline          = false               ]
+  [RR: (acme.util.Util)                   quiet                = false               ]
+  [RR: (acme.util.Util)                   logDepth             = 100                 ]
+  [RR: (acme.util.Util)                   logs                 = log                 ]
+  [RR: (acme.util.Util)                   out                  =                     ]
+  [RR: (acme.util.Util)                   err                  =                     ]
+  [RR: (rr.RRMain)                        noinst               = false               ]
+  [RR: (rr.RRMain)                        inst                 = INST                ]
+  [RR: (rr.RRMain)                        infThreads           = 0                   ]
+  [RR: (rr.RRMain)                        benchmark            = 0                   ]
+  [RR: (rr.RRMain)                        fileType             = true                ]
+  [RR: (rr.RRMain)                        transactionFile      = transactionfile.csv ]
+  [RR: (rr.RRMain)                        warmup               = 3                   ]
+  [RR: (rr.RRMain)                        availableProcessors  = 8                   ]
+  [RR: (rr.RRMain)                        args                 = []                  ]
+  [RR: (acme.util.Debug)                  d                    = []                  ]
+  [RR: (acme.util.Yikes)                  maxYikes             = 5                   ]
+  [RR: (rr.RRMain$5)                      help                 = false               ]
+  [RR: (rr.tool.RR)                       toolpath             = /home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/classes/rr/simple:/home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/classes/tools]
+  [RR: (rr.tool.RR)                       classpath            = .                   ]
+  [RR: (rr.tool.RR)                       tool                 = AD                  ]
+  [RR: (rr.tool.RR)                       tools                = false               ]
+  [RR: (rr.tool.RR)                       noxml                = false               ]
+  [RR: (rr.tool.RR)                       constantGC           = false               ]
+  [RR: (rr.tool.RR)                       noFP                 = true                ]
+  [RR: (rr.tool.RR)                       noShutdownHook       = false               ]
+  [RR: (rr.tool.RR)                       noEnter              = false               ]
+  [RR: (rr.tool.RR)                       xml                  = log.xml             ]
+  [RR: (rr.tool.RR)                       pulse                =                     ]
+  [RR: (rr.tool.RR)                       maxTime              = 0                   ]
+  [RR: (rr.tool.RR)                       maxMem               = 10240               ]
+  [RR: (rr.tool.RR)                       maxTid               = 16                  ]
+  [RR: (rr.tool.RR)                       stacks               = false               ]
+  [RR: (rr.tool.RR)                       values               = false               ]
+  [RR: (rr.tool.RR)                       noTidGC              = true                ]
+  [RR: (rr.tool.RR)                       noEventReuse         = false               ]
+  [RR: (rr.tool.RR)                       trackMemoryUsage     = false               ]
+  [RR: (rr.loader.LoaderContext)          repository           =                     ]
+  [RR: (rr.meta.MetaDataInfoMaps)         meta                 = null                ]
+  [RR: (rr.meta.InstrumentationFilter)    methods              = [default=ACCEPT]    ]
+  [RR: (rr.meta.InstrumentationFilter)    fields               = ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    lines                = [default=ACCEPT]    ]
+  [RR: (rr.meta.InstrumentationFilter)    classes              = ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    shadowThread         = ["-.*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    noop                 = [default=ACCEPT]    ]
+  [RR: (rr.instrument.classes.ThreadDataThunkInserter) noConstructor        = false               ]
+  [RR: (rr.instrument.classes.CloneFixer) noClone              = false               ]
+  [RR: (rr.instrument.Instrumentor)       dump                 =                     ]
+  [RR: (rr.instrument.Instrumentor)       field                = FINE                ]
+  [RR: (rr.instrument.Instrumentor)       fancy                = false               ]
+  [RR: (rr.instrument.Instrumentor)       verify               = false               ]
+  [RR: (rr.instrument.Instrumentor)       trackReflection      = false               ]
+  [RR: (rr.instrument.Instrumentor)       arraySites           = false               ]
+  [RR: (rr.instrument.Instrumentor)       Use TestAcquires     = false               ]
+  [RR: (rr.loader.InstrumentingDefineClassLoader) sanity               = false               ]
+  [RR: (rr.tool.RREventGenerator)         reentrantEvents      = false               ]
+  [RR: (rr.tool.RREventGenerator)         nojoin               = false               ]
+  [RR: (rr.tool.RREventGenerator)         multiLoader          = false               ]
+  [RR: (rr.tool.RREventGenerator)         indices              = 2147483647          ]
+  [RR: (rr.state.update.Updaters)         updaters             = SAFE                ]
+  [RR: (rr.state.ArrayStateFactory)       array                = FINE                ]
+  [RR: (rr.state.ArrayStateFactory$1)     userArray            = rr.state.ArrayStateCreator$1@5cad8086]
+  [RR: (rr.barrier.BarrierMonitor)        nobarrier            = false               ]
+  [RR: (rr.state.AbstractArrayStateCache) arrayCacheType       = STRONG              ]
+  [RR: (rr.instrument.methods.ThreadDataInstructionAdapter) callSites            = false               ]
+  [RR: (rr.error.ErrorMessage)            maxWarn              = 100                 ]
+[RR: 0.0310 sec]
+[RR: Adding Attic Listener to GC PS MarkSweep]
+[RR: Installing DefineClassListener rr.loader.InstrumentingDefineClassLoader@6e0be858]
+[RR: System Class Path = [file:/home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/./]]
+[RR: Tool Init()]
+[RR: Running target]
+[main: ----- ----- ----- -----       Meep Meep.      ----- ----- ----- -----]
+[main: ]
+[main: Instrumenting atomicity/Consumer (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting atomicity/Producer (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: New Thread main with tid=0.]
+[main: Epoch will use 5 bits for tids]
+[main: New Thread Thread-0 with tid=1.]
+[main: New Thread Thread-1 with tid=2.]
+Got message: 1
+[main: Terminating thread: main[tid = 0]]
+[main: Tool Fini()]
+[main: ]
+[main: ----- ----- ----- -----      Thpthpthpth.     ----- ----- ----- -----]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 2
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 3
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 4
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 5
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 6
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 7
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 8
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 9
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 10
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 11
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 12
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 13
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 14
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 15
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 16
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 17
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 18
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 19
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 20
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 21
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 22
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 23
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 24
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 25
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 26
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 27
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 28
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 29
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 30
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 31
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 32
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 33
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 34
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 35
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 36
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 37
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 38
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 39
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 40
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 41
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 42
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 43
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 44
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 45
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 46
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 47
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 48
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 49
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 50
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 51
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 52
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 53
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 54
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 55
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 56
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 57
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 58
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 59
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 60
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 61
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 62
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 63
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 64
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 65
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 66
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 67
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 68
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 69
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 70
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 71
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 72
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 73
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 74
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 75
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 76
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 77
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 78
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 79
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 80
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 81
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 82
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 83
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 84
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 85
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 86
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 87
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 88
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 89
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 90
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 91
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 92
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 93
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 94
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 95
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 96
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 97
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 98
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 99
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 100
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 101
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 102
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 103
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 104
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 105
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 106
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 107
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 108
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 109
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 110
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 111
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 112
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 113
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 114
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 115
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 116
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 117
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 118
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 119
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 120
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 121
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 122
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 123
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 124
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 125
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 126
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 127
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 128
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 129
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 130
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 131
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 132
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 133
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 134
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 135
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 136
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 137
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 138
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 139
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 140
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 141
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 142
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 143
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 144
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 145
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 146
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 147
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 148
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 149
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 150
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 151
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 152
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 153
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 154
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 155
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 156
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 157
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+Got message: 158
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 159
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 160
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[Weak Resource Cleaner: Cleaning...]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+Got message: 161
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 2]
+[RR Shutdown: Total Time: 1044]
+<entry>
+  <date> Sat May 01 20:58:09 IST 2021 </date> 
+  <mode> FAST </mode> 
+  <timeout> NO </timeout> 
+  <options>
+    <option><name> javaArgs </name>           <value> atomicity.Consumer  </value> </option>
+    <option><name> noDecInline </name>        <value> false </value> </option>
+    <option><name> quiet </name>              <value> false </value> </option>
+    <option><name> logDepth </name>           <value> 100 </value> </option>
+    <option><name> logs </name>               <value> log </value> </option>
+    <option><name> out </name>                <value>  </value>   </option>
+    <option><name> err </name>                <value>  </value>   </option>
+    <option><name> noinst </name>             <value> false </value> </option>
+    <option><name> inst </name>               <value> INST </value> </option>
+    <option><name> infThreads </name>         <value> 0 </value>  </option>
+    <option><name> benchmark </name>          <value> 0 </value>  </option>
+    <option><name> fileType </name>           <value> true </value> </option>
+    <option><name> transactionFile </name>    <value> transactionfile.csv </value> </option>
+    <option><name> warmup </name>             <value> 3 </value>  </option>
+    <option><name> availableProcessors </name> <value> 8 </value>  </option>
+    <option><name> args </name>               <value> [] </value> </option>
+    <option><name> d </name>                  <value> [] </value> </option>
+    <option><name> maxYikes </name>           <value> 5 </value>  </option>
+    <option><name> help </name>               <value> false </value> </option>
+    <option><name> toolpath </name>           <value> /home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/classes/rr/simple:/home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/classes/tools </value> </option>
+    <option><name> classpath </name>          <value> . </value>  </option>
+    <option><name> tool </name>               <value> AD </value> </option>
+    <option><name> tools </name>              <value> false </value> </option>
+    <option><name> noxml </name>              <value> false </value> </option>
+    <option><name> constantGC </name>         <value> false </value> </option>
+    <option><name> noFP </name>               <value> true </value> </option>
+    <option><name> noShutdownHook </name>     <value> false </value> </option>
+    <option><name> noEnter </name>            <value> false </value> </option>
+    <option><name> xml </name>                <value> log.xml </value> </option>
+    <option><name> pulse </name>              <value>  </value>   </option>
+    <option><name> maxTime </name>            <value> 0 </value>  </option>
+    <option><name> maxMem </name>             <value> 10240 </value> </option>
+    <option><name> maxTid </name>             <value> 16 </value> </option>
+    <option><name> stacks </name>             <value> false </value> </option>
+    <option><name> values </name>             <value> false </value> </option>
+    <option><name> noTidGC </name>            <value> true </value> </option>
+    <option><name> noEventReuse </name>       <value> false </value> </option>
+    <option><name> trackMemoryUsage </name>   <value> false </value> </option>
+    <option><name> repository </name>         <value>  </value>   </option>
+    <option><name> meta </name>               <value> null </value> </option>
+    <option><name> methods </name>            <value> [default=ACCEPT] </value> </option>
+    <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
+    <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
+    <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
+    <option><name> noConstructor </name>      <value> false </value> </option>
+    <option><name> noClone </name>            <value> false </value> </option>
+    <option><name> dump </name>               <value>  </value>   </option>
+    <option><name> field </name>              <value> FINE </value> </option>
+    <option><name> fancy </name>              <value> false </value> </option>
+    <option><name> verify </name>             <value> false </value> </option>
+    <option><name> trackReflection </name>    <value> false </value> </option>
+    <option><name> arraySites </name>         <value> false </value> </option>
+    <option><name> Use TestAcquires </name>   <value> false </value> </option>
+    <option><name> sanity </name>             <value> false </value> </option>
+    <option><name> reentrantEvents </name>    <value> false </value> </option>
+    <option><name> nojoin </name>             <value> false </value> </option>
+    <option><name> multiLoader </name>        <value> false </value> </option>
+    <option><name> indices </name>            <value> 2147483647 </value> </option>
+    <option><name> updaters </name>           <value> SAFE </value> </option>
+    <option><name> array </name>              <value> FINE </value> </option>
+    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@5cad8086 </value> </option>
+    <option><name> nobarrier </name>          <value> false </value> </option>
+    <option><name> arrayCacheType </name>     <value> STRONG </value> </option>
+    <option><name> callSites </name>          <value> false </value> </option>
+    <option><name> maxWarn </name>            <value> 100 </value> </option>
+    <option><name> noInterrupt </name>        <value> false </value> </option>
+  </options>
+  <system>
+    <host> Bhuvan-Singla </host> 
+    <name> java.vm.version </name>     <value> 25.282-b08 </value> 
+    <name> java.vm.vendor </name>      <value> Private Build </value> 
+    <name> java.vm.name </name>        <value> OpenJDK 64-Bit Server VM </value> 
+    <name> java.class.path </name>     <value> .:/home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/build/jar/rragent.jar </value> 
+    <name> os.name </name>             <value> Linux </value> 
+    <name> os.arch </name>             <value> amd64 </value> 
+    <name> os.version </name>          <value> 4.19.128-microsoft-standard </value> 
+    <name> user.name </name>           <value> bhuvansingla </value> 
+    <name> user.dir </name>            <value> /home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc </value> 
+    <availableProcs> 8 </availableProcs> 
+    <memCommitted> 982 </memCommitted> 
+    <memUsed> 98 </memUsed> 
+    <memTotal> 982 </memTotal> 
+    <compileTime> 5884 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 0 </time> </gc>
+    <gc> <name> PS MarkSweep </name> <time> 0 </time> </gc>
+  </system>
+  <instrumented> atomicity/Consumer atomicity/Producer  </instrumented> 
+  <instrumentedNum> 2 </instrumentedNum> 
+  <skipped>  </skipped> 
+  <skippedNum> 0 </skippedNum> 
+  <sanityChecked>  </sanityChecked> 
+  <sanityCheckedNum> 0 </sanityCheckedNum> 
+  <counters>
+
+    <counter><name> "AD: Read" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Write" </name>                                  <value>          0 </value> </counter>
+    <counter><name> "AD: Method Begin" </name>                           <value>          0 </value> </counter>
+    <counter><name> "AD: Method End" </name>                             <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction Begin" </name>                      <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction End" </name>                        <value>          0 </value> </counter>
+    <counter><name> "AD: Acquire" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Release" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Fork" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Join" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value>          2 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value> 3 </value> </counter>
+
+    <counter><name> "ArrayStateFactory: Size" </name>                    <value> 0 </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Move Time" </name>         <value> <total>0.00000</total> <count>0</count>  </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Hits" </name>              <value> 0 </value> </counter>
+
+    <counter><name> "Clone: Count" </name>                               <value> 0 </value> </counter>
+
+    <counter><name> "GCRunner: Max Usage" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "Handler: Count" </name>                             <value> 0 </value> </counter>
+
+    <counter><name> "ShadowLock: objects" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "ShadowThread: Count" </name>                        <value> 3 </value> </counter>
+    <counter><name> "ShadowThread: Max Live" </name>                     <value> 3 </value> </counter>
+    <counter><name> "ShadowThread: getCurrentThread() calls" </name>     <value> 0 </value> </counter>
+
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>99.0000</total> <count>2</count> <ave>49.5000</ave> </value> </counter>
+  </counters>
+  <yikes>
+  </yikes>
+  <tool>
+    <name> tools.aerodrome.AeroDromeTool </name> 
+    <violation> 
+        Type -> acquire 
+        Location -> atomicity/Producer.__$rr_getMessage__$rr__Sync_()Ljava/lang/String; (Producer.java):32
+        Transaction Method -> atomicity/Consumer.run()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> atomicity/Producer.__$rr_putMessage__$rr__Sync_()V (Producer.java):22
+        Transaction Method -> atomicity/Producer.run()V
+    </violation> 
+  </tool>
+  <tool>
+    <name> Last </name> 
+  </tool>
+  <threadCount> 3 </threadCount> 
+  <threadMaxActive> 3 </threadMaxActive> 
+  <errorTotal> 0 </errorTotal> 
+  <distinctErrorTotal> 0 </distinctErrorTotal> 
+  <methods>
+  </methods>
+  <fields>
+  </fields>
+  <arrays>
+  </arrays>
+  <locks>
+  </locks>
+  <fieldAccesses>
+  </fieldAccesses>
+  <errorCountPerErrorType>
+  </errorCountPerErrorType>
+  <warningsTotal> 0 </warningsTotal> 
+  <yikesTotal> 0 </yikesTotal> 
+  <failed> false </failed> 
+  <failedReason>  </failedReason> 
+  <time> 1044 </time> 
+</entry>
+[RR Shutdown: Time = 1044]

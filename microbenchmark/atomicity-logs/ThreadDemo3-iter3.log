@@ -1,0 +1,286 @@
+OpenJDK 64-Bit Server VM (25.282-b08) for linux-amd64 JRE (1.8.0_282-8u282-b08-0ubuntu1~20.04-b08), built on Jan 20 2021 03:59:41 by "buildd" with gcc 9.3.0
+Memory: 4k page, physical 12989804k(11367684k free), swap 4194304k(4194304k free)
+CommandLine flags: -XX:InitialHeapSize=1073741824 -XX:MaxHeapSize=3221225472 -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+ T, FPTest, S, SFPTool, TL, P, N, LOG]]
+  [RR: 0.00400 sec]
+  [RR: file:/home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/classes/tools/rrtools.properties]
+    [RR: [BE, HB, A, FT2L, AD, FT2, PL, RS, LS]]
+  [RR: 0.00100 sec]
+  [RR: Extending States for tools/aerodrome/AeroDromeTool]
+  [RR: 0.00300 sec]
+  [RR: Transforming rr/state/ShadowThread]
+  [RR: Adding field clockThread to rr/state/ShadowThread (tools/aerodrome/AeroDromeTool)]
+  [RR: Adding field clockThreadBegin to rr/state/ShadowThread (tools/aerodrome/AeroDromeTool)]
+  [RR: done]
+  [RR: Transforming tools/aerodrome/AeroDromeTool]
+  [RR: done]
+  [RR:     complete chain: tools.aerodrome.AeroDromeTool -> Last]
+  [RR:        enter chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:         exit chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:      acquire chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:      release chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:       access chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR: User has disabled fastpath instrumentation.]
+[RR: 0.110 sec]
+[RR: OPTIONS:]
+  [RR: (rr.state.agent.ThreadStateExtensionAgent) javaArgs             = atomicity.ThreadDemo3 ]
+  [RR: (rr.state.agent.ThreadStateExtensionAgent) noDecInline          = false               ]
+  [RR: (acme.util.Util)                   quiet                = false               ]
+  [RR: (acme.util.Util)                   logDepth             = 100                 ]
+  [RR: (acme.util.Util)                   logs                 = log                 ]
+  [RR: (acme.util.Util)                   out                  =                     ]
+  [RR: (acme.util.Util)                   err                  =                     ]
+  [RR: (rr.RRMain)                        noinst               = false               ]
+  [RR: (rr.RRMain)                        inst                 = INST                ]
+  [RR: (rr.RRMain)                        infThreads           = 0                   ]
+  [RR: (rr.RRMain)                        benchmark            = 0                   ]
+  [RR: (rr.RRMain)                        fileType             = true                ]
+  [RR: (rr.RRMain)                        transactionFile      = transactionfile.csv ]
+  [RR: (rr.RRMain)                        warmup               = 3                   ]
+  [RR: (rr.RRMain)                        availableProcessors  = 8                   ]
+  [RR: (rr.RRMain)                        args                 = []                  ]
+  [RR: (acme.util.Debug)                  d                    = []                  ]
+  [RR: (acme.util.Yikes)                  maxYikes             = 5                   ]
+  [RR: (rr.RRMain$5)                      help                 = false               ]
+  [RR: (rr.tool.RR)                       toolpath             = /home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/classes/rr/simple:/home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/classes/tools]
+  [RR: (rr.tool.RR)                       classpath            = .                   ]
+  [RR: (rr.tool.RR)                       tool                 = AD                  ]
+  [RR: (rr.tool.RR)                       tools                = false               ]
+  [RR: (rr.tool.RR)                       noxml                = false               ]
+  [RR: (rr.tool.RR)                       constantGC           = false               ]
+  [RR: (rr.tool.RR)                       noFP                 = true                ]
+  [RR: (rr.tool.RR)                       noShutdownHook       = false               ]
+  [RR: (rr.tool.RR)                       noEnter              = false               ]
+  [RR: (rr.tool.RR)                       xml                  = log.xml             ]
+  [RR: (rr.tool.RR)                       pulse                =                     ]
+  [RR: (rr.tool.RR)                       maxTime              = 0                   ]
+  [RR: (rr.tool.RR)                       maxMem               = 10240               ]
+  [RR: (rr.tool.RR)                       maxTid               = 16                  ]
+  [RR: (rr.tool.RR)                       stacks               = false               ]
+  [RR: (rr.tool.RR)                       values               = false               ]
+  [RR: (rr.tool.RR)                       noTidGC              = true                ]
+  [RR: (rr.tool.RR)                       noEventReuse         = false               ]
+  [RR: (rr.tool.RR)                       trackMemoryUsage     = false               ]
+  [RR: (rr.loader.LoaderContext)          repository           =                     ]
+  [RR: (rr.meta.MetaDataInfoMaps)         meta                 = null                ]
+  [RR: (rr.meta.InstrumentationFilter)    methods              = [default=ACCEPT]    ]
+  [RR: (rr.meta.InstrumentationFilter)    fields               = ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    lines                = [default=ACCEPT]    ]
+  [RR: (rr.meta.InstrumentationFilter)    classes              = ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    shadowThread         = ["-.*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    noop                 = [default=ACCEPT]    ]
+  [RR: (rr.instrument.classes.ThreadDataThunkInserter) noConstructor        = false               ]
+  [RR: (rr.instrument.classes.CloneFixer) noClone              = false               ]
+  [RR: (rr.instrument.Instrumentor)       dump                 =                     ]
+  [RR: (rr.instrument.Instrumentor)       field                = FINE                ]
+  [RR: (rr.instrument.Instrumentor)       fancy                = false               ]
+  [RR: (rr.instrument.Instrumentor)       verify               = false               ]
+  [RR: (rr.instrument.Instrumentor)       trackReflection      = false               ]
+  [RR: (rr.instrument.Instrumentor)       arraySites           = false               ]
+  [RR: (rr.instrument.Instrumentor)       Use TestAcquires     = false               ]
+  [RR: (rr.loader.InstrumentingDefineClassLoader) sanity               = false               ]
+  [RR: (rr.tool.RREventGenerator)         reentrantEvents      = false               ]
+  [RR: (rr.tool.RREventGenerator)         nojoin               = false               ]
+  [RR: (rr.tool.RREventGenerator)         multiLoader          = false               ]
+  [RR: (rr.tool.RREventGenerator)         indices              = 2147483647          ]
+  [RR: (rr.state.update.Updaters)         updaters             = SAFE                ]
+  [RR: (rr.state.ArrayStateFactory)       array                = FINE                ]
+  [RR: (rr.state.ArrayStateFactory$1)     userArray            = rr.state.ArrayStateCreator$1@5cad8086]
+  [RR: (rr.barrier.BarrierMonitor)        nobarrier            = false               ]
+  [RR: (rr.state.AbstractArrayStateCache) arrayCacheType       = STRONG              ]
+  [RR: (rr.instrument.methods.ThreadDataInstructionAdapter) callSites            = false               ]
+  [RR: (rr.error.ErrorMessage)            maxWarn              = 100                 ]
+[RR: 0.0370 sec]
+[RR: Adding Attic Listener to GC PS MarkSweep]
+[RR: Installing DefineClassListener rr.loader.InstrumentingDefineClassLoader@6e0be858]
+[RR: System Class Path = [file:/home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/./]]
+[RR: Tool Init()]
+[RR: Running target]
+[main: ----- ----- ----- -----       Meep Meep.      ----- ----- ----- -----]
+[main: ]
+[main: Instrumenting atomicity/ThreadDemo3 (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting atomicity/Sample (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: New Thread main with tid=0.]
+[main: Epoch will use 5 bits for tids]
+[main: New Thread Thread-0 with tid=1.]
+[main: New Thread Thread-1 with tid=2.]
+SECOND THREAD:b = 50
+[main: Terminating thread: main[tid = 0]]
+[main: Tool Fini()]
+[RR Waiter for 2: Terminating thread: Thread-1[tid = 2]]
+[main: ]
+[main: ----- ----- ----- -----      Thpthpthpth.     ----- ----- ----- -----]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 1]
+  [RR: Waiting for Thread Count to reach 0.  Current Count: 1]
+FIRST THREAD50
+[RR Waiter for 1: Terminating thread: Thread-0[tid = 1]]
+[RR: 3.12 sec]
+[RR: Total Time: 1111]
+<entry>
+  <date> Sat May 01 20:30:26 IST 2021 </date> 
+  <mode> FAST </mode> 
+  <timeout> NO </timeout> 
+  <options>
+    <option><name> javaArgs </name>           <value> atomicity.ThreadDemo3  </value> </option>
+    <option><name> noDecInline </name>        <value> false </value> </option>
+    <option><name> quiet </name>              <value> false </value> </option>
+    <option><name> logDepth </name>           <value> 100 </value> </option>
+    <option><name> logs </name>               <value> log </value> </option>
+    <option><name> out </name>                <value>  </value>   </option>
+    <option><name> err </name>                <value>  </value>   </option>
+    <option><name> noinst </name>             <value> false </value> </option>
+    <option><name> inst </name>               <value> INST </value> </option>
+    <option><name> infThreads </name>         <value> 0 </value>  </option>
+    <option><name> benchmark </name>          <value> 0 </value>  </option>
+    <option><name> fileType </name>           <value> true </value> </option>
+    <option><name> transactionFile </name>    <value> transactionfile.csv </value> </option>
+    <option><name> warmup </name>             <value> 3 </value>  </option>
+    <option><name> availableProcessors </name> <value> 8 </value>  </option>
+    <option><name> args </name>               <value> [] </value> </option>
+    <option><name> d </name>                  <value> [] </value> </option>
+    <option><name> maxYikes </name>           <value> 5 </value>  </option>
+    <option><name> help </name>               <value> false </value> </option>
+    <option><name> toolpath </name>           <value> /home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/classes/rr/simple:/home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/classes/tools </value> </option>
+    <option><name> classpath </name>          <value> . </value>  </option>
+    <option><name> tool </name>               <value> AD </value> </option>
+    <option><name> tools </name>              <value> false </value> </option>
+    <option><name> noxml </name>              <value> false </value> </option>
+    <option><name> constantGC </name>         <value> false </value> </option>
+    <option><name> noFP </name>               <value> true </value> </option>
+    <option><name> noShutdownHook </name>     <value> false </value> </option>
+    <option><name> noEnter </name>            <value> false </value> </option>
+    <option><name> xml </name>                <value> log.xml </value> </option>
+    <option><name> pulse </name>              <value>  </value>   </option>
+    <option><name> maxTime </name>            <value> 0 </value>  </option>
+    <option><name> maxMem </name>             <value> 10240 </value> </option>
+    <option><name> maxTid </name>             <value> 16 </value> </option>
+    <option><name> stacks </name>             <value> false </value> </option>
+    <option><name> values </name>             <value> false </value> </option>
+    <option><name> noTidGC </name>            <value> true </value> </option>
+    <option><name> noEventReuse </name>       <value> false </value> </option>
+    <option><name> trackMemoryUsage </name>   <value> false </value> </option>
+    <option><name> repository </name>         <value>  </value>   </option>
+    <option><name> meta </name>               <value> null </value> </option>
+    <option><name> methods </name>            <value> [default=ACCEPT] </value> </option>
+    <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
+    <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
+    <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
+    <option><name> noConstructor </name>      <value> false </value> </option>
+    <option><name> noClone </name>            <value> false </value> </option>
+    <option><name> dump </name>               <value>  </value>   </option>
+    <option><name> field </name>              <value> FINE </value> </option>
+    <option><name> fancy </name>              <value> false </value> </option>
+    <option><name> verify </name>             <value> false </value> </option>
+    <option><name> trackReflection </name>    <value> false </value> </option>
+    <option><name> arraySites </name>         <value> false </value> </option>
+    <option><name> Use TestAcquires </name>   <value> false </value> </option>
+    <option><name> sanity </name>             <value> false </value> </option>
+    <option><name> reentrantEvents </name>    <value> false </value> </option>
+    <option><name> nojoin </name>             <value> false </value> </option>
+    <option><name> multiLoader </name>        <value> false </value> </option>
+    <option><name> indices </name>            <value> 2147483647 </value> </option>
+    <option><name> updaters </name>           <value> SAFE </value> </option>
+    <option><name> array </name>              <value> FINE </value> </option>
+    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@5cad8086 </value> </option>
+    <option><name> nobarrier </name>          <value> false </value> </option>
+    <option><name> arrayCacheType </name>     <value> STRONG </value> </option>
+    <option><name> callSites </name>          <value> false </value> </option>
+    <option><name> maxWarn </name>            <value> 100 </value> </option>
+    <option><name> noInterrupt </name>        <value> false </value> </option>
+  </options>
+  <system>
+    <host> Bhuvan-Singla </host> 
+    <name> java.vm.version </name>     <value> 25.282-b08 </value> 
+    <name> java.vm.vendor </name>      <value> Private Build </value> 
+    <name> java.vm.name </name>        <value> OpenJDK 64-Bit Server VM </value> 
+    <name> java.class.path </name>     <value> .:/home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc/build/jar/rragent.jar </value> 
+    <name> os.name </name>             <value> Linux </value> 
+    <name> os.arch </name>             <value> amd64 </value> 
+    <name> os.version </name>          <value> 4.19.128-microsoft-standard </value> 
+    <name> user.name </name>           <value> bhuvansingla </value> 
+    <name> user.dir </name>            <value> /home/bhuvansingla/aerodrome/aerodrome-roadrunner-vc </value> 
+    <availableProcs> 8 </availableProcs> 
+    <memCommitted> 982 </memCommitted> 
+    <memUsed> 93 </memUsed> 
+    <memTotal> 982 </memTotal> 
+    <compileTime> 4747 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 0 </time> </gc>
+    <gc> <name> PS MarkSweep </name> <time> 0 </time> </gc>
+  </system>
+  <instrumented> atomicity/Sample atomicity/ThreadDemo3  </instrumented> 
+  <instrumentedNum> 2 </instrumentedNum> 
+  <skipped>  </skipped> 
+  <skippedNum> 0 </skippedNum> 
+  <sanityChecked>  </sanityChecked> 
+  <sanityCheckedNum> 0 </sanityCheckedNum> 
+  <counters>
+
+    <counter><name> "AD: Read" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Write" </name>                                  <value>          0 </value> </counter>
+    <counter><name> "AD: Method Begin" </name>                           <value>          0 </value> </counter>
+    <counter><name> "AD: Method End" </name>                             <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction Begin" </name>                      <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction End" </name>                        <value>          0 </value> </counter>
+    <counter><name> "AD: Acquire" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Release" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Fork" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Join" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value> 5 </value> </counter>
+
+    <counter><name> "ArrayStateFactory: Size" </name>                    <value> 0 </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Move Time" </name>         <value> <total>0.00000</total> <count>0</count>  </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Hits" </name>              <value> 0 </value> </counter>
+
+    <counter><name> "Clone: Count" </name>                               <value> 0 </value> </counter>
+
+    <counter><name> "GCRunner: Max Usage" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "Handler: Count" </name>                             <value> 0 </value> </counter>
+
+    <counter><name> "ShadowLock: objects" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "ShadowThread: Count" </name>                        <value> 3 </value> </counter>
+    <counter><name> "ShadowThread: Max Live" </name>                     <value> 3 </value> </counter>
+    <counter><name> "ShadowThread: getCurrentThread() calls" </name>     <value> 0 </value> </counter>
+
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>113.000</total> <count>2</count> <ave>56.5000</ave> </value> </counter>
+  </counters>
+  <yikes>
+  </yikes>
+  <tool>
+    <name> tools.aerodrome.AeroDromeTool </name> 
+    <excluded method> atomicity/ThreadDemo3.run()V </excluded method> 
+    <excluded method> atomicity/Sample.set(III)V </excluded method> 
+    <excluded method> atomicity/ThreadDemo3.run()V </excluded method> 
+    <excluded method> atomicity/Sample.set(III)V </excluded method> 
+  </tool>
+  <tool>
+    <name> Last </name> 
+  </tool>
+  <threadCount> 3 </threadCount> 
+  <threadMaxActive> 3 </threadMaxActive> 
+  <errorTotal> 0 </errorTotal> 
+  <distinctErrorTotal> 0 </distinctErrorTotal> 
+  <methods>
+  </methods>
+  <fields>
+  </fields>
+  <arrays>
+  </arrays>
+  <locks>
+  </locks>
+  <fieldAccesses>
+  </fieldAccesses>
+  <errorCountPerErrorType>
+  </errorCountPerErrorType>
+  <warningsTotal> 0 </warningsTotal> 
+  <yikesTotal> 0 </yikesTotal> 
+  <failed> false </failed> 
+  <failedReason>  </failedReason> 
+  <time> 1111 </time> 
+</entry>
+[RR: Time = 1111]
+[RR: Exiting: 0]
