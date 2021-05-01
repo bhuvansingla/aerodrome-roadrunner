@@ -1,0 +1,1061 @@
+OpenJDK 64-Bit Server VM (25.292-b10) for linux-amd64 JRE (1.8.0_292-8u292-b10-0ubuntu1~20.04-b10), built on Apr 21 2021 11:46:09 by "buildd" with gcc 9.3.0
+Memory: 4k page, physical 8032296k(1645424k free), swap 10634236k(10582564k free)
+CommandLine flags: -XX:InitialHeapSize=1073741824 -XX:MaxHeapSize=3221225472 -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+7.507: [GC (Allocation Failure)  262144K->25887K(1005056K), 0.0671227 secs]
+18.058: [GC (Allocation Failure)  288031K->25743K(1005056K), 0.0380776 secs]
+27.824: [GC (Allocation Failure)  287887K->25800K(1005056K), 0.0229426 secs]
+37.111: [GC (Allocation Failure)  287944K->25759K(1005056K), 0.0462376 secs]
+47.061: [GC (Allocation Failure)  287903K->25784K(1005056K), 0.0406115 secs]
+56.447: [GC (Allocation Failure)  287928K->25762K(1022464K), 0.0486500 secs]
+67.987: [GC (Allocation Failure)  322722K->25869K(989184K), 0.0549548 secs]
+78.719: [GC (Allocation Failure)  315149K->25813K(1012224K), 0.0034549 secs]
+88.789: [GC (Allocation Failure)  307925K->25821K(982016K), 0.0023820 secs]
+98.981: [GC (Allocation Failure)  307933K->25869K(1010688K), 0.0034802 secs]
+109.547: [GC (Allocation Failure)  300301K->25845K(974336K), 0.0034333 secs]
+119.063: [GC (Allocation Failure)  300277K->25853K(1010176K), 0.0035157 secs]
+128.502: [GC (Allocation Failure)  298237K->25901K(1010176K), 0.0025243 secs]
+138.978: [GC (Allocation Failure)  298285K->25917K(1011712K), 0.0024819 secs]
+148.798: [GC (Allocation Failure)  300349K->25893K(1010688K), 0.0054146 secs]
+158.472: [GC (Allocation Failure)  300325K->25901K(1013248K), 0.0034513 secs]
+168.518: [GC (Allocation Failure)  303405K->25909K(1012224K), 0.0047607 secs]
+178.420: [GC (Allocation Failure)  303413K->25917K(1016320K), 0.0038074 secs]
+188.587: [GC (Allocation Failure)  309053K->25925K(1014784K), 0.0056342 secs]
+198.066: [GC (Allocation Failure)  309061K->26165K(1018880K), 0.0048777 secs]
+207.695: [GC (Allocation Failure)  314421K->26173K(1017344K), 0.0055452 secs]
+217.275: [GC (Allocation Failure)  314429K->26181K(1021952K), 0.0097052 secs]
+227.491: [GC (Allocation Failure)  320581K->26189K(1020416K), 0.0073035 secs]
+238.166: [GC (Allocation Failure)  320589K->26197K(1025024K), 0.0038818 secs]
+248.405: [GC (Allocation Failure)  326741K->26205K(1023488K), 0.0034662 secs]
+259.124: [GC (Allocation Failure)  326749K->26253K(1027584K), 0.0035072 secs]
+269.718: [GC (Allocation Failure)  331917K->26229K(1026048K), 0.0028386 secs]
+280.404: [GC (Allocation Failure)  331893K->26237K(1030144K), 0.0036693 secs]
+290.901: [GC (Allocation Failure)  337021K->26245K(1028608K), 0.0036510 secs]
+301.266: [GC (Allocation Failure)  337029K->26293K(1032192K), 0.0036907 secs]
+313.408: [GC (Allocation Failure)  341685K->26285K(1031168K), 0.0057813 secs]
+325.298: [GC (Allocation Failure)  341677K->26293K(1034240K), 0.0040954 secs]
+336.413: [GC (Allocation Failure)  345781K->26301K(1033216K), 0.0038430 secs]
+347.299: [GC (Allocation Failure)  345789K->26309K(1036288K), 0.0024176 secs]
+358.515: [GC (Allocation Failure)  349893K->26357K(1035264K), 0.0036133 secs]
+369.783: [GC (Allocation Failure)  349941K->26373K(1037824K), 0.0018927 secs]
+381.159: [GC (Allocation Failure)  353541K->26413K(1037312K), 0.0029757 secs]
+391.919: [GC (Allocation Failure)  353581K->26357K(1039360K), 0.0037404 secs]
+403.112: [GC (Allocation Failure)  356597K->26373K(1038848K), 0.0038088 secs]
+414.477: [GC (Allocation Failure)  356613K->26445K(1040896K), 0.0052833 secs]
+425.582: [GC (Allocation Failure)  359757K->26477K(1040384K), 0.0054446 secs]
+436.450: [GC (Allocation Failure)  359789K->26517K(1041920K), 0.0025787 secs]
+447.956: [GC (Allocation Failure)  361877K->26637K(1041408K), 0.0033509 secs]
+459.433: [GC (Allocation Failure)  361997K->26725K(1042944K), 0.0042324 secs]
+470.786: [GC (Allocation Failure)  364133K->26733K(1042432K), 0.0043134 secs]
+482.753: [GC (Allocation Failure)  364141K->26781K(1043456K), 0.0033898 secs]
+493.995: [GC (Allocation Failure)  365725K->26837K(1043456K), 0.0025779 secs]
+505.560: [GC (Allocation Failure)  365781K->26941K(1044480K), 0.0046989 secs]
+517.364: [GC (Allocation Failure)  367421K->27149K(1043968K), 0.0045949 secs]
+528.961: [GC (Allocation Failure)  367629K->27133K(1044992K), 0.0030064 secs]
+540.631: [GC (Allocation Failure)  368637K->27173K(1044480K), 0.0026571 secs]
+552.531: [GC (Allocation Failure)  368677K->27229K(1045504K), 0.0033853 secs]
+564.397: [GC (Allocation Failure)  370269K->27205K(1045504K), 0.0091133 secs]
+575.818: [GC (Allocation Failure)  370245K->27277K(1046016K), 0.0032978 secs]
+587.041: [GC (Allocation Failure)  370829K->28221K(1045504K), 0.0054685 secs]
+597.636: [GC (Allocation Failure)  371773K->28253K(1046016K), 0.0050519 secs]
+608.235: [GC (Allocation Failure)  372317K->28301K(1046016K), 0.0044969 secs]
+618.577: [GC (Allocation Failure)  372365K->28357K(1046528K), 0.0033196 secs]
+630.567: [GC (Allocation Failure)  372933K->28333K(1046016K), 0.0033095 secs]
+641.905: [GC (Allocation Failure)  372909K->28341K(1046528K), 0.0040498 secs]
+653.454: [GC (Allocation Failure)  373429K->28349K(1046528K), 0.0041657 secs]
+664.933: [GC (Allocation Failure)  373437K->28357K(1047040K), 0.0039241 secs]
+676.787: [GC (Allocation Failure)  373957K->28405K(1046528K), 0.0030025 secs]
+688.903: [GC (Allocation Failure)  374005K->28381K(1047040K), 0.0058928 secs]
+700.751: [GC (Allocation Failure)  374493K->28389K(1047040K), 0.0042292 secs]
+712.963: [GC (Allocation Failure)  374501K->28397K(1047040K), 0.0039494 secs]
+725.072: [GC (Allocation Failure)  374509K->28469K(1047040K), 0.0046519 secs]
+737.430: [GC (Allocation Failure)  374581K->28413K(1047552K), 0.0050678 secs]
+749.596: [GC (Allocation Failure)  375549K->28421K(1047552K), 0.0039698 secs]
+761.889: [GC (Allocation Failure)  375557K->28429K(1047552K), 0.0041664 secs]
+774.065: [GC (Allocation Failure)  375565K->28437K(1047552K), 0.0033226 secs]
+786.082: [GC (Allocation Failure)  375573K->28477K(1047552K), 0.0027047 secs]
+797.909: [GC (Allocation Failure)  375613K->28453K(1047552K), 0.0046958 secs]
+809.543: [GC (Allocation Failure)  375589K->28469K(1047552K), 0.0026830 secs]
+821.854: [GC (Allocation Failure)  375605K->28477K(1047552K), 0.0033041 secs]
+834.307: [GC (Allocation Failure)  375613K->28557K(1048064K), 0.0022636 secs]
+846.198: [GC (Allocation Failure)  376205K->28597K(1047552K), 0.0032232 secs]
+858.184: [GC (Allocation Failure)  376245K->28573K(1048064K), 0.0034055 secs]
+870.440: [GC (Allocation Failure)  376733K->28717K(1048064K), 0.0043219 secs]
+882.776: [GC (Allocation Failure)  376877K->28661K(1048064K), 0.0050748 secs]
+895.369: [GC (Allocation Failure)  376821K->28709K(1048064K), 0.0030425 secs]
+907.545: [GC (Allocation Failure)  376869K->28685K(1048064K), 0.0050276 secs]
+918.733: [GC (Allocation Failure)  376845K->28725K(1048064K), 0.0025622 secs]
+929.736: [GC (Allocation Failure)  376885K->28869K(1048064K), 0.0036089 secs]
+941.336: [GC (Allocation Failure)  377029K->28837K(1048064K), 0.0043228 secs]
+952.766: [GC (Allocation Failure)  376997K->28845K(1048064K), 0.0048819 secs]
+963.966: [GC (Allocation Failure)  377005K->28853K(1048064K), 0.0039715 secs]
+976.280: [GC (Allocation Failure)  377013K->28861K(1048064K), 0.0032976 secs]
+988.327: [GC (Allocation Failure)  377021K->28869K(1048064K), 0.0030710 secs]
+999.621: [GC (Allocation Failure)  377029K->28877K(1048064K), 0.0051628 secs]
+1011.545: [GC (Allocation Failure)  377037K->28885K(1048064K), 0.0042011 secs]
+1023.242: [GC (Allocation Failure)  377045K->28893K(1048064K), 0.0047926 secs]
+1035.014: [GC (Allocation Failure)  377053K->28901K(1048064K), 0.0024426 secs]
+1046.222: [GC (Allocation Failure)  377061K->28909K(1048064K), 0.0033941 secs]
+1057.946: [GC (Allocation Failure)  377069K->28917K(1048064K), 0.0051977 secs]
+1070.050: [GC (Allocation Failure)  377077K->28925K(1048064K), 0.0050816 secs]
+1081.431: [GC (Allocation Failure)  377085K->28933K(1048064K), 0.0039456 secs]
+1093.012: [GC (Allocation Failure)  377093K->28941K(1048064K), 0.0031221 secs]
+1104.673: [GC (Allocation Failure)  377101K->28989K(1048064K), 0.0026792 secs]
+1115.893: [GC (Allocation Failure)  377149K->29045K(1048064K), 0.0036815 secs]
+1128.178: [GC (Allocation Failure)  377205K->29029K(1048064K), 0.0040293 secs]
+1139.463: [GC (Allocation Failure)  377189K->29005K(1048064K), 0.0038998 secs]
+1151.329: [GC (Allocation Failure)  377165K->29013K(1048064K), 0.0080249 secs]
+1162.554: [GC (Allocation Failure)  377173K->29021K(1048064K), 0.0039934 secs]
+1173.818: [GC (Allocation Failure)  377181K->29029K(1048064K), 0.0040349 secs]
+1185.335: [GC (Allocation Failure)  377189K->29037K(1048064K), 0.0031905 secs]
+1197.007: [GC (Allocation Failure)  377197K->29077K(1048064K), 0.0035529 secs]
+1207.938: [GC (Allocation Failure)  377237K->29069K(1048064K), 0.0044719 secs]
+1219.733: [GC (Allocation Failure)  377229K->29085K(1048064K), 0.0050851 secs]
+1230.671: [GC (Allocation Failure)  377245K->29093K(1048064K), 0.0039577 secs]
+1241.257: [GC (Allocation Failure)  377253K->29101K(1048064K), 0.0074346 secs]
+1252.230: [GC (Allocation Failure)  377261K->29109K(1048064K), 0.0032197 secs]
+1262.919: [GC (Allocation Failure)  377269K->29117K(1048064K), 0.0035604 secs]
+1273.421: [GC (Allocation Failure)  377277K->29165K(1048064K), 0.0030304 secs]
+1284.525: [GC (Allocation Failure)  377325K->29141K(1048064K), 0.0050063 secs]
+1295.821: [GC (Allocation Failure)  377301K->29189K(1048064K), 0.0026168 secs]
+1307.247: [GC (Allocation Failure)  377349K->29165K(1048064K), 0.0040040 secs]
+1318.411: [GC (Allocation Failure)  377325K->29213K(1048064K), 0.0122395 secs]
+1329.445: [GC (Allocation Failure)  377373K->29229K(1048064K), 0.0028104 secs]
+1340.374: [GC (Allocation Failure)  377389K->29245K(1048064K), 0.0018266 secs]
+1351.498: [GC (Allocation Failure)  377405K->29221K(1048064K), 0.0039078 secs]
+1362.125: [GC (Allocation Failure)  377381K->29229K(1048064K), 0.0032714 secs]
+1373.142: [GC (Allocation Failure)  377389K->29237K(1048064K), 0.0040343 secs]
+1384.133: [GC (Allocation Failure)  377397K->29245K(1048064K), 0.0041068 secs]
+1394.770: [GC (Allocation Failure)  377405K->29253K(1048064K), 0.0044273 secs]
+1407.018: [GC (Allocation Failure)  377413K->29301K(1048064K), 0.0034078 secs]
+1419.103: [GC (Allocation Failure)  377461K->29325K(1048064K), 0.0037201 secs]
+1431.900: [GC (Allocation Failure)  377485K->29341K(1048064K), 0.0025985 secs]
+1443.864: [GC (Allocation Failure)  377501K->29349K(1048064K), 0.0028590 secs]
+1456.422: [GC (Allocation Failure)  377509K->29333K(1048064K), 0.0065783 secs]
+1469.002: [GC (Allocation Failure)  377493K->29341K(1048064K), 0.0054903 secs]
+1481.237: [GC (Allocation Failure)  377501K->29357K(1048064K), 0.0032744 secs]
+1493.402: [GC (Allocation Failure)  377517K->29437K(1048064K), 0.0034350 secs]
+1505.578: [GC (Allocation Failure)  377597K->29437K(1048064K), 0.0038702 secs]
+1517.209: [GC (Allocation Failure)  377597K->29485K(1048064K), 0.0020587 secs]
+1528.161: [GC (Allocation Failure)  377645K->29461K(1048064K), 0.0039839 secs]
+1540.188: [GC (Allocation Failure)  377621K->29509K(1048064K), 0.0026105 secs]
+1552.137: [GC (Allocation Failure)  377669K->29485K(1048064K), 0.0032256 secs]
+1563.344: [GC (Allocation Failure)  377645K->29493K(1048064K), 0.0042711 secs]
+1575.210: [GC (Allocation Failure)  377653K->29541K(1048064K), 0.0026112 secs]
+1586.311: [GC (Allocation Failure)  377701K->29517K(1048064K), 0.0034868 secs]
+1597.456: [GC (Allocation Failure)  377677K->29525K(1048064K), 0.0041832 secs]
+1608.914: [GC (Allocation Failure)  377685K->29533K(1048064K), 0.0034246 secs]
+1620.752: [GC (Allocation Failure)  377693K->29573K(1048064K), 0.0046920 secs]
+1632.645: [GC (Allocation Failure)  377733K->29549K(1048064K), 0.0035010 secs]
+1644.906: [GC (Allocation Failure)  377709K->29557K(1048064K), 0.0039442 secs]
+1655.744: [GC (Allocation Failure)  377717K->29565K(1048064K), 0.0039911 secs]
+1666.858: [GC (Allocation Failure)  377725K->29573K(1048064K), 0.0049703 secs]
+1678.818: [GC (Allocation Failure)  377733K->29581K(1048064K), 0.0041376 secs]
+1690.295: [GC (Allocation Failure)  377741K->29589K(1048064K), 0.0033170 secs]
+1702.102: [GC (Allocation Failure)  377749K->29629K(1048064K), 0.0048784 secs]
+1713.984: [GC (Allocation Failure)  377789K->29661K(1048064K), 0.0028706 secs]
+1725.575: [GC (Allocation Failure)  377821K->29645K(1048064K), 0.0055483 secs]
+1737.722: [GC (Allocation Failure)  377805K->29661K(1048064K), 0.0045338 secs]
+1749.496: [GC (Allocation Failure)  377821K->29669K(1048064K), 0.0042234 secs]
+1760.906: [GC (Allocation Failure)  377829K->29685K(1048064K), 0.0045682 secs]
+1772.642: [GC (Allocation Failure)  377845K->29693K(1048064K), 0.0051196 secs]
+1783.633: [GC (Allocation Failure)  377853K->29701K(1048064K), 0.0044495 secs]
+1794.278: [GC (Allocation Failure)  377861K->29749K(1048064K), 0.0022130 secs]
+1804.804: [GC (Allocation Failure)  377909K->29725K(1048064K), 0.0049753 secs]
+1815.517: [GC (Allocation Failure)  377885K->29733K(1048064K), 0.0036323 secs]
+1826.165: [GC (Allocation Failure)  377893K->29741K(1048064K), 0.0040950 secs]
+1836.934: [GC (Allocation Failure)  377901K->29749K(1048064K), 0.0052404 secs]
+1849.058: [GC (Allocation Failure)  377909K->29757K(1048064K), 0.0040676 secs]
+1861.106: [GC (Allocation Failure)  377917K->29765K(1048064K), 0.0050016 secs]
+1873.005: [GC (Allocation Failure)  377925K->29773K(1048064K), 0.0051552 secs]
+1883.267: [GC (Allocation Failure)  377933K->29781K(1048064K), 0.0025653 secs]
+1893.344: [GC (Allocation Failure)  377941K->29789K(1048064K), 0.0037940 secs]
+1904.918: [GC (Allocation Failure)  377949K->29797K(1048064K), 0.0038852 secs]
+1915.248: [GC (Allocation Failure)  377957K->29805K(1048064K), 0.0040733 secs]
+1925.424: [GC (Allocation Failure)  377965K->29813K(1048064K), 0.0042118 secs]
+1936.600: [GC (Allocation Failure)  377973K->29861K(1048064K), 0.0039478 secs]
+1947.602: [GC (Allocation Failure)  378021K->29837K(1048064K), 0.0040882 secs]
+1958.381: [GC (Allocation Failure)  377997K->29845K(1048064K), 0.0040924 secs]
+1968.820: [GC (Allocation Failure)  378005K->29853K(1048064K), 0.0043692 secs]
+1980.120: [GC (Allocation Failure)  378013K->29901K(1048064K), 0.0034013 secs]
+1991.141: [GC (Allocation Failure)  378061K->29965K(1048064K), 0.0026563 secs]
+2002.734: [GC (Allocation Failure)  378125K->29909K(1048064K), 0.0037002 secs]
+2013.652: [GC (Allocation Failure)  378069K->29917K(1048064K), 0.0032779 secs]
+2024.920: [GC (Allocation Failure)  378077K->29925K(1048064K), 0.0032060 secs]
+2036.722: [GC (Allocation Failure)  378085K->29933K(1048064K), 0.0038345 secs]
+2046.990: [GC (Allocation Failure)  378093K->29941K(1048064K), 0.0024864 secs]
+2057.532: [GC (Allocation Failure)  378101K->29949K(1048064K), 0.0037877 secs]
+2068.544: [GC (Allocation Failure)  378109K->29957K(1048064K), 0.0032883 secs]
+2079.058: [GC (Allocation Failure)  378117K->29965K(1048064K), 0.0040348 secs]
+2089.460: [GC (Allocation Failure)  378125K->29973K(1048064K), 0.0048312 secs]
+2099.845: [GC (Allocation Failure)  378133K->29981K(1048064K), 0.0041107 secs]
+2110.354: [GC (Allocation Failure)  378141K->29989K(1048064K), 0.0047259 secs]
+2122.958: [GC (Allocation Failure)  378149K->30029K(1048064K), 0.0037457 secs]
+2133.452: [GC (Allocation Failure)  378189K->30005K(1048064K), 0.0032651 secs]
+2143.943: [GC (Allocation Failure)  378165K->30013K(1048064K), 0.0051961 secs]
+2154.366: [GC (Allocation Failure)  378173K->30029K(1048064K), 0.0042283 secs]
+2165.952: [GC (Allocation Failure)  378189K->30077K(1048064K), 0.0021753 secs]
+2177.522: [GC (Allocation Failure)  378237K->30093K(1048064K), 0.0019861 secs]
+2189.463: [GC (Allocation Failure)  378253K->30069K(1048064K), 0.0039575 secs]
+2201.567: [GC (Allocation Failure)  378229K->30077K(1048064K), 0.0043344 secs]
+2213.329: [GC (Allocation Failure)  378237K->30125K(1048064K), 0.0054926 secs]
+2226.002: [GC (Allocation Failure)  378285K->30101K(1048064K), 0.0032581 secs]
+2239.181: [GC (Allocation Failure)  378261K->30109K(1048064K), 0.0039246 secs]
+2252.074: [GC (Allocation Failure)  378269K->30157K(1048064K), 0.0022425 secs]
+2263.168: [GC (Allocation Failure)  378317K->30213K(1048064K), 0.0027154 secs]
+2275.322: [GC (Allocation Failure)  378373K->30157K(1048064K), 0.0042994 secs]
+2287.254: [GC (Allocation Failure)  378317K->30165K(1048064K), 0.0034133 secs]
+2299.234: [GC (Allocation Failure)  378325K->30213K(1048064K), 0.0050832 secs]
+2311.673: [GC (Allocation Failure)  378373K->30221K(1048064K), 0.0037751 secs]
+2323.949: [GC (Allocation Failure)  378381K->30205K(1048064K), 0.0040443 secs]
+2336.740: [GC (Allocation Failure)  378365K->30213K(1048064K), 0.0088924 secs]
+2352.002: [GC (Allocation Failure)  378373K->30229K(1048064K), 0.0041526 secs]
+2366.158: [GC (Allocation Failure)  378389K->30237K(1048064K), 0.0059513 secs]
+2380.178: [GC (Allocation Failure)  378397K->30245K(1048064K), 0.0041821 secs]
+2392.812: [GC (Allocation Failure)  378405K->30373K(1048064K), 0.0013148 secs]
+2406.031: [GC (Allocation Failure)  378533K->30325K(1048064K), 0.0026625 secs]
+2417.259: [GC (Allocation Failure)  378485K->30341K(1048064K), 0.0022313 secs]
+2430.974: [GC (Allocation Failure)  378501K->30317K(1048064K), 0.0031754 secs]
+2443.749: [GC (Allocation Failure)  378477K->30325K(1048064K), 0.0048752 secs]
+2455.616: [GC (Allocation Failure)  378485K->30373K(1048064K), 0.0059051 secs]
+2468.175: [GC (Allocation Failure)  378533K->30389K(1048064K), 0.0085845 secs]
+2480.047: [GC (Allocation Failure)  378549K->30405K(1048064K), 0.0058000 secs]
+2491.849: [GC (Allocation Failure)  378565K->30421K(1048064K), 0.0037231 secs]
+Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 6: Terminating thread: Thread-5[tid = 6]]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 4: Terminating thread: Thread-3[tid = 4]]
+[RR Waiter for 2: Terminating thread: Thread-1[tid = 2]]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 5: Terminating thread: Thread-4[tid = 5]]
+[RR Waiter for 7: Terminating thread: Thread-6[tid = 7]]
+[RR Waiter for 3: Terminating thread: Thread-2[tid = 3]]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 1: Terminating thread: Thread-0[tid = 1]]
+[RR Waiter for 8: Terminating thread: Thread-7[tid = 8]]
+tsp-8	2491321
+Minimum tour length: 43
+Minimum tour:0 -   10 -    11 -    2 -   7 -   3 -   13 -    12 -    6 -   5 -   14 -    4 -   8 -   1 -   15 -    9 -   0
+[main: Terminating thread: main[tid = 0]]
+[main: Tool Fini()]
+[main: ]
+[main: ----- ----- ----- -----      Thpthpthpth.     ----- ----- ----- -----]
+[RR: 2.49e+03 sec]
+[RR: Total Time: 2491995]
+<entry>
+  <date> Sat May 01 12:43:57 IST 2021 </date> 
+  <mode> SLOW </mode> 
+  <timeout> NO </timeout> 
+  <options>
+    <option><name> javaArgs </name>           <value> Tsp tspfiles/map16c 8  </value> </option>
+    <option><name> noDecInline </name>        <value> false </value> </option>
+    <option><name> quiet </name>              <value> false </value> </option>
+    <option><name> logDepth </name>           <value> 100 </value> </option>
+    <option><name> logs </name>               <value> log </value> </option>
+    <option><name> out </name>                <value>  </value>   </option>
+    <option><name> err </name>                <value>  </value>   </option>
+    <option><name> noinst </name>             <value> false </value> </option>
+    <option><name> inst </name>               <value> INST </value> </option>
+    <option><name> infThreads </name>         <value> 0 </value>  </option>
+    <option><name> benchmark </name>          <value> 0 </value>  </option>
+    <option><name> fileType </name>           <value> true </value> </option>
+    <option><name> transactionFile </name>    <value> transactionfile.csv </value> </option>
+    <option><name> warmup </name>             <value> 3 </value>  </option>
+    <option><name> availableProcessors </name> <value> 4 </value>  </option>
+    <option><name> args </name>               <value> [] </value> </option>
+    <option><name> d </name>                  <value> [] </value> </option>
+    <option><name> maxYikes </name>           <value> 5 </value>  </option>
+    <option><name> help </name>               <value> false </value> </option>
+    <option><name> toolpath </name>           <value> /home/krishanu/temp4/aerodrome-roadrunner/classes/rr/simple:/home/krishanu/temp4/aerodrome-roadrunner/classes/tools </value> </option>
+    <option><name> classpath </name>          <value> tsp.jar </value> </option>
+    <option><name> tool </name>               <value> AD </value> </option>
+    <option><name> tools </name>              <value> false </value> </option>
+    <option><name> noxml </name>              <value> false </value> </option>
+    <option><name> constantGC </name>         <value> false </value> </option>
+    <option><name> noFP </name>               <value> true </value> </option>
+    <option><name> noShutdownHook </name>     <value> false </value> </option>
+    <option><name> noEnter </name>            <value> false </value> </option>
+    <option><name> xml </name>                <value> log.xml </value> </option>
+    <option><name> pulse </name>              <value>  </value>   </option>
+    <option><name> maxTime </name>            <value> 0 </value>  </option>
+    <option><name> maxMem </name>             <value> 10240 </value> </option>
+    <option><name> maxTid </name>             <value> 16 </value> </option>
+    <option><name> stacks </name>             <value> false </value> </option>
+    <option><name> values </name>             <value> false </value> </option>
+    <option><name> noTidGC </name>            <value> true </value> </option>
+    <option><name> noEventReuse </name>       <value> false </value> </option>
+    <option><name> trackMemoryUsage </name>   <value> false </value> </option>
+    <option><name> repository </name>         <value>  </value>   </option>
+    <option><name> meta </name>               <value> null </value> </option>
+    <option><name> methods </name>            <value> [default=ACCEPT] </value> </option>
+    <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
+    <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
+    <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
+    <option><name> noConstructor </name>      <value> false </value> </option>
+    <option><name> noClone </name>            <value> false </value> </option>
+    <option><name> dump </name>               <value>  </value>   </option>
+    <option><name> field </name>              <value> FINE </value> </option>
+    <option><name> fancy </name>              <value> false </value> </option>
+    <option><name> verify </name>             <value> false </value> </option>
+    <option><name> trackReflection </name>    <value> false </value> </option>
+    <option><name> arraySites </name>         <value> false </value> </option>
+    <option><name> Use TestAcquires </name>   <value> false </value> </option>
+    <option><name> sanity </name>             <value> false </value> </option>
+    <option><name> reentrantEvents </name>    <value> false </value> </option>
+    <option><name> nojoin </name>             <value> false </value> </option>
+    <option><name> multiLoader </name>        <value> false </value> </option>
+    <option><name> indices </name>            <value> 2147483647 </value> </option>
+    <option><name> updaters </name>           <value> SAFE </value> </option>
+    <option><name> array </name>              <value> FINE </value> </option>
+    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@511d50c0 </value> </option>
+    <option><name> nobarrier </name>          <value> false </value> </option>
+    <option><name> arrayCacheType </name>     <value> STRONG </value> </option>
+    <option><name> callSites </name>          <value> false </value> </option>
+    <option><name> maxWarn </name>            <value> 100 </value> </option>
+    <option><name> noInterrupt </name>        <value> false </value> </option>
+  </options>
+  <system>
+    <host> krishanu-Predator-G3-572 </host> 
+    <name> java.vm.version </name>     <value> 25.292-b10 </value> 
+    <name> java.vm.vendor </name>      <value> Private Build </value> 
+    <name> java.vm.name </name>        <value> OpenJDK 64-Bit Server VM </value> 
+    <name> java.class.path </name>     <value> .:/home/krishanu/temp4/aerodrome-roadrunner/build/jar/rragent.jar </value> 
+    <name> os.name </name>             <value> Linux </value> 
+    <name> os.arch </name>             <value> amd64 </value> 
+    <name> os.version </name>          <value> 5.8.0-50-generic </value> 
+    <name> user.name </name>           <value> krishanu </value> 
+    <name> user.dir </name>            <value> /home/krishanu/temp4/aerodrome-roadrunner/benchmarks/tsp </value> 
+    <availableProcs> 4 </availableProcs> 
+    <memCommitted> 1024 </memCommitted> 
+    <memUsed> 53 </memUsed> 
+    <memTotal> 1024 </memTotal> 
+    <compileTime> 4679 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 1138 </time> </gc>
+    <gc> <name> PS MarkSweep </name> <time> 0 </time> </gc>
+  </system>
+  <instrumented> PrioQElement TourElement Tsp TspSolver harness/Callback  </instrumented> 
+  <instrumentedNum> 5 </instrumentedNum> 
+  <skipped>  </skipped> 
+  <skippedNum> 0 </skippedNum> 
+  <sanityChecked>  </sanityChecked> 
+  <sanityCheckedNum> 0 </sanityCheckedNum> 
+  <counters>
+
+    <counter><name> "AD: Read" </name>                                   <value> 893,888,019 </value> </counter>
+    <counter><name> "AD: Write" </name>                                  <value> 99,906,748 </value> </counter>
+    <counter><name> "AD: Method Begin" </name>                           <value> 10,061,958 </value> </counter>
+    <counter><name> "AD: Method End" </name>                             <value> 10,061,958 </value> </counter>
+    <counter><name> "AD: Transaction Begin" </name>                      <value>         11 </value> </counter>
+    <counter><name> "AD: Transaction End" </name>                        <value>         11 </value> </counter>
+    <counter><name> "AD: Acquire" </name>                                <value>        411 </value> </counter>
+    <counter><name> "AD: Release" </name>                                <value>        411 </value> </counter>
+    <counter><name> "AD: Fork" </name>                                   <value>          8 </value> </counter>
+    <counter><name> "AD: Join" </name>                                   <value>          8 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value> 25,311 </value> </counter>
+
+    <counter><name> "ArrayStateFactory: Size" </name>                    <value> 260 </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Move Time" </name>         <value> <total>0.00000</total> <count>0</count>  </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Hits" </name>              <value> 0 </value> </counter>
+
+    <counter><name> "Clone: Count" </name>                               <value> 0 </value> </counter>
+
+    <counter><name> "GCRunner: Max Usage" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "Handler: Count" </name>                             <value> 0 </value> </counter>
+
+    <counter><name> "ShadowLock: objects" </name>                        <value> 2 </value> </counter>
+
+    <counter><name> "ShadowThread: Count" </name>                        <value> 9 </value> </counter>
+    <counter><name> "ShadowThread: Max Live" </name>                     <value> 9 </value> </counter>
+    <counter><name> "ShadowThread: getCurrentThread() calls" </name>     <value> 20,133,852 </value> </counter>
+
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>144.000</total> <count>5</count> <ave>28.8000</ave> </value> </counter>
+  </counters>
+  <yikes>
+  </yikes>
+  <tool>
+    <name> tools.aerodrome.AeroDromeTool </name> 
+    <violation> 
+        Type -> transactionEnd 
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):337:249
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):542:163
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):238:37
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):301:56
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):417:189
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):425:230
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):372:286
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):238:30
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_recursive_solve__$rr__Original_(I)V (TspSolver.java):479:19
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):338:259
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):69:27
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):104:1
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_recursive_solve__$rr__Original_(I)V (TspSolver.java):484:65
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):389:74
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):388:64
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):289:16
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):416:179
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):387:54
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):293:37
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):366:7
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):303:87
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):236:5
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):537:128
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):82:117
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):236:1
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):237:16
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):390:80
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_recursive_solve__$rr__Original_(I)V (TspSolver.java):478:10
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):238:26
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):237:12
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):79:91
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):526:48
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):238:41
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):303:92
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_get_tour__$rr__Original_(I)I (TspSolver.java):455:14
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):375:33
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):375:36
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):293:34
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):110:15
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):83:127
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):374:27
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):80:97
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_calc_bound__$rr__Original_(I)I (TspSolver.java):216:331
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):90:180
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):82:120
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):440:281
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):418:199
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):440:285
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):417:192
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):326:211
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_get_tour__$rr__Original_(I)I (TspSolver.java):455:20
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_get_tour__$rr__Original_(I)I (TspSolver.java):455:24
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):381:43
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_calc_bound__$rr__Original_(I)I (TspSolver.java):222:390
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):323:185
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):69:24
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):117:37
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):85:169
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):338:262
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):80:100
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):390:85
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):389:77
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):85:165
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):388:67
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_calc_bound__$rr__Original_(I)I (TspSolver.java):184:174
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):339:269
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):115:22
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):79:92
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):337:252
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):340:276
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_calc_bound__$rr__Original_(I)I (TspSolver.java):220:374
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):416:182
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):419:206
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):325:201
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):83:148
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> TspSolver.__$rr_get_tour__$rr__Original_(I)I (TspSolver.java):454:5
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):109:13
+        Transaction Method -> TspSolver.Worker()V
+    </violation> 
+    <excluded method> TspSolver.run()V </excluded method> 
+    <excluded method> Tsp.main([Ljava/lang/String;)V </excluded method> 
+  </tool>
+  <tool>
+    <name> Last </name> 
+  </tool>
+  <threadCount> 9 </threadCount> 
+  <threadMaxActive> 9 </threadMaxActive> 
+  <errorTotal> 0 </errorTotal> 
+  <distinctErrorTotal> 0 </distinctErrorTotal> 
+  <methods>
+  </methods>
+  <fields>
+  </fields>
+  <arrays>
+  </arrays>
+  <locks>
+  </locks>
+  <fieldAccesses>
+  </fieldAccesses>
+  <errorCountPerErrorType>
+  </errorCountPerErrorType>
+  <warningsTotal> 0 </warningsTotal> 
+  <yikesTotal> 0 </yikesTotal> 
+  <failed> false </failed> 
+  <failedReason>  </failedReason> 
+  <time> 2491995 </time> 
+</entry>
+[RR: Time = 2491995]
+[RR: Exiting: 0]

@@ -1,0 +1,1166 @@
+OpenJDK 64-Bit Server VM (25.292-b10) for linux-amd64 JRE (1.8.0_292-8u292-b10-0ubuntu1~20.04-b10), built on Apr 21 2021 11:46:09 by "buildd" with gcc 9.3.0
+Memory: 4k page, physical 8032296k(588288k free), swap 10634236k(10560636k free)
+CommandLine flags: -XX:InitialHeapSize=1073741824 -XX:MaxHeapSize=3221225472 -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+5.069: [GC (Allocation Failure)  262144K->25883K(1005056K), 0.0552678 secs]
+12.871: [GC (Allocation Failure)  288027K->25795K(1232384K), 0.0636587 secs]
+27.099: [GC (Allocation Failure)  532675K->25795K(1249792K), 0.0704717 secs]
+39.458: [GC (Allocation Failure)  532675K->25783K(1249792K), 0.0457856 secs]
+52.029: [GC (Allocation Failure)  532663K->25735K(1216000K), 0.0525709 secs]
+64.598: [GC (Allocation Failure)  516231K->25717K(1191936K), 0.0645434 secs]
+76.709: [GC (Allocation Failure)  500341K->25905K(1159680K), 0.0390782 secs]
+88.770: [GC (Allocation Failure)  485681K->25817K(1158144K), 0.0066726 secs]
+100.497: [GC (Allocation Failure)  471257K->25825K(1131520K), 0.0032020 secs]
+111.126: [GC (Allocation Failure)  457441K->25833K(1143296K), 0.0053292 secs]
+121.510: [GC (Allocation Failure)  444137K->25841K(1105408K), 0.0119670 secs]
+131.942: [GC (Allocation Failure)  431345K->25849K(1118720K), 0.0049241 secs]
+141.333: [GC (Allocation Failure)  419065K->25857K(1081344K), 0.0037044 secs]
+151.435: [GC (Allocation Failure)  407297K->25865K(1095168K), 0.0048286 secs]
+162.353: [GC (Allocation Failure)  396041K->25913K(1059328K), 0.0032240 secs]
+172.904: [GC (Allocation Failure)  385337K->25889K(1072640K), 0.0056770 secs]
+182.723: [GC (Allocation Failure)  375073K->25897K(1039360K), 0.0055403 secs]
+192.095: [GC (Allocation Failure)  365353K->26169K(1051136K), 0.0048536 secs]
+201.132: [GC (Allocation Failure)  356409K->26137K(1021440K), 0.0060970 secs]
+210.216: [GC (Allocation Failure)  347673K->26145K(1031680K), 0.0063794 secs]
+218.669: [GC (Allocation Failure)  338977K->26193K(1004544K), 0.0052358 secs]
+226.603: [GC (Allocation Failure)  330833K->26169K(1013760K), 0.0058650 secs]
+234.403: [GC (Allocation Failure)  323129K->26209K(1022976K), 0.0068234 secs]
+241.878: [GC (Allocation Failure)  323169K->26225K(1025024K), 0.0039857 secs]
+248.862: [GC (Allocation Failure)  326769K->26201K(1023488K), 0.0035154 secs]
+255.866: [GC (Allocation Failure)  326745K->26249K(1027584K), 0.0020669 secs]
+263.031: [GC (Allocation Failure)  331913K->26225K(1026048K), 0.0043355 secs]
+270.770: [GC (Allocation Failure)  331889K->26265K(1030144K), 0.0027303 secs]
+278.062: [GC (Allocation Failure)  337049K->26273K(1028608K), 0.0052392 secs]
+284.217: [GC (Allocation Failure)  337057K->26289K(1032192K), 0.0021686 secs]
+290.653: [GC (Allocation Failure)  341681K->26305K(1031168K), 0.0025781 secs]
+298.279: [GC (Allocation Failure)  341697K->26313K(1034240K), 0.0036232 secs]
+305.846: [GC (Allocation Failure)  345801K->26289K(1033216K), 0.0045932 secs]
+312.738: [GC (Allocation Failure)  345777K->26361K(1036288K), 0.0040437 secs]
+318.879: [GC (Allocation Failure)  349945K->26369K(1035264K), 0.0026320 secs]
+324.963: [GC (Allocation Failure)  349953K->26441K(1037824K), 0.0036505 secs]
+329.890: [GC (Allocation Failure)  353609K->26393K(1037312K), 0.0044346 secs]
+335.541: [GC (Allocation Failure)  353561K->26409K(1039360K), 0.0026686 secs]
+340.998: [GC (Allocation Failure)  356649K->26417K(1038848K), 0.0036798 secs]
+345.797: [GC (Allocation Failure)  356657K->26457K(1040896K), 0.0039587 secs]
+350.789: [GC (Allocation Failure)  359769K->26449K(1040384K), 0.0031403 secs]
+355.729: [GC (Allocation Failure)  359761K->26457K(1041920K), 0.0031194 secs]
+360.553: [GC (Allocation Failure)  361817K->26497K(1041408K), 0.0030431 secs]
+365.268: [GC (Allocation Failure)  361857K->26473K(1042944K), 0.0030324 secs]
+369.725: [GC (Allocation Failure)  363881K->26521K(1042432K), 0.0024965 secs]
+375.056: [GC (Allocation Failure)  363929K->26497K(1043456K), 0.0036283 secs]
+380.439: [GC (Allocation Failure)  365441K->26545K(1043456K), 0.0024946 secs]
+384.859: [GC (Allocation Failure)  365489K->26585K(1044480K), 0.0042758 secs]
+389.501: [GC (Allocation Failure)  367065K->26609K(1043968K), 0.0051436 secs]
+393.877: [GC (Allocation Failure)  367089K->26705K(1044992K), 0.0049452 secs]
+397.556: [GC (Allocation Failure)  368209K->26705K(1044480K), 0.0050600 secs]
+401.609: [GC (Allocation Failure)  368209K->26809K(1045504K), 0.0028667 secs]
+405.614: [GC (Allocation Failure)  369849K->26793K(1045504K), 0.0039117 secs]
+410.100: [GC (Allocation Failure)  369833K->26801K(1046016K), 0.0042167 secs]
+414.065: [GC (Allocation Failure)  370353K->26809K(1045504K), 0.0031800 secs]
+417.903: [GC (Allocation Failure)  370361K->26817K(1046528K), 0.0025594 secs]
+421.744: [GC (Allocation Failure)  371393K->26865K(1046016K), 0.0035402 secs]
+425.796: [GC (Allocation Failure)  371441K->26841K(1046528K), 0.0038801 secs]
+430.201: [GC (Allocation Failure)  371929K->26889K(1046528K), 0.0030763 secs]
+434.047: [GC (Allocation Failure)  371977K->26993K(1047040K), 0.0051847 secs]
+437.654: [GC (Allocation Failure)  372593K->27257K(1046528K), 0.0043996 secs]
+441.007: [GC (Allocation Failure)  372857K->27273K(1047040K), 0.0030321 secs]
+444.436: [GC (Allocation Failure)  373385K->27281K(1047040K), 0.0045078 secs]
+447.793: [GC (Allocation Failure)  373393K->27289K(1047040K), 0.0029110 secs]
+451.350: [GC (Allocation Failure)  373401K->27305K(1047040K), 0.0026049 secs]
+454.714: [GC (Allocation Failure)  373417K->27345K(1047552K), 0.0038483 secs]
+457.974: [GC (Allocation Failure)  373969K->27337K(1047040K), 0.0054817 secs]
+461.333: [GC (Allocation Failure)  373961K->27385K(1047552K), 0.0039848 secs]
+464.286: [GC (Allocation Failure)  374521K->27369K(1047552K), 0.0020975 secs]
+467.267: [GC (Allocation Failure)  374505K->27537K(1047552K), 0.0029666 secs]
+469.986: [GC (Allocation Failure)  374673K->27537K(1047552K), 0.0029663 secs]
+473.130: [GC (Allocation Failure)  374673K->27545K(1047552K), 0.0058587 secs]
+476.316: [GC (Allocation Failure)  374681K->27553K(1047552K), 0.0033717 secs]
+479.334: [GC (Allocation Failure)  374689K->27561K(1047552K), 0.0050666 secs]
+482.831: [GC (Allocation Failure)  374697K->27569K(1047552K), 0.0050792 secs]
+485.713: [GC (Allocation Failure)  374705K->27577K(1048064K), 0.0033619 secs]
+489.351: [GC (Allocation Failure)  375225K->27585K(1047552K), 0.0052077 secs]
+492.910: [GC (Allocation Failure)  375233K->27625K(1048064K), 0.0036774 secs]
+496.378: [GC (Allocation Failure)  375785K->27633K(1048064K), 0.0044232 secs]
+499.118: [GC (Allocation Failure)  375793K->27625K(1048064K), 0.0034123 secs]
+501.854: [GC (Allocation Failure)  375785K->27633K(1048064K), 0.0056041 secs]
+504.609: [GC (Allocation Failure)  375793K->27641K(1048064K), 0.0049364 secs]
+507.290: [GC (Allocation Failure)  375801K->27937K(1048064K), 0.0050205 secs]
+509.866: [GC (Allocation Failure)  376097K->27929K(1048064K), 0.0052846 secs]
+512.523: [GC (Allocation Failure)  376089K->27977K(1048064K), 0.0026309 secs]
+515.223: [GC (Allocation Failure)  376137K->27953K(1048064K), 0.0044779 secs]
+517.943: [GC (Allocation Failure)  376113K->28361K(1048064K), 0.0031106 secs]
+520.786: [GC (Allocation Failure)  376521K->28369K(1048064K), 0.0037009 secs]
+523.549: [GC (Allocation Failure)  376529K->28377K(1048064K), 0.0048207 secs]
+526.480: [GC (Allocation Failure)  376537K->28409K(1048064K), 0.0050967 secs]
+529.694: [GC (Allocation Failure)  376569K->28457K(1048064K), 0.0034030 secs]
+532.416: [GC (Allocation Failure)  376617K->28457K(1048064K), 0.0034360 secs]
+534.922: [GC (Allocation Failure)  376617K->28593K(1048064K), 0.0049207 secs]
+537.153: [GC (Allocation Failure)  376753K->28601K(1048064K), 0.0031997 secs]
+539.406: [GC (Allocation Failure)  376761K->28641K(1048064K), 0.0031913 secs]
+541.939: [GC (Allocation Failure)  376801K->28617K(1048064K), 0.0045230 secs]
+544.472: [GC (Allocation Failure)  376777K->28625K(1048064K), 0.0048839 secs]
+546.975: [GC (Allocation Failure)  376785K->28641K(1048064K), 0.0029273 secs]
+549.448: [GC (Allocation Failure)  376801K->28649K(1048064K), 0.0050199 secs]
+552.116: [GC (Allocation Failure)  376809K->28657K(1048064K), 0.0035074 secs]
+554.643: [GC (Allocation Failure)  376817K->28665K(1048064K), 0.0026381 secs]
+556.901: [GC (Allocation Failure)  376825K->28673K(1048064K), 0.0049410 secs]
+559.344: [GC (Allocation Failure)  376833K->28681K(1048064K), 0.0049757 secs]
+561.892: [GC (Allocation Failure)  376841K->28689K(1048064K), 0.0050169 secs]
+564.469: [GC (Allocation Failure)  376849K->28729K(1048064K), 0.0031549 secs]
+566.711: [GC (Allocation Failure)  376889K->28721K(1048064K), 0.0027567 secs]
+568.929: [GC (Allocation Failure)  376881K->28745K(1048064K), 0.0033710 secs]
+571.229: [GC (Allocation Failure)  376905K->28753K(1048064K), 0.0034861 secs]
+573.515: [GC (Allocation Failure)  376913K->28769K(1048064K), 0.0025785 secs]
+575.939: [GC (Allocation Failure)  376929K->28777K(1048064K), 0.0049078 secs]
+578.880: [GC (Allocation Failure)  376937K->28785K(1048064K), 0.0065497 secs]
+581.462: [GC (Allocation Failure)  376945K->28793K(1048064K), 0.0048896 secs]
+584.165: [GC (Allocation Failure)  376953K->28929K(1048064K), 0.0066575 secs]
+586.878: [GC (Allocation Failure)  377089K->28961K(1048064K), 0.0035261 secs]
+589.389: [GC (Allocation Failure)  377121K->28977K(1048064K), 0.0030859 secs]
+591.919: [GC (Allocation Failure)  377137K->30025K(1047040K), 0.0051051 secs]
+594.173: [GC (Allocation Failure)  377161K->30193K(1047552K), 0.0045689 secs]
+596.746: [GC (Allocation Failure)  377329K->30209K(1047552K), 0.0050414 secs]
+599.043: [GC (Allocation Failure)  377345K->30217K(1047552K), 0.0050595 secs]
+601.322: [GC (Allocation Failure)  377353K->30361K(1047552K), 0.0038130 secs]
+604.190: [GC (Allocation Failure)  377497K->30353K(1047552K), 0.0049631 secs]
+606.796: [GC (Allocation Failure)  377489K->30361K(1047552K), 0.0039513 secs]
+609.398: [GC (Allocation Failure)  377497K->30369K(1047552K), 0.0042401 secs]
+612.009: [GC (Allocation Failure)  377505K->30377K(1048064K), 0.0061170 secs]
+614.966: [GC (Allocation Failure)  378025K->30481K(1047552K), 0.0056928 secs]
+617.574: [GC (Allocation Failure)  378129K->30521K(1048064K), 0.0023480 secs]
+620.174: [GC (Allocation Failure)  378681K->30569K(1048064K), 0.0022266 secs]
+622.748: [GC (Allocation Failure)  378729K->30569K(1048064K), 0.0033137 secs]
+625.241: [GC (Allocation Failure)  378729K->30585K(1048064K), 0.0038600 secs]
+627.818: [GC (Allocation Failure)  378745K->30601K(1048064K), 0.0027603 secs]
+630.366: [GC (Allocation Failure)  378761K->30609K(1048064K), 0.0042159 secs]
+632.972: [GC (Allocation Failure)  378769K->30633K(1048064K), 0.0042071 secs]
+635.861: [GC (Allocation Failure)  378793K->30641K(1048064K), 0.0068065 secs]
+638.597: [GC (Allocation Failure)  378801K->30649K(1048064K), 0.0041165 secs]
+641.578: [GC (Allocation Failure)  378809K->30657K(1048064K), 0.0052495 secs]
+644.203: [GC (Allocation Failure)  378817K->30665K(1048064K), 0.0052365 secs]
+646.904: [GC (Allocation Failure)  378825K->30673K(1048064K), 0.0047974 secs]
+649.720: [GC (Allocation Failure)  378833K->30681K(1048064K), 0.0042585 secs]
+652.220: [GC (Allocation Failure)  378841K->30721K(1048064K), 0.0064920 secs]
+654.733: [GC (Allocation Failure)  378881K->30721K(1048064K), 0.0054257 secs]
+657.785: [GC (Allocation Failure)  378881K->30729K(1048064K), 0.0041493 secs]
+660.234: [GC (Allocation Failure)  378889K->30737K(1048064K), 0.0042604 secs]
+662.782: [GC (Allocation Failure)  378897K->30745K(1048064K), 0.0032008 secs]
+665.648: [GC (Allocation Failure)  378905K->30753K(1048064K), 0.0058865 secs]
+667.942: [GC (Allocation Failure)  378913K->30769K(1048064K), 0.0027010 secs]
+670.616: [GC (Allocation Failure)  378929K->30777K(1048064K), 0.0035479 secs]
+673.235: [GC (Allocation Failure)  378937K->30825K(1048064K), 0.0037996 secs]
+676.034: [GC (Allocation Failure)  378985K->30833K(1048064K), 0.0027379 secs]
+678.928: [GC (Allocation Failure)  378993K->30881K(1048064K), 0.0029922 secs]
+681.531: [GC (Allocation Failure)  379041K->30857K(1048064K), 0.0041181 secs]
+684.540: [GC (Allocation Failure)  379017K->30897K(1048064K), 0.0043801 secs]
+687.433: [GC (Allocation Failure)  379057K->30897K(1048064K), 0.0033193 secs]
+689.995: [GC (Allocation Failure)  379057K->30905K(1048064K), 0.0033928 secs]
+692.673: [GC (Allocation Failure)  379065K->30913K(1048064K), 0.0059906 secs]
+695.619: [GC (Allocation Failure)  379073K->30953K(1048064K), 0.0042256 secs]
+698.485: [GC (Allocation Failure)  379113K->30953K(1048064K), 0.0038216 secs]
+701.403: [GC (Allocation Failure)  379113K->30961K(1048064K), 0.0048376 secs]
+704.099: [GC (Allocation Failure)  379121K->30969K(1048064K), 0.0033853 secs]
+706.671: [GC (Allocation Failure)  379129K->31017K(1048064K), 0.0037313 secs]
+709.615: [GC (Allocation Failure)  379177K->31033K(1048064K), 0.0033237 secs]
+712.262: [GC (Allocation Failure)  379193K->31033K(1048064K), 0.0042846 secs]
+715.255: [GC (Allocation Failure)  379193K->31073K(1048064K), 0.0052643 secs]
+717.786: [GC (Allocation Failure)  379233K->31073K(1048064K), 0.0047426 secs]
+720.570: [GC (Allocation Failure)  379233K->31081K(1048064K), 0.0066470 secs]
+723.450: [GC (Allocation Failure)  379241K->31129K(1048064K), 0.0032449 secs]
+726.092: [GC (Allocation Failure)  379289K->31129K(1048064K), 0.0042251 secs]
+728.705: [GC (Allocation Failure)  379289K->31137K(1048064K), 0.0042920 secs]
+731.720: [GC (Allocation Failure)  379297K->31145K(1048064K), 0.0041640 secs]
+734.447: [GC (Allocation Failure)  379305K->31193K(1048064K), 0.0027191 secs]
+737.023: [GC (Allocation Failure)  379353K->31241K(1048064K), 0.0011999 secs]
+740.087: [GC (Allocation Failure)  379401K->31217K(1048064K), 0.0044871 secs]
+742.514: [GC (Allocation Failure)  379377K->31225K(1048064K), 0.0035251 secs]
+744.920: [GC (Allocation Failure)  379385K->31273K(1048064K), 0.0032660 secs]
+747.655: [GC (Allocation Failure)  379433K->31273K(1048064K), 0.0049920 secs]
+750.067: [GC (Allocation Failure)  379433K->31281K(1048064K), 0.0050059 secs]
+752.656: [GC (Allocation Failure)  379441K->31289K(1048064K), 0.0041723 secs]
+755.421: [GC (Allocation Failure)  379449K->31305K(1048064K), 0.0027812 secs]
+757.782: [GC (Allocation Failure)  379465K->31313K(1048064K), 0.0037449 secs]
+760.398: [GC (Allocation Failure)  379473K->31345K(1048064K), 0.0055948 secs]
+762.646: [GC (Allocation Failure)  379505K->31361K(1048064K), 0.0021552 secs]
+764.980: [GC (Allocation Failure)  379521K->31369K(1048064K), 0.0046921 secs]
+767.400: [GC (Allocation Failure)  379529K->31409K(1048064K), 0.0037560 secs]
+770.080: [GC (Allocation Failure)  379569K->31385K(1048064K), 0.0043457 secs]
+772.376: [GC (Allocation Failure)  379545K->31393K(1048064K), 0.0042084 secs]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 3: Terminating thread: Thread-2[tid = 3]]
+[RR Waiter for 2: Terminating thread: Thread-1[tid = 2]]
+[RR Waiter for 4: Terminating thread: Thread-3[tid = 4]]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 1: Terminating thread: Thread-0[tid = 1]]
+[RR Waiter for 6: Terminating thread: Thread-5[tid = 6]]
+[RR Waiter for 8: Terminating thread: Thread-7[tid = 8]]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 7: Terminating thread: Thread-6[tid = 7]]
+[RR Waiter for 5: Terminating thread: Thread-4[tid = 5]]
+tsp-8	2556797
+Minimum tour length: 43
+Minimum tour:0 -   10 -    11 -    2 -   7 -   3 -   13 -    12 -    6 -   5 -   14 -    4 -   8 -   1 -   15 -    9 -   0
+[main: Terminating thread: main[tid = 0]]
+[main: Tool Fini()]
+[main: ]
+[main: ----- ----- ----- -----      Thpthpthpth.     ----- ----- ----- -----]
+[RR: 2.56e+03 sec]
+[RR: Total Time: 2557116]
+<entry>
+  <date> Sat May 01 15:59:07 IST 2021 </date> 
+  <mode> SLOW </mode> 
+  <timeout> NO </timeout> 
+  <options>
+    <option><name> javaArgs </name>           <value> Tsp tspfiles/map16c 8  </value> </option>
+    <option><name> noDecInline </name>        <value> false </value> </option>
+    <option><name> quiet </name>              <value> false </value> </option>
+    <option><name> logDepth </name>           <value> 100 </value> </option>
+    <option><name> logs </name>               <value> log </value> </option>
+    <option><name> out </name>                <value>  </value>   </option>
+    <option><name> err </name>                <value>  </value>   </option>
+    <option><name> noinst </name>             <value> false </value> </option>
+    <option><name> inst </name>               <value> INST </value> </option>
+    <option><name> infThreads </name>         <value> 0 </value>  </option>
+    <option><name> benchmark </name>          <value> 0 </value>  </option>
+    <option><name> fileType </name>           <value> true </value> </option>
+    <option><name> transactionFile </name>    <value> transactionfile.csv </value> </option>
+    <option><name> warmup </name>             <value> 3 </value>  </option>
+    <option><name> availableProcessors </name> <value> 4 </value>  </option>
+    <option><name> args </name>               <value> [] </value> </option>
+    <option><name> d </name>                  <value> [] </value> </option>
+    <option><name> maxYikes </name>           <value> 5 </value>  </option>
+    <option><name> help </name>               <value> false </value> </option>
+    <option><name> toolpath </name>           <value> /home/krishanu/temp4/aerodrome-roadrunner/classes/rr/simple:/home/krishanu/temp4/aerodrome-roadrunner/classes/tools </value> </option>
+    <option><name> classpath </name>          <value> tsp.jar </value> </option>
+    <option><name> tool </name>               <value> AD </value> </option>
+    <option><name> tools </name>              <value> false </value> </option>
+    <option><name> noxml </name>              <value> false </value> </option>
+    <option><name> constantGC </name>         <value> false </value> </option>
+    <option><name> noFP </name>               <value> true </value> </option>
+    <option><name> noShutdownHook </name>     <value> false </value> </option>
+    <option><name> noEnter </name>            <value> false </value> </option>
+    <option><name> xml </name>                <value> log.xml </value> </option>
+    <option><name> pulse </name>              <value>  </value>   </option>
+    <option><name> maxTime </name>            <value> 0 </value>  </option>
+    <option><name> maxMem </name>             <value> 10240 </value> </option>
+    <option><name> maxTid </name>             <value> 16 </value> </option>
+    <option><name> stacks </name>             <value> false </value> </option>
+    <option><name> values </name>             <value> false </value> </option>
+    <option><name> noTidGC </name>            <value> true </value> </option>
+    <option><name> noEventReuse </name>       <value> false </value> </option>
+    <option><name> trackMemoryUsage </name>   <value> false </value> </option>
+    <option><name> repository </name>         <value>  </value>   </option>
+    <option><name> meta </name>               <value> null </value> </option>
+    <option><name> methods </name>            <value> [default=ACCEPT] </value> </option>
+    <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
+    <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
+    <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
+    <option><name> noConstructor </name>      <value> false </value> </option>
+    <option><name> noClone </name>            <value> false </value> </option>
+    <option><name> dump </name>               <value>  </value>   </option>
+    <option><name> field </name>              <value> FINE </value> </option>
+    <option><name> fancy </name>              <value> false </value> </option>
+    <option><name> verify </name>             <value> false </value> </option>
+    <option><name> trackReflection </name>    <value> false </value> </option>
+    <option><name> arraySites </name>         <value> false </value> </option>
+    <option><name> Use TestAcquires </name>   <value> false </value> </option>
+    <option><name> sanity </name>             <value> false </value> </option>
+    <option><name> reentrantEvents </name>    <value> false </value> </option>
+    <option><name> nojoin </name>             <value> false </value> </option>
+    <option><name> multiLoader </name>        <value> false </value> </option>
+    <option><name> indices </name>            <value> 2147483647 </value> </option>
+    <option><name> updaters </name>           <value> SAFE </value> </option>
+    <option><name> array </name>              <value> FINE </value> </option>
+    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@511d50c0 </value> </option>
+    <option><name> nobarrier </name>          <value> false </value> </option>
+    <option><name> arrayCacheType </name>     <value> STRONG </value> </option>
+    <option><name> callSites </name>          <value> false </value> </option>
+    <option><name> maxWarn </name>            <value> 100 </value> </option>
+    <option><name> noInterrupt </name>        <value> false </value> </option>
+  </options>
+  <system>
+    <host> krishanu-Predator-G3-572 </host> 
+    <name> java.vm.version </name>     <value> 25.292-b10 </value> 
+    <name> java.vm.vendor </name>      <value> Private Build </value> 
+    <name> java.vm.name </name>        <value> OpenJDK 64-Bit Server VM </value> 
+    <name> java.class.path </name>     <value> .:/home/krishanu/temp4/aerodrome-roadrunner/build/jar/rragent.jar </value> 
+    <name> os.name </name>             <value> Linux </value> 
+    <name> os.arch </name>             <value> amd64 </value> 
+    <name> os.version </name>          <value> 5.8.0-50-generic </value> 
+    <name> user.name </name>           <value> krishanu </value> 
+    <name> user.dir </name>            <value> /home/krishanu/temp4/aerodrome-roadrunner/benchmarks/tsp </value> 
+    <availableProcs> 4 </availableProcs> 
+    <memCommitted> 1024 </memCommitted> 
+    <memUsed> 296 </memUsed> 
+    <memTotal> 1024 </memTotal> 
+    <compileTime> 2882 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 4099 </time> </gc>
+    <gc> <name> PS MarkSweep </name> <time> 0 </time> </gc>
+  </system>
+  <instrumented> PrioQElement TourElement Tsp TspSolver harness/Callback  </instrumented> 
+  <instrumentedNum> 5 </instrumentedNum> 
+  <skipped>  </skipped> 
+  <skippedNum> 0 </skippedNum> 
+  <sanityChecked>  </sanityChecked> 
+  <sanityCheckedNum> 0 </sanityCheckedNum> 
+  <counters>
+
+    <counter><name> "AD: Read" </name>                                   <value> 893,544,439 </value> </counter>
+    <counter><name> "AD: Write" </name>                                  <value> 99,866,081 </value> </counter>
+    <counter><name> "AD: Method Begin" </name>                           <value> 10,057,643 </value> </counter>
+    <counter><name> "AD: Method End" </name>                             <value> 10,057,643 </value> </counter>
+    <counter><name> "AD: Transaction Begin" </name>                      <value>        741 </value> </counter>
+    <counter><name> "AD: Transaction End" </name>                        <value>        741 </value> </counter>
+    <counter><name> "AD: Acquire" </name>                                <value>        410 </value> </counter>
+    <counter><name> "AD: Release" </name>                                <value>        410 </value> </counter>
+    <counter><name> "AD: Fork" </name>                                   <value>          8 </value> </counter>
+    <counter><name> "AD: Join" </name>                                   <value>          8 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value> 25,311 </value> </counter>
+
+    <counter><name> "ArrayStateFactory: Size" </name>                    <value> 260 </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Move Time" </name>         <value> <total>0.00000</total> <count>0</count>  </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Hits" </name>              <value> 0 </value> </counter>
+
+    <counter><name> "Clone: Count" </name>                               <value> 0 </value> </counter>
+
+    <counter><name> "GCRunner: Max Usage" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "Handler: Count" </name>                             <value> 0 </value> </counter>
+
+    <counter><name> "ShadowLock: objects" </name>                        <value> 2 </value> </counter>
+
+    <counter><name> "ShadowThread: Count" </name>                        <value> 9 </value> </counter>
+    <counter><name> "ShadowThread: Max Live" </name>                     <value> 9 </value> </counter>
+    <counter><name> "ShadowThread: getCurrentThread() calls" </name>     <value> 20,125,143 </value> </counter>
+
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>64.0000</total> <count>5</count> <ave>12.8000</ave> </value> </counter>
+  </counters>
+  <yikes>
+  </yikes>
+  <tool>
+    <name> tools.aerodrome.AeroDromeTool </name> 
+    <violation> 
+        Type -> transactionEnd 
+        Transaction Method -> TspSolver.find_solvable_tour()I
+    </violation> 
+    <violation> 
+        Type -> transactionEnd 
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):526:48
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):303:92
+        Transaction Method -> TspSolver.find_solvable_tour()I
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):375:36
+        Transaction Method -> TspSolver.find_solvable_tour()I
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):537:128
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):542:163
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):110:15
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):104:1
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):115:22
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):530:63
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):520:7
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):532:88
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):548:200
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):546:181
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):537:125
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):540:153
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):117:37
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):109:13
+        Transaction Method -> TspSolver.visit_nodes(I)V
+    </violation> 
+    <excluded method> TspSolver.run()V </excluded method> 
+    <excluded method> Tsp.main([Ljava/lang/String;)V </excluded method> 
+    <excluded method> TspSolver.Worker()V </excluded method> 
+    <excluded method> TspSolver.recursive_solve(I)V </excluded method> 
+    <excluded method> TspSolver.get_tour(I)I </excluded method> 
+  </tool>
+  <tool>
+    <name> Last </name> 
+  </tool>
+  <threadCount> 9 </threadCount> 
+  <threadMaxActive> 9 </threadMaxActive> 
+  <errorTotal> 0 </errorTotal> 
+  <distinctErrorTotal> 0 </distinctErrorTotal> 
+  <methods>
+  </methods>
+  <fields>
+  </fields>
+  <arrays>
+  </arrays>
+  <locks>
+  </locks>
+  <fieldAccesses>
+  </fieldAccesses>
+  <errorCountPerErrorType>
+  </errorCountPerErrorType>
+  <warningsTotal> 0 </warningsTotal> 
+  <yikesTotal> 0 </yikesTotal> 
+  <failed> false </failed> 
+  <failedReason>  </failedReason> 
+  <time> 2557116 </time> 
+</entry>
+[RR: Time = 2557116]
+[RR: Exiting: 0]
+(1048064K), 0.0054832 secs]
+1702.151: [GC (Allocation Failure)  386777K->38625K(1048064K), 0.0040888 secs]
+1704.996: [GC (Allocation Failure)  386785K->38633K(1048064K), 0.0056044 secs]
+1707.692: [GC (Allocation Failure)  386793K->38641K(1048064K), 0.0035743 secs]
+1710.648: [GC (Allocation Failure)  386801K->38713K(1048064K), 0.0067218 secs]
+1713.336: [GC (Allocation Failure)  386873K->38697K(1048064K), 0.0049643 secs]
+1716.326: [GC (Allocation Failure)  386857K->38705K(1048064K), 0.0059808 secs]
+1718.932: [GC (Allocation Failure)  386865K->38745K(1048064K), 0.0054055 secs]
+1721.782: [GC (Allocation Failure)  386905K->38745K(1048064K), 0.0058739 secs]
+1724.168: [GC (Allocation Failure)  386905K->38753K(1048064K), 0.0043647 secs]
+1726.830: [GC (Allocation Failure)  386913K->38761K(1048064K), 0.0042648 secs]
+1729.454: [GC (Allocation Failure)  386921K->38793K(1048064K), 0.0054707 secs]
+1731.807: [GC (Allocation Failure)  386953K->38841K(1048064K), 0.0044937 secs]
+1734.156: [GC (Allocation Failure)  387001K->38841K(1048064K), 0.0037587 secs]
+1736.632: [GC (Allocation Failure)  387001K->38889K(1048064K), 0.0030678 secs]
+1739.057: [GC (Allocation Failure)  387049K->38945K(1048064K), 0.0053486 secs]
+1741.753: [GC (Allocation Failure)  387105K->38905K(1048064K), 0.0074958 secs]
+1744.539: [GC (Allocation Failure)  387065K->38937K(1048064K), 0.0139029 secs]
+1747.113: [GC (Allocation Failure)  387097K->38945K(1048064K), 0.0044150 secs]
+1749.859: [GC (Allocation Failure)  387105K->38953K(1048064K), 0.0062040 secs]
+1752.475: [GC (Allocation Failure)  387113K->38977K(1048064K), 0.0055044 secs]
+1755.097: [GC (Allocation Failure)  387137K->39049K(1048064K), 0.0056408 secs]
+1757.759: [GC (Allocation Failure)  387209K->39073K(1048064K), 0.0054640 secs]
+1760.970: [GC (Allocation Failure)  387233K->39145K(1048064K), 0.0057227 secs]
+1763.246: [GC (Allocation Failure)  387305K->39185K(1048064K), 0.0033531 secs]
+1765.657: [GC (Allocation Failure)  387345K->39289K(1048064K), 0.0059163 secs]
+1768.383: [GC (Allocation Failure)  387449K->39313K(1048064K), 0.0049543 secs]
+1770.838: [GC (Allocation Failure)  387473K->39321K(1048064K), 0.0033991 secs]
+1773.114: [GC (Allocation Failure)  387481K->39361K(1048064K), 0.0045780 secs]
+1775.463: [GC (Allocation Failure)  387521K->39441K(1048064K), 0.0050139 secs]
+1777.877: [GC (Allocation Failure)  387601K->39457K(1048064K), 0.0040153 secs]
+1780.239: [GC (Allocation Failure)  387617K->39497K(1048064K), 0.0065020 secs]
+1783.007: [GC (Allocation Failure)  387657K->39609K(1048064K), 0.0033629 secs]
+1785.840: [GC (Allocation Failure)  387769K->39585K(1048064K), 0.0037715 secs]
+1788.439: [GC (Allocation Failure)  387745K->39593K(1048064K), 0.0044063 secs]
+1791.394: [GC (Allocation Failure)  387753K->39601K(1048064K), 0.0057877 secs]
+1794.373: [GC (Allocation Failure)  387761K->39617K(1048064K), 0.0063864 secs]
+1797.371: [GC (Allocation Failure)  387777K->39689K(1048064K), 0.0053537 secs]
+1800.168: [GC (Allocation Failure)  387849K->39697K(1048064K), 0.0053474 secs]
+1803.086: [GC (Allocation Failure)  387857K->39809K(1048064K), 0.0030550 secs]
+1806.064: [GC (Allocation Failure)  387969K->39817K(1048064K), 0.0057464 secs]
+1808.776: [GC (Allocation Failure)  387977K->39857K(1048064K), 0.0075749 secs]
+1811.385: [GC (Allocation Failure)  388017K->39841K(1048064K), 0.0034383 secs]
+1813.810: [GC (Allocation Failure)  388001K->39849K(1048064K), 0.0051551 secs]
+1816.676: [GC (Allocation Failure)  388009K->39897K(1048064K), 0.0027317 secs]
+1819.278: [GC (Allocation Failure)  388057K->39881K(1048064K), 0.0048582 secs]
+1821.839: [GC (Allocation Failure)  388041K->39913K(1048064K), 0.0033510 secs]
+1824.821: [GC (Allocation Failure)  388073K->39921K(1048064K), 0.0071215 secs]
+1827.526: [GC (Allocation Failure)  388081K->39961K(1048064K), 0.0040975 secs]
+1830.600: [GC (Allocation Failure)  388121K->39945K(1048064K), 0.0064163 secs]
+1833.303: [GC (Allocation Failure)  388105K->39969K(1048064K), 0.0042151 secs]
+1836.462: [GC (Allocation Failure)  388129K->39977K(1048064K), 0.0043468 secs]
+1838.930: [GC (Allocation Failure)  388137K->40009K(1048064K), 0.0029190 secs]
+1841.231: [GC (Allocation Failure)  388169K->40057K(1048064K), 0.0024816 secs]
+1843.612: [GC (Allocation Failure)  388217K->40041K(1048064K), 0.0035555 secs]
+1846.112: [GC (Allocation Failure)  388201K->40065K(1048064K), 0.0036469 secs]
+1848.654: [GC (Allocation Failure)  388225K->40073K(1048064K), 0.0046170 secs]
+1851.110: [GC (Allocation Failure)  388233K->40081K(1048064K), 0.0052729 secs]
+1853.601: [GC (Allocation Failure)  388241K->40129K(1048064K), 0.0038197 secs]
+1856.122: [GC (Allocation Failure)  388289K->40113K(1048064K), 0.0054212 secs]
+1858.571: [GC (Allocation Failure)  388273K->40137K(1048064K), 0.0038276 secs]
+1861.015: [GC (Allocation Failure)  388297K->40145K(1048064K), 0.0054181 secs]
+1863.753: [GC (Allocation Failure)  388305K->40193K(1048064K), 0.0034586 secs]
+1866.399: [GC (Allocation Failure)  388353K->40201K(1048064K), 0.0024436 secs]
+1868.846: [GC (Allocation Failure)  388361K->40225K(1048064K), 0.0033568 secs]
+1871.282: [GC (Allocation Failure)  388385K->40233K(1048064K), 0.0043441 secs]
+1873.801: [GC (Allocation Failure)  388393K->40249K(1048064K), 0.0028350 secs]
+1876.414: [GC (Allocation Failure)  388409K->40265K(1048064K), 0.0038608 secs]
+1879.135: [GC (Allocation Failure)  388425K->40273K(1048064K), 0.0041683 secs]
+1881.986: [GC (Allocation Failure)  388433K->40281K(1048064K), 0.0049453 secs]
+1884.464: [GC (Allocation Failure)  388441K->40321K(1048064K), 0.0035241 secs]
+1886.921: [GC (Allocation Failure)  388481K->40329K(1048064K), 0.0052509 secs]
+1889.356: [GC (Allocation Failure)  388489K->40377K(1048064K), 0.0075248 secs]
+1891.958: [GC (Allocation Failure)  388537K->40361K(1048064K), 0.0038722 secs]
+1894.569: [GC (Allocation Failure)  388521K->40369K(1048064K), 0.0063311 secs]
+1897.350: [GC (Allocation Failure)  388529K->40401K(1048064K), 0.0072686 secs]
+1899.652: [GC (Allocation Failure)  388561K->40409K(1048064K), 0.0052470 secs]
+1901.805: [GC (Allocation Failure)  388569K->40449K(1048064K), 0.0027921 secs]
+1904.090: [GC (Allocation Failure)  388609K->40449K(1048064K), 0.0045696 secs]
+1906.340: [GC (Allocation Failure)  388609K->40457K(1048064K), 0.0036246 secs]
+1908.658: [GC (Allocation Failure)  388617K->40497K(1048064K), 0.0035032 secs]
+1911.282: [GC (Allocation Failure)  388657K->40505K(1048064K), 0.0063375 secs]
+1913.803: [GC (Allocation Failure)  388665K->40529K(1048064K), 0.0019592 secs]
+1916.162: [GC (Allocation Failure)  388689K->40537K(1048064K), 0.0044640 secs]
+1918.541: [GC (Allocation Failure)  388697K->40545K(1048064K), 0.0037234 secs]
+1920.818: [GC (Allocation Failure)  388705K->40577K(1048064K), 0.0043706 secs]
+1923.329: [GC (Allocation Failure)  388737K->40585K(1048064K), 0.0042418 secs]
+1925.685: [GC (Allocation Failure)  388745K->40593K(1048064K), 0.0042629 secs]
+1928.218: [GC (Allocation Failure)  388753K->40601K(1048064K), 0.0050442 secs]
+1930.933: [GC (Allocation Failure)  388761K->40609K(1048064K), 0.0042390 secs]
+1933.372: [GC (Allocation Failure)  388769K->40665K(1048064K), 0.0030584 secs]
+1935.679: [GC (Allocation Failure)  388825K->40681K(1048064K), 0.0027393 secs]
+1938.154: [GC (Allocation Failure)  388841K->40657K(1048064K), 0.0043119 secs]
+1940.549: [GC (Allocation Failure)  388817K->40673K(1048064K), 0.0028367 secs]
+1942.886: [GC (Allocation Failure)  388833K->40681K(1048064K), 0.0038087 secs]
+1945.126: [GC (Allocation Failure)  388841K->40777K(1048064K), 0.0033658 secs]
+1947.313: [GC (Allocation Failure)  388937K->40761K(1048064K), 0.0034938 secs]
+1950.246: [GC (Allocation Failure)  388921K->40769K(1048064K), 0.0042983 secs]
+1952.924: [GC (Allocation Failure)  388929K->40777K(1048064K), 0.0055144 secs]
+1955.867: [GC (Allocation Failure)  388937K->40825K(1048064K), 0.0044457 secs]
+1958.948: [GC (Allocation Failure)  388985K->40849K(1048064K), 0.0068241 secs]
+1962.273: [GC (Allocation Failure)  389009K->40825K(1048064K), 0.0054874 secs]
+1964.874: [GC (Allocation Failure)  388985K->40833K(1048064K), 0.0050394 secs]
+1969.622: [GC (Allocation Failure)  388993K->40841K(1048064K), 0.0044376 secs]
+1972.868: [GC (Allocation Failure)  389001K->40849K(1048064K), 0.0061062 secs]
+1976.117: [GC (Allocation Failure)  389009K->40889K(1048064K), 0.0055049 secs]
+1978.601: [GC (Allocation Failure)  389049K->40897K(1048064K), 0.0032681 secs]
+1981.152: [GC (Allocation Failure)  389057K->40905K(1048064K), 0.0054558 secs]
+1984.036: [GC (Allocation Failure)  389065K->40921K(1048064K), 0.0145453 secs]
+1986.450: [GC (Allocation Failure)  389081K->40953K(1048064K), 0.0054310 secs]
+1989.350: [GC (Allocation Failure)  389113K->40969K(1048064K), 0.0040524 secs]
+1992.018: [GC (Allocation Failure)  389129K->40977K(1048064K), 0.0038868 secs]
+1994.616: [GC (Allocation Failure)  389137K->40993K(1048064K), 0.0022612 secs]
+1997.241: [GC (Allocation Failure)  389153K->41001K(1048064K), 0.0037860 secs]
+2000.092: [GC (Allocation Failure)  389161K->41009K(1048064K), 0.0071009 secs]
+2002.986: [GC (Allocation Failure)  389169K->41033K(1048064K), 0.0053435 secs]
+2005.979: [GC (Allocation Failure)  389193K->41041K(1048064K), 0.0080244 secs]
+2008.704: [GC (Allocation Failure)  389201K->41097K(1048064K), 0.0044206 secs]
+2011.611: [GC (Allocation Failure)  389257K->41105K(1048064K), 0.0124522 secs]
+2014.422: [GC (Allocation Failure)  389265K->41105K(1048064K), 0.0059491 secs]
+2017.447: [GC (Allocation Failure)  389265K->41145K(1048064K), 0.0051646 secs]
+2020.387: [GC (Allocation Failure)  389305K->41145K(1048064K), 0.0060626 secs]
+2022.996: [GC (Allocation Failure)  389305K->41185K(1048064K), 0.0083325 secs]
+2025.691: [GC (Allocation Failure)  389345K->41193K(1048064K), 0.0175876 secs]
+2028.350: [GC (Allocation Failure)  389353K->41257K(1048064K), 0.0027281 secs]
+2031.149: [GC (Allocation Failure)  389417K->41217K(1048064K), 0.0043077 secs]
+2033.868: [GC (Allocation Failure)  389377K->41225K(1048064K), 0.0050481 secs]
+2036.429: [GC (Allocation Failure)  389385K->41265K(1048064K), 0.0052655 secs]
+2038.922: [GC (Allocation Failure)  389425K->41265K(1048064K), 0.0046080 secs]
+2041.523: [GC (Allocation Failure)  389425K->41297K(1048064K), 0.0040315 secs]
+2044.554: [GC (Allocation Failure)  389457K->41305K(1048064K), 0.0052873 secs]
+2047.341: [GC (Allocation Failure)  389465K->41313K(1048064K), 0.0050638 secs]
+2050.100: [GC (Allocation Failure)  389473K->41329K(1048064K), 0.0032759 secs]
+2052.616: [GC (Allocation Failure)  389489K->41433K(1048064K), 0.0058143 secs]
+2055.018: [GC (Allocation Failure)  389593K->41441K(1048064K), 0.0031425 secs]
+2057.516: [GC (Allocation Failure)  389601K->41449K(1048064K), 0.0036018 secs]
+2060.095: [GC (Allocation Failure)  389609K->41489K(1048064K), 0.0033493 secs]
+2062.607: [GC (Allocation Failure)  389649K->41537K(1048064K), 0.0035261 secs]
+2065.115: [GC (Allocation Failure)  389697K->41545K(1048064K), 0.0062720 secs]
+2067.826: [GC (Allocation Failure)  389705K->41553K(1048064K), 0.0064750 secs]
+2070.536: [GC (Allocation Failure)  389713K->41625K(1048064K), 0.0047885 secs]
+2073.098: [GC (Allocation Failure)  389785K->41649K(1048064K), 0.0034504 secs]
+2075.598: [GC (Allocation Failure)  389809K->41689K(1048064K), 0.0036831 secs]
+2078.135: [GC (Allocation Failure)  389849K->41697K(1048064K), 0.0054418 secs]
+2080.726: [GC (Allocation Failure)  389857K->41705K(1048064K), 0.0052848 secs]
+2083.168: [GC (Allocation Failure)  389865K->41713K(1048064K), 0.0054156 secs]
+2085.999: [GC (Allocation Failure)  389873K->41777K(1048064K), 0.0028750 secs]
+2088.569: [GC (Allocation Failure)  389937K->41753K(1048064K), 0.0042465 secs]
+2091.076: [GC (Allocation Failure)  389913K->41761K(1048064K), 0.0052821 secs]
+2093.390: [GC (Allocation Failure)  389921K->41769K(1048064K), 0.0044004 secs]
+2095.760: [GC (Allocation Failure)  389929K->41817K(1048064K), 0.0028918 secs]
+2098.045: [GC (Allocation Failure)  389977K->41833K(1048064K), 0.0035656 secs]
+2100.355: [GC (Allocation Failure)  389993K->41817K(1048064K), 0.0056395 secs]
+2102.823: [GC (Allocation Failure)  389977K->41841K(1048064K), 0.0121477 secs]
+2105.341: [GC (Allocation Failure)  390001K->41889K(1048064K), 0.0031508 secs]
+2107.927: [GC (Allocation Failure)  390049K->41889K(1048064K), 0.0031380 secs]
+2110.771: [GC (Allocation Failure)  390049K->41929K(1048064K), 0.0058001 secs]
+2113.420: [GC (Allocation Failure)  390089K->41929K(1048064K), 0.0067623 secs]
+2116.073: [GC (Allocation Failure)  390089K->41985K(1048064K), 0.0057858 secs]
+2118.595: [GC (Allocation Failure)  390145K->41985K(1048064K), 0.0030942 secs]
+2121.090: [GC (Allocation Failure)  390145K->42025K(1048064K), 0.0112368 secs]
+2123.954: [GC (Allocation Failure)  390185K->42041K(1048064K), 0.0097260 secs]
+2126.343: [GC (Allocation Failure)  390201K->42025K(1048064K), 0.0036721 secs]
+2128.715: [GC (Allocation Failure)  390185K->42073K(1048064K), 0.0030052 secs]
+2130.935: [GC (Allocation Failure)  390233K->42113K(1048064K), 0.0029693 secs]
+2133.156: [GC (Allocation Failure)  390273K->42121K(1048064K), 0.0038692 secs]
+2135.323: [GC (Allocation Failure)  390281K->42137K(1048064K), 0.0029586 secs]
+2137.914: [GC (Allocation Failure)  390297K->42145K(1048064K), 0.0043436 secs]
+2140.555: [GC (Allocation Failure)  390305K->42153K(1048064K), 0.0052417 secs]
+2143.503: [GC (Allocation Failure)  390313K->42161K(1048064K), 0.0048733 secs]
+2146.509: [GC (Allocation Failure)  390321K->42193K(1048064K), 0.0056151 secs]
+2149.534: [GC (Allocation Failure)  390353K->42201K(1048064K), 0.0057696 secs]
+2152.048: [GC (Allocation Failure)  390361K->42209K(1048064K), 0.0053296 secs]
+2154.368: [GC (Allocation Failure)  390369K->42217K(1048064K), 0.0036927 secs]
+2156.406: [GC (Allocation Failure)  390377K->42257K(1048064K), 0.0048413 secs]
+2158.802: [GC (Allocation Failure)  390417K->42265K(1048064K), 0.0055556 secs]
+2161.240: [GC (Allocation Failure)  390425K->42305K(1048064K), 0.0046314 secs]
+2163.659: [GC (Allocation Failure)  390465K->42305K(1048064K), 0.0045199 secs]
+2165.960: [GC (Allocation Failure)  390465K->42321K(1048064K), 0.0043740 secs]
+2168.271: [GC (Allocation Failure)  390481K->42329K(1048064K), 0.0042346 secs]
+2170.680: [GC (Allocation Failure)  390489K->42377K(1048064K), 0.0034583 secs]
+2173.179: [GC (Allocation Failure)  390537K->42353K(1048064K), 0.0043564 secs]
+2175.714: [GC (Allocation Failure)  390513K->42361K(1048064K), 0.0029717 secs]
+2178.190: [GC (Allocation Failure)  390521K->42393K(1048064K), 0.0054138 secs]
+2180.756: [GC (Allocation Failure)  390553K->42401K(1048064K), 0.0053390 secs]
+2183.262: [GC (Allocation Failure)  390561K->42417K(1048064K), 0.0033605 secs]
+2185.578: [GC (Allocation Failure)  390577K->42425K(1048064K), 0.0036422 secs]
+2187.760: [GC (Allocation Failure)  390585K->42473K(1048064K), 0.0038324 secs]
+2189.940: [GC (Allocation Failure)  390633K->42465K(1048064K), 0.0051909 secs]
+2192.514: [GC (Allocation Failure)  390625K->42473K(1048064K), 0.0042733 secs]
+2194.764: [GC (Allocation Failure)  390633K->42481K(1048064K), 0.0043635 secs]
+2196.898: [GC (Allocation Failure)  390641K->42529K(1048064K), 0.0023753 secs]
+2199.318: [GC (Allocation Failure)  390689K->42545K(1048064K), 0.0035705 secs]
+2201.832: [GC (Allocation Failure)  390705K->42585K(1048064K), 0.0065395 secs]
+2204.214: [GC (Allocation Failure)  390745K->42649K(1048064K), 0.0016847 secs]
+2206.478: [GC (Allocation Failure)  390809K->42657K(1048064K), 0.0024124 secs]
+2208.744: [GC (Allocation Failure)  390817K->42649K(1048064K), 0.0029276 secs]
+2210.972: [GC (Allocation Failure)  390809K->42657K(1048064K), 0.0032700 secs]
+2213.233: [GC (Allocation Failure)  390817K->42665K(1048064K), 0.0029267 secs]
+2215.562: [GC (Allocation Failure)  390825K->42673K(1048064K), 0.0028708 secs]
+2218.093: [GC (Allocation Failure)  390833K->42681K(1048064K), 0.0045908 secs]
+2220.501: [GC (Allocation Failure)  390841K->42729K(1048064K), 0.0028634 secs]
+2223.033: [GC (Allocation Failure)  390889K->42729K(1048064K), 0.0044404 secs]
+2225.400: [GC (Allocation Failure)  390889K->42769K(1048064K), 0.0029998 secs]
+2227.591: [GC (Allocation Failure)  390929K->42785K(1048064K), 0.0045438 secs]
+2230.052: [GC (Allocation Failure)  390945K->42793K(1048064K), 0.0044536 secs]
+2232.566: [GC (Allocation Failure)  390953K->42841K(1048064K), 0.0033587 secs]
+2235.058: [GC (Allocation Failure)  391001K->42841K(1048064K), 0.0054552 secs]
+2237.535: [GC (Allocation Failure)  391001K->42881K(1048064K), 0.0055961 secs]
+2239.923: [GC (Allocation Failure)  391041K->42897K(1048064K), 0.0055724 secs]
+2242.366: [GC (Allocation Failure)  391057K->42897K(1048064K), 0.0044986 secs]
+2244.690: [GC (Allocation Failure)  391057K->42937K(1048064K), 0.0047003 secs]
+2247.251: [GC (Allocation Failure)  391097K->42945K(1048064K), 0.0045060 secs]
+2249.726: [GC (Allocation Failure)  391105K->43057K(1048064K), 0.0035633 secs]
+2252.304: [GC (Allocation Failure)  391217K->43105K(1048064K), 0.0036832 secs]
+2254.842: [GC (Allocation Failure)  391265K->43113K(1048064K), 0.0033618 secs]
+2257.403: [GC (Allocation Failure)  391273K->43153K(1048064K), 0.0038987 secs]
+2259.867: [GC (Allocation Failure)  391313K->43153K(1048064K), 0.0056548 secs]
+2262.375: [GC (Allocation Failure)  391313K->43225K(1048064K), 0.0046402 secs]
+2264.843: [GC (Allocation Failure)  391385K->43297K(1048064K), 0.0035769 secs]
+2267.411: [GC (Allocation Failure)  391457K->43281K(1048064K), 0.0050158 secs]
+2269.924: [GC (Allocation Failure)  391441K->43329K(1048064K), 0.0028952 secs]
+2272.407: [GC (Allocation Failure)  391489K->43361K(1048064K), 0.0033364 secs]
+2274.878: [GC (Allocation Failure)  391521K->43377K(1048064K), 0.0036868 secs]
+2277.499: [GC (Allocation Failure)  391537K->43377K(1048064K), 0.0044104 secs]
+2280.076: [GC (Allocation Failure)  391537K->43385K(1048064K), 0.0036511 secs]
+2282.542: [GC (Allocation Failure)  391545K->43433K(1048064K), 0.0036857 secs]
+2285.037: [GC (Allocation Failure)  391593K->43505K(1048064K), 0.0026954 secs]
+2287.456: [GC (Allocation Failure)  391665K->43521K(1048064K), 0.0033681 secs]
+2289.910: [GC (Allocation Failure)  391681K->43465K(1048064K), 0.0032621 secs]
+2292.410: [GC (Allocation Failure)  391625K->43505K(1048064K), 0.0054679 secs]
+2294.983: [GC (Allocation Failure)  391665K->43521K(1048064K), 0.0054561 secs]
+2297.469: [GC (Allocation Failure)  391681K->43561K(1048064K), 0.0045174 secs]
+2300.063: [GC (Allocation Failure)  391721K->43569K(1048064K), 0.0044758 secs]
+2302.589: [GC (Allocation Failure)  391729K->43617K(1048064K), 0.0034694 secs]
+2305.152: [GC (Allocation Failure)  391777K->43633K(1048064K), 0.0023455 secs]
+2307.717: [GC (Allocation Failure)  391793K->43649K(1048064K), 0.0033629 secs]
+2310.252: [GC (Allocation Failure)  391809K->43657K(1048064K), 0.0028519 secs]
+2312.873: [GC (Allocation Failure)  391817K->43665K(1048064K), 0.0054301 secs]
+2315.801: [GC (Allocation Failure)  391825K->43737K(1048064K), 0.0044323 secs]
+2318.463: [GC (Allocation Failure)  391897K->43713K(1048064K), 0.0038964 secs]
+2321.017: [GC (Allocation Failure)  391873K->43745K(1048064K), 0.0054445 secs]
+2323.506: [GC (Allocation Failure)  391905K->43793K(1048064K), 0.0031628 secs]
+2325.988: [GC (Allocation Failure)  391953K->43785K(1048064K), 0.0062365 secs]
+2328.470: [GC (Allocation Failure)  391945K->43801K(1048064K), 0.0055423 secs]
+2330.951: [GC (Allocation Failure)  391961K->43817K(1048064K), 0.0044456 secs]
+2333.551: [GC (Allocation Failure)  391977K->43833K(1048064K), 0.0045792 secs]
+2336.139: [GC (Allocation Failure)  391993K->43873K(1048064K), 0.0056553 secs]
+2338.650: [GC (Allocation Failure)  392033K->43881K(1048064K), 0.0045053 secs]
+2341.267: [GC (Allocation Failure)  392041K->43889K(1048064K), 0.0057517 secs]
+2343.837: [GC (Allocation Failure)  392049K->43905K(1048064K), 0.0033119 secs]
+2346.376: [GC (Allocation Failure)  392065K->43953K(1048064K), 0.0033698 secs]
+2348.889: [GC (Allocation Failure)  392113K->43961K(1048064K), 0.0037394 secs]
+2351.445: [GC (Allocation Failure)  392121K->43977K(1048064K), 0.0045638 secs]
+2353.930: [GC (Allocation Failure)  392137K->44017K(1048064K), 0.0043728 secs]
+2356.456: [GC (Allocation Failure)  392177K->44017K(1048064K), 0.0059475 secs]
+2358.914: [GC (Allocation Failure)  392177K->44025K(1048064K), 0.0045055 secs]
+2361.139: [GC (Allocation Failure)  392185K->44057K(1048064K), 0.0045086 secs]
+2363.539: [GC (Allocation Failure)  392217K->44097K(1048064K), 0.0044983 secs]
+2365.875: [GC (Allocation Failure)  392257K->44105K(1048064K), 0.0046694 secs]
+2368.420: [GC (Allocation Failure)  392265K->44169K(1048064K), 0.0032133 secs]
+2370.702: [GC (Allocation Failure)  392329K->44145K(1048064K), 0.0053963 secs]
+2372.914: [GC (Allocation Failure)  392305K->44153K(1048064K), 0.0044317 secs]
+2375.196: [GC (Allocation Failure)  392313K->44233K(1048064K), 0.0031711 secs]
+2377.410: [GC (Allocation Failure)  392393K->44305K(1048064K), 0.0017899 secs]
+2379.826: [GC (Allocation Failure)  392465K->44265K(1048064K), 0.0024736 secs]
+2382.236: [GC (Allocation Failure)  392425K->44377K(1048064K), 0.0040744 secs]
+2384.608: [GC (Allocation Failure)  392537K->44361K(1048064K), 0.0057914 secs]
+2386.986: [GC (Allocation Failure)  392521K->44385K(1048064K), 0.0034179 secs]
+2389.392: [GC (Allocation Failure)  392545K->44425K(1048064K), 0.0037688 secs]
+2391.878: [GC (Allocation Failure)  392585K->44441K(1048064K), 0.0044498 secs]
+2394.318: [GC (Allocation Failure)  392601K->44481K(1048064K), 0.0056258 secs]
+2396.735: [GC (Allocation Failure)  392641K->44497K(1048064K), 0.0057010 secs]
+2399.231: [GC (Allocation Failure)  392657K->44505K(1048064K), 0.0044248 secs]
+2401.645: [GC (Allocation Failure)  392665K->44513K(1048064K), 0.0035494 secs]
+2404.014: [GC (Allocation Failure)  392673K->44521K(1048064K), 0.0043028 secs]
+2406.317: [GC (Allocation Failure)  392681K->44529K(1048064K), 0.0051173 secs]
+2408.547: [GC (Allocation Failure)  392689K->44625K(1048064K), 0.0039323 secs]
+2410.977: [GC (Allocation Failure)  392785K->44657K(1048064K), 0.0050296 secs]
+2413.298: [GC (Allocation Failure)  392817K->44697K(1048064K), 0.0035119 secs]
+2415.678: [GC (Allocation Failure)  392857K->44689K(1048064K), 0.0048176 secs]
+2418.006: [GC (Allocation Failure)  392849K->44697K(1048064K), 0.0056742 secs]
+2420.269: [GC (Allocation Failure)  392857K->44705K(1048064K), 0.0037604 secs]
+2422.327: [GC (Allocation Failure)  392865K->44817K(1048064K), 0.0024715 secs]
+2424.472: [GC (Allocation Failure)  392977K->44801K(1048064K), 0.0024136 secs]
+2426.686: [GC (Allocation Failure)  392961K->44825K(1048064K), 0.0023553 secs]
+2428.798: [GC (Allocation Failure)  392985K->44889K(1048064K), 0.0034592 secs]
+2431.045: [GC (Allocation Failure)  393049K->44921K(1048064K), 0.0029747 secs]
+2433.414: [GC (Allocation Failure)  393081K->44945K(1048064K), 0.0046745 secs]
+2435.613: [GC (Allocation Failure)  393105K->44937K(1048064K), 0.0056022 secs]
+2437.866: [GC (Allocation Failure)  393097K->44985K(1048064K), 0.0034305 secs]
+2440.060: [GC (Allocation Failure)  393145K->44977K(1048064K), 0.0054441 secs]
+2442.363: [GC (Allocation Failure)  393137K->44985K(1048064K), 0.0054011 secs]
+2444.763: [GC (Allocation Failure)  393145K->45025K(1048064K), 0.0045736 secs]
+2446.990: [GC (Allocation Failure)  393185K->45009K(1048064K), 0.0053896 secs]
+2449.134: [GC (Allocation Failure)  393169K->45033K(1048064K), 0.0054396 secs]
+2451.434: [GC (Allocation Failure)  393193K->45041K(1048064K), 0.0047887 secs]
+2453.570: [GC (Allocation Failure)  393201K->45049K(1048064K), 0.0036713 secs]
+2455.768: [GC (Allocation Failure)  393209K->45081K(1048064K), 0.0028473 secs]
+2457.932: [GC (Allocation Failure)  393241K->45121K(1048064K), 0.0032616 secs]
+2459.981: [GC (Allocation Failure)  393281K->45137K(1048064K), 0.0053092 secs]
+2462.166: [GC (Allocation Failure)  393297K->45161K(1048064K), 0.0033665 secs]
+2464.224: [GC (Allocation Failure)  393321K->45153K(1048064K), 0.0035027 secs]
+2466.375: [GC (Allocation Failure)  393313K->45161K(1048064K), 0.0044089 secs]
+2468.522: [GC (Allocation Failure)  393321K->45177K(1048064K), 0.0037771 secs]
+2470.531: [GC (Allocation Failure)  393337K->45225K(1048064K), 0.0045569 secs]
+2472.626: [GC (Allocation Failure)  393385K->45217K(1048064K), 0.0056514 secs]
+2474.742: [GC (Allocation Failure)  393377K->45225K(1048064K), 0.0049484 secs]
+2476.844: [GC (Allocation Failure)  393385K->45273K(1048064K), 0.0029956 secs]
+2478.945: [GC (Allocation Failure)  393433K->45265K(1048064K), 0.0046804 secs]
+2481.177: [GC (Allocation Failure)  393425K->45313K(1048064K), 0.0053685 secs]
+2483.221: [GC (Allocation Failure)  393473K->45305K(1048064K), 0.0046735 secs]
+2485.392: [GC (Allocation Failure)  393465K->45361K(1048064K), 0.0063317 secs]
+2487.506: [GC (Allocation Failure)  393521K->45361K(1048064K), 0.0044110 secs]
+2489.686: [GC (Allocation Failure)  393521K->45369K(1048064K), 0.0043586 secs]
+2491.957: [GC (Allocation Failure)  393529K->45377K(1048064K), 0.0062171 secs]
+2494.115: [GC (Allocation Failure)  393537K->45425K(1048064K), 0.0035403 secs]
+2496.373: [GC (Allocation Failure)  393585K->45449K(1048064K), 0.0034883 secs]
+2498.663: [GC (Allocation Failure)  393609K->45441K(1048064K), 0.0054209 secs]
+2500.938: [GC (Allocation Failure)  393601K->45449K(1048064K), 0.0055209 secs]
+2503.352: [GC (Allocation Failure)  393609K->45481K(1048064K), 0.0034399 secs]
+2505.579: [GC (Allocation Failure)  393641K->45529K(1048064K), 0.0034827 secs]
+2507.824: [GC (Allocation Failure)  393689K->45561K(1048064K), 0.0056933 secs]
+2510.181: [GC (Allocation Failure)  393721K->45577K(1048064K), 0.0057278 secs]
+2512.470: [GC (Allocation Failure)  393737K->45601K(1048064K), 0.0045724 secs]
+2514.727: [GC (Allocation Failure)  393761K->45673K(1048064K), 0.0057491 secs]
+2516.936: [GC (Allocation Failure)  393833K->45689K(1048064K), 0.0039987 secs]
+2519.162: [GC (Allocation Failure)  393849K->45713K(1048064K), 0.0045420 secs]
+2521.438: [GC (Allocation Failure)  393873K->45785K(1048064K), 0.0047334 secs]
+2523.815: [GC (Allocation Failure)  393945K->45801K(1048064K), 0.0046502 secs]
+2526.109: [GC (Allocation Failure)  393961K->45873K(1048064K), 0.0046462 secs]
+2528.440: [GC (Allocation Failure)  394033K->45921K(1048064K), 0.0033464 secs]
+2530.849: [GC (Allocation Failure)  394081K->45937K(1048064K), 0.0047800 secs]
+2533.340: [GC (Allocation Failure)  394097K->45937K(1048064K), 0.0046762 secs]
+2535.746: [GC (Allocation Failure)  394097K->45953K(1048064K), 0.0055028 secs]
+2537.921: [GC (Allocation Failure)  394113K->45977K(1048064K), 0.0054558 secs]
+2540.027: [GC (Allocation Failure)  394137K->45985K(1048064K), 0.0036962 secs]
+2542.544: [GC (Allocation Failure)  394145K->46033K(1048064K), 0.0034027 secs]
+2545.009: [GC (Allocation Failure)  394193K->46025K(1048064K), 0.0028316 secs]
+2547.454: [GC (Allocation Failure)  394185K->46033K(1048064K), 0.0043417 secs]
+2549.736: [GC (Allocation Failure)  394193K->46057K(1048064K), 0.0053407 secs]
+2552.250: [GC (Allocation Failure)  394217K->46049K(1048064K), 0.0053144 secs]
+2554.899: [GC (Allocation Failure)  394209K->46049K(1048064K), 0.0041741 secs]

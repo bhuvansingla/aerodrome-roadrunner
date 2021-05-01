@@ -1,0 +1,1 @@
+rrrun -classpath=tsp.jar -noFP -noTidGC -tool=AD Tsp tspfiles/map16c 8 > log_v1_6.xml
