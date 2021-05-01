@@ -1,2 +1,2 @@
-rrrun -classpath=tsp.jar -noFP -noTidGC -tool=N Tsp tspfiles/map16c 8 > log_v2_EMPTY.xml
+rrrun -classpath=tsp.jar -noFP -noTidGC -tool=AD Tsp tspfiles/map16c 8 > log_v2_EMPTY.xml
  
