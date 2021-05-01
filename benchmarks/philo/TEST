@@ -1,1 +1,1 @@
-rrrun -classpath=philo.jar -noTidGC -tool=N Philo > log_v2_EMPTY.xml
+rrrun -classpath=philo.jar -noTidGC -tool=AD Philo > log_v2_EMPTY.xml
