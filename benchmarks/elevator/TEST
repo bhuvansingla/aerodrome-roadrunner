@@ -1,0 +1,2 @@
+rrrun -classpath=elevator.jar -noFP -noTidGC -tool=AD elevator.Elevator data3 > log_v1_3.xml
+ 

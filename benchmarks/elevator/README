@@ -1,0 +1,45 @@
+This is the elevator benchmark used in ORD, Velodrome etc. The current version
+checked in should support both Jikes/Octet and other tools such as RR/Atomizer. 
+However, we will need to use different .class files, since the Jikes version
+is slightly modified to include harness and MMTk. 
+
+
+The folder structure is as follows:
+
+  src - contains files modified (only Elevator.java) to support harness and MMTk
+
+  original - contains the original .class files as distributed. Use these .class
+  files for execution with tools such as RR/Atomizer 
+
+
+To execute with Jikes/Octet:
+
+  EXP uses elevator.jar as the input. 
+
+For other tools:
+
+
+To compile for other tools: 
+
+  ant (see build.xml) 
+
+  or, 
+
+  javac -cp $HOME/benchmarks/elevator/src/ Elevator.java
+
+
+Elevator usage is:
+
+  java elevator.Elevator <input>
+
+  The data files can be used as sample input files.
+
+
+To get the modified (Jikes/Octet) .class files, either compile the source, 
+or unjar the .jar file. 
+
+
+Execute RR/Atomizer:
+  rrrun -tool=A elevator.Elevator <data_file>
+  rrrun -tool=A elevator.Elevator data -xml
+ 

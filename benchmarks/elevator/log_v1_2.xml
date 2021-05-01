@@ -1,0 +1,556 @@
+OpenJDK 64-Bit Server VM (25.292-b10) for linux-amd64 JRE (1.8.0_292-8u292-b10-0ubuntu1~20.04-b10), built on Apr 21 2021 11:46:09 by "buildd" with gcc 9.3.0
+Memory: 4k page, physical 8032296k(1734876k free), swap 10634236k(9350084k free)
+CommandLine flags: -XX:InitialHeapSize=1073741824 -XX:MaxHeapSize=3221225472 -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+, LOG]]
+  [RR: 0.00200 sec]
+  [RR: file:/home/krishanu/temp4/aerodrome-roadrunner/classes/tools/rrtools.properties]
+    [RR: [BE, HB, A, FT2L, AD, FT2, PL, RS, LS]]
+  [RR: 0.00 sec]
+  [RR: Extending States for tools/aerodrome/AeroDromeTool]
+  [RR: 0.00100 sec]
+  [RR: Transforming rr/state/ShadowThread]
+  [RR: Adding field clockThread to rr/state/ShadowThread (tools/aerodrome/AeroDromeTool)]
+  [RR: Adding field clockThreadBegin to rr/state/ShadowThread (tools/aerodrome/AeroDromeTool)]
+  [RR: done]
+  [RR: Transforming tools/aerodrome/AeroDromeTool]
+  [RR: done]
+  [RR:     complete chain: tools.aerodrome.AeroDromeTool -> Last]
+  [RR:        enter chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:         exit chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:      acquire chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:      release chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR:       access chain: [tools.aerodrome.AeroDromeTool, Last]]
+  [RR: User has disabled fastpath instrumentation.]
+[RR: 0.0240 sec]
+[RR: OPTIONS:]
+  [RR: (rr.state.agent.ThreadStateExtensionAgent) javaArgs             = elevator.Elevator data3 ]
+  [RR: (rr.state.agent.ThreadStateExtensionAgent) noDecInline          = false               ]
+  [RR: (acme.util.Util)                   quiet                = false               ]
+  [RR: (acme.util.Util)                   logDepth             = 100                 ]
+  [RR: (acme.util.Util)                   logs                 = log                 ]
+  [RR: (acme.util.Util)                   out                  =                     ]
+  [RR: (acme.util.Util)                   err                  =                     ]
+  [RR: (rr.RRMain)                        noinst               = false               ]
+  [RR: (rr.RRMain)                        inst                 = INST                ]
+  [RR: (rr.RRMain)                        infThreads           = 0                   ]
+  [RR: (rr.RRMain)                        benchmark            = 0                   ]
+  [RR: (rr.RRMain)                        fileType             = true                ]
+  [RR: (rr.RRMain)                        transactionFile      = transactionfile.csv ]
+  [RR: (rr.RRMain)                        warmup               = 3                   ]
+  [RR: (rr.RRMain)                        availableProcessors  = 4                   ]
+  [RR: (rr.RRMain)                        args                 = []                  ]
+  [RR: (acme.util.Debug)                  d                    = []                  ]
+  [RR: (acme.util.Yikes)                  maxYikes             = 5                   ]
+  [RR: (rr.RRMain$5)                      help                 = false               ]
+  [RR: (rr.tool.RR)                       toolpath             = /home/krishanu/temp4/aerodrome-roadrunner/classes/rr/simple:/home/krishanu/temp4/aerodrome-roadrunner/classes/tools]
+  [RR: (rr.tool.RR)                       classpath            = elevator.jar        ]
+  [RR: (rr.tool.RR)                       tool                 = AD                  ]
+  [RR: (rr.tool.RR)                       tools                = false               ]
+  [RR: (rr.tool.RR)                       noxml                = false               ]
+  [RR: (rr.tool.RR)                       constantGC           = false               ]
+  [RR: (rr.tool.RR)                       noFP                 = true                ]
+  [RR: (rr.tool.RR)                       noShutdownHook       = false               ]
+  [RR: (rr.tool.RR)                       noEnter              = false               ]
+  [RR: (rr.tool.RR)                       xml                  = log.xml             ]
+  [RR: (rr.tool.RR)                       pulse                =                     ]
+  [RR: (rr.tool.RR)                       maxTime              = 0                   ]
+  [RR: (rr.tool.RR)                       maxMem               = 10240               ]
+  [RR: (rr.tool.RR)                       maxTid               = 16                  ]
+  [RR: (rr.tool.RR)                       stacks               = false               ]
+  [RR: (rr.tool.RR)                       values               = false               ]
+  [RR: (rr.tool.RR)                       noTidGC              = true                ]
+  [RR: (rr.tool.RR)                       noEventReuse         = false               ]
+  [RR: (rr.tool.RR)                       trackMemoryUsage     = false               ]
+  [RR: (rr.loader.LoaderContext)          repository           =                     ]
+  [RR: (rr.meta.MetaDataInfoMaps)         meta                 = null                ]
+  [RR: (rr.meta.InstrumentationFilter)    methods              = [default=ACCEPT]    ]
+  [RR: (rr.meta.InstrumentationFilter)    fields               = ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    lines                = [default=ACCEPT]    ]
+  [RR: (rr.meta.InstrumentationFilter)    classes              = ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    shadowThread         = ["-.*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    noop                 = [default=ACCEPT]    ]
+  [RR: (rr.instrument.classes.ThreadDataThunkInserter) noConstructor        = false               ]
+  [RR: (rr.instrument.classes.CloneFixer) noClone              = false               ]
+  [RR: (rr.instrument.Instrumentor)       dump                 =                     ]
+  [RR: (rr.instrument.Instrumentor)       field                = FINE                ]
+  [RR: (rr.instrument.Instrumentor)       fancy                = false               ]
+  [RR: (rr.instrument.Instrumentor)       verify               = false               ]
+  [RR: (rr.instrument.Instrumentor)       trackReflection      = false               ]
+  [RR: (rr.instrument.Instrumentor)       arraySites           = false               ]
+  [RR: (rr.instrument.Instrumentor)       Use TestAcquires     = false               ]
+  [RR: (rr.loader.InstrumentingDefineClassLoader) sanity               = false               ]
+  [RR: (rr.tool.RREventGenerator)         reentrantEvents      = false               ]
+  [RR: (rr.tool.RREventGenerator)         nojoin               = false               ]
+  [RR: (rr.tool.RREventGenerator)         multiLoader          = false               ]
+  [RR: (rr.tool.RREventGenerator)         indices              = 2147483647          ]
+  [RR: (rr.state.update.Updaters)         updaters             = SAFE                ]
+  [RR: (rr.state.ArrayStateFactory)       array                = FINE                ]
+  [RR: (rr.state.ArrayStateFactory$1)     userArray            = rr.state.ArrayStateCreator$1@511d50c0]
+  [RR: (rr.barrier.BarrierMonitor)        nobarrier            = false               ]
+  [RR: (rr.state.AbstractArrayStateCache) arrayCacheType       = STRONG              ]
+  [RR: (rr.instrument.methods.ThreadDataInstructionAdapter) callSites            = false               ]
+  [RR: (rr.error.ErrorMessage)            maxWarn              = 100                 ]
+[RR: 0.00800 sec]
+[RR: Adding Attic Listener to GC PS MarkSweep]
+[RR: Installing DefineClassListener rr.loader.InstrumentingDefineClassLoader@60e53b93]
+[RR: System Class Path = [file:/home/krishanu/temp4/aerodrome-roadrunner/benchmarks/elevator/elevator.jar]]
+[RR: Tool Init()]
+[RR: Running target]
+[main: ----- ----- ----- -----       Meep Meep.      ----- ----- ----- -----]
+[main: ]
+[main: Instrumenting elevator/Elevator (Loader=@01:class rr.RRMain$RRMainLoader)]
+  [main: Replace java/lang/System.exit(I)V]
+  [main: Replace java/lang/System.exit(I)V]
+  [main: Replace java/lang/Thread.sleep(J)V]
+  [main: Replace java/lang/Thread.join()V]
+[main: Instrumenting elevator/Lift (Loader=@01:class rr.RRMain$RRMainLoader)]
+  [main: Replace java/lang/Thread.start()V]
+  [main: Replace java/lang/Thread.sleep(J)V]
+  [main: Replace java/lang/Thread.sleep(J)V]
+[main: Instrumenting elevator/Controls (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting harness/Callback (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: New Thread main with tid=0.]
+[main: Instrumenting elevator/ButtonPress (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting elevator/Floor (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: New Thread Lift 0 with tid=1.]
+[main: New Thread Lift 1 with tid=2.]
+[main: New Thread Lift 2 with tid=3.]
+[main: New Thread Lift 3 with tid=4.]
+Elevator::begin - its time to press a button
+*** Someone on floor 4 wants to go to 15
+Lift 0 is now moving UP
+Elevator::begin - its time to press a button
+*** Someone on floor 7 wants to go to 10
+Lift 0 now on 2
+Lift 3 is now moving UP
+[Weak Resource Cleaner: Cleaning...]
+Elevator::begin - its time to press a button
+*** Someone on floor 10 wants to go to 5
+Lift 1 is now moving UP
+Lift 0 now on 3
+Lift 3 now on 2
+Lift 1 now on 2
+Elevator::begin - its time to press a button
+*** Someone on floor 35 wants to go to 27
+Lift 0 now on 4
+Lift 0 picking up 1 passengers on 4
+Lift 2 is now moving UP
+Lift 3 now on 3
+Lift 1 now on 3
+Lift 0 now on 5
+Lift 2 now on 2
+Lift 3 now on 4
+Lift 1 now on 4
+Lift 0 now on 6
+Lift 2 now on 3
+Lift 3 now on 5
+Elevator::begin - its time to press a button
+*** Someone on floor 42 wants to go to 33
+Lift 1 now on 5
+Lift 0 now on 7
+Lift 2 now on 4
+Lift 3 now on 6
+[Weak Resource Cleaner: Cleaning...]
+Lift 1 now on 6
+Elevator::begin - its time to press a button
+*** Someone on floor 2 wants to go to 31
+Lift 0 now on 8
+Lift 2 now on 5
+Lift 3 now on 7
+Lift 3 picking up 1 passengers on 7
+Lift 1 now on 7
+Lift 0 now on 9
+Lift 2 now on 6
+Lift 3 now on 8
+Lift 1 now on 8
+Lift 0 now on 10
+Lift 2 now on 7
+Lift 3 now on 9
+Lift 1 now on 9
+Lift 0 now on 11
+Lift 2 now on 8
+Lift 3 now on 10
+Lift 3 delivering 1 passengers on 10
+Lift 3 becoming IDLE
+Lift 3 is now moving DOWN
+Lift 1 now on 10
+Lift 1 picking up 1 passengers on 10
+Lift 1 changing to DOWN
+Elevator::begin - its time to press a button
+*** Someone on floor 7 wants to go to 12
+Lift 0 now on 12
+Lift 2 now on 9
+Lift 3 now on 9
+[Weak Resource Cleaner: Cleaning...]
+Lift 1 now on 9
+Lift 0 now on 13
+Lift 2 now on 10
+Lift 3 now on 8
+Lift 1 now on 8
+Lift 0 now on 14
+Lift 2 now on 11
+Lift 3 now on 7
+Lift 1 now on 7
+Lift 0 now on 15
+Lift 0 delivering 1 passengers on 15
+Lift 0 becoming IDLE
+Lift 2 now on 12
+Lift 0 is now moving DOWN
+Lift 3 now on 6
+Lift 1 now on 6
+Lift 2 now on 13
+Lift 0 now on 14
+Lift 3 now on 5
+Lift 1 now on 5
+Lift 1 delivering 1 passengers on 5
+Lift 1 becoming IDLE
+Lift 1 is now moving UP
+Lift 2 now on 14
+Lift 0 now on 13
+Lift 3 now on 4
+[Weak Resource Cleaner: Cleaning...]
+Lift 1 now on 6
+Lift 2 now on 15
+Lift 0 now on 12
+Lift 3 now on 3
+Lift 1 now on 7
+Lift 2 now on 16
+Lift 0 now on 11
+Lift 3 now on 2
+Lift 3 picking up 1 passengers on 2
+Lift 3 changing to UP
+Lift 1 now on 8
+Lift 2 now on 17
+Lift 0 now on 10
+Lift 3 now on 3
+Lift 1 now on 9
+Lift 2 now on 18
+Lift 0 now on 9
+Lift 3 now on 4
+Lift 1 now on 10
+Lift 2 now on 19
+Lift 0 now on 8
+[Weak Resource Cleaner: Cleaning...]
+Lift 3 now on 5
+Lift 1 now on 11
+Lift 2 now on 20
+Lift 0 now on 7
+Lift 0 picking up 1 passengers on 7
+Lift 0 changing to UP
+Lift 3 now on 6
+Lift 1 now on 12
+Lift 2 now on 21
+Lift 0 now on 8
+Lift 3 now on 7
+Lift 1 now on 13
+Lift 2 now on 22
+Lift 0 now on 9
+Lift 3 now on 8
+Lift 1 now on 14
+Lift 2 now on 23
+Lift 0 now on 10
+Lift 3 now on 9
+Lift 1 now on 15
+Lift 2 now on 24
+Lift 0 now on 11
+[Weak Resource Cleaner: Cleaning...]
+Lift 3 now on 10
+Lift 1 now on 16
+Lift 2 now on 25
+Lift 0 now on 12
+Lift 0 delivering 1 passengers on 12
+Lift 0 becoming IDLE
+Lift 3 now on 11
+Lift 1 now on 17
+Lift 2 now on 26
+Lift 3 now on 12
+Lift 1 now on 18
+Lift 2 now on 27
+Lift 3 now on 13
+Lift 1 now on 19
+Lift 2 now on 28
+Lift 3 now on 14
+Lift 1 now on 20
+Lift 2 now on 29
+[Weak Resource Cleaner: Cleaning...]
+Lift 3 now on 15
+Lift 1 now on 21
+[RR Waiter for 1: Terminating thread: Lift 0[tid = 1]]
+Lift 2 now on 30
+Lift 3 now on 16
+Lift 1 now on 22
+Lift 2 now on 31
+Lift 3 now on 17
+Lift 1 now on 23
+Lift 2 now on 32
+Lift 3 now on 18
+Lift 1 now on 24
+Lift 2 now on 33
+Lift 3 now on 19
+Lift 1 now on 25
+Lift 2 now on 34
+[Weak Resource Cleaner: Cleaning...]
+Lift 3 now on 20
+Lift 1 now on 26
+Lift 2 now on 35
+Lift 2 picking up 1 passengers on 35
+Lift 2 changing to DOWN
+Lift 3 now on 21
+Lift 1 now on 27
+Lift 2 now on 34
+Lift 3 now on 22
+Lift 1 now on 28
+Lift 2 now on 33
+Lift 3 now on 23
+Lift 1 now on 29
+Lift 2 now on 32
+Lift 3 now on 24
+Lift 1 now on 30
+Lift 2 now on 31
+[Weak Resource Cleaner: Cleaning...]
+Lift 3 now on 25
+Lift 1 now on 31
+Lift 2 now on 30
+Lift 3 now on 26
+Lift 1 now on 32
+Lift 2 now on 29
+Lift 3 now on 27
+Lift 1 now on 33
+Lift 2 now on 28
+[RR Waiter for 3: Terminating thread: Lift 2[tid = 3]]
+Lift 3 now on 28
+Lift 1 now on 34
+Lift 3 now on 29
+Lift 1 now on 35
+[Weak Resource Cleaner: Cleaning...]
+Lift 3 now on 30
+Lift 1 now on 36
+Lift 3 now on 31
+Lift 3 delivering 1 passengers on 31
+Lift 3 becoming IDLE
+Lift 1 now on 37
+[RR Waiter for 4: Terminating thread: Lift 3[tid = 4]]
+Lift 1 now on 38
+Lift 1 now on 39
+Lift 1 now on 40
+[Weak Resource Cleaner: Cleaning...]
+Lift 1 now on 41
+Lift 1 now on 42
+Lift 1 picking up 1 passengers on 42
+Lift 1 changing to DOWN
+Lift 1 now on 41
+Lift 1 now on 40
+Lift 1 now on 39
+[RR Waiter for 2: Terminating thread: Lift 1[tid = 2]]
+Time taken in ms : 59275
+[main: Terminating thread: main[tid = 0]]
+[main: Tool Fini()]
+[main: ]
+[main: ----- ----- ----- -----      Thpthpthpth.     ----- ----- ----- -----]
+[RR: 59.5 sec]
+[RR: Total Time: 59536]
+<entry>
+  <date> Sat May 01 20:39:06 IST 2021 </date> 
+  <mode> SLOW </mode> 
+  <timeout> NO </timeout> 
+  <options>
+    <option><name> javaArgs </name>           <value> elevator.Elevator data3  </value> </option>
+    <option><name> noDecInline </name>        <value> false </value> </option>
+    <option><name> quiet </name>              <value> false </value> </option>
+    <option><name> logDepth </name>           <value> 100 </value> </option>
+    <option><name> logs </name>               <value> log </value> </option>
+    <option><name> out </name>                <value>  </value>   </option>
+    <option><name> err </name>                <value>  </value>   </option>
+    <option><name> noinst </name>             <value> false </value> </option>
+    <option><name> inst </name>               <value> INST </value> </option>
+    <option><name> infThreads </name>         <value> 0 </value>  </option>
+    <option><name> benchmark </name>          <value> 0 </value>  </option>
+    <option><name> fileType </name>           <value> true </value> </option>
+    <option><name> transactionFile </name>    <value> transactionfile.csv </value> </option>
+    <option><name> warmup </name>             <value> 3 </value>  </option>
+    <option><name> availableProcessors </name> <value> 4 </value>  </option>
+    <option><name> args </name>               <value> [] </value> </option>
+    <option><name> d </name>                  <value> [] </value> </option>
+    <option><name> maxYikes </name>           <value> 5 </value>  </option>
+    <option><name> help </name>               <value> false </value> </option>
+    <option><name> toolpath </name>           <value> /home/krishanu/temp4/aerodrome-roadrunner/classes/rr/simple:/home/krishanu/temp4/aerodrome-roadrunner/classes/tools </value> </option>
+    <option><name> classpath </name>          <value> elevator.jar </value> </option>
+    <option><name> tool </name>               <value> AD </value> </option>
+    <option><name> tools </name>              <value> false </value> </option>
+    <option><name> noxml </name>              <value> false </value> </option>
+    <option><name> constantGC </name>         <value> false </value> </option>
+    <option><name> noFP </name>               <value> true </value> </option>
+    <option><name> noShutdownHook </name>     <value> false </value> </option>
+    <option><name> noEnter </name>            <value> false </value> </option>
+    <option><name> xml </name>                <value> log.xml </value> </option>
+    <option><name> pulse </name>              <value>  </value>   </option>
+    <option><name> maxTime </name>            <value> 0 </value>  </option>
+    <option><name> maxMem </name>             <value> 10240 </value> </option>
+    <option><name> maxTid </name>             <value> 16 </value> </option>
+    <option><name> stacks </name>             <value> false </value> </option>
+    <option><name> values </name>             <value> false </value> </option>
+    <option><name> noTidGC </name>            <value> true </value> </option>
+    <option><name> noEventReuse </name>       <value> false </value> </option>
+    <option><name> trackMemoryUsage </name>   <value> false </value> </option>
+    <option><name> repository </name>         <value>  </value>   </option>
+    <option><name> meta </name>               <value> null </value> </option>
+    <option><name> methods </name>            <value> [default=ACCEPT] </value> </option>
+    <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
+    <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
+    <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
+    <option><name> noConstructor </name>      <value> false </value> </option>
+    <option><name> noClone </name>            <value> false </value> </option>
+    <option><name> dump </name>               <value>  </value>   </option>
+    <option><name> field </name>              <value> FINE </value> </option>
+    <option><name> fancy </name>              <value> false </value> </option>
+    <option><name> verify </name>             <value> false </value> </option>
+    <option><name> trackReflection </name>    <value> false </value> </option>
+    <option><name> arraySites </name>         <value> false </value> </option>
+    <option><name> Use TestAcquires </name>   <value> false </value> </option>
+    <option><name> sanity </name>             <value> false </value> </option>
+    <option><name> reentrantEvents </name>    <value> false </value> </option>
+    <option><name> nojoin </name>             <value> false </value> </option>
+    <option><name> multiLoader </name>        <value> false </value> </option>
+    <option><name> indices </name>            <value> 2147483647 </value> </option>
+    <option><name> updaters </name>           <value> SAFE </value> </option>
+    <option><name> array </name>              <value> FINE </value> </option>
+    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@511d50c0 </value> </option>
+    <option><name> nobarrier </name>          <value> false </value> </option>
+    <option><name> arrayCacheType </name>     <value> STRONG </value> </option>
+    <option><name> callSites </name>          <value> false </value> </option>
+    <option><name> maxWarn </name>            <value> 100 </value> </option>
+    <option><name> noInterrupt </name>        <value> false </value> </option>
+  </options>
+  <system>
+    <host> krishanu-Predator-G3-572 </host> 
+    <name> java.vm.version </name>     <value> 25.292-b10 </value> 
+    <name> java.vm.vendor </name>      <value> Private Build </value> 
+    <name> java.vm.name </name>        <value> OpenJDK 64-Bit Server VM </value> 
+    <name> java.class.path </name>     <value> .:/home/krishanu/temp4/aerodrome-roadrunner/build/jar/rragent.jar </value> 
+    <name> os.name </name>             <value> Linux </value> 
+    <name> os.arch </name>             <value> amd64 </value> 
+    <name> os.version </name>          <value> 5.8.0-50-generic </value> 
+    <name> user.name </name>           <value> krishanu </value> 
+    <name> user.dir </name>            <value> /home/krishanu/temp4/aerodrome-roadrunner/benchmarks/elevator </value> 
+    <availableProcs> 4 </availableProcs> 
+    <memCommitted> 982 </memCommitted> 
+    <memUsed> 149 </memUsed> 
+    <memTotal> 982 </memTotal> 
+    <compileTime> 1912 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 0 </time> </gc>
+    <gc> <name> PS MarkSweep </name> <time> 0 </time> </gc>
+  </system>
+  <instrumented> elevator/ButtonPress elevator/Controls elevator/Elevator elevator/Floor elevator/Lift harness/Callback  </instrumented> 
+  <instrumentedNum> 6 </instrumentedNum> 
+  <skipped>  </skipped> 
+  <skippedNum> 0 </skippedNum> 
+  <sanityChecked>  </sanityChecked> 
+  <sanityCheckedNum> 0 </sanityCheckedNum> 
+  <counters>
+
+    <counter><name> "AD: Read" </name>                                   <value>    169,201 </value> </counter>
+    <counter><name> "AD: Write" </name>                                  <value>        967 </value> </counter>
+    <counter><name> "AD: Method Begin" </name>                           <value>     47,310 </value> </counter>
+    <counter><name> "AD: Method End" </name>                             <value>     47,310 </value> </counter>
+    <counter><name> "AD: Transaction Begin" </name>                      <value>        426 </value> </counter>
+    <counter><name> "AD: Transaction End" </name>                        <value>        426 </value> </counter>
+    <counter><name> "AD: Acquire" </name>                                <value>     23,361 </value> </counter>
+    <counter><name> "AD: Release" </name>                                <value>     23,361 </value> </counter>
+    <counter><name> "AD: Fork" </name>                                   <value>          4 </value> </counter>
+    <counter><name> "AD: Join" </name>                                   <value>          4 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value> 725 </value> </counter>
+
+    <counter><name> "ArrayStateFactory: Size" </name>                    <value> 11 </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Move Time" </name>         <value> <total>0.00000</total> <count>0</count>  </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Hits" </name>              <value> 0 </value> </counter>
+
+    <counter><name> "Clone: Count" </name>                               <value> 0 </value> </counter>
+
+    <counter><name> "GCRunner: Max Usage" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "Handler: Count" </name>                             <value> 0 </value> </counter>
+
+    <counter><name> "ShadowLock: objects" </name>                        <value> 50 </value> </counter>
+
+    <counter><name> "ShadowThread: Count" </name>                        <value> 5 </value> </counter>
+    <counter><name> "ShadowThread: Max Live" </name>                     <value> 5 </value> </counter>
+    <counter><name> "ShadowThread: getCurrentThread() calls" </name>     <value> 95,120 </value> </counter>
+
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>43.0000</total> <count>6</count> <ave>7.16667</ave> </value> </counter>
+  </counters>
+  <yikes>
+  </yikes>
+  <tool>
+    <name> tools.aerodrome.AeroDromeTool </name> 
+    <violation> 
+        Type -> transactionEnd 
+        Transaction Method -> elevator/Lift.doIdle()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> elevator/Controls.__$rr_pushUp__$rr__Original_(II)V (Controls.java):41:66
+        Transaction Method -> elevator/Elevator.begin()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> elevator/Controls.__$rr_pushUp__$rr__Original_(II)V (Controls.java):40:46
+        Transaction Method -> elevator/Elevator.begin()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  elevator/Controls.__$rr_pushUp__$rr__Original_(II)V (Controls.java):42:83
+        Transaction Method -> elevator/Elevator.begin()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> elevator/Controls.__$rr_pushDown__$rr__Original_(II)V (Controls.java):25:8
+        Transaction Method -> elevator/Elevator.begin()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> elevator/Controls.__$rr_pushUp__$rr__Original_(II)V (Controls.java):37:8
+        Transaction Method -> elevator/Elevator.begin()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> elevator/Controls.__$rr_checkDown__$rr__Original_(I)Z (Controls.java):95:8
+        Transaction Method -> elevator/Lift.doIdle()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> elevator/Controls.__$rr_checkUp__$rr__Original_(I)Z (Controls.java):83:8
+        Transaction Method -> elevator/Lift.doIdle()V
+    </violation> 
+    <excluded method> elevator/Lift.run()V </excluded method> 
+    <excluded method> elevator/Elevator.main([Ljava/lang/String;)V </excluded method> 
+  </tool>
+  <tool>
+    <name> Last </name> 
+  </tool>
+  <threadCount> 5 </threadCount> 
+  <threadMaxActive> 5 </threadMaxActive> 
+  <errorTotal> 0 </errorTotal> 
+  <distinctErrorTotal> 0 </distinctErrorTotal> 
+  <methods>
+  </methods>
+  <fields>
+  </fields>
+  <arrays>
+  </arrays>
+  <locks>
+  </locks>
+  <fieldAccesses>
+  </fieldAccesses>
+  <errorCountPerErrorType>
+  </errorCountPerErrorType>
+  <warningsTotal> 0 </warningsTotal> 
+  <yikesTotal> 0 </yikesTotal> 
+  <failed> false </failed> 
+  <failedReason>  </failedReason> 
+  <time> 59536 </time> 
+</entry>
+[RR: Time = 59536]
+[RR: Exiting: 0]
