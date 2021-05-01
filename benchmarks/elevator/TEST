@@ -1,0 +1,3 @@
+rrrun -classpath=elevator.jar -noFP  -noTidGC -tool=N elevator.Elevator data3 > log_v2_EMPTY.xml
+
+ 

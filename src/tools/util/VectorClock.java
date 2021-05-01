@@ -191,12 +191,84 @@ public class VectorClock implements Serializable {
         }
     }
 
+    final public void max2(VectorClock other, int index) {
+        int/* epoch */[] otherValues = other.values;
+        ensureCapacity(otherValues.length);
+        int/* epoch */[] thisValues = this.values;
+
+        // thisValues.length >= otherValues.length
+        // otherValues.length..thisValues.length-1: stays the same.
+        switch (otherValues.length) {
+            default:
+                slowMax2(other, index); // max 8..otherValues
+            case 8:
+                if (index!= 7){
+                  if (Epoch.leq(thisValues[7], otherValues[7]))
+                      thisValues[7] = otherValues[7];
+                }
+            case 7:
+                if (index !=6){
+                  if (Epoch.leq(thisValues[6], otherValues[6]))
+                      thisValues[6] = otherValues[6];
+                }
+            case 6:
+                if (index != 5){
+                  if (Epoch.leq(thisValues[5], otherValues[5]))
+                      thisValues[5] = otherValues[5];
+                }
+            case 5:
+                if (index != 4){
+                  if (Epoch.leq(thisValues[4], otherValues[4]))
+                      thisValues[4] = otherValues[4];
+                }
+            case 4:
+                if (index !=3){
+                  if (Epoch.leq(thisValues[3], otherValues[3]))
+                      thisValues[3] = otherValues[3];
+                }
+            case 3:
+                if (index !=2){
+                  if (Epoch.leq(thisValues[2], otherValues[2]))
+                      thisValues[2] = otherValues[2];
+                }
+            case 2:
+                if (index != 1){
+                  if (Epoch.leq(thisValues[1], otherValues[1]))
+                      thisValues[1] = otherValues[1];
+                }
+            case 1:
+                if (index != 0){
+                  if (Epoch.leq(thisValues[0], otherValues[0]))
+                      thisValues[0] = otherValues[0];
+                }
+
+            case 0:
+        }
+
+    }
     /* Return false if all entries in this.values are <= other.values. */
     // requires: exclusive access to this and other
+    final private void slowMax2(VectorClock src, int index) {
+        int/* epoch */[] srcValues = src.values;
+        int/* epoch */[] dstValues = this.values;
+        for (int i = FAST; i < srcValues.length; i++) {
+            if (i != index){
+              if (Epoch.leq(dstValues[i], srcValues[i]))
+                  dstValues[i] = srcValues[i];
+            }
+        }
+    }
     final public boolean leq(VectorClock other) {
         return !anyGt(other);
     }
 
+    final public void updateWithMax(VectorClock... vcList) {
+      this.copy(vcList[0]);
+      for (int i = 1; i < vcList.length; i++) {
+        VectorClock vc = vcList[i];
+        this.max(vc);
+      }
+    }
     /* Return true if any entry in this.values is greater than in other.values. */
     // requires: exclusive access to this and other
     final public boolean anyGt(VectorClock other) {
@@ -304,6 +376,27 @@ public class VectorClock implements Serializable {
         return -1;
     }
 
+    final public boolean isLessThanOrEqual(VectorClock vc) {
+  		boolean itIsLessThanOrEqual = true;
+      int/* epoch */[] thisValues = this.values;
+      int/* epoch */[] otherValues = vc.values;
+
+      int thisLen = thisValues.length;
+      int otherLen = otherValues.length;
+      int min = Math.min(thisLen, otherLen);
+
+  		for (int ind = 0; ind < thisLen; ind++) {
+        if (!Epoch.leq(thisValues[ind], otherValues[ind])){
+          itIsLessThanOrEqual = false;
+  				break;
+        }
+  		}
+  		return itIsLessThanOrEqual;
+  	}
+
+    public boolean isLessThanOrEqual(VectorClock vc, int ind) {
+  		return Epoch.leq(this.values[ind], vc.values[ind]);
+  	}
     // requires: exclusive access to this
     final public void tick(int tid) {
         ensureCapacity(tid + 1);
@@ -312,7 +405,7 @@ public class VectorClock implements Serializable {
 
     // requires: exclusive access to this
     final public void set(int tid, int/* epoch */ v) {
-        Assert.assertTrue(tid == Epoch.tid(v));
+        //Assert.assertTrue(tid == Epoch.tid(v));
         ensureCapacity(tid + 1);
         values[tid] = v;
     }

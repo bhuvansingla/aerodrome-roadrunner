@@ -1,0 +1,3 @@
+Philo.run()V
+Philo.main([Ljava/lang/String;)V
+Table.getForks(I)I

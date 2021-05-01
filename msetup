@@ -45,7 +45,7 @@ export JVM_ARGS="-Xmx3g -Xms1g -Xloggc:/dev/stdout"
 
 export PATH=${PATH}:$(pwd)/auto/bin:$(pwd)/bin
 
-export RR_MODE=FAST
+export RR_MODE=SLOW
 export RR_HOME=$(pwd)
 export RR_TOOLPATH=$(pwd)/classes/rr/simple:$(pwd)/classes/tools
 

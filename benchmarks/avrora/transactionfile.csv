@@ -1,0 +1,11 @@
+avrora/sim/SimulatorThread.run()V
+Main.main([Ljava/lang/String;)V
+avrora/sim/clock/RippleSynchronizer.removeNode(Lavrora/sim/Simulation$Node;)V
+avrora/sim/Simulator.start()V
+avrora/Main.main([Ljava/lang/String;)V
+avrora/sim/clock/RippleSynchronizer.waitForNeighbors(J)V
+avrora/sim/AtmelInterpreter.start()V
+avrora/Main.runAction()V
+avrora/sim/clock/RippleSynchronizer.waitFor(JLavrora/sim/clock/RippleSynchronizer$WaitLink;)V
+avrora/arch/legacy/LegacyInterpreter.runLoop()V
+avrora/actions/SimAction.run([Ljava/lang/String;)V

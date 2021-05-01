@@ -1,0 +1,416 @@
+OpenJDK 64-Bit Server VM (25.292-b10) for linux-amd64 JRE (1.8.0_292-8u292-b10-0ubuntu1~20.04-b10), built on Apr 21 2021 11:46:09 by "buildd" with gcc 9.3.0
+Memory: 4k page, physical 8032296k(3916440k free), swap 10634236k(10634236k free)
+CommandLine flags: -XX:InitialHeapSize=1073741824 -XX:MaxHeapSize=3221225472 -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+0.813: [GC (Allocation Failure)  261014K->178077K(1005056K), 0.1204743 secs]
+1.396: [GC (Allocation Failure)  440221K->424597K(1267200K), 0.2076751 secs]
+3.826: [GC (Allocation Failure)  948885K->435523K(1267200K), 0.0626423 secs]
+5.326: [GC (Allocation Failure)  959811K->435531K(1704448K), 0.0499880 secs]
+8.144: [GC (Allocation Failure)  1397067K->435555K(1704448K), 0.0440049 secs]
+10.448: [GC (Allocation Failure)  1397091K->435571K(1152512K), 0.0431726 secs]
+11.587: [GC (Allocation Failure)  845171K->435766K(1428480K), 0.0505301 secs]
+12.604: [GC (Allocation Failure)  845366K->435886K(1406976K), 0.0247286 secs]
+13.732: [GC (Allocation Failure)  852654K->435870K(1421312K), 0.0119694 secs]
+15.055: [GC (Allocation Failure)  852638K->435846K(1417728K), 0.0258437 secs]
+16.396: [GC (Allocation Failure)  882822K->435878K(1433088K), 0.0216069 secs]
+17.653: [GC (Allocation Failure)  882854K->435862K(1433600K), 0.0218123 secs]
+19.121: [GC (Allocation Failure)  921238K->435862K(1449984K), 0.0122029 secs]
+20.304: [GC (Allocation Failure)  921238K->435894K(1453568K), 0.0185785 secs]
+21.703: [GC (Allocation Failure)  965814K->435902K(1470464K), 0.0247485 secs]
+23.003: [GC (Allocation Failure)  965822K->435910K(1477120K), 0.0186101 secs]
+24.485: [GC (Allocation Failure)  1013958K->435878K(1494528K), 0.0185437 secs]
+26.354: [GC (Allocation Failure)  1013926K->435910K(1502208K), 0.0127877 secs]
+28.256: [GC (Allocation Failure)  1062598K->435894K(1519104K), 0.0215899 secs]
+29.895: [GC (Allocation Failure)  1062582K->435894K(1526784K), 0.0198736 secs]
+31.598: [GC (Allocation Failure)  1109686K->435894K(1543680K), 0.0230006 secs]
+33.557: [GC (Allocation Failure)  1109686K->435902K(1550848K), 0.0302147 secs]
+35.523: [GC (Allocation Failure)  1154238K->435966K(1567232K), 0.0182898 secs]
+37.714: [GC (Allocation Failure)  1154302K->435950K(1573376K), 0.0172920 secs]
+39.993: [GC (Allocation Failure)  1195246K->435926K(1589248K), 0.0185279 secs]
+41.814: [GC (Allocation Failure)  1195222K->435958K(1592832K), 0.0225838 secs]
+43.756: [GC (Allocation Failure)  1232118K->435966K(1466368K), 0.0129489 secs]
+45.777: [GC (Allocation Failure)  1202430K->435934K(1579008K), 0.0235280 secs]
+47.682: [GC (Allocation Failure)  1210078K->435974K(1571328K), 0.0237484 secs]
+49.850: [GC (Allocation Failure)  1210118K->435942K(1641472K), 0.0227892 secs]
+52.835: [GC (Allocation Failure)  1287398K->435974K(1635328K), 0.0497481 secs]
+55.492: [GC (Allocation Failure)  1287430K->435974K(1656320K), 0.0187660 secs]
+57.969: [GC (Allocation Failure)  1315078K->435950K(1650688K), 0.0185786 secs]
+60.056: [GC (Allocation Failure)  1315054K->435990K(1548288K), 0.0121550 secs]
+62.336: [GC (Allocation Failure)  1281302K->435958K(1574400K), 0.0131017 secs]
+64.772: [GC (Allocation Failure)  1249014K->435966K(1482240K), 0.0241356 secs]
+66.718: [GC (Allocation Failure)  1218302K->435966K(1505280K), 0.0262895 secs]
+68.766: [GC (Allocation Failure)  1189118K->436006K(1425408K), 0.0133602 secs]
+70.655: [GC (Allocation Failure)  1161510K->435974K(1443328K), 0.0183234 secs]
+72.408: [GC (Allocation Failure)  1134854K->435982K(1373696K), 0.0194975 secs]
+74.150: [GC (Allocation Failure)  1109774K->436014K(1387520K), 0.0164134 secs]
+75.813: [GC (Allocation Failure)  1085742K->435982K(1326592K), 0.0192631 secs]
+77.440: [GC (Allocation Failure)  1062670K->435998K(1452544K), 0.0181026 secs]
+79.177: [GC (Allocation Failure)  1156894K->435998K(1394688K), 0.0129039 secs]
+80.899: [GC (Allocation Failure)  1130782K->435998K(1396224K), 0.0185172 secs]
+82.581: [GC (Allocation Failure)  1105694K->436006K(1471488K), 0.0185691 secs]
+84.437: [GC (Allocation Failure)  1183014K->436038K(1419264K), 0.0131079 secs]
+86.239: [GC (Allocation Failure)  1155398K->436038K(1393152K), 0.0117412 secs]
+87.990: [GC (Allocation Failure)  1129286K->436054K(1387008K), 0.0118216 secs]
+89.659: [GC (Allocation Failure)  1104214K->436022K(1344512K), 0.0191952 secs]
+91.346: [GC (Allocation Failure)  1080630K->436054K(1337856K), 0.0120171 secs]
+92.847: [GC (Allocation Failure)  1058134K->436038K(1300480K), 0.0227613 secs]
+94.391: [GC (Allocation Failure)  1036614K->436070K(1293312K), 0.0117048 secs]
+95.900: [GC (Allocation Failure)  1016166K->436038K(1260032K), 0.0149813 secs]
+97.292: [GC (Allocation Failure)  996166K->436054K(1389056K), 0.0224652 secs]
+99.102: [GC (Allocation Failure)  1113942K->436054K(1394688K), 0.0184897 secs]
+100.798: [GC (Allocation Failure)  1120598K->436086K(1393664K), 0.0226695 secs]
+102.486: [GC (Allocation Failure)  1120630K->436062K(1528320K), 0.0183906 secs]
+104.817: [GC (Allocation Failure)  1257822K->436062K(1529344K), 0.0223759 secs]
+107.026: [GC (Allocation Failure)  1257822K->436094K(1490944K), 0.0111787 secs]
+109.044: [GC (Allocation Failure)  1227134K->436070K(1467904K), 0.0117732 secs]
+110.908: [GC (Allocation Failure)  1197414K->436070K(1433088K), 0.0221362 secs]
+112.956: [GC (Allocation Failure)  1169254K->436078K(1411584K), 0.0126257 secs]
+114.722: [GC (Allocation Failure)  1142638K->436078K(1380864K), 0.0119812 secs]
+116.400: [GC (Allocation Failure)  1117038K->436110K(1360896K), 0.0184147 secs]
+118.098: [GC (Allocation Failure)  1092494K->436118K(1333248K), 0.0215783 secs]
+119.940: [GC (Allocation Failure)  1069462K->436086K(1314816K), 0.0182788 secs]
+121.534: [GC (Allocation Failure)  1047414K->436118K(1433600K), 0.0182003 secs]
+123.356: [GC (Allocation Failure)  1169814K->436102K(1583616K), 0.0183686 secs]
+125.712: [GC (Allocation Failure)  1316742K->436134K(1546752K), 0.0121428 secs]
+128.196: [GC (Allocation Failure)  1282982K->436110K(1517056K), 0.0159898 secs]
+130.424: [GC (Allocation Failure)  1250702K->436142K(1483776K), 0.0139589 secs]
+132.831: [GC (Allocation Failure)  1220014K->436158K(1456640K), 0.0199837 secs]
+134.817: [GC (Allocation Failure)  1190846K->436134K(1426944K), 0.0200383 secs]
+136.558: [GC (Allocation Failure)  1163174K->436166K(1401856K), 0.0185997 secs]
+138.350: [GC (Allocation Failure)  1136582K->436150K(1375232K), 0.0119396 secs]
+140.077: [GC (Allocation Failure)  1111478K->436150K(1352704K), 0.0135469 secs]
+141.761: [GC (Allocation Failure)  1087414K->436150K(1328128K), 0.0136399 secs]
+143.388: [GC (Allocation Failure)  1064374K->436198K(1307136K), 0.0191819 secs]
+144.948: [GC (Allocation Failure)  1042406K->436166K(1427456K), 0.0260691 secs]
+146.844: [GC (Allocation Failure)  1163718K->436198K(1574400K), 0.0236077 secs]
+149.030: [GC (Allocation Failure)  1309670K->436206K(1663488K), 0.0247572 secs]
+151.848: [GC (Allocation Failure)  1399278K->436206K(1625600K), 0.0138885 secs]
+154.573: [GC (Allocation Failure)  1361902K->436190K(1589760K), 0.0125887 secs]
+156.727: [GC (Allocation Failure)  1326046K->436222K(1555968K), 0.0119953 secs]
+158.897: [GC (Allocation Failure)  1291774K->436198K(1523200K), 0.0191607 secs]
+161.021: [GC (Allocation Failure)  1259494K->436230K(1492992K), 0.0119222 secs]
+163.020: [GC (Allocation Failure)  1228806K->436206K(1462784K), 0.0117845 secs]
+164.850: [GC (Allocation Failure)  1199086K->436238K(1435136K), 0.0204773 secs]
+166.404: [GC (Allocation Failure)  1170958K->436270K(1408000K), 0.0219286 secs]
+167.504: [GC (Allocation Failure)  1144366K->436246K(1549824K), 0.0134262 secs]
+168.985: [GC (Allocation Failure)  1286166K->436214K(1661952K), 0.0184506 secs]
+171.103: [GC (Allocation Failure)  1398262K->436246K(1661952K), 0.0191706 secs]
+0e53b93]
+[RR: System Class Path = [file:/home/krishanu/aerodrome-roadrunner/benchmarks/sor/original.jar]]
+[RR: Tool Init()]
+[RR: Running target]
+[main: ----- ----- ----- -----       Meep Meep.      ----- ----- ----- -----]
+[main: ]
+[main: Instrumenting JGFSORBenchSizeA (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: New Thread main with tid=0.]
+[main: Epoch will use 5 bits for tids]
+[main: Instrumenting jgfutil/JGFInstrumentor (Loader=@01:class rr.RRMain$RRMainLoader)]
+Java Grande Forum Thread Benchmark Suite - Version 1.0 - Section 2 - Size A
+Executing on 4 threads
+
+[main: Instrumenting sor/JGFSORBench (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting jgfutil/JGFSection2 (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting sor/SOR (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting jgfutil/Barrier (Loader=@01:class rr.RRMain$RRMainLoader)]
+  [main: Fixing Potential Orphan jgfutil/Barrier.__$rr_DoBarrier__$rr__Original_(I)V]
+  [main: Fixing Potential Orphan jgfutil/Barrier.DoBarrier(I)V]
+[main: Instrumenting jgfutil/TournamentBarrier (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting sor/SORRunner (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting jgfutil/JGFTimer (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: New Thread Thread-0 with tid=1.]
+[main: New Thread Thread-1 with tid=2.]
+[main: New Thread Thread-2 with tid=3.]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 2: Terminating thread: Thread-1[tid = 2]]
+[RR Waiter for 3: Terminating thread: Thread-2[tid = 3]]
+[RR Waiter for 1: Terminating thread: Thread-0[tid = 1]]
+Section2:SOR:Kernel:SizeA	168.952 (s) 	 0.5918841	 (Iterations/s)
+[main: Terminating thread: main[tid = 0]]
+[main: Tool Fini()]
+[main: ]
+[main: ----- ----- ----- -----      Thpthpthpth.     ----- ----- ----- -----]
+[RR: 172 sec]
+[RR: Total Time: 171852]
+<entry>
+  <date> Sat May 01 09:15:21 IST 2021 </date> 
+  <mode> FAST </mode> 
+  <timeout> NO </timeout> 
+  <options>
+    <option><name> javaArgs </name>           <value> JGFSORBenchSizeA 4  </value> </option>
+    <option><name> noDecInline </name>        <value> false </value> </option>
+    <option><name> quiet </name>              <value> false </value> </option>
+    <option><name> logDepth </name>           <value> 100 </value> </option>
+    <option><name> logs </name>               <value> log </value> </option>
+    <option><name> out </name>                <value>  </value>   </option>
+    <option><name> err </name>                <value>  </value>   </option>
+    <option><name> noinst </name>             <value> false </value> </option>
+    <option><name> inst </name>               <value> INST </value> </option>
+    <option><name> infThreads </name>         <value> 0 </value>  </option>
+    <option><name> benchmark </name>          <value> 0 </value>  </option>
+    <option><name> fileType </name>           <value> true </value> </option>
+    <option><name> transactionFile </name>    <value> transactionfile.csv </value> </option>
+    <option><name> warmup </name>             <value> 3 </value>  </option>
+    <option><name> availableProcessors </name> <value> 4 </value>  </option>
+    <option><name> args </name>               <value> [] </value> </option>
+    <option><name> d </name>                  <value> [] </value> </option>
+    <option><name> maxYikes </name>           <value> 5 </value>  </option>
+    <option><name> help </name>               <value> false </value> </option>
+    <option><name> toolpath </name>           <value> /home/krishanu/aerodrome-roadrunner/classes/rr/simple:/home/krishanu/aerodrome-roadrunner/classes/tools </value> </option>
+    <option><name> classpath </name>          <value> original.jar </value> </option>
+    <option><name> tool </name>               <value> AD </value> </option>
+    <option><name> tools </name>              <value> false </value> </option>
+    <option><name> noxml </name>              <value> false </value> </option>
+    <option><name> constantGC </name>         <value> false </value> </option>
+    <option><name> noFP </name>               <value> true </value> </option>
+    <option><name> noShutdownHook </name>     <value> false </value> </option>
+    <option><name> noEnter </name>            <value> false </value> </option>
+    <option><name> xml </name>                <value> log.xml </value> </option>
+    <option><name> pulse </name>              <value>  </value>   </option>
+    <option><name> maxTime </name>            <value> 0 </value>  </option>
+    <option><name> maxMem </name>             <value> 10240 </value> </option>
+    <option><name> maxTid </name>             <value> 16 </value> </option>
+    <option><name> stacks </name>             <value> false </value> </option>
+    <option><name> values </name>             <value> false </value> </option>
+    <option><name> noTidGC </name>            <value> true </value> </option>
+    <option><name> noEventReuse </name>       <value> false </value> </option>
+    <option><name> trackMemoryUsage </name>   <value> false </value> </option>
+    <option><name> repository </name>         <value>  </value>   </option>
+    <option><name> meta </name>               <value> null </value> </option>
+    <option><name> methods </name>            <value> [default=ACCEPT] </value> </option>
+    <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
+    <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
+    <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
+    <option><name> noConstructor </name>      <value> false </value> </option>
+    <option><name> noClone </name>            <value> false </value> </option>
+    <option><name> dump </name>               <value>  </value>   </option>
+    <option><name> field </name>              <value> FINE </value> </option>
+    <option><name> fancy </name>              <value> false </value> </option>
+    <option><name> verify </name>             <value> false </value> </option>
+    <option><name> trackReflection </name>    <value> false </value> </option>
+    <option><name> arraySites </name>         <value> false </value> </option>
+    <option><name> Use TestAcquires </name>   <value> false </value> </option>
+    <option><name> sanity </name>             <value> false </value> </option>
+    <option><name> reentrantEvents </name>    <value> false </value> </option>
+    <option><name> nojoin </name>             <value> false </value> </option>
+    <option><name> multiLoader </name>        <value> false </value> </option>
+    <option><name> indices </name>            <value> 2147483647 </value> </option>
+    <option><name> updaters </name>           <value> SAFE </value> </option>
+    <option><name> array </name>              <value> FINE </value> </option>
+    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@511d50c0 </value> </option>
+    <option><name> nobarrier </name>          <value> false </value> </option>
+    <option><name> arrayCacheType </name>     <value> STRONG </value> </option>
+    <option><name> callSites </name>          <value> false </value> </option>
+    <option><name> maxWarn </name>            <value> 100 </value> </option>
+    <option><name> noInterrupt </name>        <value> false </value> </option>
+  </options>
+  <system>
+    <host> krishanu-Predator-G3-572 </host> 
+    <name> java.vm.version </name>     <value> 25.292-b10 </value> 
+    <name> java.vm.vendor </name>      <value> Private Build </value> 
+    <name> java.vm.name </name>        <value> OpenJDK 64-Bit Server VM </value> 
+    <name> java.class.path </name>     <value> .:/home/krishanu/aerodrome-roadrunner/build/jar/rragent.jar </value> 
+    <name> os.name </name>             <value> Linux </value> 
+    <name> os.arch </name>             <value> amd64 </value> 
+    <name> os.version </name>          <value> 5.8.0-50-generic </value> 
+    <name> user.name </name>           <value> krishanu </value> 
+    <name> user.dir </name>            <value> /home/krishanu/aerodrome-roadrunner/benchmarks/sor </value> 
+    <availableProcs> 4 </availableProcs> 
+    <memCommitted> 1623 </memCommitted> 
+    <memUsed> 632 </memUsed> 
+    <memTotal> 1623 </memTotal> 
+    <compileTime> 5297 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 2153 </time> </gc>
+    <gc> <name> PS MarkSweep </name> <time> 0 </time> </gc>
+  </system>
+  <instrumented> JGFSORBenchSizeA jgfutil/Barrier jgfutil/JGFInstrumentor jgfutil/JGFSection2 jgfutil/JGFTimer jgfutil/TournamentBarrier sor/JGFSORBench sor/SOR sor/SORRunner  </instrumented> 
+  <instrumentedNum> 9 </instrumentedNum> 
+  <skipped>  </skipped> 
+  <skippedNum> 0 </skippedNum> 
+  <sanityChecked>  </sanityChecked> 
+  <sanityCheckedNum> 0 </sanityCheckedNum> 
+  <counters>
+
+    <counter><name> "AD: Read" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Write" </name>                                  <value>          0 </value> </counter>
+    <counter><name> "AD: Method Begin" </name>                           <value>          0 </value> </counter>
+    <counter><name> "AD: Method End" </name>                             <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction Begin" </name>                      <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction End" </name>                        <value>          0 </value> </counter>
+    <counter><name> "AD: Acquire" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Release" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Fork" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Join" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value> 1,001,053 </value> </counter>
+
+    <counter><name> "ArrayStateFactory: Size" </name>                    <value> 1,007 </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Move Time" </name>         <value> <total>0.00000</total> <count>0</count>  </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Hits" </name>              <value> 0 </value> </counter>
+
+    <counter><name> "Clone: Count" </name>                               <value> 0 </value> </counter>
+
+    <counter><name> "GCRunner: Max Usage" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "Handler: Count" </name>                             <value> 0 </value> </counter>
+
+    <counter><name> "ShadowLock: objects" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "ShadowThread: Count" </name>                        <value> 4 </value> </counter>
+    <counter><name> "ShadowThread: Max Live" </name>                     <value> 4 </value> </counter>
+    <counter><name> "ShadowThread: getCurrentThread() calls" </name>     <value> 0 </value> </counter>
+
+    <counter><name> "ShadowVolatile: objects" </name>                    <value> 0 </value> </counter>
+
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>54.0000</total> <count>9</count> <ave>6.00000</ave> </value> </counter>
+  </counters>
+  <yikes>
+  </yikes>
+  <tool>
+    <name> tools.aerodrome.AeroDromeTool </name> 
+    <violation> 
+        Type -> transactionEnd 
+        Transaction Method -> jgfutil/TournamentBarrier.set(IZ)V
+    </violation> 
+    <violation> 
+        Type -> transactionEnd 
+        Transaction Method -> jgfutil/TournamentBarrier.get(I)Z
+    </violation> 
+    <violation> 
+        Type -> transactionEnd 
+        Transaction Method -> jgfutil/TournamentBarrier.debug(Ljava/lang/String;)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> jgfutil/TournamentBarrier.__$rr_get__$rr__Original_(I)Z (TournamentBarrier.java):55:9
+        Transaction Method -> jgfutil/TournamentBarrier.get(I)Z
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> sor/SORRunner.__$rr_run__$rr__Original_()V (SOR.java):169:406
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> sor/SORRunner.__$rr_run__$rr__Original_()V (SOR.java):169:414
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> sor/SORRunner.__$rr_run__$rr__Original_()V (SOR.java):169:398
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> sor/SOR.__$rr_SORrun__$rr__Original_(D[[DI)V (SOR.java):82:235
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> sor/SORRunner.__$rr_run__$rr__Original_()V (SOR.java):173:456
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  sor/SORRunner.__$rr_run__$rr__Original_()V (SOR.java):173:484
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  sor/SORRunner.__$rr_run__$rr__Original_()V (SOR.java):169:426
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  sor/SORRunner.__$rr_run__$rr__Original_()V (SOR.java):148:241
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  jgfutil/TournamentBarrier.__$rr_set__$rr__Original_(IZ)V (TournamentBarrier.java):61:10
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> jgfutil/TournamentBarrier.__$rr_set__$rr__Original_(IZ)V (TournamentBarrier.java):60:3
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> jgfutil/TournamentBarrier.__$rr_get__$rr__Original_(I)Z (TournamentBarrier.java):54:3
+        Transaction Method -> jgfutil/TournamentBarrier.get(I)Z
+    </violation> 
+    <violation> 
+        Type -> join 
+        Location -> sor/SOR.__$rr_SORrun__$rr__Original_(D[[DI)V (SOR.java):71:187
+        Transaction Method -> sor/JGFSORBench.JGFkernel()V
+    </violation> 
+    <excluded method> sor/SORRunner.run()V </excluded method> 
+    <excluded method> JGFSORBenchSizeA.main([Ljava/lang/String;)V </excluded method> 
+    <excluded method> jgfutil/TournamentBarrier.DoBarrier(I)V </excluded method> 
+    <excluded method> sor/JGFSORBench.JGFrun(I)V </excluded method> 
+    <excluded method> sor/SORRunner.run()V </excluded method> 
+    <excluded method> JGFSORBenchSizeA.main([Ljava/lang/String;)V </excluded method> 
+    <excluded method> jgfutil/TournamentBarrier.DoBarrier(I)V </excluded method> 
+    <excluded method> sor/JGFSORBench.JGFrun(I)V </excluded method> 
+  </tool>
+  <tool>
+    <name> Last </name> 
+  </tool>
+  <threadCount> 4 </threadCount> 
+  <threadMaxActive> 4 </threadMaxActive> 
+  <errorTotal> 0 </errorTotal> 
+  <distinctErrorTotal> 0 </distinctErrorTotal> 
+  <methods>
+  </methods>
+  <fields>
+  </fields>
+  <arrays>
+  </arrays>
+  <locks>
+  </locks>
+  <fieldAccesses>
+  </fieldAccesses>
+  <errorCountPerErrorType>
+  </errorCountPerErrorType>
+  <warningsTotal> 0 </warningsTotal> 
+  <yikesTotal> 0 </yikesTotal> 
+  <failed> false </failed> 
+  <failedReason>  </failedReason> 
+  <time> 171852 </time> 
+</entry>
+[RR: Time = 171852]
+[RR: Exiting: 0]
