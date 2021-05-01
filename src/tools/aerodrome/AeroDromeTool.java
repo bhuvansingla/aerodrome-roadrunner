@@ -113,7 +113,7 @@ public class AeroDromeTool extends Tool {
 
     public void checkLocation(AccessEvent me, int place) {
         String sloc = me.getAccessInfo().getLoc().toString();
-        if(transactionLocations.containsKey(sloc))&&place==0) {
+        if(transactionLocations.containsKey(sloc)&&place==0) {
             transactionBegin(me.getThread());
         } 
         else if (transactionLocations.containsValue(sloc)&&place==1) {
