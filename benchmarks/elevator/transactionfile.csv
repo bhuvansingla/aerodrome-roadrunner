@@ -1,0 +1,5 @@
+elevator/Lift.run()V
+elevator/Elevator.main([Ljava/lang/String;)V
+elevator/Lift.doIdle()V
+elevator/Elevator.begin()V
+elevator/Controls.claimDown(Ljava/lang/String;I)Z

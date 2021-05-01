@@ -1,0 +1,363 @@
+OpenJDK 64-Bit Server VM (25.292-b10) for linux-amd64 JRE (1.8.0_292-8u292-b10-0ubuntu1~20.04-b10), built on Apr 21 2021 11:46:09 by "buildd" with gcc 9.3.0
+Memory: 4k page, physical 8032296k(4179504k free), swap 10634236k(10634236k free)
+CommandLine flags: -XX:InitialHeapSize=1073741824 -XX:MaxHeapSize=3221225472 -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+1.209: [GC (Allocation Failure)  262144K->22811K(1005056K), 0.0151710 secs]
+1.745: [GC (Allocation Failure)  284955K->22723K(1267200K), 0.0153861 secs]
+2.633: [GC (Allocation Failure)  547011K->22674K(1267200K), 0.0173698 secs]
+3.477: [GC (Allocation Failure)  546962K->22695K(1704448K), 0.0146616 secs]
+5.049: [GC (Allocation Failure)  984231K->22675K(1683456K), 0.0141242 secs]
+9.078: [GC (Allocation Failure)  984211K->22851K(1683968K), 0.0150356 secs]
+15.847: [GC (Allocation Failure)  984387K->23895K(1683968K), 0.0230133 secs]
+18.133: [GC (Allocation Failure)  985431K->23903K(1625600K), 0.0032562 secs]
+20.134: [GC (Allocation Failure)  948063K->24071K(1589760K), 0.0026624 secs]
+21.962: [GC (Allocation Failure)  912391K->24071K(1554432K), 0.0045145 secs]
+23.959: [GC (Allocation Failure)  878599K->24087K(1522176K), 0.0018616 secs]
+25.652: [GC (Allocation Failure)  846359K->24087K(1491456K), 0.0033375 secs]
+27.547: [GC (Allocation Failure)  815639K->24095K(1495040K), 0.0019996 secs]
+29.173: [GC (Allocation Failure)  785951K->24095K(1433600K), 0.0028440 secs]
+30.719: [GC (Allocation Failure)  757791K->24127K(1439232K), 0.0020331 secs]
+32.446: [GC (Allocation Failure)  731199K->24167K(1381376K), 0.0030529 secs]
+33.836: [GC (Allocation Failure)  705639K->24143K(1387520K), 0.0018761 secs]
+35.107: [GC (Allocation Failure)  681039K->24143K(1333760K), 0.0027190 secs]
+36.605: [GC (Allocation Failure)  657999K->24175K(1340416K), 0.0021172 secs]
+37.966: [GC (Allocation Failure)  636015K->24151K(1290752K), 0.0020266 secs]
+39.235: [GC (Allocation Failure)  614999K->24151K(1296896K), 0.0018980 secs]
+40.609: [GC (Allocation Failure)  595031K->24183K(1251328K), 0.0028323 secs]
+41.680: [GC (Allocation Failure)  575607K->24159K(1256448K), 0.0019262 secs]
+42.897: [GC (Allocation Failure)  557151K->24159K(1215488K), 0.0020640 secs]
+44.154: [GC (Allocation Failure)  539743K->24159K(1219584K), 0.0020747 secs]
+45.333: [GC (Allocation Failure)  522847K->24191K(1182720K), 0.0038476 secs]
+46.299: [GC (Allocation Failure)  507007K->24167K(1185792K), 0.0022060 secs]
+47.291: [GC (Allocation Failure)  491623K->24167K(1152512K), 0.0028262 secs]
+48.425: [GC (Allocation Failure)  476775K->24167K(1155072K), 0.0020372 secs]
+49.493: [GC (Allocation Failure)  462951K->24167K(1125376K), 0.0017396 secs]
+ailableProcessors  = 4                   ]
+  [RR: (rr.RRMain)                        args                 = []                  ]
+  [RR: (acme.util.Debug)                  d                    = []                  ]
+  [RR: (acme.util.Yikes)                  maxYikes             = 5                   ]
+  [RR: (rr.RRMain$5)                      help                 = false               ]
+  [RR: (rr.tool.RR)                       toolpath             = /home/krishanu/aerodrome-roadrunner/classes/rr/simple:/home/krishanu/aerodrome-roadrunner/classes/tools]
+  [RR: (rr.tool.RR)                       classpath            = tsp.jar             ]
+  [RR: (rr.tool.RR)                       tool                 = AD                  ]
+  [RR: (rr.tool.RR)                       tools                = false               ]
+  [RR: (rr.tool.RR)                       noxml                = false               ]
+  [RR: (rr.tool.RR)                       constantGC           = false               ]
+  [RR: (rr.tool.RR)                       noFP                 = true                ]
+  [RR: (rr.tool.RR)                       noShutdownHook       = false               ]
+  [RR: (rr.tool.RR)                       noEnter              = false               ]
+  [RR: (rr.tool.RR)                       xml                  = log.xml             ]
+  [RR: (rr.tool.RR)                       pulse                =                     ]
+  [RR: (rr.tool.RR)                       maxTime              = 0                   ]
+  [RR: (rr.tool.RR)                       maxMem               = 10240               ]
+  [RR: (rr.tool.RR)                       maxTid               = 16                  ]
+  [RR: (rr.tool.RR)                       stacks               = false               ]
+  [RR: (rr.tool.RR)                       values               = false               ]
+  [RR: (rr.tool.RR)                       noTidGC              = true                ]
+  [RR: (rr.tool.RR)                       noEventReuse         = false               ]
+  [RR: (rr.tool.RR)                       trackMemoryUsage     = false               ]
+  [RR: (rr.loader.LoaderContext)          repository           =                     ]
+  [RR: (rr.meta.MetaDataInfoMaps)         meta                 = null                ]
+  [RR: (rr.meta.InstrumentationFilter)    methods              = [default=ACCEPT]    ]
+  [RR: (rr.meta.InstrumentationFilter)    fields               = ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    lines                = [default=ACCEPT]    ]
+  [RR: (rr.meta.InstrumentationFilter)    classes              = ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    shadowThread         = ["-.*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    noop                 = [default=ACCEPT]    ]
+  [RR: (rr.instrument.classes.ThreadDataThunkInserter) noConstructor        = false               ]
+  [RR: (rr.instrument.classes.CloneFixer) noClone              = false               ]
+  [RR: (rr.instrument.Instrumentor)       dump                 =                     ]
+  [RR: (rr.instrument.Instrumentor)       field                = FINE                ]
+  [RR: (rr.instrument.Instrumentor)       fancy                = false               ]
+  [RR: (rr.instrument.Instrumentor)       verify               = false               ]
+  [RR: (rr.instrument.Instrumentor)       trackReflection      = false               ]
+  [RR: (rr.instrument.Instrumentor)       arraySites           = false               ]
+  [RR: (rr.instrument.Instrumentor)       Use TestAcquires     = false               ]
+  [RR: (rr.loader.InstrumentingDefineClassLoader) sanity               = false               ]
+  [RR: (rr.tool.RREventGenerator)         reentrantEvents      = false               ]
+  [RR: (rr.tool.RREventGenerator)         nojoin               = false               ]
+  [RR: (rr.tool.RREventGenerator)         multiLoader          = false               ]
+  [RR: (rr.tool.RREventGenerator)         indices              = 2147483647          ]
+  [RR: (rr.state.update.Updaters)         updaters             = SAFE                ]
+  [RR: (rr.state.ArrayStateFactory)       array                = FINE                ]
+  [RR: (rr.state.ArrayStateFactory$1)     userArray            = rr.state.ArrayStateCreator$1@511d50c0]
+  [RR: (rr.barrier.BarrierMonitor)        nobarrier            = false               ]
+  [RR: (rr.state.AbstractArrayStateCache) arrayCacheType       = STRONG              ]
+  [RR: (rr.instrument.methods.ThreadDataInstructionAdapter) callSites            = false               ]
+  [RR: (rr.error.ErrorMessage)            maxWarn              = 100                 ]
+[RR: 0.0100 sec]
+[RR: Adding Attic Listener to GC PS MarkSweep]
+[RR: Installing DefineClassListener rr.loader.InstrumentingDefineClassLoader@60e53b93]
+[RR: System Class Path = [file:/home/krishanu/aerodrome-roadrunner/benchmarks/tsp/tsp.jar]]
+[RR: Tool Init()]
+[RR: Running target]
+[main: ----- ----- ----- -----       Meep Meep.      ----- ----- ----- -----]
+[main: ]
+[main: Instrumenting Tsp (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting harness/Callback (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: New Thread main with tid=0.]
+[main: Epoch will use 5 bits for tids]
+[main: Instrumenting TspSolver (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting PrioQElement (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting TourElement (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: New Thread Thread-0 with tid=1.]
+[main: New Thread Thread-1 with tid=2.]
+[main: New Thread Thread-2 with tid=3.]
+[main: New Thread Thread-3 with tid=4.]
+[main: New Thread Thread-4 with tid=5.]
+[main: New Thread Thread-5 with tid=6.]
+[main: New Thread Thread-6 with tid=7.]
+[main: New Thread Thread-7 with tid=8.]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 7: Terminating thread: Thread-6[tid = 7]]
+[RR Waiter for 2: Terminating thread: Thread-1[tid = 2]]
+[RR Waiter for 8: Terminating thread: Thread-7[tid = 8]]
+[RR Waiter for 4: Terminating thread: Thread-3[tid = 4]]
+[RR Waiter for 5: Terminating thread: Thread-4[tid = 5]]
+[RR Waiter for 3: Terminating thread: Thread-2[tid = 3]]
+[RR Waiter for 6: Terminating thread: Thread-5[tid = 6]]
+[RR Waiter for 1: Terminating thread: Thread-0[tid = 1]]
+tsp-8	49510
+Minimum tour length: 43
+Minimum tour:0 -   10 -    11 -    2 -   7 -   3 -   13 -    12 -    6 -   5 -   14 -    4 -   8 -   1 -   15 -    9 -   0
+[main: Terminating thread: main[tid = 0]]
+[main: Tool Fini()]
+[main: ]
+[main: ----- ----- ----- -----      Thpthpthpth.     ----- ----- ----- -----]
+[RR: 49.8 sec]
+[RR: Total Time: 49757]
+<entry>
+  <date> Sat May 01 08:23:45 IST 2021 </date> 
+  <mode> FAST </mode> 
+  <timeout> NO </timeout> 
+  <options>
+    <option><name> javaArgs </name>           <value> Tsp tspfiles/map16c 8  </value> </option>
+    <option><name> noDecInline </name>        <value> false </value> </option>
+    <option><name> quiet </name>              <value> false </value> </option>
+    <option><name> logDepth </name>           <value> 100 </value> </option>
+    <option><name> logs </name>               <value> log </value> </option>
+    <option><name> out </name>                <value>  </value>   </option>
+    <option><name> err </name>                <value>  </value>   </option>
+    <option><name> noinst </name>             <value> false </value> </option>
+    <option><name> inst </name>               <value> INST </value> </option>
+    <option><name> infThreads </name>         <value> 0 </value>  </option>
+    <option><name> benchmark </name>          <value> 0 </value>  </option>
+    <option><name> fileType </name>           <value> true </value> </option>
+    <option><name> transactionFile </name>    <value> transactionfile.csv </value> </option>
+    <option><name> warmup </name>             <value> 3 </value>  </option>
+    <option><name> availableProcessors </name> <value> 4 </value>  </option>
+    <option><name> args </name>               <value> [] </value> </option>
+    <option><name> d </name>                  <value> [] </value> </option>
+    <option><name> maxYikes </name>           <value> 5 </value>  </option>
+    <option><name> help </name>               <value> false </value> </option>
+    <option><name> toolpath </name>           <value> /home/krishanu/aerodrome-roadrunner/classes/rr/simple:/home/krishanu/aerodrome-roadrunner/classes/tools </value> </option>
+    <option><name> classpath </name>          <value> tsp.jar </value> </option>
+    <option><name> tool </name>               <value> AD </value> </option>
+    <option><name> tools </name>              <value> false </value> </option>
+    <option><name> noxml </name>              <value> false </value> </option>
+    <option><name> constantGC </name>         <value> false </value> </option>
+    <option><name> noFP </name>               <value> true </value> </option>
+    <option><name> noShutdownHook </name>     <value> false </value> </option>
+    <option><name> noEnter </name>            <value> false </value> </option>
+    <option><name> xml </name>                <value> log.xml </value> </option>
+    <option><name> pulse </name>              <value>  </value>   </option>
+    <option><name> maxTime </name>            <value> 0 </value>  </option>
+    <option><name> maxMem </name>             <value> 10240 </value> </option>
+    <option><name> maxTid </name>             <value> 16 </value> </option>
+    <option><name> stacks </name>             <value> false </value> </option>
+    <option><name> values </name>             <value> false </value> </option>
+    <option><name> noTidGC </name>            <value> true </value> </option>
+    <option><name> noEventReuse </name>       <value> false </value> </option>
+    <option><name> trackMemoryUsage </name>   <value> false </value> </option>
+    <option><name> repository </name>         <value>  </value>   </option>
+    <option><name> meta </name>               <value> null </value> </option>
+    <option><name> methods </name>            <value> [default=ACCEPT] </value> </option>
+    <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
+    <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
+    <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
+    <option><name> noConstructor </name>      <value> false </value> </option>
+    <option><name> noClone </name>            <value> false </value> </option>
+    <option><name> dump </name>               <value>  </value>   </option>
+    <option><name> field </name>              <value> FINE </value> </option>
+    <option><name> fancy </name>              <value> false </value> </option>
+    <option><name> verify </name>             <value> false </value> </option>
+    <option><name> trackReflection </name>    <value> false </value> </option>
+    <option><name> arraySites </name>         <value> false </value> </option>
+    <option><name> Use TestAcquires </name>   <value> false </value> </option>
+    <option><name> sanity </name>             <value> false </value> </option>
+    <option><name> reentrantEvents </name>    <value> false </value> </option>
+    <option><name> nojoin </name>             <value> false </value> </option>
+    <option><name> multiLoader </name>        <value> false </value> </option>
+    <option><name> indices </name>            <value> 2147483647 </value> </option>
+    <option><name> updaters </name>           <value> SAFE </value> </option>
+    <option><name> array </name>              <value> FINE </value> </option>
+    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@511d50c0 </value> </option>
+    <option><name> nobarrier </name>          <value> false </value> </option>
+    <option><name> arrayCacheType </name>     <value> STRONG </value> </option>
+    <option><name> callSites </name>          <value> false </value> </option>
+    <option><name> maxWarn </name>            <value> 100 </value> </option>
+    <option><name> noInterrupt </name>        <value> false </value> </option>
+  </options>
+  <system>
+    <host> krishanu-Predator-G3-572 </host> 
+    <name> java.vm.version </name>     <value> 25.292-b10 </value> 
+    <name> java.vm.vendor </name>      <value> Private Build </value> 
+    <name> java.vm.name </name>        <value> OpenJDK 64-Bit Server VM </value> 
+    <name> java.class.path </name>     <value> .:/home/krishanu/aerodrome-roadrunner/build/jar/rragent.jar </value> 
+    <name> os.name </name>             <value> Linux </value> 
+    <name> os.arch </name>             <value> amd64 </value> 
+    <name> os.version </name>          <value> 5.8.0-50-generic </value> 
+    <name> user.name </name>           <value> krishanu </value> 
+    <name> user.dir </name>            <value> /home/krishanu/aerodrome-roadrunner/benchmarks/tsp </value> 
+    <availableProcs> 4 </availableProcs> 
+    <memCommitted> 1099 </memCommitted> 
+    <memUsed> 252 </memUsed> 
+    <memTotal> 1099 </memTotal> 
+    <compileTime> 4070 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 171 </time> </gc>
+    <gc> <name> PS MarkSweep </name> <time> 0 </time> </gc>
+  </system>
+  <instrumented> PrioQElement TourElement Tsp TspSolver harness/Callback  </instrumented> 
+  <instrumentedNum> 5 </instrumentedNum> 
+  <skipped>  </skipped> 
+  <skippedNum> 0 </skippedNum> 
+  <sanityChecked>  </sanityChecked> 
+  <sanityCheckedNum> 0 </sanityCheckedNum> 
+  <counters>
+
+    <counter><name> "AD: Read" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Write" </name>                                  <value>          0 </value> </counter>
+    <counter><name> "AD: Method Begin" </name>                           <value>          0 </value> </counter>
+    <counter><name> "AD: Method End" </name>                             <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction Begin" </name>                      <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction End" </name>                        <value>          0 </value> </counter>
+    <counter><name> "AD: Acquire" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Release" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Fork" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Join" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value> 25,311 </value> </counter>
+
+    <counter><name> "ArrayStateFactory: Size" </name>                    <value> 260 </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Move Time" </name>         <value> <total>0.00000</total> <count>0</count>  </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Hits" </name>              <value> 0 </value> </counter>
+
+    <counter><name> "Clone: Count" </name>                               <value> 0 </value> </counter>
+
+    <counter><name> "GCRunner: Max Usage" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "Handler: Count" </name>                             <value> 0 </value> </counter>
+
+    <counter><name> "ShadowLock: objects" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "ShadowThread: Count" </name>                        <value> 9 </value> </counter>
+    <counter><name> "ShadowThread: Max Live" </name>                     <value> 9 </value> </counter>
+    <counter><name> "ShadowThread: getCurrentThread() calls" </name>     <value> 0 </value> </counter>
+
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>45.0000</total> <count>5</count> <ave>9.00000</ave> </value> </counter>
+  </counters>
+  <yikes>
+  </yikes>
+  <tool>
+    <name> tools.aerodrome.AeroDromeTool </name> 
+    <violation> 
+        Type -> transactionEnd 
+        Transaction Method -> TspSolver.get_tour(I)I
+    </violation> 
+    <violation> 
+        Type -> transactionEnd 
+        Transaction Method -> TspSolver.recursive_solve(I)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):526:48
+        Transaction Method -> TspSolver.recursive_solve(I)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):303:92
+        Transaction Method -> TspSolver.get_tour(I)I
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):375:36
+        Transaction Method -> TspSolver.get_tour(I)I
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):537:128
+        Transaction Method -> TspSolver.recursive_solve(I)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):542:163
+        Transaction Method -> TspSolver.recursive_solve(I)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):110:15
+        Transaction Method -> TspSolver.recursive_solve(I)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):104:1
+        Transaction Method -> TspSolver.recursive_solve(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):115:22
+        Transaction Method -> TspSolver.recursive_solve(I)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):117:37
+        Transaction Method -> TspSolver.recursive_solve(I)V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):109:13
+        Transaction Method -> TspSolver.recursive_solve(I)V
+    </violation> 
+    <excluded method> TspSolver.run()V </excluded method> 
+    <excluded method> Tsp.main([Ljava/lang/String;)V </excluded method> 
+    <excluded method> TspSolver.Worker()V </excluded method> 
+    <excluded method> TspSolver.run()V </excluded method> 
+    <excluded method> Tsp.main([Ljava/lang/String;)V </excluded method> 
+    <excluded method> TspSolver.Worker()V </excluded method> 
+  </tool>
+  <tool>
+    <name> Last </name> 
+  </tool>
+  <threadCount> 9 </threadCount> 
+  <threadMaxActive> 9 </threadMaxActive> 
+  <errorTotal> 0 </errorTotal> 
+  <distinctErrorTotal> 0 </distinctErrorTotal> 
+  <methods>
+  </methods>
+  <fields>
+  </fields>
+  <arrays>
+  </arrays>
+  <locks>
+  </locks>
+  <fieldAccesses>
+  </fieldAccesses>
+  <errorCountPerErrorType>
+  </errorCountPerErrorType>
+  <warningsTotal> 0 </warningsTotal> 
+  <yikesTotal> 0 </yikesTotal> 
+  <failed> false </failed> 
+  <failedReason>  </failedReason> 
+  <time> 49757 </time> 
+</entry>
+[RR: Time = 49757]
+[RR: Exiting: 0]

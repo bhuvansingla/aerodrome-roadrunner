@@ -1,0 +1,321 @@
+OpenJDK 64-Bit Server VM (25.292-b10) for linux-amd64 JRE (1.8.0_292-8u292-b10-0ubuntu1~20.04-b10), built on Apr 21 2021 11:46:09 by "buildd" with gcc 9.3.0
+Memory: 4k page, physical 8032296k(3799004k free), swap 10634236k(10634236k free)
+CommandLine flags: -XX:InitialHeapSize=1073741824 -XX:MaxHeapSize=3221225472 -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+0.816: [GC (Allocation Failure)  262144K->180101K(1005056K), 0.1205349 secs]
+1.385: [GC (Allocation Failure)  442245K->429066K(1267200K), 0.2110613 secs]
+4.525: [GC (Allocation Failure)  953354K->433714K(1267200K), 0.0512811 secs]
+4.576: [Full GC (Ergonomics)  433714K->422243K(1699840K), 0.9094877 secs]
+7.628: [GC (Allocation Failure)  946531K->422435K(1875968K), 0.0219639 secs]
+10.644: [GC (Allocation Failure)  1165859K->422467K(2051072K), 0.0139855 secs]
+14.378: [GC (Allocation Failure)  1340995K->422467K(1630208K), 0.0231304 secs]
+15.884: [GC (Allocation Failure)  791107K->422435K(1840640K), 0.0218085 secs]
+17.383: [GC (Allocation Failure)  791075K->422467K(1795072K), 0.0101947 secs]
+18.958: [GC (Allocation Failure)  806979K->422435K(1825792K), 0.0104020 secs]
+20.542: [GC (Allocation Failure)  806947K->422435K(1810944K), 0.0122963 secs]
+22.248: [GC (Allocation Failure)  840227K->422435K(1830912K), 0.0104536 secs]
+23.964: [GC (Allocation Failure)  840227K->422435K(1812992K), 0.0153775 secs]
+25.776: [GC (Allocation Failure)  866339K->422435K(1829888K), 0.0154616 secs]
+27.595: [GC (Allocation Failure)  866339K->422467K(1808384K), 0.0189111 secs]
+29.489: [GC (Allocation Failure)  888387K->422435K(1824256K), 0.0153464 secs]
+31.391: [GC (Allocation Failure)  888355K->422435K(1801216K), 0.0111832 secs]
+33.358: [GC (Allocation Failure)  906275K->422467K(1616384K), 0.0171832 secs]
+35.308: [GC (Allocation Failure)  906307K->422435K(1790976K), 0.0160641 secs]
+37.339: [GC (Allocation Failure)  917539K->422467K(1803264K), 0.0240780 secs]
+39.362: [GC (Allocation Failure)  917571K->422435K(1781248K), 0.0166268 secs]
+41.411: [GC (Allocation Failure)  928803K->422467K(1792512K), 0.0173670 secs]
+43.465: [GC (Allocation Failure)  928835K->422435K(1769984K), 0.0108556 secs]
+45.580: [GC (Allocation Failure)  938531K->422435K(1781760K), 0.0104892 secs]
+   = INST                ]
+  [RR: (rr.RRMain)                        infThreads           = 0                   ]
+  [RR: (rr.RRMain)                        benchmark            = 0                   ]
+  [RR: (rr.RRMain)                        fileType             = true                ]
+  [RR: (rr.RRMain)                        transactionFile      = transactionfile.csv ]
+  [RR: (rr.RRMain)                        warmup               = 3                   ]
+  [RR: (rr.RRMain)                        availableProcessors  = 4                   ]
+  [RR: (rr.RRMain)                        args                 = []                  ]
+  [RR: (acme.util.Debug)                  d                    = []                  ]
+  [RR: (acme.util.Yikes)                  maxYikes             = 5                   ]
+  [RR: (rr.RRMain$5)                      help                 = false               ]
+  [RR: (rr.tool.RR)                       toolpath             = /home/krishanu/aerodrome-roadrunner/classes/rr/simple:/home/krishanu/aerodrome-roadrunner/classes/tools]
+  [RR: (rr.tool.RR)                       classpath            = original.jar        ]
+  [RR: (rr.tool.RR)                       tool                 = AD                  ]
+  [RR: (rr.tool.RR)                       tools                = false               ]
+  [RR: (rr.tool.RR)                       noxml                = false               ]
+  [RR: (rr.tool.RR)                       constantGC           = false               ]
+  [RR: (rr.tool.RR)                       noFP                 = true                ]
+  [RR: (rr.tool.RR)                       noShutdownHook       = false               ]
+  [RR: (rr.tool.RR)                       noEnter              = false               ]
+  [RR: (rr.tool.RR)                       xml                  = log.xml             ]
+  [RR: (rr.tool.RR)                       pulse                =                     ]
+  [RR: (rr.tool.RR)                       maxTime              = 0                   ]
+  [RR: (rr.tool.RR)                       maxMem               = 10240               ]
+  [RR: (rr.tool.RR)                       maxTid               = 16                  ]
+  [RR: (rr.tool.RR)                       stacks               = false               ]
+  [RR: (rr.tool.RR)                       values               = false               ]
+  [RR: (rr.tool.RR)                       noTidGC              = true                ]
+  [RR: (rr.tool.RR)                       noEventReuse         = false               ]
+  [RR: (rr.tool.RR)                       trackMemoryUsage     = false               ]
+  [RR: (rr.loader.LoaderContext)          repository           =                     ]
+  [RR: (rr.meta.MetaDataInfoMaps)         meta                 = null                ]
+  [RR: (rr.meta.InstrumentationFilter)    methods              = [default=ACCEPT]    ]
+  [RR: (rr.meta.InstrumentationFilter)    fields               = ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    lines                = [default=ACCEPT]    ]
+  [RR: (rr.meta.InstrumentationFilter)    classes              = ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    shadowThread         = ["-.*", default=ACCEPT]]
+  [RR: (rr.meta.InstrumentationFilter)    noop                 = [default=ACCEPT]    ]
+  [RR: (rr.instrument.classes.ThreadDataThunkInserter) noConstructor        = false               ]
+  [RR: (rr.instrument.classes.CloneFixer) noClone              = false               ]
+  [RR: (rr.instrument.Instrumentor)       dump                 =                     ]
+  [RR: (rr.instrument.Instrumentor)       field                = FINE                ]
+  [RR: (rr.instrument.Instrumentor)       fancy                = false               ]
+  [RR: (rr.instrument.Instrumentor)       verify               = false               ]
+  [RR: (rr.instrument.Instrumentor)       trackReflection      = false               ]
+  [RR: (rr.instrument.Instrumentor)       arraySites           = false               ]
+  [RR: (rr.instrument.Instrumentor)       Use TestAcquires     = false               ]
+  [RR: (rr.loader.InstrumentingDefineClassLoader) sanity               = false               ]
+  [RR: (rr.tool.RREventGenerator)         reentrantEvents      = false               ]
+  [RR: (rr.tool.RREventGenerator)         nojoin               = false               ]
+  [RR: (rr.tool.RREventGenerator)         multiLoader          = false               ]
+  [RR: (rr.tool.RREventGenerator)         indices              = 2147483647          ]
+  [RR: (rr.state.update.Updaters)         updaters             = SAFE                ]
+  [RR: (rr.state.ArrayStateFactory)       array                = FINE                ]
+  [RR: (rr.state.ArrayStateFactory$1)     userArray            = rr.state.ArrayStateCreator$1@511d50c0]
+  [RR: (rr.barrier.BarrierMonitor)        nobarrier            = false               ]
+  [RR: (rr.state.AbstractArrayStateCache) arrayCacheType       = STRONG              ]
+  [RR: (rr.instrument.methods.ThreadDataInstructionAdapter) callSites            = false               ]
+  [RR: (rr.error.ErrorMessage)            maxWarn              = 100                 ]
+[RR: 0.0130 sec]
+[RR: Adding Attic Listener to GC PS MarkSweep]
+[RR: Installing DefineClassListener rr.loader.InstrumentingDefineClassLoader@60e53b93]
+[RR: System Class Path = [file:/home/krishanu/aerodrome-roadrunner/benchmarks/sor/original.jar]]
+[RR: Tool Init()]
+[RR: Running target]
+[main: ----- ----- ----- -----       Meep Meep.      ----- ----- ----- -----]
+[main: ]
+[main: Instrumenting JGFSORBenchSizeA (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: New Thread main with tid=0.]
+[main: Epoch will use 5 bits for tids]
+[main: Instrumenting jgfutil/JGFInstrumentor (Loader=@01:class rr.RRMain$RRMainLoader)]
+Java Grande Forum Thread Benchmark Suite - Version 1.0 - Section 2 - Size A
+Executing on 4 threads
+
+[main: Instrumenting sor/JGFSORBench (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting jgfutil/JGFSection2 (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting sor/SOR (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting jgfutil/Barrier (Loader=@01:class rr.RRMain$RRMainLoader)]
+  [main: Fixing Potential Orphan jgfutil/Barrier.__$rr_DoBarrier__$rr__Original_(I)V]
+  [main: Fixing Potential Orphan jgfutil/Barrier.DoBarrier(I)V]
+[main: Instrumenting jgfutil/TournamentBarrier (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting sor/SORRunner (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: Instrumenting jgfutil/JGFTimer (Loader=@01:class rr.RRMain$RRMainLoader)]
+[main: New Thread Thread-0 with tid=1.]
+[main: New Thread Thread-1 with tid=2.]
+[main: New Thread Thread-2 with tid=3.]
+[Weak Resource Cleaner: Cleaning...]
+[Array Cleaner: ArrayStateFactory Moved Entries to Attic (2 ms).  Attic size: 0->1006.]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 3: Terminating thread: Thread-2[tid = 3]]
+[RR Waiter for 2: Terminating thread: Thread-1[tid = 2]]
+[RR Waiter for 1: Terminating thread: Thread-0[tid = 1]]
+Section2:SOR:Kernel:SizeA	44.136 (s) 	 2.2657242	 (Iterations/s)
+[main: Terminating thread: main[tid = 0]]
+[main: Tool Fini()]
+[main: ]
+[main: ----- ----- ----- -----      Thpthpthpth.     ----- ----- ----- -----]
+[RR: 47.2 sec]
+[RR: Total Time: 47213]
+<entry>
+  <date> Sat May 01 09:22:11 IST 2021 </date> 
+  <mode> FAST </mode> 
+  <timeout> NO </timeout> 
+  <options>
+    <option><name> javaArgs </name>           <value> JGFSORBenchSizeA 4  </value> </option>
+    <option><name> noDecInline </name>        <value> false </value> </option>
+    <option><name> quiet </name>              <value> false </value> </option>
+    <option><name> logDepth </name>           <value> 100 </value> </option>
+    <option><name> logs </name>               <value> log </value> </option>
+    <option><name> out </name>                <value>  </value>   </option>
+    <option><name> err </name>                <value>  </value>   </option>
+    <option><name> noinst </name>             <value> false </value> </option>
+    <option><name> inst </name>               <value> INST </value> </option>
+    <option><name> infThreads </name>         <value> 0 </value>  </option>
+    <option><name> benchmark </name>          <value> 0 </value>  </option>
+    <option><name> fileType </name>           <value> true </value> </option>
+    <option><name> transactionFile </name>    <value> transactionfile.csv </value> </option>
+    <option><name> warmup </name>             <value> 3 </value>  </option>
+    <option><name> availableProcessors </name> <value> 4 </value>  </option>
+    <option><name> args </name>               <value> [] </value> </option>
+    <option><name> d </name>                  <value> [] </value> </option>
+    <option><name> maxYikes </name>           <value> 5 </value>  </option>
+    <option><name> help </name>               <value> false </value> </option>
+    <option><name> toolpath </name>           <value> /home/krishanu/aerodrome-roadrunner/classes/rr/simple:/home/krishanu/aerodrome-roadrunner/classes/tools </value> </option>
+    <option><name> classpath </name>          <value> original.jar </value> </option>
+    <option><name> tool </name>               <value> AD </value> </option>
+    <option><name> tools </name>              <value> false </value> </option>
+    <option><name> noxml </name>              <value> false </value> </option>
+    <option><name> constantGC </name>         <value> false </value> </option>
+    <option><name> noFP </name>               <value> true </value> </option>
+    <option><name> noShutdownHook </name>     <value> false </value> </option>
+    <option><name> noEnter </name>            <value> false </value> </option>
+    <option><name> xml </name>                <value> log.xml </value> </option>
+    <option><name> pulse </name>              <value>  </value>   </option>
+    <option><name> maxTime </name>            <value> 0 </value>  </option>
+    <option><name> maxMem </name>             <value> 10240 </value> </option>
+    <option><name> maxTid </name>             <value> 16 </value> </option>
+    <option><name> stacks </name>             <value> false </value> </option>
+    <option><name> values </name>             <value> false </value> </option>
+    <option><name> noTidGC </name>            <value> true </value> </option>
+    <option><name> noEventReuse </name>       <value> false </value> </option>
+    <option><name> trackMemoryUsage </name>   <value> false </value> </option>
+    <option><name> repository </name>         <value>  </value>   </option>
+    <option><name> meta </name>               <value> null </value> </option>
+    <option><name> methods </name>            <value> [default=ACCEPT] </value> </option>
+    <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
+    <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
+    <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
+    <option><name> noConstructor </name>      <value> false </value> </option>
+    <option><name> noClone </name>            <value> false </value> </option>
+    <option><name> dump </name>               <value>  </value>   </option>
+    <option><name> field </name>              <value> FINE </value> </option>
+    <option><name> fancy </name>              <value> false </value> </option>
+    <option><name> verify </name>             <value> false </value> </option>
+    <option><name> trackReflection </name>    <value> false </value> </option>
+    <option><name> arraySites </name>         <value> false </value> </option>
+    <option><name> Use TestAcquires </name>   <value> false </value> </option>
+    <option><name> sanity </name>             <value> false </value> </option>
+    <option><name> reentrantEvents </name>    <value> false </value> </option>
+    <option><name> nojoin </name>             <value> false </value> </option>
+    <option><name> multiLoader </name>        <value> false </value> </option>
+    <option><name> indices </name>            <value> 2147483647 </value> </option>
+    <option><name> updaters </name>           <value> SAFE </value> </option>
+    <option><name> array </name>              <value> FINE </value> </option>
+    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@511d50c0 </value> </option>
+    <option><name> nobarrier </name>          <value> false </value> </option>
+    <option><name> arrayCacheType </name>     <value> STRONG </value> </option>
+    <option><name> callSites </name>          <value> false </value> </option>
+    <option><name> maxWarn </name>            <value> 100 </value> </option>
+    <option><name> noInterrupt </name>        <value> false </value> </option>
+  </options>
+  <system>
+    <host> krishanu-Predator-G3-572 </host> 
+    <name> java.vm.version </name>     <value> 25.292-b10 </value> 
+    <name> java.vm.vendor </name>      <value> Private Build </value> 
+    <name> java.vm.name </name>        <value> OpenJDK 64-Bit Server VM </value> 
+    <name> java.class.path </name>     <value> .:/home/krishanu/aerodrome-roadrunner/build/jar/rragent.jar </value> 
+    <name> os.name </name>             <value> Linux </value> 
+    <name> os.arch </name>             <value> amd64 </value> 
+    <name> os.version </name>          <value> 5.8.0-50-generic </value> 
+    <name> user.name </name>           <value> krishanu </value> 
+    <name> user.dir </name>            <value> /home/krishanu/aerodrome-roadrunner/benchmarks/sor </value> 
+    <availableProcs> 4 </availableProcs> 
+    <memCommitted> 1740 </memCommitted> 
+    <memUsed> 582 </memUsed> 
+    <memTotal> 1740 </memTotal> 
+    <compileTime> 3989 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 695 </time> </gc>
+    <gc> <name> PS MarkSweep </name> <time> 909 </time> </gc>
+  </system>
+  <instrumented> JGFSORBenchSizeA jgfutil/Barrier jgfutil/JGFInstrumentor jgfutil/JGFSection2 jgfutil/JGFTimer jgfutil/TournamentBarrier sor/JGFSORBench sor/SOR sor/SORRunner  </instrumented> 
+  <instrumentedNum> 9 </instrumentedNum> 
+  <skipped>  </skipped> 
+  <skippedNum> 0 </skippedNum> 
+  <sanityChecked>  </sanityChecked> 
+  <sanityCheckedNum> 0 </sanityCheckedNum> 
+  <counters>
+
+    <counter><name> "AD: Read" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Write" </name>                                  <value>          0 </value> </counter>
+    <counter><name> "AD: Method Begin" </name>                           <value>          0 </value> </counter>
+    <counter><name> "AD: Method End" </name>                             <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction Begin" </name>                      <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction End" </name>                        <value>          0 </value> </counter>
+    <counter><name> "AD: Acquire" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Release" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Fork" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Join" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value> 1,001,053 </value> </counter>
+
+    <counter><name> "ArrayStateFactory: Size" </name>                    <value> 1,007 </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Move Time" </name>         <value> <total>2.00000</total> <count>1</count> <ave>2.00000</ave> </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Hits" </name>              <value> 1,003 </value> </counter>
+
+    <counter><name> "Clone: Count" </name>                               <value> 0 </value> </counter>
+
+    <counter><name> "GCRunner: Max Usage" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "Handler: Count" </name>                             <value> 0 </value> </counter>
+
+    <counter><name> "ShadowLock: objects" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "ShadowThread: Count" </name>                        <value> 4 </value> </counter>
+    <counter><name> "ShadowThread: Max Live" </name>                     <value> 4 </value> </counter>
+    <counter><name> "ShadowThread: getCurrentThread() calls" </name>     <value> 0 </value> </counter>
+
+    <counter><name> "ShadowVolatile: objects" </name>                    <value> 0 </value> </counter>
+
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>49.0000</total> <count>9</count> <ave>5.44444</ave> </value> </counter>
+  </counters>
+  <yikes>
+  </yikes>
+  <tool>
+    <name> tools.aerodrome.AeroDromeTool </name> 
+    <excluded method> sor/SORRunner.run()V </excluded method> 
+    <excluded method> JGFSORBenchSizeA.main([Ljava/lang/String;)V </excluded method> 
+    <excluded method> jgfutil/TournamentBarrier.DoBarrier(I)V </excluded method> 
+    <excluded method> sor/JGFSORBench.JGFrun(I)V </excluded method> 
+    <excluded method> jgfutil/TournamentBarrier.set(IZ)V </excluded method> 
+    <excluded method> jgfutil/TournamentBarrier.get(I)Z </excluded method> 
+    <excluded method> jgfutil/TournamentBarrier.debug(Ljava/lang/String;)V </excluded method> 
+    <excluded method> sor/JGFSORBench.JGFkernel()V </excluded method> 
+    <excluded method> sor/SOR.SORrun(D[[DI)V </excluded method> 
+    <excluded method> sor/JGFSORBench.JGFvalidate()V </excluded method> 
+    <excluded method> jgfutil/JGFInstrumentor.stopTimer(Ljava/lang/String;)V </excluded method> 
+    <excluded method> sor/SORRunner.run()V </excluded method> 
+    <excluded method> JGFSORBenchSizeA.main([Ljava/lang/String;)V </excluded method> 
+    <excluded method> jgfutil/TournamentBarrier.DoBarrier(I)V </excluded method> 
+    <excluded method> sor/JGFSORBench.JGFrun(I)V </excluded method> 
+    <excluded method> jgfutil/TournamentBarrier.set(IZ)V </excluded method> 
+    <excluded method> jgfutil/TournamentBarrier.get(I)Z </excluded method> 
+    <excluded method> jgfutil/TournamentBarrier.debug(Ljava/lang/String;)V </excluded method> 
+    <excluded method> sor/JGFSORBench.JGFkernel()V </excluded method> 
+    <excluded method> sor/SOR.SORrun(D[[DI)V </excluded method> 
+    <excluded method> sor/JGFSORBench.JGFvalidate()V </excluded method> 
+    <excluded method> jgfutil/JGFInstrumentor.stopTimer(Ljava/lang/String;)V </excluded method> 
+  </tool>
+  <tool>
+    <name> Last </name> 
+  </tool>
+  <threadCount> 4 </threadCount> 
+  <threadMaxActive> 4 </threadMaxActive> 
+  <errorTotal> 0 </errorTotal> 
+  <distinctErrorTotal> 0 </distinctErrorTotal> 
+  <methods>
+  </methods>
+  <fields>
+  </fields>
+  <arrays>
+  </arrays>
+  <locks>
+  </locks>
+  <fieldAccesses>
+  </fieldAccesses>
+  <errorCountPerErrorType>
+  </errorCountPerErrorType>
+  <warningsTotal> 0 </warningsTotal> 
+  <yikesTotal> 0 </yikesTotal> 
+  <failed> false </failed> 
+  <failedReason>  </failedReason> 
+  <time> 47213 </time> 
+</entry>
+[RR: Time = 47213]
+[RR: Exiting: 0]

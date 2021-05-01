@@ -1,0 +1,6 @@
+To just execute the benchmark:
+  usage: java Tsp <input file> <number of threads>
+      or java Tsp --nop
+
+You can copy the Tsp class files and data files to the RR root directory, somehow the RR way of 
+computing the classpath seems to be wrong.

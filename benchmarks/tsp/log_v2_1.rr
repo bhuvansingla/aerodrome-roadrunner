@@ -1,0 +1,707 @@
+OpenJDK 64-Bit Server VM (25.292-b10) for linux-amd64 JRE (1.8.0_292-8u292-b10-0ubuntu1~20.04-b10), built on Apr 21 2021 11:46:09 by "buildd" with gcc 9.3.0
+Memory: 4k page, physical 8032296k(4584024k free), swap 10634236k(10634236k free)
+CommandLine flags: -XX:InitialHeapSize=1073741824 -XX:MaxHeapSize=3221225472 -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+2.066: [GC (Allocation Failure)  262144K->22843K(1005056K), 0.0194604 secs]
+2.378: [GC (Allocation Failure)  284987K->22696K(1005056K), 0.0118375 secs]
+2.586: [GC (Allocation Failure)  284840K->22680K(1005056K), 0.0106614 secs]
+2.786: [GC (Allocation Failure)  284824K->22664K(1267200K), 0.0113327 secs]
+3.217: [GC (Allocation Failure)  546952K->22696K(1267200K), 0.0117638 secs]
+3.577: [GC (Allocation Failure)  546984K->22696K(1683968K), 0.0117736 secs]
+4.322: [GC (Allocation Failure)  984232K->22837K(1683968K), 0.0148131 secs]
+5.022: [GC (Allocation Failure)  984373K->22869K(1714688K), 0.0011922 secs]
+5.737: [GC (Allocation Failure)  1010005K->22869K(1687040K), 0.0011257 secs]
+6.587: [GC (Allocation Failure)  1010005K->23005K(1713664K), 0.0012632 secs]
+7.290: [GC (Allocation Failure)  1005021K->23029K(1681920K), 0.0013431 secs]
+8.020: [GC (Allocation Failure)  1005045K->23061K(1643520K), 0.0011854 secs]
+8.681: [GC (Allocation Failure)  966677K->23053K(1639936K), 0.0013000 secs]
+9.324: [GC (Allocation Failure)  929805K->23053K(1571840K), 0.0018894 secs]
+9.988: [GC (Allocation Failure)  894989K->23085K(1570816K), 0.0010749 secs]
+10.623: [GC (Allocation Failure)  861741K->23125K(1506816K), 0.0024400 secs]
+11.388: [GC (Allocation Failure)  830037K->23205K(1506816K), 0.0014304 secs]
+12.260: [GC (Allocation Failure)  799909K->23293K(1447936K), 0.0030294 secs]
+13.013: [GC (Allocation Failure)  771325K->23517K(1448448K), 0.0013942 secs]
+13.686: [GC (Allocation Failure)  743901K->23549K(1394176K), 0.0024119 secs]
+14.208: [GC (Allocation Failure)  717821K->23581K(1394688K), 0.0011416 secs]
+14.693: [GC (Allocation Failure)  692765K->23645K(1345536K), 0.0019200 secs]
+15.421: [GC (Allocation Failure)  669277K->24541K(1346048K), 0.0042570 secs]
+15.977: [GC (Allocation Failure)  647645K->24853K(1301504K), 0.0044554 secs]
+16.446: [GC (Allocation Failure)  626453K->24893K(1301504K), 0.0018927 secs]
+16.917: [GC (Allocation Failure)  606013K->24869K(1261056K), 0.0048998 secs]
+17.322: [GC (Allocation Failure)  586021K->24869K(1260032K), 0.0019452 secs]
+17.714: [GC (Allocation Failure)  567077K->24869K(1224192K), 0.0023565 secs]
+18.084: [GC (Allocation Failure)  549157K->24869K(1222656K), 0.0018660 secs]
+18.453: [GC (Allocation Failure)  531749K->24901K(1190400K), 0.0015533 secs]
+18.807: [GC (Allocation Failure)  515397K->24877K(1188352K), 0.0018670 secs]
+19.171: [GC (Allocation Failure)  499501K->24909K(1159680K), 0.0025233 secs]
+19.600: [GC (Allocation Failure)  484685K->24909K(1157120K), 0.0020777 secs]
+20.011: [GC (Allocation Failure)  470349K->24845K(1131520K), 0.0030495 secs]
+20.406: [GC (Allocation Failure)  456461K->24853K(1128448K), 0.0023974 secs]
+20.783: [GC (Allocation Failure)  443157K->24885K(1105408K), 0.0025202 secs]
+21.157: [GC (Allocation Failure)  430389K->24933K(1101824K), 0.0020145 secs]
+21.502: [GC (Allocation Failure)  418149K->24965K(1081344K), 0.0022436 secs]
+21.794: [GC (Allocation Failure)  406405K->24981K(1077760K), 0.0019535 secs]
+22.096: [GC (Allocation Failure)  395157K->25013K(1059328K), 0.0020186 secs]
+22.433: [GC (Allocation Failure)  384437K->25045K(1055744K), 0.0015837 secs]
+22.748: [GC (Allocation Failure)  374229K->25069K(1039360K), 0.0023290 secs]
+23.021: [GC (Allocation Failure)  364525K->25069K(1436672K), 0.0020087 secs]
+23.573: [GC (Allocation Failure)  756205K->25085K(1404416K), 0.0025124 secs]
+24.117: [GC (Allocation Failure)  729597K->25093K(1383424K), 0.0018292 secs]
+24.858: [GC (Allocation Failure)  704005K->25093K(1354752K), 0.0032675 secs]
+25.499: [GC (Allocation Failure)  679941K->25125K(1335808K), 0.0023338 secs]
+26.113: [GC (Allocation Failure)  656933K->25093K(1309696K), 0.0023243 secs]
+26.594: [GC (Allocation Failure)  634885K->25133K(1291776K), 0.0017614 secs]
+27.040: [GC (Allocation Failure)  613933K->25141K(1268736K), 0.0020080 secs]
+27.463: [GC (Allocation Failure)  593973K->25109K(1251840K), 0.0019701 secs]
+28.081: [GC (Allocation Failure)  574485K->25117K(1230848K), 0.0016276 secs]
+28.592: [GC (Allocation Failure)  556061K->25117K(1216000K), 0.0041123 secs]
+29.126: [GC (Allocation Failure)  538653K->25149K(1196544K), 0.0021113 secs]
+29.642: [GC (Allocation Failure)  521789K->25149K(1182720K), 0.0020039 secs]
+30.073: [GC (Allocation Failure)  505917K->25149K(1165312K), 0.0020996 secs]
+30.532: [GC (Allocation Failure)  490557K->25149K(1152000K), 0.0020776 secs]
+30.922: [GC (Allocation Failure)  475709K->25157K(1136640K), 0.0023737 secs]
+31.261: [GC (Allocation Failure)  461893K->25133K(1124864K), 0.0018175 secs]
+31.577: [GC (Allocation Failure)  448557K->25133K(1110528K), 0.0019488 secs]
+31.886: [GC (Allocation Failure)  435757K->25133K(1099264K), 0.0017596 secs]
+32.190: [GC (Allocation Failure)  423469K->25165K(1086464K), 0.0019432 secs]
+32.486: [GC (Allocation Failure)  411725K->25133K(1076224K), 0.0019636 secs]
+32.794: [GC (Allocation Failure)  400429K->25133K(1064448K), 0.0023472 secs]
+33.154: [GC (Allocation Failure)  389677K->25165K(1054720K), 0.0018944 secs]
+33.493: [GC (Allocation Failure)  379469K->25165K(1414144K), 0.0012655 secs]
+34.146: [GC (Allocation Failure)  739405K->25197K(1388544K), 0.0019957 secs]
+34.764: [GC (Allocation Failure)  713325K->25133K(1363456K), 0.0025040 secs]
+35.325: [GC (Allocation Failure)  688685K->25165K(1340416K), 0.0019046 secs]
+35.797: [GC (Allocation Failure)  665165K->25133K(1317376K), 0.0012475 secs]
+36.306: [GC (Allocation Failure)  642605K->25141K(1296384K), 0.0025329 secs]
+36.861: [GC (Allocation Failure)  621109K->25173K(1275392K), 0.0019556 secs]
+37.383: [GC (Allocation Failure)  600661K->25141K(1255936K), 0.0021325 secs]
+37.879: [GC (Allocation Failure)  581173K->25173K(1237504K), 0.0020597 secs]
+38.361: [GC (Allocation Failure)  562773K->25173K(1219584K), 0.0019324 secs]
+38.750: [GC (Allocation Failure)  544853K->25205K(1202688K), 0.0017635 secs]
+39.121: [GC (Allocation Failure)  527989K->25173K(1186304K), 0.0015235 secs]
+39.502: [GC (Allocation Failure)  511573K->25181K(1170944K), 0.0019657 secs]
+39.938: [GC (Allocation Failure)  496221K->25213K(1156096K), 0.0020386 secs]
+40.346: [GC (Allocation Failure)  481405K->25181K(1141760K), 0.0021218 secs]
+40.750: [GC (Allocation Failure)  467037K->25213K(1127936K), 0.0020821 secs]
+41.149: [GC (Allocation Failure)  453245K->25221K(1115136K), 0.0019886 secs]
+41.493: [GC (Allocation Failure)  440453K->25189K(1102848K), 0.0016834 secs]
+41.790: [GC (Allocation Failure)  428133K->25221K(1091072K), 0.0018602 secs]
+42.098: [GC (Allocation Failure)  416389K->25157K(1079808K), 0.0031077 secs]
+42.383: [GC (Allocation Failure)  405061K->25221K(1069056K), 0.0019137 secs]
+42.670: [GC (Allocation Failure)  394373K->25189K(1058304K), 0.0019784 secs]
+42.949: [GC (Allocation Failure)  383589K->25189K(1413632K), 0.0035708 secs]
+43.602: [GC (Allocation Failure)  738917K->25221K(1388032K), 0.0021550 secs]
+44.214: [GC (Allocation Failure)  713349K->25221K(1363456K), 0.0017692 secs]
+44.810: [GC (Allocation Failure)  688773K->25157K(1339904K), 0.0024354 secs]
+45.404: [GC (Allocation Failure)  665157K->25221K(1317376K), 0.0024933 secs]
+45.970: [GC (Allocation Failure)  642693K->25221K(1295872K), 0.0020023 secs]
+46.440: [GC (Allocation Failure)  621189K->25197K(1275392K), 0.0018091 secs]
+46.864: [GC (Allocation Failure)  600685K->25197K(1255936K), 0.0016421 secs]
+47.267: [GC (Allocation Failure)  581229K->25197K(1237504K), 0.0019760 secs]
+47.661: [GC (Allocation Failure)  562797K->25229K(1219584K), 0.0012913 secs]
+48.053: [GC (Allocation Failure)  544909K->25229K(1202688K), 0.0021141 secs]
+48.508: [GC (Allocation Failure)  528013K->25229K(1186304K), 0.0020289 secs]
+48.949: [GC (Allocation Failure)  511629K->25229K(1170944K), 0.0020548 secs]
+49.378: [GC (Allocation Failure)  496269K->25229K(1156096K), 0.0019937 secs]
+49.818: [GC (Allocation Failure)  481421K->25229K(1141760K), 0.0020084 secs]
+50.219: [GC (Allocation Failure)  467085K->25197K(1127936K), 0.0020045 secs]
+50.594: [GC (Allocation Failure)  453229K->25197K(1115136K), 0.0017705 secs]
+50.936: [GC (Allocation Failure)  440429K->25237K(1102848K), 0.0025465 secs]
+51.288: [GC (Allocation Failure)  428181K->25205K(1091072K), 0.0022487 secs]
+51.652: [GC (Allocation Failure)  416373K->25205K(1079808K), 0.0025233 secs]
+52.002: [GC (Allocation Failure)  405109K->25205K(1069056K), 0.0021047 secs]
+52.351: [GC (Allocation Failure)  394357K->25205K(1058304K), 0.0021059 secs]
+52.698: [GC (Allocation Failure)  383605K->25237K(1413632K), 0.0012767 secs]
+53.357: [GC (Allocation Failure)  738965K->25173K(1388032K), 0.0026650 secs]
+53.911: [GC (Allocation Failure)  713301K->25173K(1363456K), 0.0023235 secs]
+54.398: [GC (Allocation Failure)  688725K->25205K(1[Weak Resource Cleaner: Cleaning...]
+[Weak Resource Cleaner: Cleaning...]
+[RR Waiter for 5: Terminating thread: Thread-4[tid = 5]]
+[RR Waiter for 1: Terminating thread: Thread-0[tid = 1]]
+[RR Waiter for 6: Terminating thread: Thread-5[tid = 6]]
+[RR Waiter for 2: Terminating thread: Thread-1[tid = 2]]
+[RR Waiter for 7: Terminating thread: Thread-6[tid = 7]]
+[RR Waiter for 3: Terminating thread: Thread-2[tid = 3]]
+[RR Waiter for 4: Terminating thread: Thread-3[tid = 4]]
+[RR Waiter for 8: Terminating thread: Thread-7[tid = 8]]
+tsp-8	60107
+Minimum tour length: 43
+Minimum tour:0 -   10 -    11 -    2 -   7 -   3 -   13 -    12 -    6 -   5 -   14 -    4 -   8 -   1 -   15 -    9 -   0
+[main: Terminating thread: main[tid = 0]]
+[main: Tool Fini()]
+[main: ]
+[main: ----- ----- ----- -----      Thpthpthpth.     ----- ----- ----- -----]
+[RR: 60.5 sec]
+[RR: Total Time: 60464]
+<entry>
+  <date> Sat May 01 08:12:57 IST 2021 </date> 
+  <mode> FAST </mode> 
+  <timeout> NO </timeout> 
+  <options>
+    <option><name> javaArgs </name>           <value> Tsp tspfiles/map16c 8  </value> </option>
+    <option><name> noDecInline </name>        <value> false </value> </option>
+    <option><name> quiet </name>              <value> false </value> </option>
+    <option><name> logDepth </name>           <value> 100 </value> </option>
+    <option><name> logs </name>               <value> log </value> </option>
+    <option><name> out </name>                <value>  </value>   </option>
+    <option><name> err </name>                <value>  </value>   </option>
+    <option><name> noinst </name>             <value> false </value> </option>
+    <option><name> inst </name>               <value> INST </value> </option>
+    <option><name> infThreads </name>         <value> 0 </value>  </option>
+    <option><name> benchmark </name>          <value> 0 </value>  </option>
+    <option><name> fileType </name>           <value> true </value> </option>
+    <option><name> transactionFile </name>    <value> transactionfile.csv </value> </option>
+    <option><name> warmup </name>             <value> 3 </value>  </option>
+    <option><name> availableProcessors </name> <value> 4 </value>  </option>
+    <option><name> args </name>               <value> [] </value> </option>
+    <option><name> d </name>                  <value> [] </value> </option>
+    <option><name> maxYikes </name>           <value> 5 </value>  </option>
+    <option><name> help </name>               <value> false </value> </option>
+    <option><name> toolpath </name>           <value> /home/krishanu/aerodrome-roadrunner/classes/rr/simple:/home/krishanu/aerodrome-roadrunner/classes/tools </value> </option>
+    <option><name> classpath </name>          <value> tsp.jar </value> </option>
+    <option><name> tool </name>               <value> AD </value> </option>
+    <option><name> tools </name>              <value> false </value> </option>
+    <option><name> noxml </name>              <value> false </value> </option>
+    <option><name> constantGC </name>         <value> false </value> </option>
+    <option><name> noFP </name>               <value> true </value> </option>
+    <option><name> noShutdownHook </name>     <value> false </value> </option>
+    <option><name> noEnter </name>            <value> false </value> </option>
+    <option><name> xml </name>                <value> log.xml </value> </option>
+    <option><name> pulse </name>              <value>  </value>   </option>
+    <option><name> maxTime </name>            <value> 0 </value>  </option>
+    <option><name> maxMem </name>             <value> 10240 </value> </option>
+    <option><name> maxTid </name>             <value> 16 </value> </option>
+    <option><name> stacks </name>             <value> false </value> </option>
+    <option><name> values </name>             <value> false </value> </option>
+    <option><name> noTidGC </name>            <value> true </value> </option>
+    <option><name> noEventReuse </name>       <value> false </value> </option>
+    <option><name> trackMemoryUsage </name>   <value> false </value> </option>
+    <option><name> repository </name>         <value>  </value>   </option>
+    <option><name> meta </name>               <value> null </value> </option>
+    <option><name> methods </name>            <value> [default=ACCEPT] </value> </option>
+    <option><name> fields </name>             <value> ["-.*this\$.*", "-$.*__\$rr.*", default=ACCEPT] </value> </option>
+    <option><name> lines </name>              <value> [default=ACCEPT] </value> </option>
+    <option><name> classes </name>            <value> ["-java..*", "-javax..*", "-com.sun..*", "-sun..*", "-rr..*", "-tools..*", "-acme..*", "-.*__\$rr_.*", "-org.xml..*", default=ACCEPT] </value> </option>
+    <option><name> shadowThread </name>       <value> ["-.*", default=ACCEPT] </value> </option>
+    <option><name> noop </name>               <value> [default=ACCEPT] </value> </option>
+    <option><name> noConstructor </name>      <value> false </value> </option>
+    <option><name> noClone </name>            <value> false </value> </option>
+    <option><name> dump </name>               <value>  </value>   </option>
+    <option><name> field </name>              <value> FINE </value> </option>
+    <option><name> fancy </name>              <value> false </value> </option>
+    <option><name> verify </name>             <value> false </value> </option>
+    <option><name> trackReflection </name>    <value> false </value> </option>
+    <option><name> arraySites </name>         <value> false </value> </option>
+    <option><name> Use TestAcquires </name>   <value> false </value> </option>
+    <option><name> sanity </name>             <value> false </value> </option>
+    <option><name> reentrantEvents </name>    <value> false </value> </option>
+    <option><name> nojoin </name>             <value> false </value> </option>
+    <option><name> multiLoader </name>        <value> false </value> </option>
+    <option><name> indices </name>            <value> 2147483647 </value> </option>
+    <option><name> updaters </name>           <value> SAFE </value> </option>
+    <option><name> array </name>              <value> FINE </value> </option>
+    <option><name> userArray </name>          <value> rr.state.ArrayStateCreator$1@511d50c0 </value> </option>
+    <option><name> nobarrier </name>          <value> false </value> </option>
+    <option><name> arrayCacheType </name>     <value> STRONG </value> </option>
+    <option><name> callSites </name>          <value> false </value> </option>
+    <option><name> maxWarn </name>            <value> 100 </value> </option>
+    <option><name> noInterrupt </name>        <value> false </value> </option>
+  </options>
+  <system>
+    <host> krishanu-Predator-G3-572 </host> 
+    <name> java.vm.version </name>     <value> 25.292-b10 </value> 
+    <name> java.vm.vendor </name>      <value> Private Build </value> 
+    <name> java.vm.name </name>        <value> OpenJDK 64-Bit Server VM </value> 
+    <name> java.class.path </name>     <value> .:/home/krishanu/aerodrome-roadrunner/build/jar/rragent.jar </value> 
+    <name> os.name </name>             <value> Linux </value> 
+    <name> os.arch </name>             <value> amd64 </value> 
+    <name> os.version </name>          <value> 5.8.0-50-generic </value> 
+    <name> user.name </name>           <value> krishanu </value> 
+    <name> user.dir </name>            <value> /home/krishanu/aerodrome-roadrunner/benchmarks/tsp </value> 
+    <availableProcs> 4 </availableProcs> 
+    <memCommitted> 1077 </memCommitted> 
+    <memUsed> 326 </memUsed> 
+    <memTotal> 1077 </memTotal> 
+    <compileTime> 5704 </compileTime> 
+    <gc> <name> PS Scavenge </name> <time> 336 </time> </gc>
+    <gc> <name> PS MarkSweep </name> <time> 0 </time> </gc>
+  </system>
+  <instrumented> PrioQElement TourElement Tsp TspSolver harness/Callback  </instrumented> 
+  <instrumentedNum> 5 </instrumentedNum> 
+  <skipped>  </skipped> 
+  <skippedNum> 0 </skippedNum> 
+  <sanityChecked>  </sanityChecked> 
+  <sanityCheckedNum> 0 </sanityCheckedNum> 
+  <counters>
+
+    <counter><name> "AD: Read" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Write" </name>                                  <value>          0 </value> </counter>
+    <counter><name> "AD: Method Begin" </name>                           <value>          0 </value> </counter>
+    <counter><name> "AD: Method End" </name>                             <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction Begin" </name>                      <value>          0 </value> </counter>
+    <counter><name> "AD: Transaction End" </name>                        <value>          0 </value> </counter>
+    <counter><name> "AD: Acquire" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Release" </name>                                <value>          0 </value> </counter>
+    <counter><name> "AD: Fork" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Join" </name>                                   <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value>          0 </value> </counter>
+    <counter><name> "AD: Other (Ignore)" </name>                         <value> 25,311 </value> </counter>
+
+    <counter><name> "ArrayStateFactory: Size" </name>                    <value> 260 </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Move Time" </name>         <value> <total>0.00000</total> <count>0</count>  </value> </counter>
+    <counter><name> "ArrayStateFactory: Attic Hits" </name>              <value> 0 </value> </counter>
+
+    <counter><name> "Clone: Count" </name>                               <value> 0 </value> </counter>
+
+    <counter><name> "GCRunner: Max Usage" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "Handler: Count" </name>                             <value> 0 </value> </counter>
+
+    <counter><name> "ShadowLock: objects" </name>                        <value> 0 </value> </counter>
+
+    <counter><name> "ShadowThread: Count" </name>                        <value> 9 </value> </counter>
+    <counter><name> "ShadowThread: Max Live" </name>                     <value> 9 </value> </counter>
+    <counter><name> "ShadowThread: getCurrentThread() calls" </name>     <value> 0 </value> </counter>
+
+    <counter><name> "Time: Instrumenter" </name>                         <value> <total>45.0000</total> <count>5</count> <ave>9.00000</ave> </value> </counter>
+  </counters>
+  <yikes>
+  </yikes>
+  <tool>
+    <name> tools.aerodrome.AeroDromeTool </name> 
+    <violation> 
+        Type -> transactionEnd 
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):337:249
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):542:163
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):238:37
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):301:56
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):417:189
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):425:230
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):372:286
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):238:30
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_recursive_solve__$rr__Original_(I)V (TspSolver.java):479:19
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):338:259
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):69:27
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_MakeTourString__$rr__Original_(I[I)V (TspSolver.java):131:37
+        Transaction Method -> Tsp.main([Ljava/lang/String;)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):104:1
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_recursive_solve__$rr__Original_(I)V (TspSolver.java):484:65
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):389:74
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):388:64
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):289:16
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):416:179
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):387:54
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):293:37
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):366:7
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):303:87
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):236:5
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):537:128
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):82:117
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):236:1
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):237:16
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):390:80
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_recursive_solve__$rr__Original_(I)V (TspSolver.java):478:10
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):238:26
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):237:12
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):79:91
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_visit_nodes__$rr__Original_(I)V (TspSolver.java):526:48
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_less_than__$rr__Original_(LPrioQElement;LPrioQElement;)Z (TspSolver.java):238:41
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_MakeTourString__$rr__Original_(I[I)V (TspSolver.java):130:17
+        Transaction Method -> Tsp.main([Ljava/lang/String;)V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):303:92
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_get_tour__$rr__Original_(I)I (TspSolver.java):455:14
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):375:33
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):375:36
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):293:34
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):110:15
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):83:127
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):374:27
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):80:97
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> read 
+        Location -> Tsp.__$rr_main__$rr__Original_([Ljava/lang/String;)V (Tsp.java):128:543
+        Transaction Method -> Tsp.main([Ljava/lang/String;)V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_calc_bound__$rr__Original_(I)I (TspSolver.java):216:331
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):90:180
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):82:120
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):440:281
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):418:199
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):440:285
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):417:192
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):326:211
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_get_tour__$rr__Original_(I)I (TspSolver.java):455:20
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_get_tour__$rr__Original_(I)I (TspSolver.java):455:24
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):381:43
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_calc_bound__$rr__Original_(I)I (TspSolver.java):222:390
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):323:185
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):69:24
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):117:37
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):85:169
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):338:262
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):80:100
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):390:85
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):389:77
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):85:165
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):388:67
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_calc_bound__$rr__Original_(I)I (TspSolver.java):184:174
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):339:269
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):115:22
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):79:92
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):337:252
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):340:276
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_calc_bound__$rr__Original_(I)I (TspSolver.java):220:374
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):416:182
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_find_solvable_tour__$rr__Original_()I (TspSolver.java):419:206
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_split_tour__$rr__Original_(I)V (TspSolver.java):325:201
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> write 
+        Location ->  TspSolver.__$rr_new_tour__$rr__Original_(II)I (TspSolver.java):83:148
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> TspSolver.__$rr_get_tour__$rr__Original_(I)I (TspSolver.java):454:5
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> acquire 
+        Location -> TspSolver.__$rr_set_best__$rr__Original_(I[I)V (TspSolver.java):109:13
+        Transaction Method -> TspSolver.run()V
+    </violation> 
+    <violation> 
+        Type -> join 
+        Location -> Tsp.__$rr_main__$rr__Original_([Ljava/lang/String;)V (Tsp.java):117:449
+        Transaction Method -> Tsp.main([Ljava/lang/String;)V
+    </violation> 
+  </tool>
+  <tool>
+    <name> Last </name> 
+  </tool>
+  <threadCount> 9 </threadCount> 
+  <threadMaxActive> 9 </threadMaxActive> 
+  <errorTotal> 0 </errorTotal> 
+  <distinctErrorTotal> 0 </distinctErrorTotal> 
+  <methods>
+  </methods>
+  <fields>
+  </fields>
+  <arrays>
+  </arrays>
+  <locks>
+  </locks>
+  <fieldAccesses>
+  </fieldAccesses>
+  <errorCountPerErrorType>
+  </errorCountPerErrorType>
+  <warningsTotal> 0 </warningsTotal> 
+  <yikesTotal> 0 </yikesTotal> 
+  <failed> false </failed> 
+  <failedReason>  </failedReason> 
+  <time> 60464 </time> 
+</entry>
+[RR: Time = 60464]
+[RR: Exiting: 0]
