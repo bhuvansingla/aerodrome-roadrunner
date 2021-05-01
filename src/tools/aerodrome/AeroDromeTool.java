@@ -112,12 +112,13 @@ public class AeroDromeTool extends Tool {
         }
     }
 
-    public void checkLocation(AccessEvent me) {
+    public void checkLocation(AccessEvent me, int place) {
         String sloc = me.getAccessInfo().getLoc().toString();
-        if(transactionLocations.containsKey(sloc)) {
+        if(transactionLocations.containsKey(sloc)&&place==0) {
             transactionBegin(me.getThread());
+            ongoingTransaction[me.getThread().getTid()] = me.getAccessInfo().getLoc().getMethod().toString();
         }
-        else if (transactionLocations.containsValue(sloc)) {
+        else if (transactionLocations.containsValue(sloc)&&place==1) {
             transactionEnd2(me.getThread());
         }
     }
@@ -391,12 +392,13 @@ public class AeroDromeTool extends Tool {
         ShadowVar sv = event.getOriginalShadow();
         if (sv instanceof ADVarClocks) {
             ADVarClocks sx = (ADVarClocks) sv;
-            if(!fileType) checkLocation(event);
+            if(!fileType) checkLocation(event,0);
             if (event.isWrite()) {
                 write(event, st, sx);
             } else {
                 read(event, st, sx);
             }
+            if(!fileType) checkLocation(event,1);
         } else {
             super.access(event);
         }
@@ -456,7 +458,7 @@ public class AeroDromeTool extends Tool {
     }
 
     @Override
-    public void postStart(final StartEvent event) {
+    public void preStart(final StartEvent event) {
         final ShadowThread st = event.getThread();
         final ShadowThread su = event.getNewThread();
 
@@ -469,7 +471,7 @@ public class AeroDromeTool extends Tool {
             }
         }
 
-        super.postStart(event);
+        super.preStart(event);
 
         if (COUNT_OPERATIONS) {
             forkCounter.inc(st.getTid());
@@ -477,7 +479,7 @@ public class AeroDromeTool extends Tool {
     }
 
     @Override
-    public void preJoin(final JoinEvent event) {
+    public void postJoin(final JoinEvent event) {
         final ShadowThread st = event.getThread();
         final ShadowThread su = event.getJoiningThread();
 
@@ -487,7 +489,7 @@ public class AeroDromeTool extends Tool {
                 joinViolations.put(event.getInfo().getLoc().toString(), ongoingTransaction[st.getTid()]);
             }
         }
-        super.preJoin(event);
+        super.postJoin(event);
 
         if (COUNT_OPERATIONS) {
             joinCounter.inc(st.getTid());
