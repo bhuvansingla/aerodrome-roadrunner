@@ -111,12 +111,12 @@ public class AeroDromeTool extends Tool {
         }
     }
 
-    public void checkLocation(AccessEvent me) {
+    public void checkLocation(AccessEvent me, int place) {
         String sloc = me.getAccessInfo().getLoc().toString();
-        if(transactionLocations.containsKey(sloc)) {
+        if(transactionLocations.containsKey(sloc))&&place==0) {
             transactionBegin(me.getThread());
         } 
-        else if (transactionLocations.containsValue(sloc)) {
+        else if (transactionLocations.containsValue(sloc)&&place==1) {
             transactionEnd2(me.getThread());
         }
     }
@@ -391,12 +391,13 @@ public class AeroDromeTool extends Tool {
         ShadowVar sv = event.getOriginalShadow();
         if (sv instanceof ADVarClocks) {
             ADVarClocks sx = (ADVarClocks) sv;
-            if(!fileType) checkLocation(event);
+            if(!fileType) checkLocation(event, 0);
             if (event.isWrite()) {
                 write(event, st, sx);
             } else {
                 read(event, st, sx);
             }
+	    if(!fileType) checkLocation(event,1);
         } else {
             super.access(event);
         }
